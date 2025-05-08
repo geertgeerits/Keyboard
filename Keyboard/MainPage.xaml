@@ -22,7 +22,7 @@
             VerticalOptions="Fill">
 
             <Grid
-                ColumnDefinitions="*"
+                ColumnDefinitions="*, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
@@ -34,8 +34,8 @@
                     Grid.Row="0">
 
                     <Entry  
-                        x:Name="entTest1"  
-                        AutomationId="entTest1" 
+                        x:Name="entTest1" 
+                        AutomationId="entTest1-Percentage" 
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -114,6 +114,14 @@
                     Text="Show Bottom Sheet"
                     Clicked="OnShowBottomSheetClicked">
                 </Button>
+
+                <Button
+                    Grid.Column="1"
+                    Grid.Row="4"
+                    Text="Hide Bottom Sheet"
+                    Clicked="OnHideBottomSheetClicked">
+                </Button>
+
             </Grid>
         </ScrollView>
 

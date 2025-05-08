@@ -170,11 +170,8 @@ namespace Keyboard
             }
 
             // Get the number of decimals allowed after the decimal separator
-            int nDecimals = entry.AutomationId switch
-            {
-                "Percentage" => int.Parse(cPercDecimalDigits),
-                _ => int.Parse(cNumDecimalDigits),
-            };
+            // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+            int nDecimals = entry.AutomationId.Contains("Percentage") ? int.Parse(cPercDecimalDigits) : int.Parse(cNumDecimalDigits);
 
             // Check if the decimal separator is allowed
             if (cText.Contains(cNumDecimalSeparator) && nDecimals == 0)
@@ -219,12 +216,8 @@ namespace Keyboard
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set before accessing it (Entry property: AutomationId="Percentage")
-                entry.Text = entry.AutomationId switch
-                {
-                    "Percentage" => nValue.ToString(format: "F" + cPercDecimalDigits),
-                    _ => nValue.ToString(format: "F" + cNumDecimalDigits),
-                };
+                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                entry.Text = entry.AutomationId.Contains("Percentage") ? nValue.ToString(format: "F" + cPercDecimalDigits) : nValue.ToString(format: "F" + cNumDecimalDigits);
 
                 // Select all the text in the entry field
                 entry.CursorPosition = 0;
@@ -248,12 +241,8 @@ namespace Keyboard
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set before accessing it
-                entry.Text = entry.AutomationId switch
-                {
-                    "Percentage" => nValue.ToString(format: "N" + cPercDecimalDigits),
-                    _ => nValue.ToString(format: "N" + cNumDecimalDigits),
-                };
+                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                entry.Text = entry.AutomationId.Contains("Percentage") ? nValue.ToString(format: "N" + cPercDecimalDigits) : nValue.ToString(format: "N" + cNumDecimalDigits);
             }
             else
             {

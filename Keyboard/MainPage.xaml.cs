@@ -1,9 +1,14 @@
-﻿using The49.Maui.BottomSheet;
+﻿/*
+2025-05-08
+
+https://www.youtube.com/watch?v=bdKWnddRDY0&t=856s
+*/
+
+using The49.Maui.BottomSheet;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Diagnostics;
-
-// https://www.youtube.com/watch?v=bdKWnddRDY0&t=856s
+using Microsoft.Maui.Controls;
 
 namespace Keyboard
 {
@@ -159,7 +164,7 @@ namespace Keyboard
 
             Entry? focusedEntry = cNameEntryField switch
             {
-                "entTest1" => entTest1,
+                "entTest1-Percentage" => entTest1,
                 "entTest2" => entTest2,
                 "entTest3" => entTest3,
                 "entTest4" => entTest4,
@@ -274,22 +279,19 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the click event for the button to show the bottom sheet.
+        /// Handles the click event for the button to show the bottom sheet
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void OnShowBottomSheetClicked(object sender, EventArgs e)
         {
-            // Call to programatically close the sheet
-            //page.DismissAsync();
-
-            BottomSheetKeyboard page = new()
+            BottomSheetKeyboard sheet = new()
             {
                 HasHandle = true,
                 HandleColor = Colors.Red
             };
 
-            await page.ShowAsync(Window);
+            await sheet.ShowAsync(Window);
 
             //if (page.Showing)
             //{
@@ -309,6 +311,20 @@ namespace Keyboard
             //{
             //    await page.ShowAsync(Window);
             //}
+        }
+
+        /// <summary>
+        /// Handles the click event for the button to hide the bottom sheet
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void OnHideBottomSheetClicked(object sender, EventArgs e)
+        {
+            BottomSheetKeyboard sheet = new()
+            {
+            };
+
+            await sheet.DismissAsync();
         }
     }
 }
