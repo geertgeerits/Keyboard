@@ -21,6 +21,12 @@ namespace Keyboard
         {
             InitializeComponent();
 
+            WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
+            {
+                DisplayReceivedMessage(message.Value);
+                Debug.WriteLine($"Received message: {message.Value}");
+            });
+
             //// Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
 
@@ -32,12 +38,20 @@ namespace Keyboard
             {
                 Debug.WriteLine($"Key Pressed: {key}");
                 //BtnKeyboardClicked(sender, key);
-                BtnKeyboardClicked(key);
+                //BtnKeyboardClicked(key);
             });
 
             // Open the bottom sheet when the page appears
             var page = new BottomSheetKeyboard();
             page.ShowAsync();
+        }
+
+        private void DisplayReceivedMessage(string message)
+        {
+            // Handle the received message (e.g., display it in a Label)
+            //ReceivedMessageLabel.Text = message;
+            BtnKeyboardClicked(message);
+            Debug.WriteLine($"Received message: {message}");
         }
 
         /// <summary>
@@ -150,7 +164,7 @@ namespace Keyboard
         /// <summary>
         /// Handles the click event for the keyboard buttons.
         /// </summary>
-        /// <param name="cAutomationId"></param>
+        /// <param name="cKey"></param>
         private void BtnKeyboardClicked(string cKey)
         {
             //var views = rootLayout.Children;

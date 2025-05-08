@@ -28,8 +28,13 @@ namespace Keyboard
             btnSeven.Text = ClassEntryMethods.cNumNativeDigits.Substring(7, 1);
             btnEight.Text = ClassEntryMethods.cNumNativeDigits.Substring(8, 1);
             btnNine.Text = ClassEntryMethods.cNumNativeDigits.Substring(9, 1);
-
         }
+
+        //private void SendMessageButton_Clicked(object sender, EventArgs e)
+        //{
+        //    string messageContent = "Hello from SenderPage!";
+        //    WeakReferenceMessenger.Default.Send(new StringMessage(messageContent));
+        //}
 
         /// <summary>
         /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
@@ -82,7 +87,10 @@ namespace Keyboard
 
                 try
                 {
-                    MessagingCenter.Send(this, "KeyPressed", cKeyPressed);
+                    //MessagingCenter.Send(this, "KeyPressed", cKeyPressed);
+
+                    string messageContent = cKeyPressed;
+                    WeakReferenceMessenger.Default.Send(new StringMessage(messageContent));
                 }
                 catch (Exception ex)
                 {
@@ -90,5 +98,10 @@ namespace Keyboard
                 }
             }
         }
+    }
+
+    public class StringMessage : ValueChangedMessage<string>
+    {
+        public StringMessage(string value) : base(value) { }
     }
 }
