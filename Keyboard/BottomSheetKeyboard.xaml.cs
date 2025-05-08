@@ -41,10 +41,48 @@ namespace Keyboard
         {
             if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
             {
-                //MessagingCenter.Send(this, "KeyPressed", button.Text);
+                string cKeyPressed = string.Empty;
+
+                switch (button.AutomationId)
+                {
+                    case "btnZero":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits[..1];
+                        break;
+                    case "btnOne":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(1, 1);
+                        break;
+                    case "btnTwo":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(2, 1);
+                        break;
+                    case "btnThree":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(3, 1);
+                        break;
+                    case "btnFour":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(4, 1);
+                        break;
+                    case "btnFive":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(5, 1);
+                        break;
+                    case "btnSix":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(6, 1);
+                        break;
+                    case "btnSeven":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(7, 1);
+                        break;
+                    case "btnEight":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(8, 1);
+                        break;
+                    case "btnNine":
+                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(9, 1);
+                        break;
+                    default:
+                        cKeyPressed = button.AutomationId;
+                        break;
+                }
+
                 try
                 {
-                    MessagingCenter.Send(this, "KeyPressed", button.AutomationId);
+                    MessagingCenter.Send(this, "KeyPressed", cKeyPressed);
                 }
                 catch (Exception ex)
                 {

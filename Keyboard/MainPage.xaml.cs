@@ -151,7 +151,7 @@ namespace Keyboard
         /// Handles the click event for the keyboard buttons.
         /// </summary>
         /// <param name="cAutomationId"></param>
-        private void BtnKeyboardClicked(string cAutomationId)
+        private void BtnKeyboardClicked(string cKey)
         {
             //var views = rootLayout.Children;
             //foreach (View view in views)
@@ -173,7 +173,7 @@ namespace Keyboard
 
             if (focusedEntry != null)
             {
-                switch (cAutomationId)
+                switch (cKey)
                 {
                     case "btnReturn":
                         GoToNextField(focusedEntry, null);
@@ -193,35 +193,8 @@ namespace Keyboard
                             focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumDecimalSeparator);
                         }
                         break;
-                    case "btnZero":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits[..1]);
-                        break;
-                    case "btnOne":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(1, 1));
-                        break;
-                    case "btnTwo":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(2, 1));
-                        break;
-                    case "btnThree":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(3, 1));
-                        break;
-                    case "btnFour":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(4, 1));
-                        break;
-                    case "btnFive":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(5, 1));
-                        break;
-                    case "btnSix":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(6, 1));
-                        break;
-                    case "btnSeven":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(7, 1));
-                        break;
-                    case "btnEight":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(8, 1));
-                        break;
-                    case "btnNine":
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumNativeDigits.Substring(9, 1));
+                    default:
+                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, cKey);
                         break;
                 }
             }
