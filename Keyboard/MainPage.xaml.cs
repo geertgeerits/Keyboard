@@ -191,7 +191,7 @@ namespace Keyboard
                     case "btnReturn":
                         GoToNextField(focusedEntry, null);
                         return;
-                    case "btnDelete":
+                    case "btnBackspace":
                         focusedEntry.Text = DeleteCharacterBeforeCursor(focusedEntry);
                         break;
                     case "btnMinus":
