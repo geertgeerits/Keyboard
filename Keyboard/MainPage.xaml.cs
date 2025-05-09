@@ -1,29 +1,34 @@
-﻿/*
-2025-05-08
-
-https://www.youtube.com/watch?v=bdKWnddRDY0&t=856s
+﻿/* Program .....: Keyboard.sln
+   Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
+   Copyright ...: (C) 2025-2025
+   Version .....: 1.0.14
+   Date ........: 2025-05-09 (YYYY-MM-DD)
+   Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
+   Description .: Custom keyboard for numeric entry fields
+   Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
+                  The49.Maui.BottomSheet version 8.0.3 ; https://github.com/the49ltd/The49.Maui.BottomSheet + !!!BUG!!! works not in Android 15
+   Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI - https://www.youtube.com/watch?v=bdKWnddRDY0&t=856s
 */
 
-using The49.Maui.BottomSheet;
-using CommunityToolkit.Mvvm.Messaging.Messages;
 using CommunityToolkit.Mvvm.Messaging;
 using System.Diagnostics;
-using Microsoft.Maui.Controls;
 
 namespace Keyboard
 {
     public partial class MainPage : ContentPage
     {
-        private string cNameEntryField = string.Empty;
-        private bool bEntryCompleted = false;
+        private string cEntryAutomationId = string.Empty;
+        private bool bEntryCompleted;
 
         public MainPage()
         {
             InitializeComponent();
 
+            //// Register to receive messages of type StringMessage
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
             {
-                DisplayReceivedMessage(message.Value);
+                // Display the received message in the UI, this method is called when a message is received
+                BtnKeyboardClicked(message.Value);
                 Debug.WriteLine($"Received message: {message.Value}");
             });
 
@@ -34,25 +39,19 @@ namespace Keyboard
             //Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
 
-            MessagingCenter.Subscribe<BottomSheetKeyboard, string>(this, "KeyPressed", (sender, key) =>
-            {
-                Debug.WriteLine($"Key Pressed: {key}");
-                //BtnKeyboardClicked(sender, key);
-                //BtnKeyboardClicked(key);
-            });
-
-            // Open the bottom sheet when the page appears
-            var page = new BottomSheetKeyboard();
-            page.ShowAsync();
+            //// Open the bottom sheet when the page appears
+            var sheet = new BottomSheetKeyboard();
+            sheet.ShowAsync();
         }
 
-        private void DisplayReceivedMessage(string message)
-        {
-            // Handle the received message (e.g., display it in a Label)
-            //ReceivedMessageLabel.Text = message;
-            BtnKeyboardClicked(message);
-            Debug.WriteLine($"Received message: {message}");
-        }
+        ///// <summary>
+        ///// Display the received message in the UI, this method is called when a message is received
+        ///// </summary>
+        ///// <param name="message"></param>
+        //private void DisplayReceivedMessage(string message)
+        //{
+        //    BtnKeyboardClicked(message);
+        //}
 
         /// <summary>
         /// Set focus to the first entry field 
@@ -81,7 +80,7 @@ namespace Keyboard
                     ClassEntryMethods.FormatNumberEntryFocused(entry);
                 }
 
-                cNameEntryField = entry.AutomationId;
+                cEntryAutomationId = entry.AutomationId;
                 bEntryCompleted = false;
 
                 // Hide the Android and iOS keyboard
@@ -100,7 +99,7 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
-                cNameEntryField = entry.AutomationId;
+                cEntryAutomationId = entry.AutomationId;
 
                 entry.MaxLength = -1;
 
@@ -176,7 +175,7 @@ namespace Keyboard
             //    }
             //}
 
-            Entry? focusedEntry = cNameEntryField switch
+            Entry? focusedEntry = cEntryAutomationId switch
             {
                 "entTest1-Percentage" => entTest1,
                 "entTest2" => entTest2,

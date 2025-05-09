@@ -7,8 +7,6 @@ namespace Keyboard
 {
     public partial class BottomSheetKeyboard : BottomSheet
     {
-        //public event EventHandler<string>? KeyPressed;
-
         public BottomSheetKeyboard()
         {
             InitializeComponent();
@@ -30,67 +28,34 @@ namespace Keyboard
             btnNine.Text = ClassEntryMethods.cNumNativeDigits.Substring(9, 1);
         }
 
-        //private void SendMessageButton_Clicked(object sender, EventArgs e)
-        //{
-        //    string messageContent = "Hello from SenderPage!";
-        //    WeakReferenceMessenger.Default.Send(new StringMessage(messageContent));
-        //}
-
         /// <summary>
         /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        [Obsolete]
         private void BtnKey_Clicked(object sender, EventArgs e)
         {
             if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
             {
-                string cKeyPressed = string.Empty;
-
-                switch (button.AutomationId)
+                string cKeyPressed = button.AutomationId switch
                 {
-                    case "btnZero":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits[..1];
-                        break;
-                    case "btnOne":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(1, 1);
-                        break;
-                    case "btnTwo":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(2, 1);
-                        break;
-                    case "btnThree":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(3, 1);
-                        break;
-                    case "btnFour":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(4, 1);
-                        break;
-                    case "btnFive":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(5, 1);
-                        break;
-                    case "btnSix":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(6, 1);
-                        break;
-                    case "btnSeven":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(7, 1);
-                        break;
-                    case "btnEight":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(8, 1);
-                        break;
-                    case "btnNine":
-                        cKeyPressed = ClassEntryMethods.cNumNativeDigits.Substring(9, 1);
-                        break;
-                    default:
-                        cKeyPressed = button.AutomationId;
-                        break;
-                }
+                    "btnZero" => ClassEntryMethods.cNumNativeDigits[..1],
+                    "btnOne" => ClassEntryMethods.cNumNativeDigits.Substring(1, 1),
+                    "btnTwo" => ClassEntryMethods.cNumNativeDigits.Substring(2, 1),
+                    "btnThree" => ClassEntryMethods.cNumNativeDigits.Substring(3, 1),
+                    "btnFour" => ClassEntryMethods.cNumNativeDigits.Substring(4, 1),
+                    "btnFive" => ClassEntryMethods.cNumNativeDigits.Substring(5, 1),
+                    "btnSix" => ClassEntryMethods.cNumNativeDigits.Substring(6, 1),
+                    "btnSeven" => ClassEntryMethods.cNumNativeDigits.Substring(7, 1),
+                    "btnEight" => ClassEntryMethods.cNumNativeDigits.Substring(8, 1),
+                    "btnNine" => ClassEntryMethods.cNumNativeDigits.Substring(9, 1),
+                    _ => button.AutomationId,
+                };
 
+                // Send the message with the key pressed
                 try
                 {
-                    //MessagingCenter.Send(this, "KeyPressed", cKeyPressed);
-
-                    string messageContent = cKeyPressed;
-                    WeakReferenceMessenger.Default.Send(new StringMessage(messageContent));
+                    WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
                 }
                 catch (Exception ex)
                 {
@@ -100,8 +65,11 @@ namespace Keyboard
         }
     }
 
-    public class StringMessage : ValueChangedMessage<string>
+    /// <summary>
+    /// This class is used to send a message with a string value when a key is pressed on the keyboard
+    /// </summary>
+    /// <param name="value"></param>
+    public class StringMessage(string value) : ValueChangedMessage<string>(value)
     {
-        public StringMessage(string value) : base(value) { }
     }
 }
