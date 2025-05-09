@@ -20,153 +20,192 @@
         HorizontalOptions="Center">
 
         <Border
-            Style="{StaticResource KeyBorder}">
+            Style="{StaticResource KeyBorder}"
+                Grid.Column="0"  
+                Grid.Row="0">
 
             <Button  
                 x:Name="btnOne"
-                Style="{StaticResource KeyButton}"
+                Style="{StaticResource KeyNumericButton}"
                 AutomationId="btnOne"
-                Grid.Column="0"  
-                Grid.Row="0"  
-                Text="1"  
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
 
-
-        <Button  
-            x:Name="btnTwo"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnTwo"
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="1"  
-            Grid.Row="0"  
-            Text="2"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="0">
 
-        <Button  
-            x:Name="btnThree"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnThree"
+            <Button  
+                x:Name="btnTwo"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnTwo"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="2"  
-            Grid.Row="0"  
-            Text="3"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="0">
 
-        <Button  
-            x:Name="btnBackspace"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnBackspace"
+            <Button  
+                x:Name="btnThree"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnThree"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="3"  
-            Grid.Row="0"
-            ImageSource="{AppThemeBinding Light=backspace_48p_black.png, Dark=backspace_48p_white.png}"
-            ContentLayout="Left, 10"
-            Text=" "
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="0">
 
-        <Button  
-            x:Name="btnFour"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnFour"
+            <Button  
+                x:Name="btnBackspace"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnBackspace"
+                ImageSource="{AppThemeBinding Light=backspace_48p_black.png, Dark=backspace_48p_white.png}"
+                ContentLayout="Left, 10"
+                Text=" "
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="0"  
-            Grid.Row="1"  
-            Text="4"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="1">
 
-        <Button  
-            x:Name="btnFive"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnFive"
+            <Button  
+                x:Name="btnFour"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnFour"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="1"  
-            Grid.Row="1"  
-            Text="5"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="1">
 
-        <Button  
-            x:Name="btnSix"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnSix"
+            <Button  
+                x:Name="btnFive"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnFive"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="2"  
-            Grid.Row="1"  
-            Text="6"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="1">
 
-        <Button  
-            x:Name="btnReturn"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnReturn"
+            <Button  
+                x:Name="btnSix"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnSix"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="3"  
-            Grid.Row="1"  
-            ImageSource="{AppThemeBinding Light=keyboard_tab_48p_black.png, Dark=keyboard_tab_48p_white.png}"
-            ContentLayout="Left, 10"
-            Text=" "
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="1">
 
-        <Button  
-            x:Name="btnSeven"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnSeven"
+            <Button  
+                x:Name="btnReturn"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnReturn"
+                ImageSource="{AppThemeBinding Light=keyboard_tab_48p_black.png, Dark=keyboard_tab_48p_white.png}"
+                ContentLayout="Left, 10"
+                Text=" "
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="0"  
-            Grid.Row="2"  
-            Text="7"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="2">
 
-        <Button  
-            x:Name="btnEight"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnEight"
+            <Button  
+                x:Name="btnSeven"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnSeven"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="1"  
-            Grid.Row="2"  
-            Text="8"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="2">
 
-        <Button  
-            x:Name="btnNine"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnNine"
+            <Button  
+                x:Name="btnEight"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnEight"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="2"  
-            Grid.Row="2"  
-            Text="9"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="2">
 
-        <Button  
-            x:Name="btnMinus"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnMinus"
+            <Button  
+                x:Name="btnNine"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnNine"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="3"  
-            Grid.Row="2"  
-            Text="-"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="2">
 
-        <Button  
-            x:Name="btnZero"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnZero"
+            <Button  
+                x:Name="btnMinus"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnMinus"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="1"  
-            Grid.Row="3"  
-            Text="0"  
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="3">
 
-        <Button  
-            x:Name="btnDecimalPoint"
-            Style="{StaticResource KeyButton}"
-            AutomationId="btnDecimalPoint"
+            <Button  
+                x:Name="btnZero"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnZero"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyBorder}"
             Grid.Column="3"  
-            Grid.Row="3"  
-            Text=".,"
-            Clicked="BtnKey_Clicked">
-        </Button>
+            Grid.Row="3">
+
+            <Button  
+                x:Name="btnDecimalPoint"
+                Style="{StaticResource KeyNumericButton}"
+                AutomationId="btnDecimalPoint"
+                Clicked="BtnKey_Clicked">
+            </Button>
+        </Border>
+
     </Grid>
-
 </the49:BottomSheet>

@@ -449,8 +449,7 @@
     </Style>
 
     <Style TargetType="Border" x:Key="KeyBorder">
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="StrokeThickness" Value="1"/>
         <Setter Property="StrokeShape">
             <Setter.Value>
@@ -459,11 +458,15 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Button" x:Key="KeyButton">
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource Black}}" />
+    <Style TargetType="Button" x:Key="KeyNumericButton">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="MinimumHeightRequest" Value="50" />
+        <Setter Property="MaximumHeightRequest" Value="60" />
+        <Setter Property="MinimumWidthRequest" Value="60" />
+        <Setter Property="MaximumWidthRequest" Value="80" />
     </Style>
 
 </ResourceDictionary>

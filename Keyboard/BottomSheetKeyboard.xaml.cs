@@ -52,7 +52,7 @@ namespace Keyboard
                     _ => button.AutomationId,
                 };
 
-                // Send the message with the key pressed
+                // Send the message with the key pressed to the MainPage
                 try
                 {
                     WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));

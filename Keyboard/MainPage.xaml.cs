@@ -24,11 +24,12 @@ namespace Keyboard
         {
             InitializeComponent();
 
-            //// Register to receive messages of type StringMessage
+            //// Register to receive messages of type StringMessage from the BottomSheetKeyboard page
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
             {
                 // Display the received message in the UI, this method is called when a message is received
                 BtnKeyboardClicked(message.Value);
+                
                 Debug.WriteLine($"Received message: {message.Value}");
             });
 
@@ -43,15 +44,6 @@ namespace Keyboard
             var sheet = new BottomSheetKeyboard();
             sheet.ShowAsync();
         }
-
-        ///// <summary>
-        ///// Display the received message in the UI, this method is called when a message is received
-        ///// </summary>
-        ///// <param name="message"></param>
-        //private void DisplayReceivedMessage(string message)
-        //{
-        //    BtnKeyboardClicked(message);
-        //}
 
         /// <summary>
         /// Set focus to the first entry field 
