@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.14
-   Date ........: 2025-05-09 (YYYY-MM-DD)
+   Date ........: 2025-05-10 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -338,7 +338,8 @@ namespace Keyboard
             KeyboardNumericPortrait sheet = new()
             {
                 HasHandle = true,
-                HandleColor = Colors.Red
+                HandleColor = Colors.Red,
+                CornerRadius = 10
             };
 
             await sheet.ShowAsync(Window);
@@ -364,24 +365,24 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the click event for the button to hide the bottom sheet
+        /// Handles the click event for the button to hide the bottom sheet - only works when HasBackdrop is enabled
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private async void OnHideBottomSheetClicked(object sender, EventArgs e)
         {
-            KeyboardNumericPortrait sheet = new()
+            KeyboardNumericPortrait? sheet = new()
             {
             };
 
             await sheet.DismissAsync();
+            //sheet = null;
 
             if (sheet != null)
             {
                 //await sheet.DismissAsync(false);
                 //sheet = null;
             }
-
         }
     }
 }
