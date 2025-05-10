@@ -13,6 +13,7 @@
 using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
+using The49.Maui.BottomSheet;
 
 namespace Keyboard
 {
@@ -374,6 +375,13 @@ namespace Keyboard
             };
 
             await sheet.DismissAsync();
+
+            if (sheet != null)
+            {
+                //await sheet.DismissAsync(false);
+                //sheet = null;
+            }
+
         }
     }
 }
