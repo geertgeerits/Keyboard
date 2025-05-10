@@ -24,7 +24,10 @@ namespace Keyboard
         {
             InitializeComponent();
 
-            //// Register to receive messages of type StringMessage from the BottomSheetKeyboard page
+            // Subscribe to orientation changes
+            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
+            //// Register to receive messages of type StringMessage from the KeyboardNumericPortrait page
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
             {
                 // Display the received message in the UI, this method is called when a message is received
@@ -32,7 +35,7 @@ namespace Keyboard
                 
                 Debug.WriteLine($"Received message: {message.Value}");
             });
-
+            
             //// Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
 
@@ -40,9 +43,66 @@ namespace Keyboard
             //Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
 
-            //// Open the bottom sheet when the page appears
-            var sheet = new BottomSheetKeyboard();
-            sheet.ShowAsync();
+            //// Open Open the bottom sheet when the page appears depending on the device orientation
+            string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
+
+            if (cOrientation == "Portrait")
+            {
+                var sheet = new KeyboardNumericPortrait();
+                sheet.ShowAsync();
+            }
+            else if (cOrientation == "Landscape")
+            {
+                var sheet = new KeyboardNumericLandscape();
+                sheet.ShowAsync();
+            }
+        }
+
+        /// <summary>
+        /// Get the current device orientation
+        /// </summary>
+        /// <returns></returns>
+        public static DisplayOrientation GetDeviceOrientation()
+        {
+            // Get the current display information
+            var displayInfo = DeviceDisplay.MainDisplayInfo;
+
+            // Return the orientation
+            Debug.WriteLine($"DisplayOrientation: {displayInfo.Orientation}");
+            return displayInfo.Orientation;
+        }
+
+        /// <summary>
+        /// This method is called when the display information changes, it handles the orientation change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
+        {
+            // Get the new orientation
+            var newOrientation = e.DisplayInfo.Orientation;
+
+            // Handle the orientation change
+            Debug.WriteLine($"Orientation changed to: {newOrientation}");
+
+            string cOrientation = newOrientation switch
+            {
+                DisplayOrientation.Landscape => "Landscape",
+                DisplayOrientation.Portrait => "Portrait",
+                DisplayOrientation.Unknown => "Unknown",
+                _ => "Unknown"
+            };
+
+            if (cOrientation == "Landscape")
+            {
+                var sheet = new KeyboardNumericLandscape();
+                sheet.ShowAsync();
+            }
+            else if (cOrientation == "Portrait")
+            {
+                var sheet = new KeyboardNumericPortrait();
+                sheet.ShowAsync();
+            }
         }
 
         /// <summary>
@@ -263,7 +323,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void OnShowBottomSheetClicked(object sender, EventArgs e)
         {
-            BottomSheetKeyboard sheet = new()
+            KeyboardNumericPortrait sheet = new()
             {
                 HasHandle = true,
                 HandleColor = Colors.Red
@@ -298,7 +358,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void OnHideBottomSheetClicked(object sender, EventArgs e)
         {
-            BottomSheetKeyboard sheet = new()
+            KeyboardNumericPortrait sheet = new()
             {
             };
 

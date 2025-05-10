@@ -67,7 +67,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="BottomSheetKeyboard.xaml">
+	  <Compile Update="KeyboardNumericPortrait.xaml.cs">
+	    <DependentUpon>KeyboardNumericPortrait.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="KeyboardNumericLandscape.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="KeyboardNumericPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

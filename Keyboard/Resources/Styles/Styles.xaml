@@ -458,7 +458,7 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Button" x:Key="KeyNumericButton">
+    <Style TargetType="Button" x:Key="KeyNumericPortraitButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="20" />
@@ -467,6 +467,26 @@
         <Setter Property="MaximumHeightRequest" Value="60" />
         <Setter Property="MinimumWidthRequest" Value="60" />
         <Setter Property="MaximumWidthRequest" Value="80" />
+    </Style>
+
+    <Style TargetType="Button" x:Key="KeyNumericLandscapeButton">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="MinimumHeightRequest" Value="40" />
+        <Setter Property="MaximumHeightRequest" Value="60" />
+        <Setter Property="MinimumWidthRequest" Value="40" />
+        <Setter Property="MaximumWidthRequest" Value="60" />
+    </Style>
+
+    <Style TargetType="ImageButton" x:Key="KeyNumericLandscapeImageButton">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
+        <Setter Property="MinimumHeightRequest" Value="40" />
+        <Setter Property="MaximumHeightRequest" Value="60" />
+        <Setter Property="MinimumWidthRequest" Value="40" />
+        <Setter Property="MaximumWidthRequest" Value="60" />
+        <Setter Property="Aspect" Value="Center" />
     </Style>
 
 </ResourceDictionary>
