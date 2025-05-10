@@ -11,6 +11,7 @@
 */
 
 using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.Maui.Controls;
 using System.Diagnostics;
 
 namespace Keyboard
@@ -95,13 +96,23 @@ namespace Keyboard
 
             if (cOrientation == "Landscape")
             {
+                var sheetzzz = new KeyboardNumericPortrait();
+                sheetzzz.DismissAsync();
+                //await Task.Delay(500);
+
                 var sheet = new KeyboardNumericLandscape();
-                sheet.ShowAsync();
+                sheet.ShowAsync(Window);
+                sheet.IsCancelable = true;
             }
             else if (cOrientation == "Portrait")
             {
+                var sheetzzz = new KeyboardNumericLandscape();
+                sheetzzz.DismissAsync();
+                //await Task.Delay(500);
+
                 var sheet = new KeyboardNumericPortrait();
-                sheet.ShowAsync();
+                sheet.ShowAsync(Window);
+                sheet.IsCancelable = true;
             }
         }
 

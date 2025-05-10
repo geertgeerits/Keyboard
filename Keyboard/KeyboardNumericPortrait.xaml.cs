@@ -2,7 +2,6 @@ using The49.Maui.BottomSheet;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.Maui.Devices;
 
 namespace Keyboard
 {
@@ -36,9 +35,11 @@ namespace Keyboard
         /// <param name="e"></param>
         private void BtnKey_Clicked(object sender, EventArgs e)
         {
+            string cKeyPressed = string.Empty;
+
             if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
             {
-                string cKeyPressed = button.AutomationId switch
+                cKeyPressed = button.AutomationId switch
                 {
                     "btnZero" => ClassEntryMethods.cNumNativeDigits[..1],
                     "btnOne" => ClassEntryMethods.cNumNativeDigits.Substring(1, 1),
@@ -52,16 +53,21 @@ namespace Keyboard
                     "btnNine" => ClassEntryMethods.cNumNativeDigits.Substring(9, 1),
                     _ => button.AutomationId,
                 };
+            }
 
-                // Send the message with the key pressed to the MainPage
-                try
-                {
-                    WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"Error sending message: {ex.Message}");
-                }
+            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
+            {
+                cKeyPressed = imageButton.AutomationId;
+            }
+
+            // Send the message with the key pressed to the MainPage
+            try
+            {
+                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error sending message: {ex.Message}");
             }
         }
     }

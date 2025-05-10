@@ -2,7 +2,6 @@ using The49.Maui.BottomSheet;
 using System.Diagnostics;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.Maui.Devices;
 
 namespace Keyboard
 {

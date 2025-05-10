@@ -12,7 +12,7 @@
     </the49:BottomSheet.Detents>
 
     <Grid  
-        ColumnDefinitions="5, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 5"
+        ColumnDefinitions="10, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 10"
         RowDefinitions="Auto, Auto"  
         ColumnSpacing="2"  
         RowSpacing="2"  

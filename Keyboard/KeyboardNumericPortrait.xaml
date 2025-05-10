@@ -63,15 +63,13 @@
             Grid.Column="3"  
             Grid.Row="0">
 
-            <Button  
+            <ImageButton  
                 x:Name="btnBackspace"
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyNumericPortraitImageButton}"
                 AutomationId="btnBackspace"
-                ImageSource="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
-                ContentLayout="Left, 10"
-                Text=" "
+                Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Clicked="BtnKey_Clicked">
-            </Button>
+            </ImageButton>
         </Border>
 
         <Border
@@ -118,15 +116,13 @@
             Grid.Column="3"  
             Grid.Row="1">
 
-            <Button  
+            <ImageButton  
                 x:Name="btnReturn"
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyNumericPortraitImageButton}"
                 AutomationId="btnReturn"
-                ImageSource="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
-                ContentLayout="Left, 10"
-                Text=" "
+                Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Clicked="BtnKey_Clicked">
-            </Button>
+            </ImageButton>
         </Border>
 
         <Border
