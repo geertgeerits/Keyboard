@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.14
-   Date ........: 2025-05-10 (YYYY-MM-DD)
+   Date ........: 2025-05-12 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -11,6 +11,7 @@
 */
 
 using CommunityToolkit.Mvvm.Messaging;
+using Microsoft.Maui.Animations;
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
 using The49.Maui.BottomSheet;
@@ -45,17 +46,18 @@ namespace Keyboard
             //Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
 
-            //// Open Open the bottom sheet when the page appears depending on the device orientation
+            //// Open the bottom sheet when the page appears depending on the device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
+            Debug.WriteLine($"MainPage - Orientation: {cOrientation}");
 
             if (cOrientation == "Portrait")
             {
-                var sheet = new KeyboardNumericPortrait();
+                KeyboardNumericPortrait sheet = new();
                 sheet.ShowAsync();
             }
             else if (cOrientation == "Landscape")
             {
-                var sheet = new KeyboardNumericLandscape();
+                KeyboardNumericLandscape sheet = new();
                 sheet.ShowAsync();
             }
         }
@@ -79,42 +81,52 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
+        private async void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            // Get the new orientation
-            var newOrientation = e.DisplayInfo.Orientation;
+            //// Get the new orientation
+            //var newOrientation = e.DisplayInfo.Orientation;
 
-            // Handle the orientation change
-            Debug.WriteLine($"Orientation changed to: {newOrientation}");
+            //// Handle the orientation change
+            //Debug.WriteLine($"Orientation changed to: {newOrientation}");
 
-            string cOrientation = newOrientation switch
-            {
-                DisplayOrientation.Landscape => "Landscape",
-                DisplayOrientation.Portrait => "Portrait",
-                DisplayOrientation.Unknown => "Unknown",
-                _ => "Unknown"
-            };
+            //string cOrientation = newOrientation switch
+            //{
+            //    DisplayOrientation.Landscape => "Landscape",
+            //    DisplayOrientation.Portrait => "Portrait",
+            //    DisplayOrientation.Unknown => "Unknown",
+            //    _ => "Unknown"
+            //};
 
-            if (cOrientation == "Landscape")
-            {
-                var sheetzzz = new KeyboardNumericPortrait();
-                sheetzzz.DismissAsync();
-                //await Task.Delay(500);
+            //Debug.WriteLine($"Orientation changed to: {cOrientation}");
 
-                var sheet = new KeyboardNumericLandscape();
-                sheet.ShowAsync(Window);
-                sheet.IsCancelable = true;
-            }
-            else if (cOrientation == "Portrait")
-            {
-                var sheetzzz = new KeyboardNumericLandscape();
-                sheetzzz.DismissAsync();
-                //await Task.Delay(500);
+            //switch (cOrientation)
+            //{
+            //    case "Landscape":
+            //        {
+            //            KeyboardNumericPortrait sheetHide = new();
+            //            await sheetHide.DismissAsync();
+            //            await Task.Delay(500);
 
-                var sheet = new KeyboardNumericPortrait();
-                sheet.ShowAsync(Window);
-                sheet.IsCancelable = true;
-            }
+            //            KeyboardNumericLandscape sheet = new();
+            //            await sheet.ShowAsync(Window);
+            //            break;
+            //        }
+
+            //    case "Portrait":
+            //        {
+            //            KeyboardNumericLandscape sheetHide = new();
+            //            await sheetHide.DismissAsync();
+            //            await Task.Delay(500);
+
+            //            KeyboardNumericPortrait sheet = new();
+            //            await sheet.ShowAsync(Window);
+            //            break;
+            //        }
+            //}
+
+            OnHideBottomSheetClicked(sender, e);
+            await Task.Delay(500);
+            OnShowBottomSheetClicked(sender, e);
         }
 
         /// <summary>
@@ -329,39 +341,33 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the click event for the button to show the bottom sheet
+        /// Handles the click event for the button to show the bottom sheet depending on the device orientation
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void OnShowBottomSheetClicked(object sender, EventArgs e)
+        private async void OnShowBottomSheetClicked(object? sender, EventArgs e)
         {
-            KeyboardNumericPortrait sheet = new()
+            // Get the current device orientation
+            string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
+            Debug.WriteLine($"OnShowBottomSheetClicked - Orientation changed to: {cOrientation}");
+
+            // Show the keyboard
+            switch (cOrientation)
             {
-                HasHandle = true,
-                HandleColor = Colors.Red,
-                CornerRadius = 10
-            };
+                case "Portrait":
+                    {
+                        KeyboardNumericPortrait sheet = new();
+                        await sheet.ShowAsync(Window);
+                        break;
+                    }
 
-            await sheet.ShowAsync(Window);
-
-            //if (page.Showing)
-            //{
-            //    // If the bottom sheet is already showing, dismiss it
-            //    await page.DismissAsync();
-            //}
-            //else
-            //{
-            //    await page.ShowAsync(Window);
-            //}
-
-            //if (page != null)
-            //{
-            //    await page.DismissAsync();
-            //}
-            //else
-            //{
-            //    await page.ShowAsync(Window);
-            //}
+                case "Landscape":
+                    {
+                        KeyboardNumericLandscape sheet = new();
+                        await sheet.ShowAsync(Window);
+                        break;
+                    }
+            }
         }
 
         /// <summary>
@@ -369,19 +375,28 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void OnHideBottomSheetClicked(object sender, EventArgs e)
+        private async void OnHideBottomSheetClicked(object? sender, EventArgs e)
         {
-            KeyboardNumericPortrait? sheet = new()
-            {
-            };
+            // Get the current device orientation
+            string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
+            Debug.WriteLine($"OnHideBottomSheetClicked - Orientation changed to: {cOrientation}");
 
-            await sheet.DismissAsync();
-            //sheet = null;
-
-            if (sheet != null)
+            // Hide the keyboard
+            switch (cOrientation)
             {
-                //await sheet.DismissAsync(false);
-                //sheet = null;
+                case "Portrait":
+                    {
+                        KeyboardNumericLandscape sheet = new();
+                        await sheet.DismissAsync();
+                        break;
+                    }
+
+                case "Landscape":
+                    {
+                        KeyboardNumericPortrait sheet = new();
+                        await sheet.DismissAsync();
+                        break;
+                    }
             }
         }
     }
