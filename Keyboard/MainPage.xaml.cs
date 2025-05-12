@@ -53,13 +53,16 @@ namespace Keyboard
             if (cOrientation == "Portrait")
             {
                 KeyboardNumericPortrait sheet = new();
-                sheet.ShowAsync();
+                _ = sheet?.ShowAsync();
             }
             else if (cOrientation == "Landscape")
             {
                 KeyboardNumericLandscape sheet = new();
-                sheet.ShowAsync();
+                _ = sheet.ShowAsync();
             }
+
+            //KeyboardNumeric sheet = new();
+            //sheet?.ShowAsync();
         }
 
         /// <summary>
@@ -368,6 +371,9 @@ namespace Keyboard
                         break;
                     }
             }
+
+            //KeyboardNumeric sheet = new();
+            //await sheet.ShowAsync(Window);
         }
 
         /// <summary>
@@ -398,6 +404,9 @@ namespace Keyboard
                         break;
                     }
             }
+
+            //KeyboardNumeric sheet = new();
+            //await sheet.DismissAsync();
         }
     }
 }

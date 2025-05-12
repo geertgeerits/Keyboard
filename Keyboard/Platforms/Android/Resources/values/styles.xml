@@ -1,4 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
 	<style name="Maui.MainTheme" parent="Theme.Material3.DayNight"></style>
+
+	<!--<style name="The49.Maui.BottomSheet.BottomSheetDialog" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+		<item name="android:navigationBarColor">@android:color/transparent</item>
+	</style>-->
 </resources>
