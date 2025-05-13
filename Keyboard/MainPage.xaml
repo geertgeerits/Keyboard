@@ -7,127 +7,128 @@
     x:Class="Keyboard.MainPage"
     Loaded="OnPageLoaded">
 
+    <Shell.TitleView>
+        <Label
+            FontSize="14"  
+            FontAttributes="Bold"  
+            HorizontalOptions="Center"
+            Text="Keyboard">
+        </Label>
+    </Shell.TitleView>
+
     <StackLayout>
-        <Grid
-            x:Name = "rootLayout"
-            Margin="20"  
-            RowDefinitions="Auto,*,Auto, Auto">
+        <ScrollView>
+            <Grid
+                ColumnDefinitions="*, *"
+                RowDefinitions="Auto, Auto, Auto, Auto, 100, Auto"
+                ColumnSpacing="2"  
+                RowSpacing="10"  
+                Margin="5">
 
-            <Label Text="Keyboard"  
-                FontSize="14"  
-                FontAttributes="Bold"  
-                HorizontalOptions="Center" />
+                <Border  
+                    x:Name="brdValue1"
+                    Grid.Column="0"
+                    Grid.Row="0">
 
-            <ScrollView
-                x:Name="scrollView"  
-                Grid.Row="1"  
-                VerticalOptions="Fill">
+                    <Entry  
+                        x:Name="entTest1" 
+                        AutomationId="entTest1-Percentage" 
+                        Text=""
+                        TextChanged="NumberEntryTextChanged"
+                        Focused="NumberEntryFocused"  
+                        Unfocused="NumberEntryUnfocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue1"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
 
-                <Grid
-                    ColumnDefinitions="*, *"
-                    RowDefinitions="Auto, Auto, Auto, Auto, Auto"
-                    ColumnSpacing="2"  
-                    RowSpacing="10"  
-                    Margin="5">
+                <Border  
+                    x:Name="brdValue2"
+                    Grid.Column="0"
+                    Grid.Row="1">
 
-                    <Border  
-                        x:Name="brdValue1"
-                        Grid.Column="0"
-                        Grid.Row="0">
+                    <Entry  
+                        x:Name="entTest2"  
+                        AutomationId="entTest2"  
+                        Text=""
+                        TextChanged="NumberEntryTextChanged"
+                        Focused="NumberEntryFocused"  
+                        Unfocused="NumberEntryUnfocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue2"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
 
-                        <Entry  
-                            x:Name="entTest1" 
-                            AutomationId="entTest1-Percentage" 
-                            Text=""
-                            TextChanged="NumberEntryTextChanged"
-                            Focused="NumberEntryFocused"  
-                            Unfocused="NumberEntryUnfocused">
-                            <Entry.Triggers>
-                                <EventTrigger Event="TextChanged">
-                                    <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue1"/>
-                                </EventTrigger>
-                            </Entry.Triggers>
-                        </Entry>
-                    </Border>
+                <Border  
+                    x:Name="brdValue3"
+                    Grid.Column="0"
+                    Grid.Row="2">
 
-                    <Border  
-                        x:Name="brdValue2"
-                        Grid.Column="0"
-                        Grid.Row="1">
+                    <Entry  
+                        x:Name="entTest3"  
+                        AutomationId="entTest3"  
+                        Text=""
+                        TextChanged="NumberEntryTextChanged"
+                        Focused="NumberEntryFocused"  
+                        Unfocused="NumberEntryUnfocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue3"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
 
-                        <Entry  
-                            x:Name="entTest2"  
-                            AutomationId="entTest2"  
-                            Text=""
-                            TextChanged="NumberEntryTextChanged"
-                            Focused="NumberEntryFocused"  
-                            Unfocused="NumberEntryUnfocused">
-                            <Entry.Triggers>
-                                <EventTrigger Event="TextChanged">
-                                    <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue2"/>
-                                </EventTrigger>
-                            </Entry.Triggers>
-                        </Entry>
-                    </Border>
+                <Border  
+                    x:Name="brdValue4"
+                    Grid.Column="0"
+                    Grid.Row="3">
 
-                   <Border  
-                        x:Name="brdValue3"
-                        Grid.Column="0"
-                        Grid.Row="2">
+                    <Entry  
+                        x:Name="entTest4"  
+                        AutomationId="entTest4"  
+                        Text=""
+                        TextChanged="NumberEntryTextChanged"
+                        Focused="NumberEntryFocused"  
+                        Unfocused="NumberEntryUnfocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue4"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                    </Entry>
+                </Border>
 
-                        <Entry  
-                            x:Name="entTest3"  
-                            AutomationId="entTest3"  
-                            Text=""
-                            TextChanged="NumberEntryTextChanged"
-                            Focused="NumberEntryFocused"  
-                            Unfocused="NumberEntryUnfocused">
-                            <Entry.Triggers>
-                                <EventTrigger Event="TextChanged">
-                                    <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue3"/>
-                                </EventTrigger>
-                            </Entry.Triggers>
-                        </Entry>
-                    </Border>
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Text="Keyboard">
+                </Label>
+                
+                <Button
+                    Grid.Column="0"
+                    Grid.Row="5"
+                    Text="Show Bottom Sheet"
+                    Clicked="OnShowBottomSheetClicked">
+                </Button>
 
-                    <Border  
-                        x:Name="brdValue4"
-                        Grid.Column="0"
-                        Grid.Row="3">
-
-                        <Entry  
-                            x:Name="entTest4"  
-                            AutomationId="entTest4"  
-                            Text=""
-                            TextChanged="NumberEntryTextChanged"
-                            Focused="NumberEntryFocused"  
-                            Unfocused="NumberEntryUnfocused">
-                            <Entry.Triggers>
-                                <EventTrigger Event="TextChanged">
-                                    <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue4"/>
-                                </EventTrigger>
-                            </Entry.Triggers>
-                        </Entry>
-                    </Border>
-
-                    <Button
-                        Grid.Column="0"
-                        Grid.Row="4"
-                        Text="Show Bottom Sheet"
-                        Clicked="OnShowBottomSheetClicked">
-                    </Button>
-
-                    <Button
-                        Grid.Column="1"
-                        Grid.Row="4"
-                        Text="Hide Bottom Sheet"
-                        Clicked="OnHideBottomSheetClicked">
-                    </Button>
-
-                </Grid>
-            </ScrollView>
-        </Grid>
-
+                <Button
+                    Grid.Column="1"
+                    Grid.Row="5"
+                    Text="Hide Bottom Sheet"
+                    Clicked="OnHideBottomSheetClicked">
+                </Button>
+            </Grid>
+        </ScrollView>
+        
         <Grid>
             <bottomsheet:BottomSheet
                 x:Name="KeyboardNumericPortrait"
@@ -631,4 +632,3 @@
         </Grid>
     </StackLayout>
 </ContentPage>
-
