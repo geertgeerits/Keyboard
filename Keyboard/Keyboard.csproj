@@ -61,10 +61,16 @@
 
 	<ItemGroup>
 	  <Compile Remove="KeyboardNumeric.xaml.cs" />
+	  <Compile Remove="KeyboardNumericLandscape.xaml.cs" />
+	  <Compile Remove="KeyboardNumericPortrait.xaml.cs" />
+	  <Compile Remove="SomeViewModel.cs" />
+	  <Compile Remove="ViewModel.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Remove="KeyboardNumeric.xaml" />
+	  <MauiXaml Remove="KeyboardNumericLandscape.xaml" />
+	  <MauiXaml Remove="KeyboardNumericPortrait.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -75,16 +81,7 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
-		<PackageReference Include="The49.Maui.BottomSheet" Version="8.0.3" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="KeyboardNumericLandscape.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="KeyboardNumericPortrait.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+		<PackageReference Include="Plugin.Maui.BottomSheet" Version="9.1.5" />
 	</ItemGroup>
 
 </Project>

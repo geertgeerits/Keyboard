@@ -1,12 +1,12 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
-   Version .....: 1.0.14
-   Date ........: 2025-05-12 (YYYY-MM-DD)
+   Version .....: 1.0.15
+   Date ........: 2025-05-13 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
-                  The49.Maui.BottomSheet version 8.0.3 ; https://github.com/the49ltd/The49.Maui.BottomSheet + !!!BUG!!! works not in Android 15
+                  NuGet Package: Plugin.Maui.BottomSheet by Luca Civale version 9.1.5; https://github.com/lucacivale/Maui.BottomSheet
    Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI - https://www.youtube.com/watch?v=bdKWnddRDY0&t=856s
 */
 
@@ -14,7 +14,9 @@ using CommunityToolkit.Mvvm.Messaging;
 using Microsoft.Maui.Animations;
 using Microsoft.Maui.Controls;
 using System.Diagnostics;
-using The49.Maui.BottomSheet;
+using Plugin.Maui.BottomSheet;
+using Plugin.Maui.BottomSheet.Hosting;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 
 namespace Keyboard
 {
@@ -23,14 +25,146 @@ namespace Keyboard
         private string cEntryAutomationId = string.Empty;
         private bool bEntryCompleted;
 
+        private string _buttonZeroText;
+        private string _buttonOneText;
+        private string _buttonTwoText;
+        private string _buttonThreeText;
+        private string _buttonFourText;
+        private string _buttonFiveText;
+        private string _buttonSixText;
+        private string _buttonSevenText;
+        private string _buttonEightText;
+        private string _buttonNineText;
+        private string _buttonDecimalPointText;
+        private string _buttonMinusText;
+
+        public string ButtonZeroText
+        {
+            get => _buttonZeroText;
+            set
+            {
+                _buttonZeroText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonOneText
+        {
+            get => _buttonOneText;
+            set
+            {
+                _buttonOneText = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ButtonTwoText
+        {
+            get => _buttonTwoText;
+            set
+            {
+                _buttonTwoText = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ButtonThreeText
+        {
+            get => _buttonThreeText;
+            set
+            {
+                _buttonThreeText = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ButtonFourText
+        {
+            get => _buttonFourText;
+            set
+            {
+                _buttonFourText = value;
+                OnPropertyChanged();
+            }
+        }
+        public string ButtonFiveText
+        {
+            get => _buttonFiveText;
+            set
+            {
+                _buttonFiveText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonSixText
+        {
+            get => _buttonSixText;
+            set
+            {
+                _buttonSixText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonSevenText
+        {
+            get => _buttonSevenText;
+            set
+            {
+                _buttonSevenText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonEightText
+        {
+            get => _buttonEightText;
+            set
+            {
+                _buttonEightText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonNineText
+        {
+            get => _buttonNineText;
+            set
+            {
+                _buttonNineText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonDecimalPointText
+        {
+            get => _buttonDecimalPointText;
+            set
+            {
+                _buttonDecimalPointText = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonMinusText
+        {
+            get => _buttonMinusText;
+            set
+            {
+                _buttonMinusText = value;
+                OnPropertyChanged();
+            }
+        }
+
         public MainPage()
         {
             InitializeComponent();
 
+            // Set colors of the bottomsheet
+            KeyboardNumericPortrait.WindowBackgroundColor = Colors.DarkGray;
+
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
-            //// Register to receive messages of type StringMessage from the KeyboardNumericPortrait page
+            // Register to receive messages of type StringMessage from the KeyboardNumericPortrait page
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
             {
                 // Display the received message in the UI, this method is called when a message is received
@@ -39,30 +173,43 @@ namespace Keyboard
                 Debug.WriteLine($"Received message: {message.Value}");
             });
             
-            //// Initialize the number format settings based on the current culture
+            // Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
 
-            //// Set the theme and the number color
+            // Set the BindingContext to this (the current page)
+            this.BindingContext = this;
+
+            ButtonZeroText = ClassEntryMethods.cNumNativeDigits[..1];
+            ButtonOneText = ClassEntryMethods.cNumNativeDigits.Substring(1, 1);
+            ButtonTwoText = ClassEntryMethods.cNumNativeDigits.Substring(2, 1);
+            ButtonThreeText = ClassEntryMethods.cNumNativeDigits.Substring(3, 1);
+            ButtonFourText = ClassEntryMethods.cNumNativeDigits.Substring(4, 1);
+            ButtonFiveText = ClassEntryMethods.cNumNativeDigits.Substring(5, 1);
+            ButtonSixText = ClassEntryMethods.cNumNativeDigits.Substring(6, 1);
+            ButtonSevenText = ClassEntryMethods.cNumNativeDigits.Substring(7, 1);
+            ButtonEightText = ClassEntryMethods.cNumNativeDigits.Substring(8, 1);
+            ButtonNineText = ClassEntryMethods.cNumNativeDigits.Substring(9, 1);
+            ButtonDecimalPointText = ClassEntryMethods.cNumDecimalSeparator;
+            ButtonMinusText = ClassEntryMethods.cNumNegativeSign;
+
+            // Set the theme and the number color
             //Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
 
-            //// Open the bottom sheet when the page appears depending on the device orientation
+            // Open the bottom sheet when the page appears depending on the device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
             Debug.WriteLine($"MainPage - Orientation: {cOrientation}");
 
             if (cOrientation == "Portrait")
             {
-                KeyboardNumericPortrait sheet = new();
-                _ = sheet?.ShowAsync();
+                KeyboardNumericPortrait.IsModal = false;
+                KeyboardNumericPortrait.IsOpen = true;
             }
             else if (cOrientation == "Landscape")
             {
-                KeyboardNumericLandscape sheet = new();
-                _ = sheet.ShowAsync();
+                KeyboardNumericLandscape.IsModal = false;
+                KeyboardNumericLandscape.IsOpen = true;
             }
-
-            //KeyboardNumeric sheet = new();
-            //sheet?.ShowAsync();
         }
 
         /// <summary>
@@ -84,51 +231,9 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
+        private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            //// Get the new orientation
-            //var newOrientation = e.DisplayInfo.Orientation;
-
-            //// Handle the orientation change
-            //Debug.WriteLine($"Orientation changed to: {newOrientation}");
-
-            //string cOrientation = newOrientation switch
-            //{
-            //    DisplayOrientation.Landscape => "Landscape",
-            //    DisplayOrientation.Portrait => "Portrait",
-            //    DisplayOrientation.Unknown => "Unknown",
-            //    _ => "Unknown"
-            //};
-
-            //Debug.WriteLine($"Orientation changed to: {cOrientation}");
-
-            //switch (cOrientation)
-            //{
-            //    case "Landscape":
-            //        {
-            //            KeyboardNumericPortrait sheetHide = new();
-            //            await sheetHide.DismissAsync();
-            //            await Task.Delay(500);
-
-            //            KeyboardNumericLandscape sheet = new();
-            //            await sheet.ShowAsync(Window);
-            //            break;
-            //        }
-
-            //    case "Portrait":
-            //        {
-            //            KeyboardNumericLandscape sheetHide = new();
-            //            await sheetHide.DismissAsync();
-            //            await Task.Delay(500);
-
-            //            KeyboardNumericPortrait sheet = new();
-            //            await sheet.ShowAsync(Window);
-            //            break;
-            //        }
-            //}
-
             OnHideBottomSheetClicked(sender, e);
-            await Task.Delay(500);
             OnShowBottomSheetClicked(sender, e);
         }
 
@@ -245,15 +350,6 @@ namespace Keyboard
         /// <param name="cKey"></param>
         private void BtnKeyboardClicked(string cKey)
         {
-            //var views = rootLayout.Children;
-            //foreach (View view in views)
-            //{
-            //    if (view != null && view.IsFocused)
-            //    {
-            //        System.Diagnostics.Debug.WriteLine("Focused view: " + view);
-            //    }
-            //}
-
             Entry? focusedEntry = cEntryAutomationId switch
             {
                 "entTest1-Percentage" => entTest1,
@@ -348,7 +444,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void OnShowBottomSheetClicked(object? sender, EventArgs e)
+        private void OnShowBottomSheetClicked(object? sender, EventArgs e)
         {
             // Get the current device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
@@ -359,21 +455,20 @@ namespace Keyboard
             {
                 case "Portrait":
                     {
-                        KeyboardNumericPortrait sheet = new();
-                        await sheet.ShowAsync(Window);
+                        KeyboardNumericLandscape.IsOpen = false;
+                        KeyboardNumericPortrait.IsModal = false;
+                        KeyboardNumericPortrait.IsOpen = true;
                         break;
                     }
 
                 case "Landscape":
                     {
-                        KeyboardNumericLandscape sheet = new();
-                        await sheet.ShowAsync(Window);
+                        KeyboardNumericPortrait.IsOpen = false;
+                        KeyboardNumericLandscape.IsModal = false;
+                        KeyboardNumericLandscape.IsOpen = true;
                         break;
                     }
             }
-
-            //KeyboardNumeric sheet = new();
-            //await sheet.ShowAsync(Window);
         }
 
         /// <summary>
@@ -381,7 +476,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void OnHideBottomSheetClicked(object? sender, EventArgs e)
+        private void OnHideBottomSheetClicked(object? sender, EventArgs e)
         {
             // Get the current device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
@@ -392,21 +487,69 @@ namespace Keyboard
             {
                 case "Portrait":
                     {
-                        KeyboardNumericLandscape sheet = new();
-                        await sheet.DismissAsync();
+                        KeyboardNumericPortrait.IsOpen = false;
                         break;
                     }
 
                 case "Landscape":
                     {
-                        KeyboardNumericPortrait sheet = new();
-                        await sheet.DismissAsync();
+                        KeyboardNumericLandscape.IsOpen = false;
                         break;
                     }
             }
 
-            //KeyboardNumeric sheet = new();
-            //await sheet.DismissAsync();
+            //KeyboardNumeric.IsOpen = false;
         }
+
+        /// <summary>
+        /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnKey_Clicked(object sender, EventArgs e)
+        {
+            string cKeyPressed = string.Empty;
+
+            if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
+            {
+                cKeyPressed = button.AutomationId switch
+                {
+                    "btnZero" => ClassEntryMethods.cNumNativeDigits[..1],
+                    "btnOne" => ClassEntryMethods.cNumNativeDigits.Substring(1, 1),
+                    "btnTwo" => ClassEntryMethods.cNumNativeDigits.Substring(2, 1),
+                    "btnThree" => ClassEntryMethods.cNumNativeDigits.Substring(3, 1),
+                    "btnFour" => ClassEntryMethods.cNumNativeDigits.Substring(4, 1),
+                    "btnFive" => ClassEntryMethods.cNumNativeDigits.Substring(5, 1),
+                    "btnSix" => ClassEntryMethods.cNumNativeDigits.Substring(6, 1),
+                    "btnSeven" => ClassEntryMethods.cNumNativeDigits.Substring(7, 1),
+                    "btnEight" => ClassEntryMethods.cNumNativeDigits.Substring(8, 1),
+                    "btnNine" => ClassEntryMethods.cNumNativeDigits.Substring(9, 1),
+                    _ => button.AutomationId,
+                };
+            }
+
+            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
+            {
+                cKeyPressed = imageButton.AutomationId;
+            }
+
+            // Send the message with the key pressed to the MainPage
+            try
+            {
+                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error sending message: {ex.Message}");
+            }
+        }
+    }
+
+    /// <summary>
+    /// This class is used to send a message with a string value when a key is pressed on the keyboard
+    /// </summary>
+    /// <param name="value"></param>
+    public class StringMessage(string value) : ValueChangedMessage<string>(value)
+    {
     }
 }
