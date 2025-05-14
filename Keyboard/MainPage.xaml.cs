@@ -11,12 +11,10 @@
 */
 
 using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.Maui.Animations;
-using Microsoft.Maui.Controls;
+using CommunityToolkit.Mvvm.Messaging.Messages;
 using System.Diagnostics;
 using Plugin.Maui.BottomSheet;
 using Plugin.Maui.BottomSheet.Hosting;
-using CommunityToolkit.Mvvm.Messaging.Messages;
 
 namespace Keyboard
 {
@@ -25,18 +23,18 @@ namespace Keyboard
         private string cEntryAutomationId = string.Empty;
         private bool bEntryCompleted;
 
-        private string _buttonZeroText;
-        private string _buttonOneText;
-        private string _buttonTwoText;
-        private string _buttonThreeText;
-        private string _buttonFourText;
-        private string _buttonFiveText;
-        private string _buttonSixText;
-        private string _buttonSevenText;
-        private string _buttonEightText;
-        private string _buttonNineText;
-        private string _buttonDecimalPointText;
-        private string _buttonMinusText;
+        private string _buttonZeroText = string.Empty;
+        private string _buttonOneText = string.Empty;
+        private string _buttonTwoText = string.Empty;
+        private string _buttonThreeText = string.Empty;
+        private string _buttonFourText = string.Empty;
+        private string _buttonFiveText = string.Empty;
+        private string _buttonSixText = string.Empty;
+        private string _buttonSevenText = string.Empty;
+        private string _buttonEightText = string.Empty;
+        private string _buttonNineText = string.Empty;
+        private string _buttonDecimalPointText = string.Empty;
+        private string _buttonMinusText = string.Empty;
 
         public string ButtonZeroText
         {
@@ -158,9 +156,6 @@ namespace Keyboard
         {
             InitializeComponent();
 
-            // Set background color of the bottomsheet - if BottomSheet is non-modal no window color is applied
-            //KeyboardNumericPortrait.WindowBackgroundColor = Colors.DarkGray;
-
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
@@ -200,15 +195,14 @@ namespace Keyboard
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
             Debug.WriteLine($"MainPage - Orientation: {cOrientation}");
 
-            if (cOrientation == "Portrait")
+            switch (cOrientation)
             {
-                KeyboardNumericPortrait.IsModal = false;
-                KeyboardNumericPortrait.IsOpen = true;
-            }
-            else if (cOrientation == "Landscape")
-            {
-                KeyboardNumericLandscape.IsModal = false;
-                KeyboardNumericLandscape.IsOpen = true;
+                case "Portrait":
+                    KeyboardNumericPortrait.IsOpen = true;
+                    break;
+                case "Landscape":
+                    KeyboardNumericLandscape.IsOpen = true;
+                    break;
             }
         }
 
@@ -456,7 +450,6 @@ namespace Keyboard
                 case "Portrait":
                     {
                         KeyboardNumericLandscape.IsOpen = false;
-                        KeyboardNumericPortrait.IsModal = false;
                         KeyboardNumericPortrait.IsOpen = true;
                         break;
                     }
@@ -464,7 +457,6 @@ namespace Keyboard
                 case "Landscape":
                     {
                         KeyboardNumericPortrait.IsOpen = false;
-                        KeyboardNumericLandscape.IsModal = false;
                         KeyboardNumericLandscape.IsOpen = true;
                         break;
                     }
@@ -497,8 +489,6 @@ namespace Keyboard
                         break;
                     }
             }
-
-            //KeyboardNumeric.IsOpen = false;
         }
 
         /// <summary>

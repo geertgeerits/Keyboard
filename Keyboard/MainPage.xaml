@@ -19,7 +19,10 @@
     <StackLayout>
         <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with "Fill" scrolling does not working
         https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
-        <ScrollView VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand">
+        <ScrollView
+            VerticalScrollBarVisibility="Always"
+            VerticalOptions="FillAndExpand">
+            
             <Grid
                 ColumnDefinitions="*, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, 100, Auto"
@@ -34,7 +37,9 @@
 
                     <Entry  
                         x:Name="entTest1" 
-                        AutomationId="entTest1-Percentage" 
+                        AutomationId="entTest1-Percentage"
+                        FontSize="16"
+                        FontAttributes="Bold"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -55,6 +60,8 @@
                     <Entry  
                         x:Name="entTest2"  
                         AutomationId="entTest2"  
+                        FontSize="16"
+                        FontAttributes="Bold"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -75,6 +82,8 @@
                     <Entry  
                         x:Name="entTest3"  
                         AutomationId="entTest3"  
+                        FontSize="16"
+                        FontAttributes="Bold"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -95,6 +104,8 @@
                     <Entry  
                         x:Name="entTest4"  
                         AutomationId="entTest4"  
+                        FontSize="16"
+                        FontAttributes="Bold"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -134,23 +145,24 @@
         <Grid>
             <bottomsheet:BottomSheet
                 x:Name="KeyboardNumericPortrait"
-                Padding="20"
-                CornerRadius="{Binding CornerRadius}"
-                HasHandle="{Binding HasHandle}"
+                Padding="10"
+                CornerRadius="10"
+                HasHandle="True"
                 IgnoreSafeArea="True"
-                IsCancelable="{Binding IsCancelable}"
-                IsDraggable="{Binding IsDraggable}"
-                IsModal="{Binding IsModal, Mode=TwoWay}"
-                IsOpen="{Binding IsOpen}"
-                ShowHeader="{Binding ShowHeader}"
+                IsCancelable="True"
+                IsDraggable="True"
+                IsModal="False"
+                IsOpen="False"
+                ShowHeader="False"
                 States="Peek, Medium"
-                WindowBackgroundColor="{Binding WindowBackgroundColor, Mode=TwoWay}">
-                <bottomsheet:BottomSheet.Header>
+                BackgroundColor="DarkGray"
+                WindowBackgroundColor="DarkGray">
+                <!--<bottomsheet:BottomSheet.Header>
                     <bottomsheet:BottomSheetHeader
                         CloseButtonPosition="{Binding CloseButtonPosition}"
                         HeaderAppearance="{Binding HeaderButtonAppearanceMode}"
-                        ShowCloseButton="{Binding ShowCloseButton}"
-                        TitleText="{Binding Title}">
+                        ShowCloseButton="False"
+                        TitleText="">
                         <bottomsheet:BottomSheetHeader.TopLeftButton>
                             <Button Command="{Binding TopLefButtonCommand}" Text="Top left" />
                         </bottomsheet:BottomSheetHeader.TopLeftButton>
@@ -158,7 +170,7 @@
                             <Button Command="{Binding TopRightButtonCommand}" Text="Top right" />
                         </bottomsheet:BottomSheetHeader.TopRightButton>
                     </bottomsheet:BottomSheetHeader>
-                </bottomsheet:BottomSheet.Header>
+                </bottomsheet:BottomSheet.Header>-->
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>
@@ -182,7 +194,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnOne"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnOne"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonOneText}"
@@ -196,7 +207,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnTwo"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnTwo"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonTwoText}"
@@ -210,7 +220,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnThree"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnThree"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonThreeText}"
@@ -224,7 +233,6 @@
                                                 Grid.Row="0">
 
                                                 <ImageButton  
-                                                    x:Name="btnBackspace"
                                                     Style="{StaticResource KeyNumericPortraitImageButton}"
                                                     AutomationId="btnBackspace"
                                                     Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
@@ -238,7 +246,6 @@
                                                 Grid.Row="1">
 
                                                 <Button  
-                                                    x:Name="btnFour"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnFour"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFourText}"
@@ -252,7 +259,6 @@
                                                 Grid.Row="1">
 
                                                 <Button  
-                                                    x:Name="btnFive"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnFive"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFiveText}"
@@ -266,7 +272,6 @@
                                                 Grid.Row="1">
 
                                                 <Button  
-                                                    x:Name="btnSix"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnSix"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSixText}"
@@ -280,7 +285,6 @@
                                                 Grid.Row="1">
 
                                                 <ImageButton  
-                                                    x:Name="btnReturn"
                                                     Style="{StaticResource KeyNumericPortraitImageButton}"
                                                     AutomationId="btnReturn"
                                                     Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
@@ -294,7 +298,6 @@
                                                 Grid.Row="2">
 
                                                 <Button  
-                                                    x:Name="btnSeven"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnSeven"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSevenText}"
@@ -308,7 +311,6 @@
                                                 Grid.Row="2">
 
                                                 <Button  
-                                                    x:Name="btnEight"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnEight"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonEightText}"
@@ -322,7 +324,6 @@
                                                 Grid.Row="2">
 
                                                 <Button  
-                                                    x:Name="btnNine"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnNine"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonNineText}"
@@ -336,7 +337,6 @@
                                                 Grid.Row="2">
 
                                                 <Button  
-                                                    x:Name="btnMinus"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnMinus"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonMinusText}"
@@ -350,7 +350,6 @@
                                                 Grid.Row="3">
 
                                                 <Button  
-                                                    x:Name="btnZero"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnZero"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonZeroText}"
@@ -364,7 +363,6 @@
                                                 Grid.Row="3">
 
                                                 <Button  
-                                                    x:Name="btnDecimalPoint"
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnDecimalPoint"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonDecimalPointText}"
@@ -381,27 +379,27 @@
             </bottomsheet:BottomSheet>
         </Grid>
 
-
         <Grid>
             <bottomsheet:BottomSheet
                 x:Name="KeyboardNumericLandscape"
-                Padding="20"
-                CornerRadius="{Binding CornerRadius}"
-                HasHandle="{Binding HasHandle}"
+                Padding="0"
+                CornerRadius="10"
+                HasHandle="True"
                 IgnoreSafeArea="True"
-                IsCancelable="{Binding IsCancelable}"
-                IsDraggable="{Binding IsDraggable}"
-                IsModal="{Binding IsModal, Mode=TwoWay}"
-                IsOpen="{Binding IsOpen}"
-                ShowHeader="{Binding ShowHeader}"
+                IsCancelable="True"
+                IsDraggable="True"
+                IsModal="False"
+                IsOpen="False"
+                ShowHeader="False"
                 States="Peek, Medium"
-                WindowBackgroundColor="{Binding WindowBackgroundColor, Mode=TwoWay}">
-                <bottomsheet:BottomSheet.Header>
+                BackgroundColor="DarkGray"
+                WindowBackgroundColor="DarkGray">
+                <!--<bottomsheet:BottomSheet.Header>
                     <bottomsheet:BottomSheetHeader
                         CloseButtonPosition="{Binding CloseButtonPosition}"
                         HeaderAppearance="{Binding HeaderButtonAppearanceMode}"
-                        ShowCloseButton="{Binding ShowCloseButton}"
-                        TitleText="{Binding Title}">
+                        ShowCloseButton="False"
+                        TitleText="">
                         <bottomsheet:BottomSheetHeader.TopLeftButton>
                             <Button Command="{Binding TopLefButtonCommand}" Text="Top left" />
                         </bottomsheet:BottomSheetHeader.TopLeftButton>
@@ -409,7 +407,7 @@
                             <Button Command="{Binding TopRightButtonCommand}" Text="Top right" />
                         </bottomsheet:BottomSheetHeader.TopRightButton>
                     </bottomsheet:BottomSheetHeader>
-                </bottomsheet:BottomSheet.Header>
+                </bottomsheet:BottomSheet.Header>-->
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>
@@ -420,11 +418,11 @@
                                             <bottomsheet:BottomSheetPeekBehavior />
                                         </ContentView.Behaviors>
                                         <Grid  
-                                            ColumnDefinitions="10, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 10"
-                                            RowDefinitions="Auto, Auto"  
+                                            ColumnDefinitions="2, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 2"
+                                            RowDefinitions="Auto"  
                                             ColumnSpacing="2"  
                                             RowSpacing="2"  
-                                            Margin="5"
+                                            Margin="0"
                                             HorizontalOptions="Center">
 
                                             <Border
@@ -433,7 +431,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnOne"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnOne"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonOneText}"
@@ -447,7 +444,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnTwo"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnTwo"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonTwoText}"
@@ -461,7 +457,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnThree"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnThree"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonThreeText}"
@@ -475,7 +470,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnFour"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnFour"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFourText}"
@@ -489,7 +483,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnFive"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnFive"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFiveText}"
@@ -503,7 +496,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnSix"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnSix"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSixText}"
@@ -517,7 +509,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnSeven"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnSeven"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSevenText}"
@@ -531,7 +522,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnEight"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnEight"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonEightText}"
@@ -545,7 +535,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnNine"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnNine"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonNineText}"
@@ -559,7 +548,6 @@
                                                 Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnZero"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnZero"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonZeroText}"
@@ -569,11 +557,10 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="7"  
-                                                Grid.Row="1">
+                                                Grid.Column="11"  
+                                                Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnDecimalPoint"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnDecimalPoint"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonDecimalPointText}"
@@ -583,11 +570,10 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="8"  
-                                                Grid.Row="1">
+                                                Grid.Column="12"  
+                                                Grid.Row="0">
 
                                                 <Button  
-                                                    x:Name="btnMinus"
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnMinus"
                                                     Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonMinusText}"
@@ -597,11 +583,10 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="9"  
-                                                Grid.Row="1">
+                                                Grid.Column="13"  
+                                                Grid.Row="0">
 
                                                 <ImageButton  
-                                                    x:Name="btnBackspace"
                                                     Style="{StaticResource KeyNumericLandscapeImageButton}"
                                                     AutomationId="btnBackspace"
                                                     Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
@@ -611,11 +596,10 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="10"  
-                                                Grid.Row="1">
+                                                Grid.Column="14"  
+                                                Grid.Row="0">
 
                                                 <ImageButton  
-                                                    x:Name="btnReturn"
                                                     Style="{StaticResource KeyNumericLandscapeImageButton}"
                                                     AutomationId="btnReturn"
                                                     Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
