@@ -434,6 +434,51 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Toggles the visibility of the numeric keyboard based on the current device orientation and theme.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void imgbtnKeyboardToggle_Clicked(object sender, EventArgs e)
+        {
+            // Set the image source for the keyboard toggle button depending on the theme
+            string cImageKeyboardShow;
+            string cImageKeyboardHide;
+
+            if (AppTheme.Dark == App.Current.RequestedTheme)
+            {
+                cImageKeyboardShow = "keyboard_32p_white.png";
+                cImageKeyboardHide = "keyboard_hide_32p_white.png";
+            }
+            else
+            {
+                cImageKeyboardShow = "keyboard_32p_black.png";
+                cImageKeyboardHide = "keyboard_hide_32p_black.png";
+            }
+
+            // Get the current device orientation
+            string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
+            Debug.WriteLine($"OnHideBottomSheetClicked - Orientation changed to: {cOrientation}");
+
+            // Hide the keyboard
+            switch (cOrientation)
+            {
+                case "Portrait":
+                    {
+                        KeyboardNumericPortrait.IsOpen = !KeyboardNumericPortrait.IsOpen;
+                        imgbtnKeyboardToggle.Source = KeyboardNumericPortrait.IsOpen ? "cImageKeyboardHide.png" : "cImageKeyboardShow.png";
+                        break;
+                    }
+
+                case "Landscape":
+                    {
+                        KeyboardNumericLandscape.IsOpen = !KeyboardNumericLandscape.IsOpen;
+                        imgbtnKeyboardToggle.Source = KeyboardNumericLandscape.IsOpen ? "cImageKeyboardHide.png" : "cImageKeyboardShow.png";
+                        break;
+                    }
+            }
+        }
+
+        /// <summary>
         /// Handles the click event for the button to show the bottom sheet depending on the device orientation
         /// </summary>
         /// <param name="sender"></param>
