@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.15
-   Date ........: 2025-05-13 (YYYY-MM-DD)
+   Date ........: 2025-05-14 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -158,8 +158,8 @@ namespace Keyboard
         {
             InitializeComponent();
 
-            // Set colors of the bottomsheet
-            KeyboardNumericPortrait.WindowBackgroundColor = Colors.DarkGray;
+            // Set background color of the bottomsheet - if BottomSheet is non-modal no window color is applied
+            //KeyboardNumericPortrait.WindowBackgroundColor = Colors.DarkGray;
 
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;

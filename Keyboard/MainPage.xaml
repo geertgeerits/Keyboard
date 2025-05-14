@@ -17,7 +17,9 @@
     </Shell.TitleView>
 
     <StackLayout>
-        <ScrollView>
+        <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with "Fill" scrolling does not working
+        https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
+        <ScrollView VerticalScrollBarVisibility="Always" VerticalOptions="FillAndExpand">
             <Grid
                 ColumnDefinitions="*, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, 100, Auto"
