@@ -144,33 +144,8 @@
         
         <Grid>
             <bottomsheet:BottomSheet
-                x:Name="KeyboardNumericPortrait"
-                Padding="10"
-                CornerRadius="10"
-                HasHandle="True"
-                IgnoreSafeArea="True"
-                IsCancelable="True"
-                IsDraggable="True"
-                IsModal="False"
-                IsOpen="False"
-                ShowHeader="False"
-                States="Peek, Medium"
-                BackgroundColor="DarkGray"
-                WindowBackgroundColor="DarkGray">
-                <!--<bottomsheet:BottomSheet.Header>
-                    <bottomsheet:BottomSheetHeader
-                        CloseButtonPosition="{Binding CloseButtonPosition}"
-                        HeaderAppearance="{Binding HeaderButtonAppearanceMode}"
-                        ShowCloseButton="False"
-                        TitleText="">
-                        <bottomsheet:BottomSheetHeader.TopLeftButton>
-                            <Button Command="{Binding TopLefButtonCommand}" Text="Top left" />
-                        </bottomsheet:BottomSheetHeader.TopLeftButton>
-                        <bottomsheet:BottomSheetHeader.TopRightButton>
-                            <Button Command="{Binding TopRightButtonCommand}" Text="Top right" />
-                        </bottomsheet:BottomSheetHeader.TopRightButton>
-                    </bottomsheet:BottomSheetHeader>
-                </bottomsheet:BottomSheet.Header>-->
+                Style="{StaticResource BottomSheetKeyboard}"
+                x:Name="KeyboardNumericPortrait">
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>
@@ -381,33 +356,9 @@
 
         <Grid>
             <bottomsheet:BottomSheet
+                Style="{StaticResource BottomSheetKeyboard}"
                 x:Name="KeyboardNumericLandscape"
-                Padding="0"
-                CornerRadius="10"
-                HasHandle="True"
-                IgnoreSafeArea="True"
-                IsCancelable="True"
-                IsDraggable="True"
-                IsModal="False"
-                IsOpen="False"
-                ShowHeader="False"
-                States="Peek, Medium"
-                BackgroundColor="DarkGray"
-                WindowBackgroundColor="DarkGray">
-                <!--<bottomsheet:BottomSheet.Header>
-                    <bottomsheet:BottomSheetHeader
-                        CloseButtonPosition="{Binding CloseButtonPosition}"
-                        HeaderAppearance="{Binding HeaderButtonAppearanceMode}"
-                        ShowCloseButton="False"
-                        TitleText="">
-                        <bottomsheet:BottomSheetHeader.TopLeftButton>
-                            <Button Command="{Binding TopLefButtonCommand}" Text="Top left" />
-                        </bottomsheet:BottomSheetHeader.TopLeftButton>
-                        <bottomsheet:BottomSheetHeader.TopRightButton>
-                            <Button Command="{Binding TopRightButtonCommand}" Text="Top right" />
-                        </bottomsheet:BottomSheetHeader.TopRightButton>
-                    </bottomsheet:BottomSheetHeader>
-                </bottomsheet:BottomSheet.Header>-->
+                Padding="0">
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>

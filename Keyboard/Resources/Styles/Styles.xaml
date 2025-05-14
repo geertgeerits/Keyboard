@@ -2,7 +2,8 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:bottomsheet="http://pluginmauibottomsheet.com">
 
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
@@ -449,6 +450,20 @@
     </Style>
 
     <!--Keyboard Styles-->
+
+    <Style TargetType="bottomsheet:BottomSheet" x:Key="BottomSheetKeyboard">
+        <Setter Property="Padding" Value="10" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="HasHandle" Value="True" />
+        <Setter Property="IgnoreSafeArea" Value="True" />
+        <Setter Property="IsCancelable" Value="True" />
+        <Setter Property="IsDraggable" Value="True" />
+        <Setter Property="IsModal" Value="False" />
+        <Setter Property="IsOpen" Value="False" />
+        <Setter Property="ShowHeader" Value="False" />
+        <Setter Property="States" Value="Peek, Medium" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
+    </Style>
 
     <Style TargetType="Border" x:Key="KeyBorder">
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
