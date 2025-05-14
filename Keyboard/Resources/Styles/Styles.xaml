@@ -452,7 +452,7 @@
     <!--Keyboard Styles-->
 
     <Style TargetType="bottomsheet:BottomSheet" x:Key="BottomSheetKeyboard">
-        <Setter Property="Padding" Value="10" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="CornerRadius" Value="10" />
         <Setter Property="HasHandle" Value="True" />
         <Setter Property="IgnoreSafeArea" Value="True" />
