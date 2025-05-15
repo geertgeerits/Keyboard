@@ -1,8 +1,8 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
-   Version .....: 1.0.15
-   Date ........: 2025-05-14 (YYYY-MM-DD)
+   Version .....: 1.0.16
+   Date ........: 2025-05-15 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -20,6 +20,7 @@ namespace Keyboard
 {
     public partial class MainPage : ContentPage
     {
+        // Declare variables
         private string cEntryAutomationId = string.Empty;
         private bool bEntryCompleted;
 
@@ -36,6 +37,7 @@ namespace Keyboard
         private string _buttonDecimalPointText = string.Empty;
         private string _buttonMinusText = string.Empty;
 
+        // Properties for the button texts of the keyboard
         public string ButtonZeroText
         {
             get => _buttonZeroText;
@@ -197,13 +199,19 @@ namespace Keyboard
 
             switch (cOrientation)
             {
-                case "Portrait":
-                    KeyboardNumericPortrait.IsOpen = true;
-                    break;
                 case "Landscape":
                     KeyboardNumericLandscape.IsOpen = true;
                     break;
+                default:
+                    KeyboardNumericPortrait.IsOpen = true;
+                    break;
             }
+
+            //// Set the Placeholder for the numeric entry fields
+            ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entTest2, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entTest3, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
+            ClassEntryMethods.SetNumberEntryProperties(entTest4, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
         }
 
         /// <summary>
@@ -227,13 +235,12 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            OnHideBottomSheetClicked(sender, e);
-            OnShowBottomSheetClicked(sender, e);
+            HideBottomSheet();
+            ShowBottomSheet();
         }
 
         /// <summary>
-        /// Set focus to the first entry field 
-        /// Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
+        /// Set focus to the first entry field - Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -243,7 +250,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
+        /// Entry focused event: format the text value for a numeric entry without the number separator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -261,10 +268,8 @@ namespace Keyboard
                 cEntryAutomationId = entry.AutomationId;
                 bEntryCompleted = false;
 
-                // Hide the Android and iOS keyboard
+                // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
                 _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
-
-                //entry.CursorPosition = entry.Text.Length;
             }
         }
 
@@ -313,8 +318,6 @@ namespace Keyboard
             {
                 bEntryCompleted = true;
                 ClassEntryMethods.FormatNumberEntryUnfocused(entry);
-
-                //ClassEntryMethods.HideKeyboard(entry);
             }
 
             // Go to the next field
@@ -334,8 +337,6 @@ namespace Keyboard
             {
                 _ = entTest1.Focus();
             }
-
-            //bEntryCompleted = false;
         }
 
         /// <summary>
@@ -434,103 +435,106 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is opened
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An object that contains the event data.</param>
+        private void KeyboardNumeric_Opened(object sender, EventArgs e)
+        {
+            // Set the image source for the keyboard toggle button depending on the theme
+            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+            {
+                AppTheme.Dark => (ImageSource)"keyboard_hide_32p_white.png",
+                _ => (ImageSource)"keyboard_hide_32p_black.png",
+            };
+        }
+
+        /// <summary>
+        /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is closed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void KeyboardNumeric_Closed(object sender, EventArgs e)
+        {
+            // Set the image source for the keyboard toggle button depending on the theme
+            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+            {
+                AppTheme.Dark => (ImageSource)"keyboard_32p_white.png",
+                _ => (ImageSource)"keyboard_32p_black.png",
+            };
+        }
+
+        /// <summary>
         /// Toggles the visibility of the numeric keyboard based on the current device orientation and theme.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void imgbtnKeyboardToggle_Clicked(object sender, EventArgs e)
+        private void imgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
         {
-            // Set the image source for the keyboard toggle button depending on the theme
-            string cImageKeyboardShow;
-            string cImageKeyboardHide;
-
-            if (AppTheme.Dark == App.Current.RequestedTheme)
-            {
-                cImageKeyboardShow = "keyboard_32p_white.png";
-                cImageKeyboardHide = "keyboard_hide_32p_white.png";
-            }
-            else
-            {
-                cImageKeyboardShow = "keyboard_32p_black.png";
-                cImageKeyboardHide = "keyboard_hide_32p_black.png";
-            }
-
             // Get the current device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
-            Debug.WriteLine($"OnHideBottomSheetClicked - Orientation changed to: {cOrientation}");
 
             // Hide the keyboard
             switch (cOrientation)
             {
-                case "Portrait":
-                    {
-                        KeyboardNumericPortrait.IsOpen = !KeyboardNumericPortrait.IsOpen;
-                        imgbtnKeyboardToggle.Source = KeyboardNumericPortrait.IsOpen ? "cImageKeyboardHide.png" : "cImageKeyboardShow.png";
-                        break;
-                    }
-
                 case "Landscape":
                     {
                         KeyboardNumericLandscape.IsOpen = !KeyboardNumericLandscape.IsOpen;
-                        imgbtnKeyboardToggle.Source = KeyboardNumericLandscape.IsOpen ? "cImageKeyboardHide.png" : "cImageKeyboardShow.png";
+                        break;
+                    }
+                default:
+                    {
+                        KeyboardNumericPortrait.IsOpen = !KeyboardNumericPortrait.IsOpen;
                         break;
                     }
             }
         }
 
         /// <summary>
-        /// Handles the click event for the button to show the bottom sheet depending on the device orientation
+        /// Show the bottom sheet depending on the device orientation
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnShowBottomSheetClicked(object? sender, EventArgs e)
+        private void ShowBottomSheet()
         {
             // Get the current device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
-            Debug.WriteLine($"OnShowBottomSheetClicked - Orientation changed to: {cOrientation}");
 
-            // Show the keyboard
+            // Show the keyboard bottom sheet
             switch (cOrientation)
             {
-                case "Portrait":
-                    {
-                        KeyboardNumericLandscape.IsOpen = false;
-                        KeyboardNumericPortrait.IsOpen = true;
-                        break;
-                    }
-
                 case "Landscape":
                     {
                         KeyboardNumericPortrait.IsOpen = false;
                         KeyboardNumericLandscape.IsOpen = true;
                         break;
                     }
+                default:
+                    {
+                        KeyboardNumericLandscape.IsOpen = false;
+                        KeyboardNumericPortrait.IsOpen = true;
+                        break;
+                    }
             }
         }
 
         /// <summary>
-        /// Handles the click event for the button to hide the bottom sheet - only works when HasBackdrop is enabled
+        /// Hide the bottom sheet depending on the device orientation
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnHideBottomSheetClicked(object? sender, EventArgs e)
+        private void HideBottomSheet()
         {
             // Get the current device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
-            Debug.WriteLine($"OnHideBottomSheetClicked - Orientation changed to: {cOrientation}");
 
-            // Hide the keyboard
+            // Hide the keyboard bottom sheet
             switch (cOrientation)
             {
-                case "Portrait":
-                    {
-                        KeyboardNumericPortrait.IsOpen = false;
-                        break;
-                    }
-
                 case "Landscape":
                     {
                         KeyboardNumericLandscape.IsOpen = false;
+                        break;
+                    }
+                default:
+                    {
+                        KeyboardNumericPortrait.IsOpen = false;
                         break;
                     }
             }

@@ -9,7 +9,7 @@
 
     <Shell.TitleView>
         <Label
-            FontSize="14"  
+            FontSize="16"  
             FontAttributes="Bold"  
             HorizontalOptions="Center"
             Text="Keyboard">
@@ -17,7 +17,7 @@
     </Shell.TitleView>
 
     <StackLayout>
-        <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with "Fill" scrolling does not working
+        <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
         https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
         <ScrollView
             VerticalScrollBarVisibility="Always"
@@ -30,18 +30,15 @@
                 RowSpacing="10"  
                 Margin="5">
             
-                <Border
-                    Style="{StaticResource KeyBorder}"
+                <ImageButton
+                    x:Name="imgbtnToggleKeyboard"
+                    Style="{StaticResource ToggleKeyboardImageButton}"
                     Grid.Column="1"  
-                    Grid.Row="0">
-
-                    <ImageButton
-                        x:Name="imgbtnKeyboardToggle"
-                        Style="{StaticResource KeyNumericPortraitImageButton}"
-                        Source="{AppThemeBinding Light=keyboard_hide_32p_black.png, Dark=keyboard_hide_32p_white.png}"
-                        Clicked="imgbtnKeyboardToggle_Clicked">
-                    </ImageButton>
-                </Border>
+                    Grid.Row="0"
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    Clicked="imgbtnToggleKeyboard_Clicked">
+                </ImageButton>
 
                 <Border  
                     x:Name="brdValue1"
@@ -59,7 +56,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue1"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdValue1"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -138,27 +135,16 @@
                     VerticalOptions="Center"
                     Text="Keyboard">
                 </Label>
-                
-                <Button
-                    Grid.Column="0"
-                    Grid.Row="6"
-                    Text="Show Bottom Sheet"
-                    Clicked="OnShowBottomSheetClicked">
-                </Button>
-
-                <Button
-                    Grid.Column="1"
-                    Grid.Row="6"
-                    Text="Hide Bottom Sheet"
-                    Clicked="OnHideBottomSheetClicked">
-                </Button>
+                                
             </Grid>
         </ScrollView>
         
         <Grid>
             <bottomsheet:BottomSheet
                 Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="KeyboardNumericPortrait">
+                x:Name="KeyboardNumericPortrait"
+                Opened="KeyboardNumeric_Opened"
+                Closed="KeyboardNumeric_Closed">
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>
@@ -370,7 +356,10 @@
         <Grid>
             <bottomsheet:BottomSheet
                 Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="KeyboardNumericLandscape">
+                x:Name="KeyboardNumericLandscape"
+                HorizontalOptions="Center"
+                Opened="KeyboardNumeric_Opened"
+                Closed="KeyboardNumeric_Closed">
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>
