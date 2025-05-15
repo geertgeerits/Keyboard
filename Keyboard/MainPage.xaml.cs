@@ -610,7 +610,8 @@ namespace Keyboard
         /// <param name="e"></param>
         private void ContentPage_Disappearing(object sender, EventArgs e)
         {
-            HideBottomSheet();
+            KeyboardNumericPortrait.IsOpen = false;
+            KeyboardNumericLandscape.IsOpen = false;
         }
     }
 

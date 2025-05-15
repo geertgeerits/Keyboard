@@ -42,7 +42,7 @@ public partial class KeyboardHexadecimal : ContentPage
         // Subscribe to orientation changes
         DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
-        // Register to receive messages of type StringMessage from the KeyboardNumericPortrait page
+        // Register to receive messages of type StringMessage from the Keyboard page
         WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
         {
             // Display the received message in the UI, this method is called when a message is received
@@ -452,13 +452,13 @@ public partial class KeyboardHexadecimal : ContentPage
     }
 
     /// <summary>
-    /// Open the page with the hexadecimal keyboard when the button is clicked
+    /// Show the bottom sheet when the page is appearing
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
+    private void ContentPage_Appearing(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new KeyboardHexadecimal());
+        ShowBottomSheet();
     }
 
     /// <summary>
@@ -468,7 +468,7 @@ public partial class KeyboardHexadecimal : ContentPage
     /// <param name="e"></param>
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
-        HideBottomSheet();
+        KeyboardHexadecimalPortrait.IsOpen = false;
+        KeyboardHexadecimalLandscape.IsOpen = false;
     }
-
 }

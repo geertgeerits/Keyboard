@@ -4,6 +4,7 @@
              xmlns:local="clr-namespace:Keyboard"
              xmlns:bottomsheet="http://pluginmauibottomsheet.com"
              x:Class="Keyboard.KeyboardHexadecimal"
+             Appearing="ContentPage_Appearing"
              Disappearing="ContentPage_Disappearing"
              Loaded="OnPageLoaded">
 
