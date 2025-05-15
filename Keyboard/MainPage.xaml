@@ -8,12 +8,34 @@
     Loaded="OnPageLoaded">
 
     <Shell.TitleView>
-        <Label
-            FontSize="16"  
-            FontAttributes="Bold"  
-            HorizontalOptions="Center"
-            Text="Keyboard">
-        </Label>
+        <Grid
+            ColumnDefinitions="*, *"
+            RowDefinitions="*"
+            BackgroundColor="LightGreen"
+            Padding="0">
+            
+            <Label
+                Grid.Column="0"
+                Grid.Row="0"
+                FontSize="16"  
+                FontAttributes="Bold"  
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="10"
+                Text="Keyboard">
+            </Label>
+
+            <ImageButton
+                x:Name="imgbtnToggleKeyboard"
+                Style="{StaticResource ToggleKeyboardImageButton}"
+                Grid.Column="1"  
+                Grid.Row="0"
+                HorizontalOptions="End"
+                VerticalOptions="Center"
+                Margin="10"
+                Clicked="imgbtnToggleKeyboard_Clicked">
+            </ImageButton>
+        </Grid>
     </Shell.TitleView>
 
     <StackLayout>
@@ -25,20 +47,11 @@
             
             <Grid
                 ColumnDefinitions="*, *"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100, Auto"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
                 Margin="5">
             
-                <ImageButton
-                    x:Name="imgbtnToggleKeyboard"
-                    Style="{StaticResource ToggleKeyboardImageButton}"
-                    Grid.Column="1"  
-                    Grid.Row="0"
-                    HorizontalOptions="End"
-                    VerticalOptions="Start"
-                    Clicked="imgbtnToggleKeyboard_Clicked">
-                </ImageButton>
 
                 <Border  
                     x:Name="brdValue1"
@@ -357,7 +370,6 @@
             <bottomsheet:BottomSheet
                 Style="{StaticResource BottomSheetKeyboard}"
                 x:Name="KeyboardNumericLandscape"
-                HorizontalOptions="Center"
                 Opened="KeyboardNumeric_Opened"
                 Closed="KeyboardNumeric_Closed">
                 <bottomsheet:BottomSheet.Content>
