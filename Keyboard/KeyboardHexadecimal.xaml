@@ -1,20 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Keyboard"
-    xmlns:bottomsheet="http://pluginmauibottomsheet.com"
-    x:Class="Keyboard.MainPage"
-    Disappearing="ContentPage_Disappearing"
-    Loaded="OnPageLoaded">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Keyboard"
+             xmlns:bottomsheet="http://pluginmauibottomsheet.com"
+             x:Class="Keyboard.KeyboardHexadecimal"
+             Disappearing="ContentPage_Disappearing"
+             Loaded="OnPageLoaded">
 
     <Shell.TitleView>
         <Grid
             ColumnDefinitions="*, 100, *"
             RowDefinitions="*"
-            BackgroundColor="LightGreen"
+            BackgroundColor="LightGoldenrodYellow"
             Padding="0">
-            
+
             <Label
                 Grid.Column="0"
                 Grid.Row="0"
@@ -26,22 +25,15 @@
                 Text="Keyboard">
             </Label>
 
-
-            <Border
-                Style="{StaticResource KeyBorder}"
+            <Label
                 Grid.Column="1"
                 Grid.Row="0"
-                Stroke="DarkGray">
-
-                <Button
-                    BackgroundColor="Transparent"
-                    TextColor="Black"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    Text="Hex keyboard"
-                    Clicked="BtnHexadecimal_Clicked">
-                </Button>
-            </Border>
+                BackgroundColor="Transparent"
+                TextColor="Black"
+                FontSize="16"
+                FontAttributes="Bold"
+                Text="Hexadecimal">
+            </Label>
 
             <ImageButton
                 x:Name="imgbtnToggleKeyboard"
@@ -62,14 +54,14 @@
         <ScrollView
             VerticalScrollBarVisibility="Always"
             VerticalOptions="FillAndExpand">
-            
+
             <Grid
                 ColumnDefinitions="*, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
                 Margin="5">
-            
+
 
                 <Border  
                     x:Name="brdValue1"
@@ -166,16 +158,16 @@
                     VerticalOptions="Center"
                     Text="Keyboard">
                 </Label>
-                                
+
             </Grid>
         </ScrollView>
-        
+
         <Grid>
             <bottomsheet:BottomSheet
                 Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="KeyboardNumericPortrait"
-                Opened="KeyboardNumeric_Opened"
-                Closed="KeyboardNumeric_Closed">
+                x:Name="KeyboardHexadecimalPortrait"
+                Opened="KeyboardHexadecimal_Opened"
+                Closed="KeyboardHexadecimal_Closed">
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>
@@ -186,7 +178,7 @@
                                             <bottomsheet:BottomSheetPeekBehavior />
                                         </ContentView.Behaviors>
                                         <Grid  
-                                            ColumnDefinitions="Auto, Auto, Auto, Auto"  
+                                            ColumnDefinitions="Auto, Auto, Auto, Auto, Auto"  
                                             RowDefinitions="Auto, Auto, Auto, Auto"  
                                             ColumnSpacing="2"  
                                             RowSpacing="2"  
@@ -200,73 +192,86 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnOne"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonOneText}"
+                                                    AutomationId="btnZero"
+                                                    Text="0"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
-    
+
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
                                                 Grid.Column="1"  
+                                                Grid.Row="0">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnOne"
+                                                    Text="1"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="2"  
                                                 Grid.Row="0">
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnTwo"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonTwoText}"
+                                                    Text="2"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="2"  
+                                                Grid.Column="3"  
                                                 Grid.Row="0">
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnThree"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonThreeText}"
+                                                    Text="3"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="3"  
+                                                Grid.Column="4"  
                                                 Grid.Row="0">
 
-                                                <ImageButton  
-                                                    Style="{StaticResource KeyNumericPortraitImageButton}"
-                                                    AutomationId="btnBackspace"
-                                                    Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnFour"
+                                                    Text="4"
                                                     Clicked="BtnKey_Clicked">
-                                                </ImageButton>
+                                                </Button>
                                             </Border>
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
                                                 Grid.Column="0"  
-                                                Grid.Row="1">
-
-                                                <Button  
-                                                    Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnFour"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFourText}"
-                                                    Clicked="BtnKey_Clicked">
-                                                </Button>
-                                            </Border>
-
-                                            <Border
-                                                Style="{StaticResource KeyBorder}"
-                                                Grid.Column="1"  
                                                 Grid.Row="1">
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnFive"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFiveText}"
+                                                    Text="5"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="1"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnSix"
+                                                    Text="6"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -278,8 +283,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnSix"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSixText}"
+                                                    AutomationId="btnSeven"
+                                                    Text="7"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -289,12 +294,25 @@
                                                 Grid.Column="3"  
                                                 Grid.Row="1">
 
-                                                <ImageButton  
-                                                    Style="{StaticResource KeyNumericPortraitImageButton}"
-                                                    AutomationId="btnReturn"
-                                                    Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnEight"
+                                                    Text="8"
                                                     Clicked="BtnKey_Clicked">
-                                                </ImageButton>
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="4"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnNine"
+                                                    Text="9"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
                                             </Border>
 
                                             <Border
@@ -304,8 +322,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnSeven"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSevenText}"
+                                                    AutomationId="btnA"
+                                                    Text="A"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -317,8 +335,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnEight"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonEightText}"
+                                                    AutomationId="btnB"
+                                                    Text="B"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -330,8 +348,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnNine"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonNineText}"
+                                                    AutomationId="btnC"
+                                                    Text="C"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -340,6 +358,58 @@
                                                 Style="{StaticResource KeyBorder}"
                                                 Grid.Column="3"  
                                                 Grid.Row="2">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnD"
+                                                    Text="D"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="4"  
+                                                Grid.Row="2">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnE"
+                                                    Text="E"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="0"  
+                                                Grid.Row="3">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnF"
+                                                    Text="F"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="1"  
+                                                Grid.Row="3">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericPortraitButton}"
+                                                    AutomationId="btnDecimalPoint"
+                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonDecimalPointText}"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="2"  
+                                                Grid.Row="3">
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
@@ -351,29 +421,30 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="1"  
+                                                Grid.Column="3"  
                                                 Grid.Row="3">
 
-                                                <Button  
-                                                    Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnZero"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonZeroText}"
+                                                <ImageButton  
+                                                    Style="{StaticResource KeyNumericPortraitImageButton}"
+                                                    AutomationId="btnBackspace"
+                                                    Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                                                     Clicked="BtnKey_Clicked">
-                                                </Button>
+                                                </ImageButton>
                                             </Border>
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="3"  
+                                                Grid.Column="4"  
                                                 Grid.Row="3">
 
-                                                <Button  
-                                                    Style="{StaticResource KeyNumericPortraitButton}"
-                                                    AutomationId="btnDecimalPoint"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonDecimalPointText}"
+                                                <ImageButton  
+                                                    Style="{StaticResource KeyNumericPortraitImageButton}"
+                                                    AutomationId="btnReturn"
+                                                    Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                                                     Clicked="BtnKey_Clicked">
-                                                </Button>
+                                                </ImageButton>
                                             </Border>
+
                                         </Grid>
                                     </ContentView>
                                 </VerticalStackLayout>
@@ -387,9 +458,9 @@
         <Grid>
             <bottomsheet:BottomSheet
                 Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="KeyboardNumericLandscape"
-                Opened="KeyboardNumeric_Opened"
-                Closed="KeyboardNumeric_Closed">
+                x:Name="KeyboardHexadecimalLandscape"
+                Opened="KeyboardHexadecimal_Opened"
+                Closed="KeyboardHexadecimal_Closed">
                 <bottomsheet:BottomSheet.Content>
                     <bottomsheet:BottomSheetContent>
                         <bottomsheet:BottomSheetContent.ContentTemplate>
@@ -400,8 +471,8 @@
                                             <bottomsheet:BottomSheetPeekBehavior />
                                         </ContentView.Behaviors>
                                         <Grid  
-                                            ColumnDefinitions="2, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 2"
-                                            RowDefinitions="Auto"  
+                                            ColumnDefinitions="2, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 2"
+                                            RowDefinitions="Auto, Auto"
                                             ColumnSpacing="2"  
                                             RowSpacing="2"  
                                             Margin="0,5,0,0"
@@ -414,8 +485,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnOne"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonOneText}"
+                                                    AutomationId="btnZero"
+                                                    Text="0"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -427,8 +498,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnTwo"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonTwoText}"
+                                                    AutomationId="btnOne"
+                                                    Text="1"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -440,8 +511,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnThree"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonThreeText}"
+                                                    AutomationId="btnTwo"
+                                                    Text="2"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -453,8 +524,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnFour"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFourText}"
+                                                    AutomationId="btnThree"
+                                                    Text="3"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -466,8 +537,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnFive"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonFiveText}"
+                                                    AutomationId="btnFour"
+                                                    Text="4"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -479,8 +550,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnSix"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSixText}"
+                                                    AutomationId="btnFive"
+                                                    Text="5"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -492,8 +563,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnSeven"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonSevenText}"
+                                                    AutomationId="btnSix"
+                                                    Text="6"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -505,8 +576,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnEight"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonEightText}"
+                                                    AutomationId="btnSeven"
+                                                    Text="7"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -518,8 +589,8 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnNine"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonNineText}"
+                                                    AutomationId="btnEight"
+                                                    Text="8"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -531,16 +602,94 @@
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
-                                                    AutomationId="btnZero"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonZeroText}"
+                                                    AutomationId="btnNine"
+                                                    Text="9"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="11"  
-                                                Grid.Row="0">
+                                                Grid.Column="1"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericLandscapeButton}"
+                                                    AutomationId="btnA"
+                                                    Text="A"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="2"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericLandscapeButton}"
+                                                    AutomationId="btnB"
+                                                    Text="B"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="3"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericLandscapeButton}"
+                                                    AutomationId="btnC"
+                                                    Text="C"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="4"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericLandscapeButton}"
+                                                    AutomationId="btnD"
+                                                    Text="D"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="5"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericLandscapeButton}"
+                                                    AutomationId="btnE"
+                                                    Text="E"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="6"  
+                                                Grid.Row="1">
+
+                                                <Button  
+                                                    Style="{StaticResource KeyNumericLandscapeButton}"
+                                                    AutomationId="btnF"
+                                                    Text="F"
+                                                    Clicked="BtnKey_Clicked">
+                                                </Button>
+                                            </Border>
+
+                                            <Border
+                                                Style="{StaticResource KeyBorder}"
+                                                Grid.Column="7"  
+                                                Grid.Row="1">
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
@@ -552,8 +701,8 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="12"  
-                                                Grid.Row="0">
+                                                Grid.Column="8"  
+                                                Grid.Row="1">
 
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
@@ -565,8 +714,8 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="13"  
-                                                Grid.Row="0">
+                                                Grid.Column="9"  
+                                                Grid.Row="1">
 
                                                 <ImageButton  
                                                     Style="{StaticResource KeyNumericLandscapeImageButton}"
@@ -578,8 +727,8 @@
 
                                             <Border
                                                 Style="{StaticResource KeyBorder}"
-                                                Grid.Column="14"  
-                                                Grid.Row="0">
+                                                Grid.Column="10"  
+                                                Grid.Row="1">
 
                                                 <ImageButton  
                                                     Style="{StaticResource KeyNumericLandscapeImageButton}"

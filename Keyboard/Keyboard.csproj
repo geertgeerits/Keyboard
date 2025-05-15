@@ -82,6 +82,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="KeyboardHexadecimal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="KeyboardNumericLandscape.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

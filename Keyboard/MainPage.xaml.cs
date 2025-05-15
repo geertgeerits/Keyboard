@@ -469,7 +469,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void imgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
+        private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
         {
             // Get the current device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
@@ -581,6 +581,26 @@ namespace Keyboard
             {
                 Debug.WriteLine($"Error sending message: {ex.Message}");
             }
+        }
+
+        /// <summary>
+        /// Open the page with the hexadecimal keyboard when the button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new KeyboardHexadecimal());
+        }
+
+        /// <summary>
+        /// Hide the bottom sheet when the page is disappearing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContentPage_Disappearing(object sender, EventArgs e)
+        {
+            HideBottomSheet();
         }
     }
 
