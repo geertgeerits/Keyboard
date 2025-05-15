@@ -51,9 +51,6 @@ public partial class KeyboardHexadecimal : ContentPage
             Debug.WriteLine($"Received message: {message.Value}");
         });
 
-        // Initialize the number format settings based on the current culture
-        ClassEntryMethods.InitializeNumberFormat();
-
         // Set the BindingContext to this (the current page)
         this.BindingContext = this;
 
@@ -182,7 +179,7 @@ public partial class KeyboardHexadecimal : ContentPage
         if (sender is Entry entry)
         {
             bEntryCompleted = true;
-            ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+            //ClassEntryMethods.FormatNumberEntryUnfocused(entry);
         }
 
         // Go to the next field
@@ -418,16 +415,16 @@ public partial class KeyboardHexadecimal : ContentPage
         {
             cKeyPressed = button.AutomationId switch
             {
-                "btnZero" => ClassEntryMethods.cNumNativeDigits[..1],
-                "btnOne" => ClassEntryMethods.cNumNativeDigits.Substring(1, 1),
-                "btnTwo" => ClassEntryMethods.cNumNativeDigits.Substring(2, 1),
-                "btnThree" => ClassEntryMethods.cNumNativeDigits.Substring(3, 1),
-                "btnFour" => ClassEntryMethods.cNumNativeDigits.Substring(4, 1),
-                "btnFive" => ClassEntryMethods.cNumNativeDigits.Substring(5, 1),
-                "btnSix" => ClassEntryMethods.cNumNativeDigits.Substring(6, 1),
-                "btnSeven" => ClassEntryMethods.cNumNativeDigits.Substring(7, 1),
-                "btnEight" => ClassEntryMethods.cNumNativeDigits.Substring(8, 1),
-                "btnNine" => ClassEntryMethods.cNumNativeDigits.Substring(9, 1),
+                "btnZero" => "0",
+                "btnOne" => "1",
+                "btnTwo" => "2",
+                "btnThree" => "3",
+                "btnFour" => "4",
+                "btnFive" => "5",
+                "btnSix" => "6",
+                "btnSeven" => "7",
+                "btnEight" => "8",
+                "btnNine" => "9",
                 "btnA" => "A",
                 "btnB" => "B",
                 "btnC" => "C",

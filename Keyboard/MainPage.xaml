@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:Keyboard"
     xmlns:bottomsheet="http://pluginmauibottomsheet.com"
     x:Class="Keyboard.MainPage"
+    Appearing="ContentPage_Appearing"
     Disappearing="ContentPage_Disappearing"
     Loaded="OnPageLoaded">
 
@@ -12,17 +13,18 @@
         <Grid
             ColumnDefinitions="*, 100, *"
             RowDefinitions="*"
-            BackgroundColor="LightGreen"
+            BackgroundColor="{AppThemeBinding Light=LightGreen, Dark=Green}"
             Padding="0">
             
             <Label
                 Grid.Column="0"
                 Grid.Row="0"
-                FontSize="16"  
-                FontAttributes="Bold"  
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
+                FontSize="16"  
+                FontAttributes="Bold"  
                 Margin="10"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                 Text="Keyboard">
             </Label>
 
@@ -35,7 +37,7 @@
 
                 <Button
                     BackgroundColor="Transparent"
-                    TextColor="Black"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                     FontSize="16"
                     FontAttributes="Bold"
                     Text="Hex keyboard"

@@ -11,25 +11,27 @@
         <Grid
             ColumnDefinitions="*, 100, *"
             RowDefinitions="*"
-            BackgroundColor="LightGoldenrodYellow"
+            BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=Blue}"
             Padding="0">
 
             <Label
                 Grid.Column="0"
                 Grid.Row="0"
-                FontSize="16"  
-                FontAttributes="Bold"  
                 HorizontalOptions="Start"
                 VerticalOptions="Center"
+                FontSize="16"  
+                FontAttributes="Bold"  
                 Margin="10"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                 Text="Keyboard">
             </Label>
 
             <Label
                 Grid.Column="1"
                 Grid.Row="0"
+                VerticalOptions="Center"
                 BackgroundColor="Transparent"
-                TextColor="Black"
+                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                 FontSize="16"
                 FontAttributes="Bold"
                 Text="Hexadecimal">
@@ -401,7 +403,8 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnDecimalPoint"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonDecimalPointText}"
+                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonDecimalPointText}"
+                                                    IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -414,7 +417,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnMinus"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonMinusText}"
+                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonMinusText}"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -694,7 +697,8 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnDecimalPoint"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonDecimalPointText}"
+                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonDecimalPointText}"
+                                                    IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -707,7 +711,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnMinus"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:MainPage}}, Path=ButtonMinusText}"
+                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonMinusText}"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>

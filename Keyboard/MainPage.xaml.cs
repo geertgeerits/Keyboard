@@ -594,6 +594,16 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Show the bottom sheet when the page is appearing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContentPage_Appearing(object sender, EventArgs e)
+        {
+            ShowBottomSheet();
+        }
+
+        /// <summary>
         /// Hide the bottom sheet when the page is disappearing
         /// </summary>
         /// <param name="sender"></param>
