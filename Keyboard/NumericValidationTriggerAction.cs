@@ -8,7 +8,7 @@
 
         protected override void Invoke(Entry entry)
         {
-            // Validate the number.
+            // Validate the number
             bool isValid = decimal.TryParse(entry.Text, out decimal result);
             isValid = isValid && result >= MinValue && result <= MaxValue;
 

@@ -71,7 +71,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdValue1"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="00" MaxValue="FF" BorderName="brdValue1"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -93,7 +93,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue2"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0000" MaxValue="FFFF" BorderName="brdValue2"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -115,7 +115,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue3"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="000000" MaxValue="FFFFFF" BorderName="brdValue3"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -137,7 +137,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue4"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFFFF" BorderName="brdValue4"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -393,7 +393,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnDecimalPoint"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonDecimalPointText}"
+                                                    Text=""
                                                     IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
@@ -407,7 +407,8 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnMinus"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonMinusText}"
+                                                    Text=""
+                                                    IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>
@@ -687,7 +688,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnDecimalPoint"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonDecimalPointText}"
+                                                    Text=""
                                                     IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
@@ -701,7 +702,8 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnMinus"
-                                                    Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardHexadecimal}}, Path=ButtonMinusText}"
+                                                    Text=""
+                                                    IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
                                                 </Button>
                                             </Border>

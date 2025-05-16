@@ -62,12 +62,14 @@
 
 	<ItemGroup>
 	  <Compile Remove="KeyboardNumeric.xaml.cs" />
+	  <Compile Remove="SomeBottomSheet.xaml.cs" />
 	  <Compile Remove="SomeViewModel.cs" />
 	  <Compile Remove="ViewModel.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiXaml Remove="KeyboardNumeric.xaml" />
+	  <MauiXaml Remove="SomeBottomSheet.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>

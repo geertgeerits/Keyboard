@@ -6,6 +6,7 @@ namespace Keyboard
     internal static class ClassEntryMethods
     {
         // Global variables
+        public static string cKeyboard = "Custom";
         public static string cNumDecimalDigits = "";
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
@@ -18,7 +19,7 @@ namespace Keyboard
         public static string cNumNegativeSign = "";
         public static string cNumNativeDigits = "";
         private static string cNumericCharacters = "";
-        private static string cHexadecimalCharacters = "";
+        private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
 
@@ -99,9 +100,6 @@ namespace Keyboard
             // Set the allowed characters for numeric input
             cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
             Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
-
-            // Set the allowed characters for hexadecimal input
-            cHexadecimalCharacters = $"{cNumNegativeSign}0123456789ABCDEFabcdef";
         }
 
         /// <summary>
@@ -224,16 +222,10 @@ namespace Keyboard
                 {
                     return false;
                 }
-
-                // Check if the character is a negative sign and at the first position (index 0), or there is no more than one negative sign
-                if ((c == cNumNegativeSign[0] && !cText.StartsWith(c)) || cText.Count(static ch => ch == cNumNegativeSign[0]) > 1)
-                {
-                    return false;
-                }
             }
 
-            // Validate the number and set the text color
-            //if (decimal.TryParse(entry.Text, out decimal nValue))
+            // Convert to decimal from hexadecimal, validate the number and set the text color
+            //if (int.TryParse(entry.Text, System.Globalization.NumberStyles.HexNumber, null, out int nValue))
             //{
             //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
             //}
@@ -247,8 +239,8 @@ namespace Keyboard
         /// <param name="entry"></param>
         public async static void FormatNumberEntryFocused(Entry entry)
         {
-            // Show the keyboard if it is not already shown
-            if (!entry.IsSoftInputShowing())
+            // Show the keyboard if it is not already shown and no custom keyboard is used
+            if (!entry.IsSoftInputShowing() && cKeyboard != "Custom")
             {
                 _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }

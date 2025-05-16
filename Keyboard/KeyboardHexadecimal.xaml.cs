@@ -11,30 +11,6 @@ public partial class KeyboardHexadecimal : ContentPage
     private string cEntryAutomationId = string.Empty;
     private bool bEntryCompleted;
 
-    private string _buttonDecimalPointText = string.Empty;
-    private string _buttonMinusText = string.Empty;
-
-    // Properties for the button texts of the keyboard
-    public string ButtonDecimalPointText
-    {
-        get => _buttonDecimalPointText;
-        set
-        {
-            _buttonDecimalPointText = value;
-            OnPropertyChanged();
-        }
-    }
-
-    public string ButtonMinusText
-    {
-        get => _buttonMinusText;
-        set
-        {
-            _buttonMinusText = value;
-            OnPropertyChanged();
-        }
-    }
-
     public KeyboardHexadecimal()
 	{
 		InitializeComponent();
@@ -50,12 +26,6 @@ public partial class KeyboardHexadecimal : ContentPage
 
             Debug.WriteLine($"Received message: {message.Value}");
         });
-
-        // Set the BindingContext to this (the current page)
-        this.BindingContext = this;
-
-        ButtonDecimalPointText = ClassEntryMethods.cNumDecimalSeparator;
-        ButtonMinusText = ClassEntryMethods.cNumNegativeSign;
 
         // Set the theme and the number color
         //Globals.SetTheme();
@@ -140,12 +110,12 @@ public partial class KeyboardHexadecimal : ContentPage
     {
         if (sender is Entry entry)
         {
-            entry.MaxLength = 18;
+            entry.MaxLength = 10;
 
-            if (bEntryCompleted)
-            {
-                //ClassEntryMethods.FormatNumberEntryFocused(entry);
-            }
+            // Select all the text in the entry field and set the cursor position to the end of the text
+            //entry.CursorPosition = 0;
+            //entry.SelectionLength = entry.Text.Length;
+            entry.CursorPosition = entry.Text.Length;
 
             cEntryAutomationId = entry.AutomationId;
             bEntryCompleted = false;
@@ -165,13 +135,6 @@ public partial class KeyboardHexadecimal : ContentPage
         if (sender is Entry entry)
         {
             cEntryAutomationId = entry.AutomationId;
-
-            entry.MaxLength = -1;
-
-            if (bEntryCompleted)
-            {
-                //ClassEntryMethods.FormatNumberEntryUnfocused(entry);
-            }
         }
     }
 
@@ -245,18 +208,6 @@ public partial class KeyboardHexadecimal : ContentPage
                     return;
                 case "btnBackspace":
                     focusedEntry.Text = DeleteCharacterBeforeCursor(focusedEntry);
-                    break;
-                case "btnMinus":
-                    if (!focusedEntry.Text.Contains(ClassEntryMethods.cNumNegativeSign))
-                    {
-                        focusedEntry.Text = ClassEntryMethods.cNumNegativeSign + focusedEntry.Text;
-                    }
-                    break;
-                case "btnDecimalPoint":
-                    if (!focusedEntry.Text.Contains(ClassEntryMethods.cNumDecimalSeparator))
-                    {
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumDecimalSeparator);
-                    }
                     break;
                 default:
                     focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, cKey);
