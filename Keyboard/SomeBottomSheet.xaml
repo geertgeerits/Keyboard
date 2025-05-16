@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:bottomsheet="http://pluginmauibottomsheet.com"
     xmlns:local="clr-namespace:Keyboard"
-    x:Class="Plugin.Maui.BottomSheet.Sample.Views.SomeBottomSheet"
+    x:Class="Keyboard.SomeBottomSheet"
     Padding="10">
 
     <bottomsheet:BottomSheet.Content>

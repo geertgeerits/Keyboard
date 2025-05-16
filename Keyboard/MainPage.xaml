@@ -83,6 +83,7 @@
                         AutomationId="entTest1-Percentage"
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="0 - 100"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -105,13 +106,14 @@
                         AutomationId="entTest2"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="0 - 999999999999.99"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue2"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.99" BorderName="brdValue2"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -127,13 +129,14 @@
                         AutomationId="entTest3"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="-999999999999.99 - 999999999999.99"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue3"/>
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99" BorderName="brdValue3"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -149,13 +152,14 @@
                         AutomationId="entTest4"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="-999999999999.99 - 999999999999.99"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.9999" MaxValue="999999999999.9999" BorderName="brdValue4"/>
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99" BorderName="brdValue4"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

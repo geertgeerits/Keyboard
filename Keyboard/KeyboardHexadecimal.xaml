@@ -65,13 +65,14 @@
                         AutomationId="entTest1-Percentage"
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="0 - FF"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="00" MaxValue="FF" BorderName="brdValue1"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FF" BorderName="brdValue1"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -87,13 +88,14 @@
                         AutomationId="entTest2"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="0 - FFFF"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0000" MaxValue="FFFF" BorderName="brdValue2"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFF" BorderName="brdValue2"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -109,13 +111,14 @@
                         AutomationId="entTest3"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="0 - FFFFFF"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="000000" MaxValue="FFFFFF" BorderName="brdValue3"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFF" BorderName="brdValue3"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -131,6 +134,7 @@
                         AutomationId="entTest4"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        Placeholder="0 - FFFFFFFF"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -393,6 +397,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnDecimalPoint"
+                                                    BackgroundColor="Transparent"
                                                     Text=""
                                                     IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
@@ -407,6 +412,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericPortraitButton}"
                                                     AutomationId="btnMinus"
+                                                    BackgroundColor="Transparent"
                                                     Text=""
                                                     IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
@@ -688,6 +694,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnDecimalPoint"
+                                                    BackgroundColor="Transparent"
                                                     Text=""
                                                     IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">
@@ -702,6 +709,7 @@
                                                 <Button  
                                                     Style="{StaticResource KeyNumericLandscapeButton}"
                                                     AutomationId="btnMinus"
+                                                    BackgroundColor="Transparent"
                                                     Text=""
                                                     IsEnabled="False"
                                                     Clicked="BtnKey_Clicked">

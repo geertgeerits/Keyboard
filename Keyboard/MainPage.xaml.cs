@@ -203,12 +203,6 @@ namespace Keyboard
                     KeyboardNumericPortrait.IsOpen = true;
                     break;
             }
-
-            //// Set the Placeholder for the numeric entry fields
-            ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entTest2, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entTest3, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
-            ClassEntryMethods.SetNumberEntryProperties(entTest4, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
         }
 
         // Subscribe to orientation changes

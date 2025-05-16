@@ -104,6 +104,7 @@ namespace Keyboard
 
         /// <summary>
         /// Set the Placeholder for a numeric entry field
+        /// Usage example: ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="cWholeNumFrom"></param>
