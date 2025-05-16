@@ -18,6 +18,7 @@ namespace Keyboard
         public static string cNumNegativeSign = "";
         public static string cNumNativeDigits = "";
         private static string cNumericCharacters = "";
+        private static string cHexadecimalCharacters = "";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
 
@@ -98,6 +99,9 @@ namespace Keyboard
             // Set the allowed characters for numeric input
             cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
             Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
+
+            // Set the allowed characters for hexadecimal input
+            cHexadecimalCharacters = $"{cNumNegativeSign}0123456789ABCDEFabcdef";
         }
 
         /// <summary>
@@ -190,6 +194,49 @@ namespace Keyboard
             {
                 entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
             }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Check if the text is a hexadecimal value
+        /// </summary>
+        /// <param name="cText"></param>
+        /// <returns></returns>
+        public static bool IsHexadecimal(Entry entry, string cText)
+        {
+            // Do not execute this method because this is only to show the formatted number just like in a label
+            if (bShowFormattedNumber)
+            {
+                return true;
+            }
+
+            if (string.IsNullOrEmpty(cText))
+            {
+                return true;
+            }
+
+            // Check the text for invalid characters
+            foreach (char c in cText)
+            {
+                // Check if the character is allowed
+                if (!cHexadecimalCharacters.Contains(c))
+                {
+                    return false;
+                }
+
+                // Check if the character is a negative sign and at the first position (index 0), or there is no more than one negative sign
+                if ((c == cNumNegativeSign[0] && !cText.StartsWith(c)) || cText.Count(static ch => ch == cNumNegativeSign[0]) > 1)
+                {
+                    return false;
+                }
+            }
+
+            // Validate the number and set the text color
+            //if (decimal.TryParse(entry.Text, out decimal nValue))
+            //{
+            //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
+            //}
 
             return true;
         }

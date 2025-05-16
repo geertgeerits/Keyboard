@@ -6,13 +6,13 @@
              x:Class="Keyboard.KeyboardHexadecimal"
              Appearing="ContentPage_Appearing"
              Disappearing="ContentPage_Disappearing"
-             Loaded="OnPageLoaded">
+             Loaded="OnPageLoaded"
+             Shell.BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=Blue}">
 
     <Shell.TitleView>
         <Grid
-            ColumnDefinitions="*, 100, *"
+            ColumnDefinitions="*, 60, 60"
             RowDefinitions="*"
-            BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=Blue}"
             Padding="0">
 
             <Label
@@ -24,18 +24,7 @@
                 FontAttributes="Bold"  
                 Margin="10"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                Text="Keyboard">
-            </Label>
-
-            <Label
-                Grid.Column="1"
-                Grid.Row="0"
-                VerticalOptions="Center"
-                BackgroundColor="Transparent"
-                TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                FontSize="16"
-                FontAttributes="Bold"
-                Text="Hexadecimal">
+                Text="Keyboard hexadecimal">
             </Label>
 
             <ImageButton

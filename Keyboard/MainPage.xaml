@@ -7,13 +7,13 @@
     x:Class="Keyboard.MainPage"
     Appearing="ContentPage_Appearing"
     Disappearing="ContentPage_Disappearing"
-    Loaded="OnPageLoaded">
+    Loaded="OnPageLoaded"
+    Shell.BackgroundColor="{AppThemeBinding Light=LightGreen, Dark=Green}">
 
     <Shell.TitleView>
         <Grid
-            ColumnDefinitions="*, 100, *"
+            ColumnDefinitions="*, 60, 60"
             RowDefinitions="*"
-            BackgroundColor="{AppThemeBinding Light=LightGreen, Dark=Green}"
             Padding="0">
             
             <Label
@@ -25,7 +25,7 @@
                 FontAttributes="Bold"  
                 Margin="10"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                Text="Keyboard">
+                Text="Keyboard decimal">
             </Label>
 
 

@@ -77,6 +77,27 @@ public partial class KeyboardHexadecimal : ContentPage
     }
 
     /// <summary>
+    /// Show the bottom sheet when the page is appearing
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ContentPage_Appearing(object sender, EventArgs e)
+    {
+        ShowBottomSheet();
+    }
+
+    /// <summary>
+    /// Hide the bottom sheet when the page is disappearing
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ContentPage_Disappearing(object sender, EventArgs e)
+    {
+        KeyboardHexadecimalPortrait.IsOpen = false;
+        KeyboardHexadecimalLandscape.IsOpen = false;
+    }
+
+    /// <summary>
     /// Get the current device orientation
     /// </summary>
     /// <returns></returns>
@@ -97,7 +118,6 @@ public partial class KeyboardHexadecimal : ContentPage
     /// <param name="e"></param>
     private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
     {
-        HideBottomSheet();
         ShowBottomSheet();
     }
 
@@ -156,16 +176,16 @@ public partial class KeyboardHexadecimal : ContentPage
     }
 
     /// <summary>
-    /// Check if the value is numeric and clear result fields if the text have changed
+    /// Check if the value is hexadecimal
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
     {
-        //if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
-        //{
-        //    ((Entry)sender).Text = e.OldTextValue;
-        //}
+        if (!ClassEntryMethods.IsHexadecimal((Entry)sender, e.NewTextValue))
+        {
+            ((Entry)sender).Text = e.OldTextValue;
+        }
     }
 
     /// <summary>
@@ -379,30 +399,6 @@ public partial class KeyboardHexadecimal : ContentPage
     }
 
     /// <summary>
-    /// Hide the bottom sheet depending on the device orientation
-    /// </summary>
-    private void HideBottomSheet()
-    {
-        // Get the current device orientation
-        string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
-
-        // Hide the keyboard bottom sheet
-        switch (cOrientation)
-        {
-            case "Landscape":
-                {
-                    KeyboardHexadecimalLandscape.IsOpen = false;
-                    break;
-                }
-            default:
-                {
-                    KeyboardHexadecimalPortrait.IsOpen = false;
-                    break;
-                }
-        }
-    }
-
-    /// <summary>
     /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
     /// </summary>
     /// <param name="sender"></param>
@@ -449,26 +445,5 @@ public partial class KeyboardHexadecimal : ContentPage
         {
             Debug.WriteLine($"Error sending message: {ex.Message}");
         }
-    }
-
-    /// <summary>
-    /// Show the bottom sheet when the page is appearing
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void ContentPage_Appearing(object sender, EventArgs e)
-    {
-        ShowBottomSheet();
-    }
-
-    /// <summary>
-    /// Hide the bottom sheet when the page is disappearing
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void ContentPage_Disappearing(object sender, EventArgs e)
-    {
-        KeyboardHexadecimalPortrait.IsOpen = false;
-        KeyboardHexadecimalLandscape.IsOpen = false;
     }
 }

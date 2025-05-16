@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.16
-   Date ........: 2025-05-15 (YYYY-MM-DD)
+   Date ........: 2025-05-16 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -158,9 +158,6 @@ namespace Keyboard
         {
             InitializeComponent();
 
-            // Subscribe to orientation changes
-            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
-
             // Register to receive messages of type StringMessage from the KeyboardNumericPortrait page
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
             {
@@ -214,6 +211,41 @@ namespace Keyboard
             ClassEntryMethods.SetNumberEntryProperties(entTest4, "1", "0", "999999999999", "9", ClassEntryMethods.cNumDecimalDigits);
         }
 
+        // Subscribe to orientation changes
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+        }
+
+        // Unsubscribe to orientation changes - if you don't do this, the event will be called if you are on another page
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
+        }
+
+        /// <summary>
+        /// Show the bottom sheet when the page is appearing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContentPage_Appearing(object sender, EventArgs e)
+        {
+            ShowBottomSheet();
+        }
+
+        /// <summary>
+        /// Hide the bottom sheet when the page is disappearing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContentPage_Disappearing(object sender, EventArgs e)
+        {
+            KeyboardNumericPortrait.IsOpen = false;
+            KeyboardNumericLandscape.IsOpen = false;
+        }
+
         /// <summary>
         /// Get the current device orientation
         /// </summary>
@@ -235,7 +267,6 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            HideBottomSheet();
             ShowBottomSheet();
         }
 
@@ -517,30 +548,6 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Hide the bottom sheet depending on the device orientation
-        /// </summary>
-        private void HideBottomSheet()
-        {
-            // Get the current device orientation
-            string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
-
-            // Hide the keyboard bottom sheet
-            switch (cOrientation)
-            {
-                case "Landscape":
-                    {
-                        KeyboardNumericLandscape.IsOpen = false;
-                        break;
-                    }
-                default:
-                    {
-                        KeyboardNumericPortrait.IsOpen = false;
-                        break;
-                    }
-            }
-        }
-
-        /// <summary>
         /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
         /// </summary>
         /// <param name="sender"></param>
@@ -591,27 +598,6 @@ namespace Keyboard
         private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new KeyboardHexadecimal());
-        }
-
-        /// <summary>
-        /// Show the bottom sheet when the page is appearing
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ContentPage_Appearing(object sender, EventArgs e)
-        {
-            ShowBottomSheet();
-        }
-
-        /// <summary>
-        /// Hide the bottom sheet when the page is disappearing
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ContentPage_Disappearing(object sender, EventArgs e)
-        {
-            KeyboardNumericPortrait.IsOpen = false;
-            KeyboardNumericLandscape.IsOpen = false;
         }
     }
 
