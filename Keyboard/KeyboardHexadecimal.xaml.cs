@@ -107,10 +107,7 @@ public partial class KeyboardHexadecimal : ContentPage
     {
         if (sender is Entry entry)
         {
-            // Select all the text in the entry field and set the cursor position to the end of the text
-            entry.CursorPosition = 0;
-            entry.SelectionLength = entry.Text.Length;
-            //entry.CursorPosition = entry.Text.Length;  // The selection length is gone when the cursor position is set to the end of the text
+            //entry.CursorPosition = entry.Text.Length;  // The full selection of the text is gone when the cursor position is set to the end of the text
 
             cEntryAutomationId = entry.AutomationId;
 

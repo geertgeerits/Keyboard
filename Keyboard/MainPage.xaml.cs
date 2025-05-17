@@ -166,7 +166,10 @@ namespace Keyboard
                 
                 Debug.WriteLine($"Received message: {message.Value}");
             });
-            
+
+            // Select all the text in the entry field - works for all pages in the app
+            ClassEntryMethods.ModifyEntrySelectAllText();
+
             // Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
 
