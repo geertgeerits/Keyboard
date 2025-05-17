@@ -6,6 +6,10 @@ namespace Keyboard
     internal static class ClassEntryMethods
     {
         // Global variables
+        public static string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";
+        public static string cImageKeyboardHideLight = "keyboard_hide_32p_black.png";
+        public static string cImageKeyboardShowDark = "keyboard_32p_white.png";
+        public static string cImageKeyboardShowLight = "keyboard_32p_black.png";
         public static string cKeyboard = "Custom";
         public static string cNumDecimalDigits = "";
         public static string cPercDecimalDigits = "";
@@ -18,7 +22,7 @@ namespace Keyboard
         public static string cNumDecimalSeparator = "";
         public static string cNumNegativeSign = "";
         public static string cNumNativeDigits = "";
-        private static string cNumericCharacters = "";
+        private static string cDecimalCharacters = "";
         private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
@@ -98,13 +102,13 @@ namespace Keyboard
             }
 
             // Set the allowed characters for numeric input
-            cNumericCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
-            Debug.WriteLine($"cNumericCharacters: {cNumericCharacters}");
+            cDecimalCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
+            Debug.WriteLine($"cDecimalCharacters: {cDecimalCharacters}");
         }
 
         /// <summary>
         /// Set the Placeholder for a numeric entry field
-        /// Usage example: ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
+        /// Use: ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="cWholeNumFrom"></param>
@@ -133,11 +137,11 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Check if the text is a numeric value
+        /// Check if the text is a decimal number
         /// </summary>
         /// <param name="cText"></param>
         /// <returns></returns>
-        public static bool IsNumeric(Entry entry, string cText)
+        public static bool IsDecimalNumber(Entry entry, string cText)
         {
             // Do not execute this method because this is only to show the formatted number just like in a label
             if (bShowFormattedNumber)
@@ -154,7 +158,7 @@ namespace Keyboard
             foreach (char c in cText)
             {
                 // Check if the character is allowed
-                if (!cNumericCharacters.Contains(c))
+                if (!cDecimalCharacters.Contains(c))
                 {
                     return false;
                 }
@@ -198,18 +202,12 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Check if the text is a hexadecimal value
+        /// Check if the text is a hexadecimal number
         /// </summary>
         /// <param name="cText"></param>
         /// <returns></returns>
-        public static bool IsHexadecimal(Entry entry, string cText)
+        public static bool IsHexadecimalNumber(Entry entry, string cText)
         {
-            // Do not execute this method because this is only to show the formatted number just like in a label
-            if (bShowFormattedNumber)
-            {
-                return true;
-            }
-
             if (string.IsNullOrEmpty(cText))
             {
                 return true;
@@ -225,12 +223,6 @@ namespace Keyboard
                 }
             }
 
-            // Convert to decimal from hexadecimal, validate the number and set the text color
-            //if (int.TryParse(entry.Text, System.Globalization.NumberStyles.HexNumber, null, out int nValue))
-            //{
-            //    entry.TextColor = nValue < 0 ? Color.FromArgb(cColorNegNumber) : Color.FromArgb(cColorPosNumber);
-            //}
-
             return true;
         }
 
@@ -238,7 +230,7 @@ namespace Keyboard
         /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
-        public async static void FormatNumberEntryFocused(Entry entry)
+        public async static void FormatDecimalNumberEntryFocused(Entry entry)
         {
             // Show the keyboard if it is not already shown and no custom keyboard is used
             if (!entry.IsSoftInputShowing() && cKeyboard != "Custom")
@@ -246,7 +238,7 @@ namespace Keyboard
                 _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
 
-            // Allow the IsNumeric method to execute
+            // Allow the IsDecimalNumber method to execute
             bShowFormattedNumber = false;
 
             if (string.IsNullOrEmpty(entry.Text))
@@ -269,14 +261,14 @@ namespace Keyboard
         /// Entry unfocused event: format the text value for a numeric entry field with the number separator
         /// </summary>
         /// <param name="entry"></param>
-        public static void FormatNumberEntryUnfocused(Entry entry)
+        public static void FormatDecimalNumberEntryUnfocused(Entry entry)
         {
             if (string.IsNullOrEmpty(entry.Text))
             {
                 return;
             }
 
-            // Do not allow the IsNumeric method to execute
+            // Do not allow the IsDecimalNumber method to execute
             bShowFormattedNumber = true;
 
             if (decimal.TryParse(entry.Text, out decimal nValue))

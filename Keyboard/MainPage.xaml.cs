@@ -287,7 +287,7 @@ namespace Keyboard
 
                 if (bEntryCompleted)
                 {
-                    ClassEntryMethods.FormatNumberEntryFocused(entry);
+                    ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
                 }
 
                 cEntryAutomationId = entry.AutomationId;
@@ -313,7 +313,7 @@ namespace Keyboard
 
                 if (bEntryCompleted)
                 {
-                    ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+                    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
                 }
             }
         }
@@ -325,7 +325,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsNumeric((Entry)sender, e.NewTextValue))
+            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
@@ -342,7 +342,7 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 bEntryCompleted = true;
-                ClassEntryMethods.FormatNumberEntryUnfocused(entry);
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
 
             // Go to the next field
@@ -469,8 +469,8 @@ namespace Keyboard
             // Set the image source for the keyboard toggle button depending on the theme
             imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
             {
-                AppTheme.Dark => (ImageSource)"keyboard_hide_32p_white.png",
-                _ => (ImageSource)"keyboard_hide_32p_black.png",
+                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardHideDark,
+                _ => (ImageSource)ClassEntryMethods.cImageKeyboardHideLight,
             };
         }
 
@@ -484,8 +484,8 @@ namespace Keyboard
             // Set the image source for the keyboard toggle button depending on the theme
             imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
             {
-                AppTheme.Dark => (ImageSource)"keyboard_32p_white.png",
-                _ => (ImageSource)"keyboard_32p_black.png",
+                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardShowDark,
+                _ => (ImageSource)ClassEntryMethods.cImageKeyboardShowLight,
             };
         }
 
@@ -499,7 +499,7 @@ namespace Keyboard
             // Get the current device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
 
-            // Hide the keyboard
+            // Hide or show the keyboard
             switch (cOrientation)
             {
                 case "Landscape":

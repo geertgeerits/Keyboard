@@ -1,7 +1,5 @@
 using CommunityToolkit.Mvvm.Messaging;
 using System.Diagnostics;
-using Plugin.Maui.BottomSheet;
-using Plugin.Maui.BottomSheet.Hosting;
 
 namespace Keyboard;
 
@@ -9,7 +7,6 @@ public partial class KeyboardHexadecimal : ContentPage
 {
     // Declare variables
     private string cEntryAutomationId = string.Empty;
-    private bool bEntryCompleted;
 
     public KeyboardHexadecimal()
 	{
@@ -110,15 +107,12 @@ public partial class KeyboardHexadecimal : ContentPage
     {
         if (sender is Entry entry)
         {
-            entry.MaxLength = 10;
-
             // Select all the text in the entry field and set the cursor position to the end of the text
-            //entry.CursorPosition = 0;
-            //entry.SelectionLength = entry.Text.Length;
-            entry.CursorPosition = entry.Text.Length;
+            entry.CursorPosition = 0;
+            entry.SelectionLength = entry.Text.Length;
+            //entry.CursorPosition = entry.Text.Length;  // The selection length is gone when the cursor position is set to the end of the text
 
             cEntryAutomationId = entry.AutomationId;
-            bEntryCompleted = false;
 
             // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
             _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
@@ -145,7 +139,7 @@ public partial class KeyboardHexadecimal : ContentPage
     /// <param name="e"></param>
     private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
     {
-        if (!ClassEntryMethods.IsHexadecimal((Entry)sender, e.NewTextValue))
+        if (!ClassEntryMethods.IsHexadecimalNumber((Entry)sender, e.NewTextValue))
         {
             ((Entry)sender).Text = e.OldTextValue;
         }
@@ -158,13 +152,6 @@ public partial class KeyboardHexadecimal : ContentPage
     /// <param name="e"></param>
     private void GoToNextField(object sender, EventArgs? e)
     {
-        // Format the number
-        if (sender is Entry entry)
-        {
-            bEntryCompleted = true;
-            //ClassEntryMethods.FormatNumberEntryUnfocused(entry);
-        }
-
         // Go to the next field
         if (sender == entTest1)
         {
@@ -277,8 +264,8 @@ public partial class KeyboardHexadecimal : ContentPage
         // Set the image source for the keyboard toggle button depending on the theme
         imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
         {
-            AppTheme.Dark => (ImageSource)"keyboard_hide_32p_white.png",
-            _ => (ImageSource)"keyboard_hide_32p_black.png",
+            AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardHideDark,
+            _ => (ImageSource)ClassEntryMethods.cImageKeyboardHideLight,
         };
     }
 
@@ -292,8 +279,8 @@ public partial class KeyboardHexadecimal : ContentPage
         // Set the image source for the keyboard toggle button depending on the theme
         imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
         {
-            AppTheme.Dark => (ImageSource)"keyboard_32p_white.png",
-            _ => (ImageSource)"keyboard_32p_black.png",
+            AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardShowDark,
+            _ => (ImageSource)ClassEntryMethods.cImageKeyboardShowLight,
         };
     }
 
