@@ -35,6 +35,7 @@
                 HorizontalOptions="End"
                 VerticalOptions="Center"
                 Margin="10"
+                IsVisible="False"
                 Clicked="ImgbtnToggleKeyboard_Clicked">
             </ImageButton>
         </Grid>
@@ -48,7 +49,7 @@
             VerticalOptions="FillAndExpand">
 
             <Grid
-                ColumnDefinitions="*, *"
+                ColumnDefinitions="300, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
@@ -65,8 +66,9 @@
                         AutomationId="entTest1-Percentage"
                         FontSize="16"
                         FontAttributes="Bold"
-                        MaxLength="2"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FF"
+                        MaxLength="2"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -89,8 +91,9 @@
                         AutomationId="entTest2"  
                         FontSize="16"
                         FontAttributes="Bold"
-                        MaxLength="4"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FFFF"
+                        MaxLength="4"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -113,8 +116,9 @@
                         AutomationId="entTest3"  
                         FontSize="16"
                         FontAttributes="Bold"
-                        MaxLength="6"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FFFFFF"
+                        MaxLength="6"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -137,8 +141,9 @@
                         AutomationId="entTest4"  
                         FontSize="16"
                         FontAttributes="Bold"
-                        MaxLength="8"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FFFFFFFF"
+                        MaxLength="12"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  

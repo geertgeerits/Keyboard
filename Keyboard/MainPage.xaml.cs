@@ -163,12 +163,15 @@ namespace Keyboard
             {
                 // Display the received message in the UI, this method is called when a message is received
                 BtnKeyboardClicked(message.Value);
-                
+
                 Debug.WriteLine($"Received message: {message.Value}");
             });
 
             // Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();
+
+            // Show or hide the keyboard toggle button visibility
+            imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
 
             // Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
@@ -286,7 +289,14 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
-                entry.MaxLength = 18;
+                // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
+                _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+
+                // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
+                if (!ClassEntryMethods.bKeyboardToggleButton)
+                {
+                    ShowBottomSheet();
+                }
 
                 if (bEntryCompleted)
                 {
@@ -295,9 +305,6 @@ namespace Keyboard
 
                 cEntryAutomationId = entry.AutomationId;
                 bEntryCompleted = false;
-
-                // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
-                _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
             }
         }
 
@@ -469,12 +476,14 @@ namespace Keyboard
         /// <param name="e">An object that contains the event data.</param>
         private void KeyboardNumeric_Opened(object sender, EventArgs e)
         {
-            // Set the image source for the keyboard toggle button depending on the theme
-            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+            if (ClassEntryMethods.bKeyboardToggleButton)
             {
-                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardHideDark,
-                _ => (ImageSource)ClassEntryMethods.cImageKeyboardHideLight,
-            };
+                imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+                {
+                    AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardHideDark,
+                    _ => (ImageSource)ClassEntryMethods.cImageKeyboardHideLight,
+                };
+            }
         }
 
         /// <summary>
@@ -484,12 +493,14 @@ namespace Keyboard
         /// <param name="e"></param>
         private void KeyboardNumeric_Closed(object sender, EventArgs e)
         {
-            // Set the image source for the keyboard toggle button depending on the theme
-            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+            if (ClassEntryMethods.bKeyboardToggleButton)
             {
-                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardShowDark,
-                _ => (ImageSource)ClassEntryMethods.cImageKeyboardShowLight,
-            };
+                imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+                {
+                    AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardShowDark,
+                    _ => (ImageSource)ClassEntryMethods.cImageKeyboardShowLight,
+                };
+            }
         }
 
         /// <summary>

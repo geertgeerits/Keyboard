@@ -53,10 +53,14 @@
                 HorizontalOptions="End"
                 VerticalOptions="Center"
                 Margin="10"
+                IsVisible="False"
                 Clicked="ImgbtnToggleKeyboard_Clicked">
             </ImageButton>
         </Grid>
     </Shell.TitleView>
+
+    <!--Set the maximum length of the entry field: must be the length of the number + the decimal and group separators + the negative sign
+    Example: number -123456789012.12 = 16 characters, -123,456,789,012.12 = 19 characters-->
 
     <StackLayout>
         <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
@@ -66,7 +70,7 @@
             VerticalOptions="FillAndExpand">
             
             <Grid
-                ColumnDefinitions="*, *"
+                ColumnDefinitions="300, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
@@ -83,7 +87,9 @@
                         AutomationId="entTest1-Percentage"
                         FontSize="16"
                         FontAttributes="Bold"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - 100"
+                        MaxLength="6"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -106,7 +112,9 @@
                         AutomationId="entTest2"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - 999999999999.99"
+                        MaxLength="20"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -129,7 +137,9 @@
                         AutomationId="entTest3"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="-999999999999.99 - 999999999999.99"
+                        MaxLength="20"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
@@ -152,7 +162,9 @@
                         AutomationId="entTest4"  
                         FontSize="16"
                         FontAttributes="Bold"
+                        ClearButtonVisibility="WhileEditing"
                         Placeholder="-999999999999.99 - 999999999999.99"
+                        MaxLength="20"
                         Text=""
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  

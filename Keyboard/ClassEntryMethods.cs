@@ -10,6 +10,7 @@ namespace Keyboard
         public static readonly string cImageKeyboardHideLight = "keyboard_hide_32p_black.png";
         public static readonly string cImageKeyboardShowDark = "keyboard_32p_white.png";
         public static readonly string cImageKeyboardShowLight = "keyboard_32p_black.png";
+        public static bool bKeyboardToggleButton = true;
         public static string cKeyboard = "Custom";
         public static string cNumDecimalDigits = "";
         public static string cPercDecimalDigits = "";

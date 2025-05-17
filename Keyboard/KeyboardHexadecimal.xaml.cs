@@ -28,6 +28,9 @@ public partial class KeyboardHexadecimal : ContentPage
         //Globals.SetTheme();
         ClassEntryMethods.SetNumberColor();
 
+        // Show or hide the keyboard toggle button visibility
+        imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
+
         // Open the bottom sheet when the page appears depending on the device orientation
         string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
         Debug.WriteLine($"MainPage - Orientation: {cOrientation}");
@@ -107,12 +110,18 @@ public partial class KeyboardHexadecimal : ContentPage
     {
         if (sender is Entry entry)
         {
+            // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
+            _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+
+            // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
+            if (!ClassEntryMethods.bKeyboardToggleButton)
+            {
+                ShowBottomSheet();
+            }
+
             //entry.CursorPosition = entry.Text.Length;  // The full selection of the text is gone when the cursor position is set to the end of the text
 
             cEntryAutomationId = entry.AutomationId;
-
-            // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
-            _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
         }
     }
 
@@ -258,12 +267,14 @@ public partial class KeyboardHexadecimal : ContentPage
     /// <param name="e">An object that contains the event data.</param>
     private void KeyboardHexadecimal_Opened(object sender, EventArgs e)
     {
-        // Set the image source for the keyboard toggle button depending on the theme
-        imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+        if (ClassEntryMethods.bKeyboardToggleButton)
         {
-            AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardHideDark,
-            _ => (ImageSource)ClassEntryMethods.cImageKeyboardHideLight,
-        };
+            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+            {
+                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardHideDark,
+                _ => (ImageSource)ClassEntryMethods.cImageKeyboardHideLight,
+            };
+        }
     }
 
     /// <summary>
@@ -273,12 +284,14 @@ public partial class KeyboardHexadecimal : ContentPage
     /// <param name="e"></param>
     private void KeyboardHexadecimal_Closed(object sender, EventArgs e)
     {
-        // Set the image source for the keyboard toggle button depending on the theme
-        imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+        if (ClassEntryMethods.bKeyboardToggleButton)
         {
-            AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardShowDark,
-            _ => (ImageSource)ClassEntryMethods.cImageKeyboardShowLight,
-        };
+            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
+            {
+                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardShowDark,
+                _ => (ImageSource)ClassEntryMethods.cImageKeyboardShowLight,
+            };
+        }
     }
 
     /// <summary>
