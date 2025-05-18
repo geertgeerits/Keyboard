@@ -37,7 +37,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
         switch (cOrientation)
         {
             case "Landscape":
-                //CustomKeyboardDecimalLandscape.IsOpen = true;
+                CustomKeyboardDecimalLandscape.IsOpen = true;
                 break;
             default:
                 CustomKeyboardDecimalPortrait.IsOpen = true;
@@ -77,7 +77,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
         CustomKeyboardDecimalPortrait.IsOpen = false;
-        //CustomKeyboardDecimalLandscape.IsOpen = false;
+        CustomKeyboardDecimalLandscape.IsOpen = false;
     }
 
     /// <summary>
@@ -352,12 +352,12 @@ public partial class PageKeyboardDecimalSample : ContentPage
         {
             case "Landscape":
                 {
-                    //KeyboardNumericLandscape.IsOpen = !KeyboardNumericLandscape.IsOpen;
+                    CustomKeyboardDecimalLandscape.IsOpen = !CustomKeyboardDecimalLandscape.IsOpen;
                     break;
                 }
             default:
                 {
-                    //KeyboardNumericPortrait.IsOpen = !KeyboardNumericPortrait.IsOpen;
+                    CustomKeyboardDecimalPortrait.IsOpen = !CustomKeyboardDecimalPortrait.IsOpen;
                     break;
                 }
         }
@@ -377,12 +377,12 @@ public partial class PageKeyboardDecimalSample : ContentPage
             case "Landscape":
                 {
                     CustomKeyboardDecimalPortrait.IsOpen = false;
-                    //KeyboardNumericLandscape.IsOpen = true;
+                    CustomKeyboardDecimalLandscape.IsOpen = true;
                     break;
                 }
             default:
                 {
-                    //KeyboardNumericLandscape.IsOpen = false;
+                    CustomKeyboardDecimalLandscape.IsOpen = false;
                     CustomKeyboardDecimalPortrait.IsOpen = true;
                     break;
                 }

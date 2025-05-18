@@ -174,5 +174,13 @@
             Opened="KeyboardNumeric_Opened"
             Closed="KeyboardNumeric_Closed">
         </local:KeyboardDecimalPortrait>
+
+        <local:KeyboardDecimalLandscape
+            Style="{StaticResource BottomSheetKeyboard}"
+            x:Name="CustomKeyboardDecimalLandscape"
+            Opened="KeyboardNumeric_Opened"
+            Closed="KeyboardNumeric_Closed">
+        </local:KeyboardDecimalLandscape>
+
     </Grid>
 </ContentPage>

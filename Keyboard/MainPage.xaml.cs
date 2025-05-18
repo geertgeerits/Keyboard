@@ -605,8 +605,8 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
-            await Navigation.PushAsync(new PageKeyboardDecimalSample());
+            await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
+            //await Navigation.PushAsync(new PageKeyboardDecimalSample());
         }
     }
 
