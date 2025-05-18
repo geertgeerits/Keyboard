@@ -176,6 +176,7 @@ namespace Keyboard
 
             // Initialize the number format settings based on the current culture
             ClassEntryMethods.InitializeNumberFormat();
+            ClassEntryMethods.SetNumberColor();
 
             // Set the BindingContext to this (the current page)
             this.BindingContext = this;
@@ -193,9 +194,8 @@ namespace Keyboard
             ButtonDecimalPointText = ClassEntryMethods.cNumDecimalSeparator;
             ButtonMinusText = ClassEntryMethods.cNumNegativeSign;
 
-            // Set the theme and the number color
+            // Set the theme
             //Globals.SetTheme();
-            ClassEntryMethods.SetNumberColor();
 
             // Open the bottom sheet when this page appears depending on the device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";

@@ -42,6 +42,7 @@ namespace Keyboard
                 OnPropertyChanged();
             }
         }
+
         public string ButtonTwoText
         {
             get => _buttonTwoText;
@@ -51,6 +52,7 @@ namespace Keyboard
                 OnPropertyChanged();
             }
         }
+
         public string ButtonThreeText
         {
             get => _buttonThreeText;
@@ -60,6 +62,7 @@ namespace Keyboard
                 OnPropertyChanged();
             }
         }
+
         public string ButtonFourText
         {
             get => _buttonFourText;
@@ -69,6 +72,7 @@ namespace Keyboard
                 OnPropertyChanged();
             }
         }
+
         public string ButtonFiveText
         {
             get => _buttonFiveText;
@@ -142,9 +146,6 @@ namespace Keyboard
         public KeyboardDecimalPortrait()
         {
             InitializeComponent();
-
-            // Initialize the number format settings based on the current culture
-            ClassEntryMethods.InitializeNumberFormat();
 
             // Set the BindingContext to this (the current page)
             this.BindingContext = this;
