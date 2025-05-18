@@ -3,22 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
              xmlns:local="clr-namespace:Keyboard"  
              xmlns:bottomsheet="http://pluginmauibottomsheet.com"  
-             x:Class="Keyboard.NewPage1"  
-             Title="NewPage1">  
-      
-    <Grid>  
-        <!-- Your page content -->  
+             x:Class="Keyboard.PageKeyboardDecimalSample"  
+             Title="PageKeyboardDecimalSample">
+
+    <Grid>
+        <!-- Your page content -->
         <Label  
-            Text="NewPage1">  
-        </Label>  
-  
+            Text="PageKeyboardDecimalSample">
+        </Label>
+
         <!--<local:SomeBottomSheet
             x:Name="MyBottomSheet"
             Style="{StaticResource BottomSheetKeyboard}" />-->
 
         <local:SomeBottomSheet
-            x:Name="KeyboardDecimal"
+            x:Name="CustomKeyboardDecimal"
             Style="{StaticResource BottomSheetKeyboard}" />
 
-    </Grid>  
+    </Grid>
 </ContentPage>

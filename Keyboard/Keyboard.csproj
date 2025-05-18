@@ -86,7 +86,22 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="PageKeyboardHexadecimalSample.xaml.cs">
+	    <DependentUpon>PageKeyboardHexadecimalSample.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="KeyboardDecimal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="KeyboardHexadecimal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PageKeyboardDecimalSample.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PageKeyboardHexadecimalSample.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="NewPage1.xaml">

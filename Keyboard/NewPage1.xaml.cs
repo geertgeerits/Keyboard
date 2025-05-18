@@ -7,7 +7,8 @@ public partial class NewPage1 : ContentPage
 		InitializeComponent();
 
         // To open the bottom sheet
-        MyBottomSheet.IsOpen = true;
+        //MyBottomSheet.IsOpen = true;
+        KeyboardDecimal.IsOpen = true;
 
         // To close the bottom sheet
         //MyBottomSheet.IsOpen = false;
