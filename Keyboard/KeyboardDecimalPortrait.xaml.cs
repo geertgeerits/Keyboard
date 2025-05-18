@@ -6,7 +6,7 @@ using Plugin.Maui.BottomSheet.Hosting;
 
 namespace Keyboard
 {
-    public partial class KeyboardDecimal : Plugin.Maui.BottomSheet.BottomSheet
+    public partial class KeyboardDecimalPortrait : Plugin.Maui.BottomSheet.BottomSheet
     {
         // Declare variables
         private string _buttonZeroText = string.Empty;
@@ -139,7 +139,7 @@ namespace Keyboard
             }
         }
 
-        public KeyboardDecimal()
+        public KeyboardDecimalPortrait()
         {
             InitializeComponent();
 

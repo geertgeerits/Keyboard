@@ -86,13 +86,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="KeyboardDecimalPortrait.xaml.cs">
+	    <DependentUpon>KeyboardDecimalPortrait.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="PageKeyboardHexadecimalSample.xaml.cs">
 	    <DependentUpon>PageKeyboardHexadecimalSample.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="KeyboardDecimal.xaml">
+	  <MauiXaml Update="KeyboardDecimalPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="KeyboardHexadecimal.xaml">

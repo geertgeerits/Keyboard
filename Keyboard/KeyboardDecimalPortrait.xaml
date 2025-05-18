@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:bottomsheet="http://pluginmauibottomsheet.com"
     xmlns:local="clr-namespace:Keyboard"
-    x:Class="Keyboard.KeyboardDecimal"
+    x:Class="Keyboard.KeyboardDecimalPortrait"
     Padding="10">
 
     <bottomsheet:BottomSheet.Content>
@@ -32,7 +32,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnOne"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonOneText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonOneText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -45,7 +45,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnTwo"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonTwoText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonTwoText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -58,7 +58,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnThree"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonThreeText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonThreeText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -84,7 +84,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnFour"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonFourText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonFourText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -97,7 +97,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnFive"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonFiveText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonFiveText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -110,7 +110,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnSix"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonSixText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonSixText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -136,7 +136,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnSeven"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonSevenText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonSevenText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -149,7 +149,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnEight"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonEightText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonEightText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -162,7 +162,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnNine"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonNineText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonNineText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -175,7 +175,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnMinus"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonMinusText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonMinusText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -188,7 +188,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnZero"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonZeroText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonZeroText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -201,7 +201,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericPortraitButton}"
                                         AutomationId="btnDecimalPoint"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimal}}, Path=ButtonDecimalPointText}"
+                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalPortrait}}, Path=ButtonDecimalPointText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
