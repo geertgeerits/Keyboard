@@ -64,7 +64,6 @@
 	  <Compile Remove="KeyboardNumeric.xaml.cs" />
 	  <Compile Remove="KeyboardNumericLandscape.xaml.cs" />
 	  <Compile Remove="KeyboardNumericPortrait.xaml.cs" />
-	  <Compile Remove="SomeBottomSheet.xaml.cs" />
 	  <Compile Remove="SomeViewModel.cs" />
 	  <Compile Remove="ViewModel.cs" />
 	</ItemGroup>
@@ -73,7 +72,6 @@
 	  <MauiXaml Remove="KeyboardNumeric.xaml" />
 	  <MauiXaml Remove="KeyboardNumericLandscape.xaml" />
 	  <MauiXaml Remove="KeyboardNumericPortrait.xaml" />
-	  <MauiXaml Remove="SomeBottomSheet.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -89,6 +87,15 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="KeyboardHexadecimal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NewPage1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NewPage2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SomeBottomSheet.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

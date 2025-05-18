@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.16
-   Date ........: 2025-05-16 (YYYY-MM-DD)
+   Date ........: 2025-05-18 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -196,7 +196,7 @@ namespace Keyboard
             //Globals.SetTheme();
             ClassEntryMethods.SetNumberColor();
 
-            // Open the bottom sheet when the page appears depending on the device orientation
+            // Open the bottom sheet when this page appears depending on the device orientation
             string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
             Debug.WriteLine($"MainPage - Orientation: {cOrientation}");
 
@@ -606,6 +606,7 @@ namespace Keyboard
         private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new KeyboardHexadecimal());
+            //await Navigation.PushAsync(new NewPage1());
         }
     }
 

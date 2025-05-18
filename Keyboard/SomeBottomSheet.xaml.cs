@@ -3,8 +3,18 @@ using Plugin.Maui.BottomSheet.Hosting;
 
 namespace Keyboard
 {
-    public class SomeViewModel
+    public partial class SomeBottomSheet : Plugin.Maui.BottomSheet.BottomSheet
     {
-        public string Title => "I'm some BottomSheet!";
+        public SomeBottomSheet()
+        {
+            InitializeComponent();
+        }
+
+        private void BtnKey_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
     }
+
 }
