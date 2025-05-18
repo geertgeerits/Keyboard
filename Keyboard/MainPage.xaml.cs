@@ -66,6 +66,7 @@ namespace Keyboard
                 OnPropertyChanged();
             }
         }
+
         public string ButtonThreeText
         {
             get => _buttonThreeText;
@@ -158,7 +159,7 @@ namespace Keyboard
         {
             InitializeComponent();
 
-            // Register to receive messages of type StringMessage from the KeyboardNumericPortrait page
+            // Register to receive messages of type StringMessage from the keyboard bottom sheet
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
             {
                 // Display the received message in the UI, this method is called when a message is received
@@ -599,6 +600,16 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Open the page with the decimal keyboard when the button is clicked
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void BtnDecimal_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PageKeyboardDecimalSample());
+        }
+
+        /// <summary>
         /// Open the page with the hexadecimal keyboard when the button is clicked
         /// </summary>
         /// <param name="sender"></param>
@@ -606,7 +617,6 @@ namespace Keyboard
         private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
-            //await Navigation.PushAsync(new PageKeyboardDecimalSample());
         }
     }
 

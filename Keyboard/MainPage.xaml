@@ -12,7 +12,7 @@
 
     <Shell.TitleView>
         <Grid
-            ColumnDefinitions="*, 60, 60"
+            ColumnDefinitions="*, 60, 60, 60"
             RowDefinitions="*"
             Padding="0">
             
@@ -25,13 +25,28 @@
                 FontAttributes="Bold"  
                 Margin="10"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                Text="Keyboard decimal">
+                Text="Keyboard">
             </Label>
-
 
             <Border
                 Style="{StaticResource KeyBorder}"
                 Grid.Column="1"
+                Grid.Row="0"
+                Stroke="DarkGray">
+
+                <Button
+                    BackgroundColor="Transparent"
+                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
+                    FontSize="16"
+                    FontAttributes="Bold"
+                    Text="Decimal keyboard"
+                    Clicked="BtnDecimal_Clicked">
+                </Button>
+            </Border>
+
+            <Border
+                Style="{StaticResource KeyBorder}"
+                Grid.Column="2"
                 Grid.Row="0"
                 Stroke="DarkGray">
 
@@ -48,7 +63,7 @@
             <ImageButton
                 x:Name="imgbtnToggleKeyboard"
                 Style="{StaticResource ToggleKeyboardImageButton}"
-                Grid.Column="2"  
+                Grid.Column="3"  
                 Grid.Row="0"
                 HorizontalOptions="End"
                 VerticalOptions="Center"

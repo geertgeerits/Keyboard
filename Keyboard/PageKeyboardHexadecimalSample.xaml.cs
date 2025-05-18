@@ -15,7 +15,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         // Subscribe to orientation changes
         DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
-        // Register to receive messages of type StringMessage from the Keyboard page
+        // Register to receive messages of type StringMessage from the keyboard bottom sheet
         WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
         {
             // Display the received message in the UI, this method is called when a message is received

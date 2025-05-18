@@ -161,10 +161,6 @@ namespace Keyboard
             ButtonNineText = ClassEntryMethods.cNumNativeDigits.Substring(9, 1);
             ButtonDecimalPointText = ClassEntryMethods.cNumDecimalSeparator;
             ButtonMinusText = ClassEntryMethods.cNumNegativeSign;
-
-            // Set the theme and the number color
-            //Globals.SetTheme();
-            //ClassEntryMethods.SetNumberColor();
         }
 
         /// <summary>

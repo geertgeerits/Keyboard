@@ -14,7 +14,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
 	{
 		InitializeComponent();
 
-        // Register to receive messages of type StringMessage from the KeyboardNumericPortrait page
+        // Register to receive messages of type StringMessage from the keyboard bottom sheet
         WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
         {
             // Display the received message in the UI, this method is called when a message is received
@@ -129,7 +129,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
             // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
             if (!ClassEntryMethods.bKeyboardToggleButton)
             {
-                //ShowBottomSheet();
+                ShowBottomSheet();
             }
 
             if (bEntryCompleted)
@@ -387,16 +387,5 @@ public partial class PageKeyboardDecimalSample : ContentPage
                     break;
                 }
         }
-    }
-     
-    /// <summary>
-    /// Open the page with the hexadecimal keyboard when the button is clicked
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
-    {
-        //await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
-        await Navigation.PushAsync(new PageKeyboardDecimalSample());
     }
 }
