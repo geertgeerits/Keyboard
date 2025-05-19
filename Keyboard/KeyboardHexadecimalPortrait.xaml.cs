@@ -1,7 +1,4 @@
 using CommunityToolkit.Mvvm.Messaging;
-using CommunityToolkit.Mvvm.Messaging.Messages;
-using Plugin.Maui.BottomSheet;
-using Plugin.Maui.BottomSheet.Hosting;
 using System.Diagnostics;
 
 namespace Keyboard
@@ -14,7 +11,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
+        /// This method is called when a button is clicked, it sends a message with the key pressed to the page
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -51,7 +48,7 @@ namespace Keyboard
                 cKeyPressed = imageButton.AutomationId;
             }
 
-            // Send the message with the key pressed to the MainPage
+            // Send the message with the key pressed to the page
             try
             {
                 WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));

@@ -310,7 +310,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">An object that contains the event data.</param>
-    private void KeyboardNumeric_Opened(object sender, EventArgs e)
+    private void KeyboardDecimal_Opened(object sender, EventArgs e)
     {
         if (ClassEntryMethods.bKeyboardToggleButton)
         {
@@ -327,7 +327,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void KeyboardNumeric_Closed(object sender, EventArgs e)
+    private void KeyboardDecimal_Closed(object sender, EventArgs e)
     {
         if (ClassEntryMethods.bKeyboardToggleButton)
         {

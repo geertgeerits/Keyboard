@@ -23,7 +23,7 @@
                 VerticalOptions="Center"
                 FontSize="16"  
                 FontAttributes="Bold"  
-                Margin="10"
+                Margin="0"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                 Text="Keyboard">
             </Label>
@@ -206,15 +206,15 @@
         <local:KeyboardDecimalPortrait
             Style="{StaticResource BottomSheetKeyboard}"
             x:Name="CustomKeyboardDecimalPortrait"
-            Opened="KeyboardNumeric_Opened"
-            Closed="KeyboardNumeric_Closed">
+            Opened="KeyboardDecimal_Opened"
+            Closed="KeyboardDecimal_Closed">
         </local:KeyboardDecimalPortrait>
 
         <local:KeyboardDecimalLandscape
             Style="{StaticResource BottomSheetKeyboard}"
             x:Name="CustomKeyboardDecimalLandscape"
-            Opened="KeyboardNumeric_Opened"
-            Closed="KeyboardNumeric_Closed">
+            Opened="KeyboardDecimal_Opened"
+            Closed="KeyboardDecimal_Closed">
         </local:KeyboardDecimalLandscape>
 
     </Grid>

@@ -23,7 +23,7 @@
                 VerticalOptions="Center"
                 FontSize="16"  
                 FontAttributes="Bold"  
-                Margin="10"
+                Margin="0"
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                 Text="Keyboard hexadecimal">
             </Label>

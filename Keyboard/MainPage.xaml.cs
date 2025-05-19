@@ -334,7 +334,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">An object that contains the event data.</param>
-        private void KeyboardNumeric_Opened(object sender, EventArgs e)
+        private void KeyboardDecimal_Opened(object sender, EventArgs e)
         {
             if (ClassEntryMethods.bKeyboardToggleButton)
             {
@@ -351,7 +351,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void KeyboardNumeric_Closed(object sender, EventArgs e)
+        private void KeyboardDecimal_Closed(object sender, EventArgs e)
         {
             if (ClassEntryMethods.bKeyboardToggleButton)
             {
@@ -412,49 +412,6 @@ namespace Keyboard
                         CustomKeyboardDecimalPortrait.IsOpen = true;
                         break;
                     }
-            }
-        }
-
-        /// <summary>
-        /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnKey_Clicked(object sender, EventArgs e)
-        {
-            string cKeyPressed = string.Empty;
-
-            if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
-            {
-                cKeyPressed = button.AutomationId switch
-                {
-                    "btnZero" => ClassEntryMethods.cNumNativeDigits[..1],
-                    "btnOne" => ClassEntryMethods.cNumNativeDigits.Substring(1, 1),
-                    "btnTwo" => ClassEntryMethods.cNumNativeDigits.Substring(2, 1),
-                    "btnThree" => ClassEntryMethods.cNumNativeDigits.Substring(3, 1),
-                    "btnFour" => ClassEntryMethods.cNumNativeDigits.Substring(4, 1),
-                    "btnFive" => ClassEntryMethods.cNumNativeDigits.Substring(5, 1),
-                    "btnSix" => ClassEntryMethods.cNumNativeDigits.Substring(6, 1),
-                    "btnSeven" => ClassEntryMethods.cNumNativeDigits.Substring(7, 1),
-                    "btnEight" => ClassEntryMethods.cNumNativeDigits.Substring(8, 1),
-                    "btnNine" => ClassEntryMethods.cNumNativeDigits.Substring(9, 1),
-                    _ => button.AutomationId,
-                };
-            }
-
-            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
-            {
-                cKeyPressed = imageButton.AutomationId;
-            }
-
-            // Send the message with the key pressed to the MainPage
-            try
-            {
-                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error sending message: {ex.Message}");
             }
         }
 
