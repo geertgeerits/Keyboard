@@ -14,6 +14,9 @@ public partial class PageKeyboardDecimalSample : ContentPage
 	{
 		InitializeComponent();
 
+        // Subscribe to orientation changes
+        DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
         // Register to receive messages of type StringMessage from the keyboard bottom sheet
         WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
         {

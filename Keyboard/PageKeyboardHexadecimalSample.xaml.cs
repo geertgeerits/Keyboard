@@ -24,11 +24,11 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
             Debug.WriteLine($"Received message: {message.Value}");
         });
 
-        // Set the theme
-        //Globals.SetTheme();
-
         // Show or hide the keyboard toggle button visibility
         imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
+
+        // Set the theme
+        //Globals.SetTheme();
 
         // Open the bottom sheet when the page appears depending on the device orientation
         string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
@@ -37,12 +37,26 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         switch (cOrientation)
         {
             case "Landscape":
-                KeyboardHexadecimalLandscape.IsOpen = true;
+                CustomKeyboardHexadecimalLandscape.IsOpen = true;
                 break;
             default:
-                KeyboardHexadecimalPortrait.IsOpen = true;
+                CustomKeyboardHexadecimalPortrait.IsOpen = true;
                 break;
         }
+    }
+
+    // Subscribe to orientation changes
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+    }
+
+    // Unsubscribe to orientation changes - if you don't do this, the event will be called if you are on another page
+    protected override void OnDisappearing()
+    {
+        base.OnDisappearing();
+        DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
     }
 
     /// <summary>
@@ -62,8 +76,8 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
     /// <param name="e"></param>
     private void ContentPage_Disappearing(object sender, EventArgs e)
     {
-        KeyboardHexadecimalPortrait.IsOpen = false;
-        KeyboardHexadecimalLandscape.IsOpen = false;
+        CustomKeyboardHexadecimalPortrait.IsOpen = false;
+        CustomKeyboardHexadecimalLandscape.IsOpen = false;
     }
 
     /// <summary>
@@ -259,6 +273,8 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         return currentText;
     }
 
+
+
     /// <summary>
     /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is opened
     /// </summary>
@@ -308,12 +324,12 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         {
             case "Landscape":
                 {
-                    KeyboardHexadecimalLandscape.IsOpen = !KeyboardHexadecimalLandscape.IsOpen;
+                    CustomKeyboardHexadecimalLandscape.IsOpen = !CustomKeyboardHexadecimalLandscape.IsOpen;
                     break;
                 }
             default:
                 {
-                    KeyboardHexadecimalPortrait.IsOpen = !KeyboardHexadecimalPortrait.IsOpen;
+                    CustomKeyboardHexadecimalPortrait.IsOpen = !CustomKeyboardHexadecimalPortrait.IsOpen;
                     break;
                 }
         }
@@ -332,65 +348,16 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         {
             case "Landscape":
                 {
-                    KeyboardHexadecimalPortrait.IsOpen = false;
-                    KeyboardHexadecimalLandscape.IsOpen = true;
+                    CustomKeyboardHexadecimalPortrait.IsOpen = false;
+                    CustomKeyboardHexadecimalLandscape.IsOpen = true;
                     break;
                 }
             default:
                 {
-                    KeyboardHexadecimalLandscape.IsOpen = false;
-                    KeyboardHexadecimalPortrait.IsOpen = true;
+                    CustomKeyboardHexadecimalLandscape.IsOpen = false;
+                    CustomKeyboardHexadecimalPortrait.IsOpen = true;
                     break;
                 }
-        }
-    }
-
-    /// <summary>
-    /// This method is called when a button is clicked, it sends a message with the key pressed to the MainPage
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void BtnKey_Clicked(object sender, EventArgs e)
-    {
-        string cKeyPressed = string.Empty;
-
-        if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
-        {
-            cKeyPressed = button.AutomationId switch
-            {
-                "btnZero" => "0",
-                "btnOne" => "1",
-                "btnTwo" => "2",
-                "btnThree" => "3",
-                "btnFour" => "4",
-                "btnFive" => "5",
-                "btnSix" => "6",
-                "btnSeven" => "7",
-                "btnEight" => "8",
-                "btnNine" => "9",
-                "btnA" => "A",
-                "btnB" => "B",
-                "btnC" => "C",
-                "btnD" => "D",
-                "btnE" => "E",
-                "btnF" => "F",
-                _ => button.AutomationId,
-            };
-        }
-
-        if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
-        {
-            cKeyPressed = imageButton.AutomationId;
-        }
-
-        // Send the message with the key pressed to the MainPage
-        try
-        {
-            WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
-        }
-        catch (Exception ex)
-        {
-            Debug.WriteLine($"Error sending message: {ex.Message}");
         }
     }
 }
