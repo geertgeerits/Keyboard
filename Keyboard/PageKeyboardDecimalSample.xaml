@@ -162,7 +162,7 @@
                     Grid.Row="5"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    Text="Keyboard">
+                    Text="PageKeyboardDecimalSample">
                 </Label>
 
             </Grid>

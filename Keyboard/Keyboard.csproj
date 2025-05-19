@@ -108,7 +108,10 @@
 	  <MauiXaml Update="KeyboardDecimalPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="KeyboardHexadecimal.xaml">
+	  <MauiXaml Update="KeyboardHexadecimalLandscape.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="KeyboardHexadecimalPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PageKeyboardDecimalSample.xaml">

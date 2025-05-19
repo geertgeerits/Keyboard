@@ -8,7 +8,7 @@
     Appearing="ContentPage_Appearing"
     Disappearing="ContentPage_Disappearing"
     Loaded="OnPageLoaded"
-    Shell.BackgroundColor="{AppThemeBinding Light=LightGreen, Dark=Green}">
+    Shell.BackgroundColor="{AppThemeBinding Light=Orange, Dark=DarkOrange}">
 
     <Shell.TitleView>
         <Grid
@@ -197,7 +197,7 @@
                     Grid.Row="5"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    Text="Keyboard">
+                    Text="MainPage">
                 </Label>
                                 
             </Grid>
