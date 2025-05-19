@@ -26,9 +26,8 @@ public partial class PageKeyboardDecimalSample : ContentPage
         // Show or hide the keyboard toggle button visibility
         imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
 
-        // Set the theme and the number color
+        // Set the theme
         //Globals.SetTheme();
-        ClassEntryMethods.SetNumberColor();
 
         // Open the bottom sheet when this page appears depending on the device orientation
         string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";

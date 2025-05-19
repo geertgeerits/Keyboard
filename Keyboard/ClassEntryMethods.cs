@@ -105,6 +105,9 @@ namespace Keyboard
             // Set the allowed characters for numeric input
             cDecimalCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
             Debug.WriteLine($"cDecimalCharacters: {cDecimalCharacters}");
+
+            // Set the entry text color to a different color for a negative and a positive number
+            SetNumberColor();
         }
 
         /// <summary>

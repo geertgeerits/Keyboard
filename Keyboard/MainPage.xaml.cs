@@ -26,9 +26,8 @@ namespace Keyboard
 
         public MainPage()
         {
-            // Initialize the number format settings based on the current culture - must be placed before InitializeComponent()
+            // Initialize the number format settings based on the current culture - must be placed on the MainPage before InitializeComponent()
             ClassEntryMethods.InitializeNumberFormat();
-            ClassEntryMethods.SetNumberColor();
 
             try
             {

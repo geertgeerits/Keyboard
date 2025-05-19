@@ -24,9 +24,8 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
             Debug.WriteLine($"Received message: {message.Value}");
         });
 
-        // Set the theme and the number color
+        // Set the theme
         //Globals.SetTheme();
-        ClassEntryMethods.SetNumberColor();
 
         // Show or hide the keyboard toggle button visibility
         imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
