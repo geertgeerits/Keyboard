@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.16
-   Date ........: 2025-05-18 (YYYY-MM-DD)
+   Date ........: 2025-05-19 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -24,140 +24,20 @@ namespace Keyboard
         private string cEntryAutomationId = string.Empty;
         private bool bEntryCompleted;
 
-        private string _buttonZeroText = string.Empty;
-        private string _buttonOneText = string.Empty;
-        private string _buttonTwoText = string.Empty;
-        private string _buttonThreeText = string.Empty;
-        private string _buttonFourText = string.Empty;
-        private string _buttonFiveText = string.Empty;
-        private string _buttonSixText = string.Empty;
-        private string _buttonSevenText = string.Empty;
-        private string _buttonEightText = string.Empty;
-        private string _buttonNineText = string.Empty;
-        private string _buttonDecimalPointText = string.Empty;
-        private string _buttonMinusText = string.Empty;
-
-        // Properties for the button texts of the keyboard
-        public string ButtonZeroText
-        {
-            get => _buttonZeroText;
-            set
-            {
-                _buttonZeroText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonOneText
-        {
-            get => _buttonOneText;
-            set
-            {
-                _buttonOneText = value;
-                OnPropertyChanged();
-            }
-        }
-        public string ButtonTwoText
-        {
-            get => _buttonTwoText;
-            set
-            {
-                _buttonTwoText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonThreeText
-        {
-            get => _buttonThreeText;
-            set
-            {
-                _buttonThreeText = value;
-                OnPropertyChanged();
-            }
-        }
-        public string ButtonFourText
-        {
-            get => _buttonFourText;
-            set
-            {
-                _buttonFourText = value;
-                OnPropertyChanged();
-            }
-        }
-        public string ButtonFiveText
-        {
-            get => _buttonFiveText;
-            set
-            {
-                _buttonFiveText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonSixText
-        {
-            get => _buttonSixText;
-            set
-            {
-                _buttonSixText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonSevenText
-        {
-            get => _buttonSevenText;
-            set
-            {
-                _buttonSevenText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonEightText
-        {
-            get => _buttonEightText;
-            set
-            {
-                _buttonEightText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonNineText
-        {
-            get => _buttonNineText;
-            set
-            {
-                _buttonNineText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonDecimalPointText
-        {
-            get => _buttonDecimalPointText;
-            set
-            {
-                _buttonDecimalPointText = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonMinusText
-        {
-            get => _buttonMinusText;
-            set
-            {
-                _buttonMinusText = value;
-                OnPropertyChanged();
-            }
-        }
-
         public MainPage()
         {
-            InitializeComponent();
+            // Initialize the number format settings based on the current culture - must be placed before InitializeComponent()
+            ClassEntryMethods.InitializeNumberFormat();
+            ClassEntryMethods.SetNumberColor();
+
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error initializing MainPage: {ex.Message}\n{ex.StackTrace}");
+            }
 
             // Register to receive messages of type StringMessage from the keyboard bottom sheet
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
@@ -174,26 +54,6 @@ namespace Keyboard
             // Show or hide the keyboard toggle button visibility
             imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
 
-            // Initialize the number format settings based on the current culture
-            ClassEntryMethods.InitializeNumberFormat();
-            ClassEntryMethods.SetNumberColor();
-
-            // Set the BindingContext to this (the current page)
-            this.BindingContext = this;
-
-            ButtonZeroText = ClassEntryMethods.cNumNativeDigits[..1];
-            ButtonOneText = ClassEntryMethods.cNumNativeDigits.Substring(1, 1);
-            ButtonTwoText = ClassEntryMethods.cNumNativeDigits.Substring(2, 1);
-            ButtonThreeText = ClassEntryMethods.cNumNativeDigits.Substring(3, 1);
-            ButtonFourText = ClassEntryMethods.cNumNativeDigits.Substring(4, 1);
-            ButtonFiveText = ClassEntryMethods.cNumNativeDigits.Substring(5, 1);
-            ButtonSixText = ClassEntryMethods.cNumNativeDigits.Substring(6, 1);
-            ButtonSevenText = ClassEntryMethods.cNumNativeDigits.Substring(7, 1);
-            ButtonEightText = ClassEntryMethods.cNumNativeDigits.Substring(8, 1);
-            ButtonNineText = ClassEntryMethods.cNumNativeDigits.Substring(9, 1);
-            ButtonDecimalPointText = ClassEntryMethods.cNumDecimalSeparator;
-            ButtonMinusText = ClassEntryMethods.cNumNegativeSign;
-
             // Set the theme
             //Globals.SetTheme();
 
@@ -204,10 +64,10 @@ namespace Keyboard
             switch (cOrientation)
             {
                 case "Landscape":
-                    KeyboardNumericLandscape.IsOpen = true;
+                    CustomKeyboardDecimalLandscape.IsOpen = true;
                     break;
                 default:
-                    KeyboardNumericPortrait.IsOpen = true;
+                    CustomKeyboardDecimalPortrait.IsOpen = true;
                     break;
             }
         }
@@ -243,8 +103,8 @@ namespace Keyboard
         /// <param name="e"></param>
         private void ContentPage_Disappearing(object sender, EventArgs e)
         {
-            KeyboardNumericPortrait.IsOpen = false;
-            KeyboardNumericLandscape.IsOpen = false;
+            CustomKeyboardDecimalPortrait.IsOpen = false;
+            CustomKeyboardDecimalLandscape.IsOpen = false;
         }
 
         /// <summary>
@@ -519,12 +379,12 @@ namespace Keyboard
             {
                 case "Landscape":
                     {
-                        KeyboardNumericLandscape.IsOpen = !KeyboardNumericLandscape.IsOpen;
+                        CustomKeyboardDecimalLandscape.IsOpen = !CustomKeyboardDecimalLandscape.IsOpen;
                         break;
                     }
                 default:
                     {
-                        KeyboardNumericPortrait.IsOpen = !KeyboardNumericPortrait.IsOpen;
+                        CustomKeyboardDecimalPortrait.IsOpen = !CustomKeyboardDecimalPortrait.IsOpen;
                         break;
                     }
             }
@@ -543,14 +403,14 @@ namespace Keyboard
             {
                 case "Landscape":
                     {
-                        KeyboardNumericPortrait.IsOpen = false;
-                        KeyboardNumericLandscape.IsOpen = true;
+                        CustomKeyboardDecimalPortrait.IsOpen = false;
+                        CustomKeyboardDecimalLandscape.IsOpen = true;
                         break;
                     }
                 default:
                     {
-                        KeyboardNumericLandscape.IsOpen = false;
-                        KeyboardNumericPortrait.IsOpen = true;
+                        CustomKeyboardDecimalLandscape.IsOpen = false;
+                        CustomKeyboardDecimalPortrait.IsOpen = true;
                         break;
                     }
             }
@@ -621,7 +481,7 @@ namespace Keyboard
     }
 
     /// <summary>
-    /// This class is used to send a message with a string value when a key is pressed on the keyboard
+    /// This class is used to send a message with a string value when a key is pressed on the keyboard - only used in the MainPage.xaml.cs
     /// </summary>
     /// <param name="value"></param>
     public class StringMessage(string value) : ValueChangedMessage<string>(value)

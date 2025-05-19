@@ -44,7 +44,6 @@ namespace Keyboard
             //#endif
             //            });
 
-
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
