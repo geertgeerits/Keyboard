@@ -1,7 +1,7 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
-   Version .....: 1.0.16
+   Version .....: 1.0.17
    Date ........: 2025-05-19 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
