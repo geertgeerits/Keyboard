@@ -17,15 +17,6 @@ public partial class PageKeyboardDecimalSample : ContentPage
         // Subscribe to orientation changes
         DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
-        // Register to receive messages of type StringMessage from the keyboard bottom sheet
-        WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
-        {
-            // Display the received message in the UI, this method is called when a message is received
-            BtnKeyboardClicked(message.Value);
-
-            Debug.WriteLine($"Received message: {message.Value}");
-        });
-
         // Show or hide the keyboard toggle button visibility
         imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
 
@@ -47,18 +38,36 @@ public partial class PageKeyboardDecimalSample : ContentPage
         }
     }
 
-    // Subscribe to orientation changes
+    /// <summary>
+    /// Subscribe to orientation changes and register to receive messages 
+    /// </summary>
     protected override void OnAppearing()
     {
         base.OnAppearing();
         DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
+        // Register to receive messages of type StringMessage from the keyboard bottom sheet
+        WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
+        {
+            // Display the received message in the UI, this method is called when a message is received
+            BtnKeyboardClicked(message.Value);
+
+            Debug.WriteLine($"Received message: {message.Value}");
+        });
     }
 
-    // Unsubscribe to orientation changes - if you don't do this, the event will be called if you are on another page
+    /// <summary>
+    /// Unsubscribe to orientation changes and unregister the message receiver
+    /// </summary>
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
+
+        // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
         DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
+
+        // Unregister the message receiver to avoid memory leaks - if you don't do this, this receiver will be called if you are on another page
+        WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
     }
 
     /// <summary>
