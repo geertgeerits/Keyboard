@@ -5,8 +5,6 @@
     xmlns:local="clr-namespace:Keyboard"
     xmlns:bottomsheet="http://pluginmauibottomsheet.com"
     x:Class="Keyboard.PageKeyboardHexadecimalSample"
-    Appearing="ContentPage_Appearing"
-    Disappearing="ContentPage_Disappearing"
     Loaded="OnPageLoaded"
     Shell.BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=Blue}">
 

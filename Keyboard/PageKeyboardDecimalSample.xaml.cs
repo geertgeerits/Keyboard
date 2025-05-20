@@ -19,31 +19,16 @@ public partial class PageKeyboardDecimalSample : ContentPage
 
         // Show or hide the keyboard toggle button visibility
         imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
-
-        // Set the theme
-        //Globals.SetTheme();
-
-        // Open the bottom sheet when this page appears depending on the device orientation
-        string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
-        Debug.WriteLine($"MainPage - Orientation: {cOrientation}");
-
-        switch (cOrientation)
-        {
-            case "Landscape":
-                CustomKeyboardDecimalLandscape.IsOpen = true;
-                break;
-            default:
-                CustomKeyboardDecimalPortrait.IsOpen = true;
-                break;
-        }
     }
 
     /// <summary>
-    /// Subscribe to orientation changes and register to receive messages 
+    /// To do when the page is appearing
     /// </summary>
     protected override void OnAppearing()
     {
         base.OnAppearing();
+
+        // Subscribe to orientation changes
         DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
         // Register to receive messages of type StringMessage from the keyboard bottom sheet
@@ -54,10 +39,13 @@ public partial class PageKeyboardDecimalSample : ContentPage
 
             Debug.WriteLine($"Received message: {message.Value}");
         });
+
+        // Show the bottom sheet when the page is appearing
+        ShowBottomSheet();
     }
 
     /// <summary>
-    /// Unsubscribe to orientation changes and unregister the message receiver
+    /// To do when the page is disappearing
     /// </summary>
     protected override void OnDisappearing()
     {
@@ -68,27 +56,20 @@ public partial class PageKeyboardDecimalSample : ContentPage
 
         // Unregister the message receiver to avoid memory leaks - if you don't do this, this receiver will be called if you are on another page
         WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
-    }
 
-    /// <summary>
-    /// Show the bottom sheet when the page is appearing
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void ContentPage_Appearing(object sender, EventArgs e)
-    {
-        ShowBottomSheet();
-    }
-
-    /// <summary>
-    /// Hide the bottom sheet when the page is disappearing
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void ContentPage_Disappearing(object sender, EventArgs e)
-    {
+        // Hide the bottom sheet when the page is disappearing
         CustomKeyboardDecimalPortrait.IsOpen = false;
         CustomKeyboardDecimalLandscape.IsOpen = false;
+    }
+
+    /// <summary>
+    /// Set focus to the first entry field - Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void OnPageLoaded(object sender, EventArgs e)
+    {
+        _ = entTest1.Focus();
     }
 
     /// <summary>
@@ -113,16 +94,6 @@ public partial class PageKeyboardDecimalSample : ContentPage
     private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
     {
         ShowBottomSheet();
-    }
-
-    /// <summary>
-    /// Set focus to the first entry field - Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void OnPageLoaded(object sender, EventArgs e)
-    {
-        _ = entTest1.Focus();
     }
 
     /// <summary>

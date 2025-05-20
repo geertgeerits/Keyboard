@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.17
-   Date ........: 2025-05-19 (YYYY-MM-DD)
+   Date ........: 2025-05-20 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -12,7 +12,6 @@
 
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
-using Microsoft.Maui.Controls;
 using Plugin.Maui.BottomSheet;
 using Plugin.Maui.BottomSheet.Hosting;
 using System.Diagnostics;
@@ -44,31 +43,16 @@ namespace Keyboard
 
             // Show or hide the keyboard toggle button visibility
             imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
-
-            // Set the theme
-            //Globals.SetTheme();
-
-            // Open the bottom sheet when this page appears depending on the device orientation
-            string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
-            Debug.WriteLine($"MainPage - Orientation: {cOrientation}");
-
-            switch (cOrientation)
-            {
-                case "Landscape":
-                    CustomKeyboardDecimalLandscape.IsOpen = true;
-                    break;
-                default:
-                    CustomKeyboardDecimalPortrait.IsOpen = true;
-                    break;
-            }
         }
 
         /// <summary>
-        /// Subscribe to orientation changes and register to receive messages 
+        /// To do when the page is appearing
         /// </summary>
         protected override void OnAppearing()
         {
             base.OnAppearing();
+
+            // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
             // Register to receive messages of type StringMessage from the keyboard bottom sheet
@@ -79,10 +63,13 @@ namespace Keyboard
 
                 Debug.WriteLine($"Received message: {message.Value}");
             });
+
+            // Show the bottom sheet when the page is appearing
+            ShowBottomSheet();
         }
 
         /// <summary>
-        /// Unsubscribe to orientation changes and unregister the message receiver
+        /// To do when the page is disappearing
         /// </summary>
         protected override void OnDisappearing()
         {
@@ -93,27 +80,20 @@ namespace Keyboard
 
             // Unregister the message receiver to avoid memory leaks - if you don't do this, this receiver will be called if you are on another page
             WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
-        }
 
-        /// <summary>
-        /// Show the bottom sheet when the page is appearing
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ContentPage_Appearing(object sender, EventArgs e)
-        {
-            ShowBottomSheet();
-        }
-
-        /// <summary>
-        /// Hide the bottom sheet when the page is disappearing
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ContentPage_Disappearing(object sender, EventArgs e)
-        {
+            // Hide the bottom sheet when the page is disappearing
             CustomKeyboardDecimalPortrait.IsOpen = false;
             CustomKeyboardDecimalLandscape.IsOpen = false;
+        }
+
+        /// <summary>
+        /// Set focus to the first entry field - Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnPageLoaded(object sender, EventArgs e)
+        {
+            _ = entTest1.Focus();
         }
 
         /// <summary>
@@ -138,16 +118,6 @@ namespace Keyboard
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
             ShowBottomSheet();
-        }
-
-        /// <summary>
-        /// Set focus to the first entry field - Add in the header of the xaml page: 'Loaded="OnPageLoaded"' 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnPageLoaded(object sender, EventArgs e)
-        {
-            _ = entTest1.Focus();
         }
 
         /// <summary>
