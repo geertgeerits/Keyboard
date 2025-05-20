@@ -1,5 +1,4 @@
 using CommunityToolkit.Mvvm.Messaging;
-using CommunityToolkit.Mvvm.Messaging.Messages;
 using System.Diagnostics;
 
 namespace Keyboard;
@@ -18,7 +17,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
         DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
         // Show or hide the keyboard toggle button visibility
-        imgbtnToggleKeyboard.IsVisible = ClassEntryMethods.bKeyboardToggleButton;
+        imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
     }
 
     /// <summary>
@@ -73,20 +72,6 @@ public partial class PageKeyboardDecimalSample : ContentPage
     }
 
     /// <summary>
-    /// Get the current device orientation
-    /// </summary>
-    /// <returns></returns>
-    public static DisplayOrientation GetDeviceOrientation()
-    {
-        // Get the current display information
-        var displayInfo = DeviceDisplay.MainDisplayInfo;
-
-        // Return the orientation
-        Debug.WriteLine($"DisplayOrientation: {displayInfo.Orientation}");
-        return displayInfo.Orientation;
-    }
-
-    /// <summary>
     /// This method is called when the display information changes, it handles the orientation change
     /// </summary>
     /// <param name="sender"></param>
@@ -109,7 +94,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
             _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
 
             // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
-            if (!ClassEntryMethods.bKeyboardToggleButton)
+            if (!ClassKeyboardMethods.bKeyboardToggleButton)
             {
                 ShowBottomSheet();
             }
@@ -207,82 +192,16 @@ public partial class PageKeyboardDecimalSample : ContentPage
 
         if (focusedEntry != null)
         {
-            switch (cKey)
+            if (cKey == "btnReturn")
             {
-                case "btnReturn":
-                    GoToNextField(focusedEntry, null);
-                    return;
-                case "btnBackspace":
-                    focusedEntry.Text = DeleteCharacterBeforeCursor(focusedEntry);
-                    break;
-                case "btnMinus":
-                    if (!focusedEntry.Text.Contains(ClassEntryMethods.cNumNegativeSign))
-                    {
-                        focusedEntry.Text = ClassEntryMethods.cNumNegativeSign + focusedEntry.Text;
-                    }
-                    break;
-                case "btnDecimalPoint":
-                    if (!focusedEntry.Text.Contains(ClassEntryMethods.cNumDecimalSeparator))
-                    {
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, ClassEntryMethods.cNumDecimalSeparator);
-                    }
-                    break;
-                default:
-                    focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, cKey);
-                    break;
+                GoToNextField(focusedEntry, null);
+            }
+            else
+            {
+                ClassKeyboardMethods _keyboardMethods = new ClassKeyboardMethods();
+                _keyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
             }
         }
-    }
-
-    /// <summary>
-    /// Inserts a character at the current cursor position in the Entry field.
-    /// </summary>
-    /// <param name="entry"></param>
-    /// <param name="cCharacter"></param>
-    /// <returns></returns>
-    private static string InsertCharacterInEntryField(Entry entry, string cCharacter)
-    {
-        // Get the current text in the Entry
-        string currentText = entry.Text ?? string.Empty;
-
-        // Insert the character at the cursor position
-        string newText = currentText.Insert(entry.CursorPosition, cCharacter);
-
-        // Update the Entry's text
-        entry.Text = newText;
-
-        // Move the cursor to the position after the inserted character
-        entry.CursorPosition++;
-
-        return newText;
-    }
-
-    /// <summary>
-    /// Deletes the character before the current cursor position in the Entry field.
-    /// </summary>
-    /// <param name="entry"></param>
-    /// <returns></returns>
-    private static string DeleteCharacterBeforeCursor(Entry entry)
-    {
-        // Get the current text in the Entry
-        string currentText = entry.Text ?? string.Empty;
-
-        // Ensure there is a character to delete and the cursor is not at the start
-        if (entry.CursorPosition > 0 && currentText.Length > 0)
-        {
-            // Remove the character before the cursor position
-            string newText = currentText.Remove(entry.CursorPosition - 1, 1);
-
-            // Update the Entry's text
-            entry.Text = newText;
-
-            // Move the cursor to the position before the deleted character
-            //entry.CursorPosition--;
-
-            return newText;
-        }
-
-        return currentText;
     }
 
     /// <summary>
@@ -292,12 +211,12 @@ public partial class PageKeyboardDecimalSample : ContentPage
     /// <param name="e">An object that contains the event data.</param>
     private void KeyboardDecimal_Opened(object sender, EventArgs e)
     {
-        if (ClassEntryMethods.bKeyboardToggleButton)
+        if (ClassKeyboardMethods.bKeyboardToggleButton)
         {
             imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
             {
-                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardHideDark,
-                _ => (ImageSource)ClassEntryMethods.cImageKeyboardHideLight,
+                AppTheme.Dark => (ImageSource)ClassKeyboardMethods.cImageKeyboardHideDark,
+                _ => (ImageSource)ClassKeyboardMethods.cImageKeyboardHideLight,
             };
         }
     }
@@ -309,12 +228,12 @@ public partial class PageKeyboardDecimalSample : ContentPage
     /// <param name="e"></param>
     private void KeyboardDecimal_Closed(object sender, EventArgs e)
     {
-        if (ClassEntryMethods.bKeyboardToggleButton)
+        if (ClassKeyboardMethods.bKeyboardToggleButton)
         {
             imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
             {
-                AppTheme.Dark => (ImageSource)ClassEntryMethods.cImageKeyboardShowDark,
-                _ => (ImageSource)ClassEntryMethods.cImageKeyboardShowLight,
+                AppTheme.Dark => (ImageSource)ClassKeyboardMethods.cImageKeyboardShowDark,
+                _ => (ImageSource)ClassKeyboardMethods.cImageKeyboardShowLight,
             };
         }
     }
@@ -327,7 +246,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
     private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
     {
         // Get the current device orientation
-        string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
+        string cOrientation = ClassKeyboardMethods.GetDeviceOrientation();
 
         // Hide or show the keyboard
         switch (cOrientation)
@@ -351,7 +270,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
     private void ShowBottomSheet()
     {
         // Get the current device orientation
-        string cOrientation = Convert.ToString(GetDeviceOrientation()) ?? "Unknown";
+        string cOrientation = ClassKeyboardMethods.GetDeviceOrientation();
 
         // Show the keyboard bottom sheet
         switch (cOrientation)

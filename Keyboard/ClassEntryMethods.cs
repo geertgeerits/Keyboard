@@ -6,11 +6,6 @@ namespace Keyboard
     internal static class ClassEntryMethods
     {
         // Global variables
-        public static readonly string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";
-        public static readonly string cImageKeyboardHideLight = "keyboard_hide_32p_black.png";
-        public static readonly string cImageKeyboardShowDark = "keyboard_32p_white.png";
-        public static readonly string cImageKeyboardShowLight = "keyboard_32p_black.png";
-        public static bool bKeyboardToggleButton = true;
         public static string cKeyboard = "Custom";
         public static string cNumDecimalDigits = "";
         public static string cPercDecimalDigits = "";
@@ -18,11 +13,11 @@ namespace Keyboard
         public static bool bColorNumber = true;
         public static bool bShowFormattedNumber;
         public static string cNumGroupSeparator = "";
-
-        // Local variables
         public static string cNumDecimalSeparator = "";
         public static string cNumNegativeSign = "";
         public static string cNumNativeDigits = "";
+
+        // Local variables
         private static string cDecimalCharacters = "";
         private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
         private static string cColorNegNumber = "";
