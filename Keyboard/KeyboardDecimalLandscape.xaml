@@ -5,6 +5,7 @@
     xmlns:bottomsheet="http://pluginmauibottomsheet.com"
     xmlns:local="clr-namespace:Keyboard"
     x:Class="Keyboard.KeyboardDecimalLandscape"
+    x:Name="RootKeyboardDecimalLandscape"
     Padding="10">
 
     <bottomsheet:BottomSheet.Content>
@@ -32,7 +33,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnOne"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonOneText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonOneText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -45,7 +46,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnTwo"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonTwoText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonTwoText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -58,7 +59,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnThree"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonThreeText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonThreeText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -71,7 +72,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnFour"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonFourText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonFourText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -84,7 +85,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnFive"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonFiveText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonFiveText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -97,7 +98,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnSix"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonSixText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonSixText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -110,7 +111,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnSeven"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonSevenText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonSevenText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -123,7 +124,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnEight"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonEightText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonEightText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -136,7 +137,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnNine"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonNineText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonNineText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -149,7 +150,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnZero"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonZeroText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonZeroText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -162,7 +163,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnDecimalPoint"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonDecimalPointText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonDecimalPointText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
@@ -175,7 +176,7 @@
                                     <Button  
                                         Style="{StaticResource KeyNumericLandscapeButton}"
                                         AutomationId="btnMinus"
-                                        Text="{Binding Source={RelativeSource AncestorType={x:Type local:KeyboardDecimalLandscape}}, Path=ButtonMinusText}"
+                                        Text="{Binding Source={x:Reference RootKeyboardDecimalLandscape}, Path=ButtonMinusText}"
                                         Clicked="BtnKey_Clicked">
                                     </Button>
                                 </Border>
