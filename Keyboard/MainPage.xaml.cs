@@ -64,8 +64,12 @@ namespace Keyboard
                 Debug.WriteLine($"Received message: {message.Value}");
             });
 
-            // Show the bottom sheet when the page is appearing
-            ShowBottomSheet();
+            // Delay to ensure the bottom sheet is shown after the page is fully loaded - needed for iOS
+            _ = Task.Delay(200).ContinueWith(_ =>
+            {
+                // Show the bottom sheet when the page is appearing
+                ShowBottomSheet();
+            }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
         /// <summary>
