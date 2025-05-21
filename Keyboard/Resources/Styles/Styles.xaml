@@ -553,12 +553,13 @@
     <Style TargetType="Button" x:Key="KeyNumericLandscapeButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-        <Setter Property="FontSize" Value="{OnPlatform 20, Android=20, iOS=16}" />
+        <Setter Property="FontSize" Value="{OnPlatform 20, Android=16, iOS=16}" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="MinimumHeightRequest" Value="35" />
         <Setter Property="MaximumHeightRequest" Value="45" />
         <Setter Property="MinimumWidthRequest" Value="30" />
         <Setter Property="MaximumWidthRequest" Value="50" />
+        <Setter Property="WidthRequest" Value="35" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -583,6 +584,7 @@
         <Setter Property="MaximumHeightRequest" Value="45" />
         <Setter Property="MinimumWidthRequest" Value="30" />
         <Setter Property="MaximumWidthRequest" Value="50" />
+        <Setter Property="WidthRequest" Value="35" />
         <Setter Property="Aspect" Value="Center" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
