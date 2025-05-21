@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Keyboard
 {
-    internal class ClassKeyboardMethods
+    internal static class ClassKeyboardMethods
     {
         // Default value for keyboard toggle button
         public static bool bKeyboardToggleButton = true;
@@ -68,7 +68,7 @@ namespace Keyboard
         /// Get the current device orientation
         /// </summary>
         /// <returns></returns>
-        public static string GetDeviceOrientation()
+        private static string GetDeviceOrientation()
         {
             // Get the current display information
             var displayInfo = DeviceDisplay.MainDisplayInfo;
@@ -82,7 +82,7 @@ namespace Keyboard
         /// Handles the click event for the decimal keyboard buttons
         /// </summary>
         /// <param name="cKey"></param>
-        public void KeyboardDecimalClicked(Entry focusedEntry, string cKey)
+        public static void KeyboardDecimalClicked(Entry focusedEntry, string cKey)
         {
             if (focusedEntry != null)
             {
@@ -114,7 +114,7 @@ namespace Keyboard
         /// Handles the click event for the hexadecimal keyboard buttons
         /// </summary>
         /// <param name="cKey"></param>
-        public void KeyboardHexadecimalClicked(Entry focusedEntry, string cKey)
+        public static void KeyboardHexadecimalClicked(Entry focusedEntry, string cKey)
         {
             if (focusedEntry != null)
             {
@@ -136,7 +136,7 @@ namespace Keyboard
         /// <param name="entry"></param>
         /// <param name="cCharacter"></param>
         /// <returns></returns>
-        public static string InsertCharacterInEntryField(Entry entry, string cCharacter)
+        private static string InsertCharacterInEntryField(Entry entry, string cCharacter)
         {
             // Get the current text in the Entry
             string currentText = entry.Text ?? string.Empty;
@@ -158,7 +158,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
-        public static string DeleteCharacterBeforeCursor(Entry entry)
+        private static string DeleteCharacterBeforeCursor(Entry entry)
         {
             // Get the current text in the Entry
             string currentText = entry.Text ?? string.Empty;

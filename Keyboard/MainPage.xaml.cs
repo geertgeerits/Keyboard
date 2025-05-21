@@ -227,8 +227,7 @@ namespace Keyboard
                 }
                 else
                 {
-                    ClassKeyboardMethods _keyboardMethods = new ClassKeyboardMethods();
-                    _keyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
+                    ClassKeyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
                 }
             }
         }

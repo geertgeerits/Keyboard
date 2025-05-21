@@ -201,19 +201,21 @@
             </Grid>
         </ScrollView>
 
-        <local:KeyboardDecimalPortrait
-            Style="{StaticResource BottomSheetKeyboard}"
-            x:Name="CustomKeyboardDecimalPortrait"
-            Opened="KeyboardDecimal_Opened"
-            Closed="KeyboardDecimal_Closed">
-        </local:KeyboardDecimalPortrait>
+        <Grid>
+            <local:KeyboardDecimalPortrait
+                Style="{StaticResource BottomSheetKeyboard}"
+                x:Name="CustomKeyboardDecimalPortrait"
+                Opened="KeyboardDecimal_Opened"
+                Closed="KeyboardDecimal_Closed">
+            </local:KeyboardDecimalPortrait>
 
-        <local:KeyboardDecimalLandscape
-            Style="{StaticResource BottomSheetKeyboard}"
-            x:Name="CustomKeyboardDecimalLandscape"
-            Opened="KeyboardDecimal_Opened"
-            Closed="KeyboardDecimal_Closed">
-        </local:KeyboardDecimalLandscape>
+            <local:KeyboardDecimalLandscape
+                Style="{StaticResource BottomSheetKeyboard}"
+                x:Name="CustomKeyboardDecimalLandscape"
+                Opened="KeyboardDecimal_Opened"
+                Closed="KeyboardDecimal_Closed">
+            </local:KeyboardDecimalLandscape>
+        </Grid>
 
     </Grid>
 </ContentPage>

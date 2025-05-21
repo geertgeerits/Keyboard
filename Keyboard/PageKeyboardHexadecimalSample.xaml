@@ -166,19 +166,21 @@
             </Grid>
         </ScrollView>
 
-        <local:KeyboardHexadecimalPortrait
-            Style="{StaticResource BottomSheetKeyboard}"
-            x:Name="CustomKeyboardHexadecimalPortrait"
-            Opened="KeyboardHexadecimal_Opened"
-            Closed="KeyboardHexadecimal_Closed">
-        </local:KeyboardHexadecimalPortrait>
+        <Grid>
+            <local:KeyboardHexadecimalPortrait
+                Style="{StaticResource BottomSheetKeyboard}"
+                x:Name="CustomKeyboardHexadecimalPortrait"
+                Opened="KeyboardHexadecimal_Opened"
+                Closed="KeyboardHexadecimal_Closed">
+            </local:KeyboardHexadecimalPortrait>
 
-        <local:KeyboardHexadecimalLandscape
-            Style="{StaticResource BottomSheetKeyboard}"
-            x:Name="CustomKeyboardHexadecimalLandscape"
-            Opened="KeyboardHexadecimal_Opened"
-            Closed="KeyboardHexadecimal_Closed">
-        </local:KeyboardHexadecimalLandscape>
-
+            <local:KeyboardHexadecimalLandscape
+                Style="{StaticResource BottomSheetKeyboard}"
+                x:Name="CustomKeyboardHexadecimalLandscape"
+                Opened="KeyboardHexadecimal_Opened"
+                Closed="KeyboardHexadecimal_Closed">
+            </local:KeyboardHexadecimalLandscape>
+        </Grid>
+        
     </Grid>
 </ContentPage>

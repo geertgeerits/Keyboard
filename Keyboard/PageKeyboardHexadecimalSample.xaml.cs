@@ -178,8 +178,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
             }
             else
             {
-                ClassKeyboardMethods _keyboardMethods = new ClassKeyboardMethods();
-                _keyboardMethods.KeyboardHexadecimalClicked(focusedEntry, cKey);
+                ClassKeyboardMethods.KeyboardHexadecimalClicked(focusedEntry, cKey);
             }
         }
     }
