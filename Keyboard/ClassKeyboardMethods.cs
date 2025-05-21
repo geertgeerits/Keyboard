@@ -141,15 +141,24 @@ namespace Keyboard
             // Get the current text in the Entry
             string currentText = entry.Text ?? string.Empty;
 
+            // Ensure CursorPosition is valid and entry.Text is not null
+            int cursorPosition = entry.CursorPosition >= 0 && entry.CursorPosition <= currentText.Length
+                ? entry.CursorPosition
+                : currentText.Length;
+
             // Insert the character at the cursor position
-            string newText = currentText.Insert(entry.CursorPosition, cCharacter);
+            string newText = currentText.Insert(cursorPosition, cCharacter);
 
             // Update the Entry's text
             entry.Text = newText;
 
             // Move the cursor to the position after the inserted character
-            entry.CursorPosition++;
-
+#if IOS
+            // !!!BUG!!!: iOS does not support CursorPosition, so we need to set it to the end of the text            
+            entry.CursorPosition = entry.Text.Length;
+#else
+            entry.CursorPosition = cursorPosition + 1;
+#endif
             return newText;
         }
 
@@ -166,14 +175,19 @@ namespace Keyboard
             // Ensure there is a character to delete and the cursor is not at the start
             if (entry.CursorPosition > 0 && currentText.Length > 0)
             {
+                // Ensure CursorPosition is valid
+                int cursorPosition = entry.CursorPosition >= 0 && entry.CursorPosition <= currentText.Length
+                    ? entry.CursorPosition
+                    : currentText.Length;
+
                 // Remove the character before the cursor position
-                string newText = currentText.Remove(entry.CursorPosition - 1, 1);
+                string newText = currentText.Remove(cursorPosition - 1, 1);
 
                 // Update the Entry's text
                 entry.Text = newText;
 
                 // Move the cursor to the position before the deleted character
-                //entry.CursorPosition--;
+                entry.CursorPosition = cursorPosition - 1;
 
                 return newText;
             }

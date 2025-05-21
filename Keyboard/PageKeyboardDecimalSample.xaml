@@ -63,6 +63,7 @@
                     <Entry  
                         x:Name="entTest1" 
                         AutomationId="entTest1-Percentage"
+                        HorizontalTextAlignment="End"
                         FontSize="16"
                         FontAttributes="Bold"
                         ClearButtonVisibility="WhileEditing"
@@ -87,7 +88,8 @@
 
                     <Entry  
                         x:Name="entTest2"  
-                        AutomationId="entTest2"  
+                        AutomationId="entTest2"
+                        HorizontalTextAlignment="End"
                         FontSize="16"
                         FontAttributes="Bold"
                         ClearButtonVisibility="WhileEditing"
@@ -112,7 +114,8 @@
 
                     <Entry  
                         x:Name="entTest3"  
-                        AutomationId="entTest3"  
+                        AutomationId="entTest3"
+                        HorizontalTextAlignment="End"
                         FontSize="16"
                         FontAttributes="Bold"
                         ClearButtonVisibility="WhileEditing"
@@ -137,7 +140,8 @@
 
                     <Entry  
                         x:Name="entTest4"  
-                        AutomationId="entTest4"  
+                        AutomationId="entTest4"
+                        HorizontalTextAlignment="End"
                         FontSize="16"
                         FontAttributes="Bold"
                         ClearButtonVisibility="WhileEditing"
