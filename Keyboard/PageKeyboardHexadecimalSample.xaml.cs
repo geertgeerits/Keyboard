@@ -186,37 +186,23 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
     }
 
     /// <summary>
-    /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is opened
+    /// Event when the keyboard bottom sheet is opened
     /// </summary>
     /// <param name="sender">The source of the event.</param>
     /// <param name="e">An object that contains the event data.</param>
     private void KeyboardHexadecimal_Opened(object sender, EventArgs e)
     {
-        if (ClassKeyboardMethods.bKeyboardToggleButton)
-        {
-            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
-            {
-                AppTheme.Dark => (ImageSource)ClassKeyboardMethods.cImageKeyboardHideDark,
-                _ => (ImageSource)ClassKeyboardMethods.cImageKeyboardHideLight,
-            };
-        }
+        ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
     }
 
     /// <summary>
-    /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is closed
+    /// Event when the keyboard bottom sheet is closed
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void KeyboardHexadecimal_Closed(object sender, EventArgs e)
     {
-        if (ClassKeyboardMethods.bKeyboardToggleButton)
-        {
-            imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
-            {
-                AppTheme.Dark => (ImageSource)ClassKeyboardMethods.cImageKeyboardShowDark,
-                _ => (ImageSource)ClassKeyboardMethods.cImageKeyboardShowLight,
-            };
-        }
+        ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
     }
 
     /// <summary>
@@ -226,23 +212,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
     /// <param name="e"></param>
     private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
     {
-        // Get the current device orientation
-        string cOrientation = ClassKeyboardMethods.GetDeviceOrientation();
-
-        // Hide the keyboard
-        switch (cOrientation)
-        {
-            case "Landscape":
-                {
-                    CustomKeyboardHexadecimalLandscape.IsOpen = !CustomKeyboardHexadecimalLandscape.IsOpen;
-                    break;
-                }
-            default:
-                {
-                    CustomKeyboardHexadecimalPortrait.IsOpen = !CustomKeyboardHexadecimalPortrait.IsOpen;
-                    break;
-                }
-        }
+        ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
     }
 
     /// <summary>
@@ -250,24 +220,6 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
     /// </summary>
     private void ShowBottomSheet()
     {
-        // Get the current device orientation
-        string cOrientation = ClassKeyboardMethods.GetDeviceOrientation();
-
-        // Show the keyboard bottom sheet
-        switch (cOrientation)
-        {
-            case "Landscape":
-                {
-                    CustomKeyboardHexadecimalPortrait.IsOpen = false;
-                    CustomKeyboardHexadecimalLandscape.IsOpen = true;
-                    break;
-                }
-            default:
-                {
-                    CustomKeyboardHexadecimalLandscape.IsOpen = false;
-                    CustomKeyboardHexadecimalPortrait.IsOpen = true;
-                    break;
-                }
-        }
+        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
     }
 }

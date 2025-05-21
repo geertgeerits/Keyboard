@@ -1,15 +1,68 @@
-﻿using System.Diagnostics;
+﻿using Plugin.Maui.BottomSheet;
+using System.Diagnostics;
 
 namespace Keyboard
 {
     internal class ClassKeyboardMethods
     {
-        // Global variables
-        public static readonly string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";
-        public static readonly string cImageKeyboardHideLight = "keyboard_hide_32p_black.png";
-        public static readonly string cImageKeyboardShowDark = "keyboard_32p_white.png";
-        public static readonly string cImageKeyboardShowLight = "keyboard_32p_black.png";
+        // Default value for keyboard toggle button
         public static bool bKeyboardToggleButton = true;
+
+        // Image source for the keyboard toggle button
+        private static readonly string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";  // Dark theme image
+        private static readonly string cImageKeyboardHideLight = "keyboard_hide_32p_black.png"; // Light theme image
+        private static readonly string cImageKeyboardShowDark = "keyboard_32p_white.png";       // Dark theme image
+        private static readonly string cImageKeyboardShowLight = "keyboard_32p_black.png";      // Light theme image
+
+        // Default theme for the application (Light, Dark, System)
+        private static string cTheme = "System";
+
+        /// <summary>
+        /// Set the theme
+        /// </summary>
+        public static void SetTheme()
+        {
+            Application.Current!.UserAppTheme = cTheme switch
+            {
+                "Light" => AppTheme.Light,
+                "Dark" => AppTheme.Dark,
+                _ => AppTheme.Unspecified,
+            };
+        }
+
+        /// <summary>
+        /// Event when the keyboard bottom sheet is opened
+        /// </summary>
+        /// <param name="imageButton">The source of the event.</param>
+        public static void KeyboardBottomSheetOpened(ImageButton imageButton)
+        {
+            // Set the image source for the keyboard toggle button depending on the theme when the keyboard is opened
+            if (bKeyboardToggleButton)
+            {
+                imageButton.Source = Application.Current?.RequestedTheme switch
+                {
+                    AppTheme.Dark => (ImageSource)cImageKeyboardHideDark,
+                    _ => (ImageSource)cImageKeyboardHideLight,
+                };
+            }
+        }
+
+        /// <summary>
+        /// Event when the keyboard bottom sheet is closed
+        /// </summary>
+        /// <param name="imageButton"></param>
+        public static void KeyboardBottomSheetClosed(ImageButton imageButton)
+        {
+            // Set the image source for the keyboard toggle button depending on the theme when the keyboard is closed
+            if (bKeyboardToggleButton)
+            {
+                imageButton.Source = Application.Current?.RequestedTheme switch
+                {
+                    AppTheme.Dark => (ImageSource)cImageKeyboardShowDark,
+                    _ => (ImageSource)cImageKeyboardShowLight,
+                };
+            }
+        }
 
         /// <summary>
         /// Get the current device orientation
@@ -126,6 +179,60 @@ namespace Keyboard
             }
 
             return currentText;
+        }
+
+        /// <summary>
+        /// Toggles the visibility of the numeric keyboard based on the current device orientation and theme.
+        /// </summary>
+        /// <param name="bottomSheetPortrait"></param>
+        /// <param name="bottomSheetLandscape"></param>
+        public static void ImgbtnToggleKeyboardClicked(BottomSheet bottomSheetPortrait, BottomSheet bottomSheetLandscape)
+        {
+            // Get the current device orientation
+            string cOrientation = GetDeviceOrientation();
+
+            // Hide or show the keyboard
+            switch (cOrientation)
+            {
+                case "Landscape":
+                    {
+                        bottomSheetLandscape.IsOpen = !bottomSheetLandscape.IsOpen;
+                        break;
+                    }
+                default:
+                    {
+                        bottomSheetPortrait.IsOpen = !bottomSheetPortrait.IsOpen;
+                        break;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// Show the bottom sheet depending on the device orientation
+        /// </summary>
+        /// <param name="bottomSheetPortrait"></param>
+        /// <param name="bottomSheetLandscape"></param>
+        public static void ShowBottomSheet(BottomSheet bottomSheetPortrait, BottomSheet bottomSheetLandscape)
+        {
+            // Get the current device orientation
+            string cOrientation = GetDeviceOrientation();
+
+            // Show the keyboard bottom sheet
+            switch (cOrientation)
+            {
+                case "Landscape":
+                    {
+                        bottomSheetPortrait.IsOpen = false;
+                        bottomSheetLandscape.IsOpen = true;
+                        break;
+                    }
+                default:
+                    {
+                        bottomSheetLandscape.IsOpen = false;
+                        bottomSheetPortrait.IsOpen = true;
+                        break;
+                    }
+            }
         }
     }
 }

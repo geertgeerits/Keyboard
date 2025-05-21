@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.17
-   Date ........: 2025-05-20 (YYYY-MM-DD)
+   Date ........: 2025-05-21 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for numeric entry fields
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -43,6 +43,9 @@ namespace Keyboard
 
             // Show or hide the keyboard toggle button visibility
             imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
+
+            // Set the theme
+            ClassKeyboardMethods.SetTheme();
         }
 
         /// <summary>
@@ -234,37 +237,23 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is opened
+        /// Event when the keyboard bottom sheet is opened
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">An object that contains the event data.</param>
         private void KeyboardDecimal_Opened(object sender, EventArgs e)
         {
-            if (ClassKeyboardMethods.bKeyboardToggleButton)
-            {
-                imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
-                {
-                    AppTheme.Dark => (ImageSource)ClassKeyboardMethods.cImageKeyboardHideDark,
-                    _ => (ImageSource)ClassKeyboardMethods.cImageKeyboardHideLight,
-                };
-            }
+            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
         }
 
         /// <summary>
-        /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is closed
+        /// Event when the keyboard bottom sheet is closed
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void KeyboardDecimal_Closed(object sender, EventArgs e)
         {
-            if (ClassKeyboardMethods.bKeyboardToggleButton)
-            {
-                imgbtnToggleKeyboard.Source = Application.Current?.RequestedTheme switch
-                {
-                    AppTheme.Dark => (ImageSource)ClassKeyboardMethods.cImageKeyboardShowDark,
-                    _ => (ImageSource)ClassKeyboardMethods.cImageKeyboardShowLight,
-                };
-            }
+            ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
         }
 
         /// <summary>
@@ -274,23 +263,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
         {
-            // Get the current device orientation
-            string cOrientation = ClassKeyboardMethods.GetDeviceOrientation();
-
-            // Hide or show the keyboard
-            switch (cOrientation)
-            {
-                case "Landscape":
-                    {
-                        CustomKeyboardDecimalLandscape.IsOpen = !CustomKeyboardDecimalLandscape.IsOpen;
-                        break;
-                    }
-                default:
-                    {
-                        CustomKeyboardDecimalPortrait.IsOpen = !CustomKeyboardDecimalPortrait.IsOpen;
-                        break;
-                    }
-            }
+            ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
@@ -298,25 +271,7 @@ namespace Keyboard
         /// </summary>
         private void ShowBottomSheet()
         {
-            // Get the current device orientation
-            string cOrientation = ClassKeyboardMethods.GetDeviceOrientation();
-
-            // Show the keyboard bottom sheet
-            switch (cOrientation)
-            {
-                case "Landscape":
-                    {
-                        CustomKeyboardDecimalPortrait.IsOpen = false;
-                        CustomKeyboardDecimalLandscape.IsOpen = true;
-                        break;
-                    }
-                default:
-                    {
-                        CustomKeyboardDecimalLandscape.IsOpen = false;
-                        CustomKeyboardDecimalPortrait.IsOpen = true;
-                        break;
-                    }
-            }
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
