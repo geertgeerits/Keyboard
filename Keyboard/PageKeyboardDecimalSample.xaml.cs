@@ -35,7 +35,6 @@ public partial class PageKeyboardDecimalSample : ContentPage
         {
             // Display the received message in the UI, this method is called when a message is received
             BtnKeyboardClicked(message.Value);
-
             Debug.WriteLine($"Received message: {message.Value}");
         });
 

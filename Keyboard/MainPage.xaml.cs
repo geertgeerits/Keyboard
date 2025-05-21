@@ -12,8 +12,6 @@
 
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
-using Plugin.Maui.BottomSheet;
-using Plugin.Maui.BottomSheet.Hosting;
 using System.Diagnostics;
 
 namespace Keyboard
@@ -63,7 +61,6 @@ namespace Keyboard
             {
                 // Display the received message in the UI, this method is called when a message is received
                 BtnKeyboardClicked(message.Value);
-
                 Debug.WriteLine($"Received message: {message.Value}");
             });
 
@@ -296,7 +293,7 @@ namespace Keyboard
     }
 
     /// <summary>
-    /// This class is used to send a message with a string value when a key is pressed on the keyboard - only used in the MainPage.xaml.cs
+    /// This class is used to send a message with a string value when a key is pressed on the keyboard - only used in MainPage.xaml.cs
     /// </summary>
     /// <param name="value"></param>
     public class StringMessage(string value) : ValueChangedMessage<string>(value)
