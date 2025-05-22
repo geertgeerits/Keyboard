@@ -97,9 +97,8 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
             }
 
-            // Set the border color if the entry is focused
-            Border border = (Border)entry.Parent;
-            border.Stroke = Colors.DarkGreen;
+            // Set the border color of the entry field
+            ClassKeyboardMethods.SetEntryBorderColorFocused(entry);
 
             //entry.CursorPosition = entry.Text.Length;  // The full selection of the text is gone when the cursor position is set to the end of the text
 
@@ -118,9 +117,8 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         {
             cEntryAutomationId = entry.AutomationId;
 
-            // Set the border color if the entry is unfocused
-            Border border = (Border)entry.Parent;
-            border.Stroke = Colors.Blue;
+            // Set the border color of the entry field
+            ClassKeyboardMethods.SetEntryBorderColorUnfocused(entry);
         }
     }
 

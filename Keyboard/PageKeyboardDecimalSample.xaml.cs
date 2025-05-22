@@ -98,9 +98,8 @@ public partial class PageKeyboardDecimalSample : ContentPage
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
             }
 
-            // Set the border color if the entry is focused
-            Border border = (Border)entry.Parent;
-            border.Stroke = Colors.DarkGreen;
+            // Set the border color of the entry field
+            ClassKeyboardMethods.SetEntryBorderColorFocused(entry);
 
             if (bEntryCompleted)
             {
@@ -123,16 +122,15 @@ public partial class PageKeyboardDecimalSample : ContentPage
         {
             cEntryAutomationId = entry.AutomationId;
 
-            entry.MaxLength = -1;
+            //entry.MaxLength = -1;
 
             if (bEntryCompleted)
             {
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
 
-            // Set the border color if the entry is unfocused
-            Border border = (Border)entry.Parent;
-            border.Stroke = Colors.Blue;
+            // Set the border color of the entry field
+            ClassKeyboardMethods.SetEntryBorderColorUnfocused(entry);
         }
     }
 

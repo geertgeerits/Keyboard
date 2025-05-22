@@ -31,6 +31,52 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Get the current theme
+        /// </summary>
+        public static string GetTheme()
+        {
+            // Ensure Application.Current is not null before accessing RequestedTheme
+            if (Application.Current != null)
+            {
+                AppTheme currentTheme = Application.Current.RequestedTheme;
+
+                return currentTheme.ToString();
+            }
+
+            return "Unspecified";
+        }
+
+        /// <summary>
+        /// Set the border color of the entry field based on the theme when the entry is focused
+        /// </summary>
+        /// <param name="entry"></param>
+        public static void SetEntryBorderColorFocused(Entry entry)
+        {
+            Border border = (Border)entry.Parent;
+
+            border.Stroke = GetTheme() switch
+            {
+                "Dark" => (Brush)Colors.Green,
+                _ => (Brush)Colors.DarkGreen,
+            };
+        }
+
+        /// <summary>
+        /// Set the border color of the entry field based on the theme when the entry is unfocused
+        /// </summary>
+        /// <param name="entry"></param>
+        public static void SetEntryBorderColorUnfocused(Entry entry)
+        {
+            Border border = (Border)entry.Parent;
+
+            border.Stroke = GetTheme() switch
+            {
+                "Dark" => (Brush)Colors.Gray,
+                _ => (Brush)Colors.DarkGray,
+            };
+        }
+
+        /// <summary>
         /// Event when the keyboard bottom sheet is opened
         /// </summary>
         /// <param name="imageButton">The source of the event.</param>

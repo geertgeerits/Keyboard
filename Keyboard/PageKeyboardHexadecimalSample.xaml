@@ -61,12 +61,9 @@
                     Grid.Row="1">
 
                     <Entry  
-                        x:Name="entTest1" 
+                        x:Name="entTest1"
+                        Style="{StaticResource NumericEntry}"
                         AutomationId="entTest1-Percentage"
-                        HorizontalTextAlignment="End"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FF"
                         MaxLength="2"
                         Text=""
@@ -87,12 +84,9 @@
                     Grid.Row="2">
 
                     <Entry  
-                        x:Name="entTest2"  
+                        x:Name="entTest2"
+                        Style="{StaticResource NumericEntry}"
                         AutomationId="entTest2"
-                        HorizontalTextAlignment="End"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FFFF"
                         MaxLength="4"
                         Text=""
@@ -113,12 +107,9 @@
                     Grid.Row="3">
 
                     <Entry  
-                        x:Name="entTest3"  
+                        x:Name="entTest3"
+                        Style="{StaticResource NumericEntry}"
                         AutomationId="entTest3"
-                        HorizontalTextAlignment="End"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FFFFFF"
                         MaxLength="6"
                         Text=""
@@ -140,11 +131,8 @@
 
                     <Entry  
                         x:Name="entTest4"
+                        Style="{StaticResource NumericEntry}"
                         AutomationId="entTest4"
-                        HorizontalTextAlignment="End"
-                        FontSize="16"
-                        FontAttributes="Bold"
-                        ClearButtonVisibility="WhileEditing"
                         Placeholder="0 - FFFFFFFF"
                         MaxLength="12"
                         Text=""

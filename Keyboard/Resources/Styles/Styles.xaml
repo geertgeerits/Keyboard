@@ -449,7 +449,7 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
-    <!--Keyboard Styles-->
+    <!-- ********************** Keyboard Styles ********************** -->
 
     <Style TargetType="bottomsheet:BottomSheet" x:Key="BottomSheetKeyboard">
         <Setter Property="Padding" Value="0" />
@@ -489,9 +489,27 @@
     </Style>
 
     <Style TargetType="Border" x:Key="EntryBorder">
-        <Setter Property="Stroke" Value="Blue" />
-        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray200}}" />
+        <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Entry" x:Key="NumericEntry">
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}" />
+        <Setter Property="MinimumHeightRequest" Value="50" />
+        <Setter Property="MinimumWidthRequest" Value="50" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
             <Setter.Value>
                 <RoundRectangle CornerRadius="8" />
             </Setter.Value>
