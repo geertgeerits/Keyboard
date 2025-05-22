@@ -56,7 +56,7 @@
 
 
                 <Border  
-                    x:Name="brdValue1"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="1">
 
@@ -75,14 +75,14 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FF" BorderName="brdValue1"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
                 </Border>
 
                 <Border  
-                    x:Name="brdValue2"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="2">
 
@@ -101,14 +101,14 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFF" BorderName="brdValue2"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
                 </Border>
 
                 <Border  
-                    x:Name="brdValue3"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="3">
 
@@ -127,19 +127,19 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFF" BorderName="brdValue3"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
                 </Border>
 
                 <Border  
-                    x:Name="brdValue4"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="4">
 
                     <Entry  
-                        x:Name="entTest4"  
+                        x:Name="entTest4"
                         AutomationId="entTest4"
                         HorizontalTextAlignment="End"
                         FontSize="16"
@@ -153,7 +153,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFFFF" BorderName="brdValue4"/>
+                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

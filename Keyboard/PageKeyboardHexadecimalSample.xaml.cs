@@ -38,7 +38,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         });
 
         // Show the bottom sheet when the page is appearing
-        ShowBottomSheet();
+        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
     }
 
     /// <summary>
@@ -76,7 +76,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
     /// <param name="e"></param>
     private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
     {
-        ShowBottomSheet();
+        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
     }
 
     /// <summary>
@@ -94,8 +94,12 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
             // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
             if (!ClassKeyboardMethods.bKeyboardToggleButton)
             {
-                ShowBottomSheet();
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
             }
+
+            // Set the border color if the entry is focused
+            Border border = (Border)entry.Parent;
+            border.Stroke = Colors.DarkGreen;
 
             //entry.CursorPosition = entry.Text.Length;  // The full selection of the text is gone when the cursor position is set to the end of the text
 
@@ -113,6 +117,10 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         if (sender is Entry entry)
         {
             cEntryAutomationId = entry.AutomationId;
+
+            // Set the border color if the entry is unfocused
+            Border border = (Border)entry.Parent;
+            border.Stroke = Colors.Blue;
         }
     }
 
@@ -211,13 +219,5 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
     private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
     {
         ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
-    }
-
-    /// <summary>
-    /// Show the bottom sheet depending on the device orientation
-    /// </summary>
-    private void ShowBottomSheet()
-    {
-        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
     }
 }

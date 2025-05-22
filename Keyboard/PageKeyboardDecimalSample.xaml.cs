@@ -39,7 +39,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
         });
 
         // Show the bottom sheet when the page is appearing
-        ShowBottomSheet();
+        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
     /// <param name="e"></param>
     private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
     {
-        ShowBottomSheet();
+        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
     }
 
     /// <summary>
@@ -95,8 +95,12 @@ public partial class PageKeyboardDecimalSample : ContentPage
             // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
             if (!ClassKeyboardMethods.bKeyboardToggleButton)
             {
-                ShowBottomSheet();
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
             }
+
+            // Set the border color if the entry is focused
+            Border border = (Border)entry.Parent;
+            border.Stroke = Colors.DarkGreen;
 
             if (bEntryCompleted)
             {
@@ -125,6 +129,10 @@ public partial class PageKeyboardDecimalSample : ContentPage
             {
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
+
+            // Set the border color if the entry is unfocused
+            Border border = (Border)entry.Parent;
+            border.Stroke = Colors.Blue;
         }
     }
 
@@ -230,13 +238,5 @@ public partial class PageKeyboardDecimalSample : ContentPage
     private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
     {
         ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-    }
-
-    /// <summary>
-    /// Show the bottom sheet depending on the device orientation
-    /// </summary>
-    private void ShowBottomSheet()
-    {
-        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
     }
 }

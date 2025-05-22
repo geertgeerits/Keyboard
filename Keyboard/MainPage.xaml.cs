@@ -1,13 +1,17 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
-   Version .....: 1.0.17
-   Date ........: 2025-05-21 (YYYY-MM-DD)
+   Version .....: 1.0.18
+   Date ........: 2025-05-22 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
-   Description .: Custom keyboard for numeric entry fields
+   Description .: Custom keyboard for decimal and hexadecimal entry fields
+   Note:........: This app is an example and experimental.
+                  It is a custom keyboard that uses a bottomsheet.
+                  This works reasonably well in Android but less so in iOS.
+                  The bottomsheet is apparently always modal in iOS and does not always open when switching from
+                  portrait to landscape (and vice versa) if a different keyboard layout is used for portrait and landscape.
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
                   NuGet Package: Plugin.Maui.BottomSheet by Luca Civale version 9.1.5; https://github.com/lucacivale/Maui.BottomSheet
-   Thanks to ...: Gerald Versluis for his video's on YouTube about .NET MAUI - https://www.youtube.com/watch?v=bdKWnddRDY0&t=856s
 */
 
 using CommunityToolkit.Mvvm.Messaging;
@@ -68,7 +72,7 @@ namespace Keyboard
             _ = Task.Delay(200).ContinueWith(_ =>
             {
                 // Show the bottom sheet when the page is appearing
-                ShowBottomSheet();
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
@@ -107,14 +111,10 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            ShowBottomSheet();
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
-        /// <summary>
-        /// Entry focused event: format the text value for a numeric entry without the number separator
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        // Fix for CS1002 and CS0029 errors in the NumberEntryFocused method
         private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
@@ -125,8 +125,12 @@ namespace Keyboard
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)
                 {
-                    ShowBottomSheet();
+                    ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 }
+
+                // Set the border color if the entry is focused
+                Border border = (Border)entry.Parent;
+                border.Stroke = Colors.DarkGreen;
 
                 if (bEntryCompleted)
                 {
@@ -155,6 +159,10 @@ namespace Keyboard
                 {
                     ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
                 }
+
+                // Set the border color if the entry is unfocused
+                Border border = (Border)entry.Parent;
+                border.Stroke = Colors.Blue;
             }
         }
 
@@ -260,14 +268,6 @@ namespace Keyboard
         private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
         {
             ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-        }
-
-        /// <summary>
-        /// Show the bottom sheet depending on the device orientation
-        /// </summary>
-        private void ShowBottomSheet()
-        {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>

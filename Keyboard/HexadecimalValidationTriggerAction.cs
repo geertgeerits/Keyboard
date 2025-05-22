@@ -4,7 +4,6 @@
     {
         public string? MinValue { get; set; }
         public string? MaxValue { get; set; }
-        public string? BorderName { get; set; }
 
         protected override void Invoke(Entry entry)
         {
@@ -19,7 +18,7 @@
                 isValidNumber = nHexResult >= nMinValue && nHexResult <= nMaxValue;
 
                 // Set the border color if the input is invalid
-                Border border = (Border)entry.Parent.FindByName(BorderName);
+                Border border = (Border)entry.Parent;
                 border.Stroke = isValidNumber ? Color.FromArgb("969696") : Colors.OrangeRed;
             }
         }

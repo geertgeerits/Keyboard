@@ -4,7 +4,6 @@
     {
         public decimal MinValue { get; set; }
         public decimal MaxValue { get; set; }
-        public string? BorderName { get; set; }
 
         protected override void Invoke(Entry entry)
         {
@@ -13,7 +12,7 @@
             isValid = isValid && result >= MinValue && result <= MaxValue;
 
             // Set the border color if the input is invalid
-            Border border = (Border)entry.Parent.FindByName(BorderName);
+            Border border = (Border)entry.Parent;
 
             if (entry.Text.Contains(ClassEntryMethods.cNumGroupSeparator))
             {

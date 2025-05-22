@@ -56,7 +56,7 @@
 
 
                 <Border  
-                    x:Name="brdValue1"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="1">
 
@@ -75,14 +75,14 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100" BorderName="brdValue1"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
                 </Border>
 
                 <Border  
-                    x:Name="brdValue2"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="2">
 
@@ -101,14 +101,14 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.99" BorderName="brdValue2"/>
+                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
                 </Border>
 
                 <Border  
-                    x:Name="brdValue3"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="3">
 
@@ -127,14 +127,14 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99" BorderName="brdValue3"/>
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
                 </Border>
 
                 <Border  
-                    x:Name="brdValue4"
+                    Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
                     Grid.Row="4">
 
@@ -153,7 +153,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99" BorderName="brdValue4"/>
+                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

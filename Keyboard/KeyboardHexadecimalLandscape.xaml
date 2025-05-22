@@ -30,7 +30,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnZero"
                                         Text="0"
                                         Clicked="BtnKey_Clicked">
@@ -43,7 +43,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnOne"
                                         Text="1"
                                         Clicked="BtnKey_Clicked">
@@ -56,7 +56,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnTwo"
                                         Text="2"
                                         Clicked="BtnKey_Clicked">
@@ -69,7 +69,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnThree"
                                         Text="3"
                                         Clicked="BtnKey_Clicked">
@@ -82,7 +82,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnFour"
                                         Text="4"
                                         Clicked="BtnKey_Clicked">
@@ -95,7 +95,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnFive"
                                         Text="5"
                                         Clicked="BtnKey_Clicked">
@@ -108,7 +108,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnSix"
                                         Text="6"
                                         Clicked="BtnKey_Clicked">
@@ -121,7 +121,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnSeven"
                                         Text="7"
                                         Clicked="BtnKey_Clicked">
@@ -134,7 +134,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnEight"
                                         Text="8"
                                         Clicked="BtnKey_Clicked">
@@ -147,7 +147,7 @@
                                     Grid.Row="0">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnNine"
                                         Text="9"
                                         Clicked="BtnKey_Clicked">
@@ -160,7 +160,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnA"
                                         Text="A"
                                         Clicked="BtnKey_Clicked">
@@ -173,7 +173,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnB"
                                         Text="B"
                                         Clicked="BtnKey_Clicked">
@@ -186,7 +186,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnC"
                                         Text="C"
                                         Clicked="BtnKey_Clicked">
@@ -199,7 +199,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnD"
                                         Text="D"
                                         Clicked="BtnKey_Clicked">
@@ -212,7 +212,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnE"
                                         Text="E"
                                         Clicked="BtnKey_Clicked">
@@ -225,7 +225,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnF"
                                         Text="F"
                                         Clicked="BtnKey_Clicked">
@@ -238,7 +238,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnDecimalPoint"
                                         BackgroundColor="Transparent"
                                         Text=""
@@ -253,7 +253,7 @@
                                     Grid.Row="1">
 
                                     <Button  
-                                        Style="{StaticResource KeyNumericLandscapeButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsButton}"
                                         AutomationId="btnMinus"
                                         BackgroundColor="Transparent"
                                         Text=""
@@ -268,7 +268,7 @@
                                     Grid.Row="1">
 
                                     <ImageButton  
-                                        Style="{StaticResource KeyNumericLandscapeImageButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsImageButton}"
                                         AutomationId="btnBackspace"
                                         Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                                         Clicked="BtnKey_Clicked">
@@ -281,7 +281,7 @@
                                     Grid.Row="1">
 
                                     <ImageButton  
-                                        Style="{StaticResource KeyNumericLandscapeImageButton}"
+                                        Style="{StaticResource KeyNumericLandscape2RowsImageButton}"
                                         AutomationId="btnReturn"
                                         Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                                         Clicked="BtnKey_Clicked">
