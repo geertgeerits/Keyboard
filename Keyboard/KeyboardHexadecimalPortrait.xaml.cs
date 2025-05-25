@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Keyboard
 {
-    public partial class KeyboardHexadecimalPortrait : Plugin.Maui.BottomSheet.BottomSheet
+    public partial class KeyboardHexadecimalPortrait : ContentView
     {
         public KeyboardHexadecimalPortrait()
         {

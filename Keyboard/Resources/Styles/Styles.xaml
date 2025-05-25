@@ -2,8 +2,7 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:bottomsheet="http://pluginmauibottomsheet.com">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
@@ -451,18 +450,13 @@
 
     <!-- ********************** Keyboard Styles ********************** -->
 
-    <Style TargetType="bottomsheet:BottomSheet" x:Key="BottomSheetKeyboard">
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="CornerRadius" Value="10" />
-        <Setter Property="HasHandle" Value="True" />
-        <Setter Property="IgnoreSafeArea" Value="True" />
-        <Setter Property="IsCancelable" Value="True" />
-        <Setter Property="IsDraggable" Value="True" />
-        <Setter Property="IsModal" Value="False" />
-        <Setter Property="IsOpen" Value="False" />
-        <Setter Property="ShowHeader" Value="False" />
-        <Setter Property="States" Value="Peek" />
+    <Style TargetType="ContentView" x:Key="BottomSheetKeyboard">
+        <Setter Property="AbsoluteLayout.LayoutFlags" Value="WidthProportional,PositionProportional" />
+        <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,250" />
+        <Setter Property="TranslationY" Value="0" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray200}}" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="IsVisible" Value="True" />
     </Style>
 
     <Style TargetType="ImageButton" x:Key="ToggleKeyboardImageButton">
@@ -534,7 +528,7 @@
         <Setter Property="MinimumHeightRequest" Value="50" />
         <Setter Property="MaximumHeightRequest" Value="60" />
         <Setter Property="MinimumWidthRequest" Value="60" />
-        <Setter Property="MaximumWidthRequest" Value="80" />
+        <Setter Property="MaximumWidthRequest" Value="70" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -559,7 +553,7 @@
         <Setter Property="MinimumHeightRequest" Value="50" />
         <Setter Property="MaximumHeightRequest" Value="60" />
         <Setter Property="MinimumWidthRequest" Value="60" />
-        <Setter Property="MaximumWidthRequest" Value="80" />
+        <Setter Property="MaximumWidthRequest" Value="70" />
         <Setter Property="Aspect" Value="Center" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">

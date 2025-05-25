@@ -56,8 +56,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
         WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
 
         // Hide the bottom sheet when the page is disappearing
-        CustomKeyboardDecimalPortrait.IsOpen = false;
-        CustomKeyboardDecimalLandscape.IsOpen = false;
+        ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
     }
 
     /// <summary>

@@ -1,5 +1,4 @@
-﻿using Plugin.Maui.BottomSheet;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Keyboard
 {
@@ -164,15 +163,11 @@ namespace Keyboard
         {
             if (focusedEntry != null)
             {
-                switch (cKey)
+                focusedEntry.Text = cKey switch
                 {
-                    case "btnBackspace":
-                        focusedEntry.Text = DeleteCharacterBeforeCursor(focusedEntry);
-                        break;
-                    default:
-                        focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, cKey);
-                        break;
-                }
+                    "btnBackspace" => DeleteCharacterBeforeCursor(focusedEntry),
+                    _ => InsertCharacterInEntryField(focusedEntry, cKey),
+                };
             }
         }
 
@@ -246,22 +241,51 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public static void ImgbtnToggleKeyboardClicked(BottomSheet bottomSheetPortrait, BottomSheet bottomSheetLandscape)
+        public async static void ImgbtnToggleKeyboardClicked(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
 
             // Hide or show the keyboard
+            /* Animates an elements TranslationX and TranslationY properties from their current values to the new values. This ensures that the input layout is in the same position as the visual layout.
+               public static System.Threading.Tasks.Task<bool> TranslateTo(this Microsoft.Maui.Controls.VisualElement view, double x, double y, uint length = 250, Microsoft.Maui.Easing? easing = default);
+               Parameters:
+               view, VisualElement, the view on which this method operates
+               x, Double, the x component of the final translation vector
+               y, Double, the y component of the final translation vector
+               length, UInt32, the time, in milliseconds, over which to animate the transition, the default is 250
+               easing, Easing, the easing function to use for the animation
+             */
             switch (cOrientation)
             {
                 case "Landscape":
                     {
-                        bottomSheetLandscape.IsOpen = !bottomSheetLandscape.IsOpen;
+                        if (bottomSheetLandscape.IsVisible)
+                        {
+                            await bottomSheetLandscape.TranslateTo(x: 0, y: 250, length: 250, Easing.SinIn);    // Slide down
+                            bottomSheetLandscape.IsVisible = false;
+                        }
+                        else
+                        {
+                            bottomSheetLandscape.IsVisible = true;
+                            await Task.Delay(100);                                                      // Let the layout update (important for Android)
+                            await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
+                        }
                         break;
                     }
                 default:
                     {
-                        bottomSheetPortrait.IsOpen = !bottomSheetPortrait.IsOpen;
+                        if (bottomSheetPortrait.IsVisible)
+                        {
+                            await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
+                            bottomSheetPortrait.IsVisible = false;
+                        }
+                        else
+                        {
+                            bottomSheetPortrait.IsVisible = true;
+                            await Task.Delay(100);                                                      // Let the layout update (important for Android)
+                            await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);    // Slide up
+                        }
                         break;
                     }
             }
@@ -272,7 +296,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public static void ShowBottomSheet(BottomSheet bottomSheetPortrait, BottomSheet bottomSheetLandscape)
+        public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
@@ -282,14 +306,50 @@ namespace Keyboard
             {
                 case "Landscape":
                     {
-                        bottomSheetPortrait.IsOpen = false;
-                        bottomSheetLandscape.IsOpen = true;
+                        await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
+                        bottomSheetPortrait.IsVisible = false;
+
+                        bottomSheetLandscape.IsVisible = true;
+                        await Task.Delay(100);                                              // Let the layout update (important for Android)
+                        await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
                         break;
                     }
                 default:
                     {
-                        bottomSheetLandscape.IsOpen = false;
-                        bottomSheetPortrait.IsOpen = true;
+                        await bottomSheetLandscape.TranslateTo(0, 250, length: 250, Easing.SinIn);
+                        bottomSheetLandscape.IsVisible = false;
+
+                        bottomSheetPortrait.IsVisible = true;
+                        await Task.Delay(100);
+                        await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);
+                        break;
+                    }
+            }
+        }
+
+        /// <summary>
+        /// HIde the bottom sheet depending on the device orientation
+        /// </summary>
+        /// <param name="bottomSheetPortrait"></param>
+        /// <param name="bottomSheetLandscape"></param>
+        public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        {
+            // Get the current device orientation
+            string cOrientation = GetDeviceOrientation();
+
+            // Show the keyboard bottom sheet
+            switch (cOrientation)
+            {
+                case "Landscape":
+                    {
+                        await bottomSheetLandscape.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
+                        bottomSheetLandscape.IsVisible = false;
+                        break;
+                    }
+                default:
+                    {
+                        await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);
+                        bottomSheetPortrait.IsVisible = false;
                         break;
                     }
             }

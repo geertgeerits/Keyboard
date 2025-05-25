@@ -3,7 +3,7 @@ using System.Diagnostics;
 
 namespace Keyboard
 {
-    public partial class KeyboardDecimalPortrait : Plugin.Maui.BottomSheet.BottomSheet
+    public partial class KeyboardDecimalPortrait : ContentView
     {
         // Declare variables
         private string _buttonZeroText = string.Empty;

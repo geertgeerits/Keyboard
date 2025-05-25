@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using Plugin.Maui.BottomSheet.Hosting;
 
 namespace Keyboard
 {
@@ -10,7 +9,6 @@ namespace Keyboard
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
-                .UseBottomSheet()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

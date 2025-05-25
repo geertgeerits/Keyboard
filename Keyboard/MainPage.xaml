@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
-    xmlns:bottomsheet="http://pluginmauibottomsheet.com"
     x:Class="Keyboard.MainPage"
     Loaded="OnPageLoaded"
     Shell.BackgroundColor="{AppThemeBinding Light=Orange, Dark=DarkOrange}">
@@ -75,21 +74,24 @@
     <!--Set the maximum length of the entry field: must be the length of the number + the decimal and group separators + the negative sign
     Example: number -123456789012.12 = 16 characters, -123,456,789,012.12 = 19 characters-->
 
-    <Grid>
+    <AbsoluteLayout>
         <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
         https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
         <ScrollView
             VerticalScrollBarVisibility="Always"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
             
             <Grid
+                AbsoluteLayout.LayoutBounds="0,0,1,1"
+                AbsoluteLayout.LayoutFlags="All"
                 ColumnDefinitions="300, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
                 Margin="5">
             
-
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
@@ -193,21 +195,25 @@
             </Grid>
         </ScrollView>
 
-        <Grid>
+        <ContentView
+            x:Name="CustomKeyboardDecimalPortrait"
+            Style="{StaticResource BottomSheetKeyboard}"
+            HeightRequest="250">
+
             <local:KeyboardDecimalPortrait
-                Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="CustomKeyboardDecimalPortrait"
-                Opened="KeyboardDecimal_Opened"
-                Closed="KeyboardDecimal_Closed">
+                HeightRequest="250">
             </local:KeyboardDecimalPortrait>
+        </ContentView>
 
+        <ContentView
+            x:Name="CustomKeyboardDecimalLandscape"
+            Style="{StaticResource BottomSheetKeyboard}"
+            HeightRequest="60">
+            
             <local:KeyboardDecimalLandscape
-                Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="CustomKeyboardDecimalLandscape"
-                Opened="KeyboardDecimal_Opened"
-                Closed="KeyboardDecimal_Closed">
+                HeightRequest="60">
             </local:KeyboardDecimalLandscape>
-        </Grid>
+        </ContentView>
 
-    </Grid>
+    </AbsoluteLayout>
 </ContentPage>

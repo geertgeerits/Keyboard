@@ -1,8 +1,8 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
-   Version .....: 1.0.18
-   Date ........: 2025-05-22 (YYYY-MM-DD)
+   Version .....: 1.0.20
+   Date ........: 2025-05-25 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -11,7 +11,6 @@
                   The bottomsheet is apparently always modal in iOS and does not always open when switching from
                   portrait to landscape (and vice versa) if a different keyboard layout is used for portrait and landscape.
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
-                  NuGet Package: Plugin.Maui.BottomSheet by Luca Civale version 9.1.5; https://github.com/lucacivale/Maui.BottomSheet
 */
 
 using CommunityToolkit.Mvvm.Messaging;
@@ -45,6 +44,7 @@ namespace Keyboard
 
             // Show or hide the keyboard toggle button visibility
             imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
+            //ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
 
             // Set the theme
             ClassKeyboardMethods.SetTheme();
@@ -74,12 +74,14 @@ namespace Keyboard
                 // Show the bottom sheet when the page is appearing
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
             }, TaskScheduler.FromCurrentSynchronizationContext());
+            
+            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
         }
 
         /// <summary>
         /// To do when the page is disappearing
         /// </summary>
-        protected override void OnDisappearing()
+        protected async override void OnDisappearing()
         {
             base.OnDisappearing();
             
@@ -90,8 +92,8 @@ namespace Keyboard
             WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
 
             // Hide the bottom sheet when the page is disappearing
-            CustomKeyboardDecimalPortrait.IsOpen = false;
-            CustomKeyboardDecimalLandscape.IsOpen = false;
+            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
         }
 
         /// <summary>
@@ -127,6 +129,8 @@ namespace Keyboard
                 {
                     ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 }
+                
+                ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
 
                 // Set the border color of the entry field
                 ClassKeyboardMethods.SetEntryBorderColorFocused(entry);

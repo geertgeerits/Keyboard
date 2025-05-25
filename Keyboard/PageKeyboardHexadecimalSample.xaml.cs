@@ -55,8 +55,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
         WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
 
         // Hide the bottom sheet when the page is disappearing
-        CustomKeyboardHexadecimalPortrait.IsOpen = false;
-        CustomKeyboardHexadecimalLandscape.IsOpen = false;
+        ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
     }
 
     /// <summary>

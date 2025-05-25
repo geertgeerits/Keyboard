@@ -3,7 +3,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
-    xmlns:bottomsheet="http://pluginmauibottomsheet.com"
     x:Class="Keyboard.PageKeyboardHexadecimalSample"
     Loaded="OnPageLoaded"
     Shell.BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=Blue}">
@@ -40,12 +39,14 @@
         </Grid>
     </Shell.TitleView>
 
-    <Grid>
+    <AbsoluteLayout>
         <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
         https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
         <ScrollView
             VerticalScrollBarVisibility="Always"
-            VerticalOptions="FillAndExpand">
+            VerticalOptions="FillAndExpand"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
 
             <Grid
                 ColumnDefinitions="300, *"
@@ -158,21 +159,25 @@
             </Grid>
         </ScrollView>
 
-        <Grid>
+        <ContentView
+            x:Name="CustomKeyboardHexadecimalPortrait"
+            Style="{StaticResource BottomSheetKeyboard}"
+            HeightRequest="250">
+
             <local:KeyboardHexadecimalPortrait
-                Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="CustomKeyboardHexadecimalPortrait"
-                Opened="KeyboardHexadecimal_Opened"
-                Closed="KeyboardHexadecimal_Closed">
+                HeightRequest="250">
             </local:KeyboardHexadecimalPortrait>
+        </ContentView>
+
+        <ContentView
+            x:Name="CustomKeyboardHexadecimalLandscape"
+            Style="{StaticResource BottomSheetKeyboard}"
+            HeightRequest="110">
 
             <local:KeyboardHexadecimalLandscape
-                Style="{StaticResource BottomSheetKeyboard}"
-                x:Name="CustomKeyboardHexadecimalLandscape"
-                Opened="KeyboardHexadecimal_Opened"
-                Closed="KeyboardHexadecimal_Closed">
+                HeightRequest="110">
             </local:KeyboardHexadecimalLandscape>
-        </Grid>
-        
-    </Grid>
+        </ContentView>
+
+    </AbsoluteLayout>
 </ContentPage>

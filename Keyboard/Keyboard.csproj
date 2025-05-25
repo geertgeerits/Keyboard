@@ -94,7 +94,6 @@
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.70" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
-		<PackageReference Include="Plugin.Maui.BottomSheet" Version="9.1.5" />
 	</ItemGroup>
 
 	<ItemGroup>
