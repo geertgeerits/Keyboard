@@ -162,17 +162,17 @@
         <ContentView
             x:Name="CustomKeyboardDecimalPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            HeightRequest="250">
+            AbsoluteLayout.LayoutBounds="0,1,1,240">
 
             <local:KeyboardDecimalPortrait
-                HeightRequest="250">
+                HeightRequest="240">
             </local:KeyboardDecimalPortrait>
         </ContentView>
 
         <ContentView
             x:Name="CustomKeyboardDecimalLandscape"
             Style="{StaticResource BottomSheetKeyboard}"
-            HeightRequest="60">
+            AbsoluteLayout.LayoutBounds="0,1,1,50">
 
             <local:KeyboardDecimalLandscape
                 HeightRequest="60">

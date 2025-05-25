@@ -11,8 +11,8 @@
         RowDefinitions="Auto, Auto"
         ColumnSpacing="2"  
         RowSpacing="2"  
-        Margin="{OnPlatform 5, Android='0,5,0,0', iOS='10,15,10,20'}"
-        Padding="10"
+        Margin="{OnPlatform 0, Android='0,0,0,0', iOS='0,0,0,0'}"
+        Padding="10,10,10,10"
         HorizontalOptions="Center">
 
         <Border
