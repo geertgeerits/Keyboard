@@ -241,7 +241,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static void ImgbtnToggleKeyboardClicked(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        public async static void ImgbtnToggleKeyboardClicked(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
@@ -264,12 +264,14 @@ namespace Keyboard
                         {
                             await bottomSheetLandscape.TranslateTo(x: 0, y: 250, length: 250, Easing.SinIn);    // Slide down
                             bottomSheetLandscape.IsVisible = false;
+                            KeyboardBottomSheetClosed(imageButton);                                             // Set the image source for the keyboard toggle button
                         }
                         else
                         {
                             bottomSheetLandscape.IsVisible = true;
                             await Task.Delay(100);                                                      // Let the layout update (important for Android)
                             await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
+                            KeyboardBottomSheetOpened(imageButton);
                         }
                         break;
                     }
@@ -279,12 +281,14 @@ namespace Keyboard
                         {
                             await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
                             bottomSheetPortrait.IsVisible = false;
+                            KeyboardBottomSheetClosed(imageButton);
                         }
                         else
                         {
                             bottomSheetPortrait.IsVisible = true;
                             await Task.Delay(100);                                                      // Let the layout update (important for Android)
                             await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);    // Slide up
+                            KeyboardBottomSheetOpened(imageButton);
                         }
                         break;
                     }

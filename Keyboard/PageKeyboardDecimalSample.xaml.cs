@@ -236,6 +236,6 @@ public partial class PageKeyboardDecimalSample : ContentPage
     /// <param name="e"></param>
     private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
     {
-        ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+        ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
     }
 }

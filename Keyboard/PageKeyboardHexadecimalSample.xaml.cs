@@ -217,6 +217,6 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
     /// <param name="e"></param>
     private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
     {
-        ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+        ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
     }
 }

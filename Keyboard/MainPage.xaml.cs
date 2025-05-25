@@ -44,7 +44,7 @@ namespace Keyboard
 
             // Show or hide the keyboard toggle button visibility
             imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
-            //ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
+            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
 
             // Set the theme
             ClassKeyboardMethods.SetTheme();
@@ -114,6 +114,7 @@ namespace Keyboard
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
             ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
         }
 
         // Fix for CS1002 and CS0029 errors in the NumberEntryFocused method
@@ -128,9 +129,8 @@ namespace Keyboard
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)
                 {
                     ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                    ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
                 }
-                
-                ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
 
                 // Set the border color of the entry field
                 ClassKeyboardMethods.SetEntryBorderColorFocused(entry);
@@ -269,7 +269,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
         {
-            ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>
