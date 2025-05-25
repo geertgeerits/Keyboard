@@ -39,6 +39,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
 
         // Show the bottom sheet when the page is appearing
         ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+        ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
     }
 
     /// <summary>
@@ -56,6 +57,7 @@ public partial class PageKeyboardHexadecimalSample : ContentPage
 
         // Hide the bottom sheet when the page is disappearing
         ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+        ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
     }
 
     /// <summary>

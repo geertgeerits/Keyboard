@@ -5,9 +5,17 @@ namespace Keyboard
 {
     public partial class KeyboardDecimalPortrait : ContentView
     {
-        // Declare variables
+        // Declare variables for binding properties
+        public static readonly BindableProperty ButtonOneTextProperty =
+        BindableProperty.Create(nameof(ButtonOneText), typeof(string), typeof(KeyboardDecimalPortrait), default(string));
+        public string ButtonOneText
+        {
+            get => (string)GetValue(ButtonOneTextProperty);
+            set => SetValue(ButtonOneTextProperty, value);
+        }
+
         private string _buttonZeroText = string.Empty;
-        private string _buttonOneText = string.Empty;
+        //private string _buttonOneText = string.Empty;
         private string _buttonTwoText = string.Empty;
         private string _buttonThreeText = string.Empty;
         private string _buttonFourText = string.Empty;
@@ -30,15 +38,15 @@ namespace Keyboard
             }
         }
 
-        public string ButtonOneText
-        {
-            get => _buttonOneText;
-            set
-            {
-                _buttonOneText = value;
-                OnPropertyChanged();
-            }
-        }
+        //public string ButtonOneText
+        //{
+        //    get => _buttonOneText;
+        //    set
+        //    {
+        //        _buttonOneText = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
 
         public string ButtonTwoText
         {
@@ -197,6 +205,10 @@ namespace Keyboard
             try
             {
                 WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
+
+                //MainPage mainPage = new MainPage(); // Assuming MainPage is the target for the message
+                //mainPage.BtnKeyboardClicked(cKeyPressed);
+                //ButtonOneText = "1";
             }
             catch (Exception ex)
             {

@@ -40,6 +40,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
 
         // Show the bottom sheet when the page is appearing
         ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+        ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
     }
 
     /// <summary>
@@ -57,6 +58,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
 
         // Hide the bottom sheet when the page is disappearing
         ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+        ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
     }
 
     /// <summary>
