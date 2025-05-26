@@ -205,7 +205,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="cText"></param>
         /// <returns></returns>
-        public static bool IsHexadecimalNumber(Entry entry, string cText)
+        public static bool IsHexadecimalNumber(string cText)
         {
             if (string.IsNullOrEmpty(cText))
             {

@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
     x:Class="Keyboard.KeyboardDecimalPortrait"
-    x:Name="RootKeyboardDecimalPortrait">
+    x:Name="RootKeyboardDecimalPortrait"
+    x:DataType="local:KeyboardDecimalPortrait">
 
     <Grid  
         ColumnDefinitions="Auto, Auto, Auto, Auto"  
@@ -23,7 +24,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnOne"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonOneText}"
+                Text="{Binding ButtonOneText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -36,7 +37,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnTwo"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonTwoText}"
+                Text="{Binding ButtonTwoText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -49,7 +50,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnThree"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonThreeText}"
+                Text="{Binding ButtonThreeText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -75,7 +76,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnFour"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonFourText}"
+                Text="{Binding ButtonFourText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -88,7 +89,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnFive"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonFiveText}"
+                Text="{Binding ButtonFiveText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -101,7 +102,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnSix"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonSixText}"
+                Text="{Binding ButtonSixText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -127,7 +128,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnSeven"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonSevenText}"
+                Text="{Binding ButtonSevenText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -140,7 +141,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnEight"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonEightText}"
+                Text="{Binding ButtonEightText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -153,7 +154,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnNine"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonNineText}"
+                Text="{Binding ButtonNineText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -166,7 +167,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnMinus"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonMinusText}"
+                Text="{Binding ButtonMinusText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -179,7 +180,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnZero"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonZeroText}"
+                Text="{Binding ButtonZeroText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>
@@ -192,7 +193,7 @@
             <Button  
                 Style="{StaticResource KeyNumericPortraitButton}"
                 AutomationId="btnDecimalPoint"
-                Text="{Binding Source={x:Reference RootKeyboardDecimalPortrait}, Path=ButtonDecimalPointText}"
+                Text="{Binding ButtonDecimalPointText}"
                 Clicked="BtnKey_Clicked">
             </Button>
         </Border>

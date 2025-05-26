@@ -72,7 +72,7 @@ namespace Keyboard
         /// <summary>
         /// To do when the page is disappearing
         /// </summary>
-        protected async override void OnDisappearing()
+        protected override void OnDisappearing()
         {
             base.OnDisappearing();
             
