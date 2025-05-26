@@ -54,9 +54,6 @@ public partial class PageKeyboardDecimalSample : ContentPage
 
         // Unregister the message receiver to avoid memory leaks - if you don't do this, this receiver will be called if you are on another page
         WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
-
-        // Hide the bottom sheet when the page is disappearing
-        ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
     }
 
     /// <summary>

@@ -5,7 +5,7 @@ namespace Keyboard
 {
     public partial class KeyboardDecimalLandscape : ContentView
     {
-        // Declare variables
+        // Declare variables for binding properties
         private string _buttonZeroText = string.Empty;
         private string _buttonOneText = string.Empty;
         private string _buttonTwoText = string.Empty;

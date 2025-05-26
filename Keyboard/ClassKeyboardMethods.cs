@@ -271,12 +271,11 @@ namespace Keyboard
                         {
                             await bottomSheetLandscape.TranslateTo(x: 0, y: 250, length: 250, Easing.SinIn);    // Slide down
                             bottomSheetLandscape.IsVisible = false;
-                            SetImageKeyboardButtonSheetClosed(imageButton);                                             // Set the image source for the keyboard toggle button
+                            SetImageKeyboardButtonSheetClosed(imageButton);                                     // Set the image source for the keyboard toggle button
                         }
                         else
                         {
                             bottomSheetLandscape.IsVisible = true;
-                            await Task.Delay(100);                                                      // Let the layout update (important for Android)
                             await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
                             SetImageKeyboardButtonSheetOpened(imageButton);
                         }
@@ -293,7 +292,6 @@ namespace Keyboard
                         else
                         {
                             bottomSheetPortrait.IsVisible = true;
-                            await Task.Delay(100);                                                      // Let the layout update (important for Android)
                             await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);    // Slide up
                             SetImageKeyboardButtonSheetOpened(imageButton);
                         }
@@ -321,7 +319,6 @@ namespace Keyboard
                         bottomSheetPortrait.IsVisible = false;
 
                         bottomSheetLandscape.IsVisible = true;
-                        await Task.Delay(100);                                              // Let the layout update (important for Android)
                         await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
                         break;
                     }
@@ -331,7 +328,6 @@ namespace Keyboard
                         bottomSheetLandscape.IsVisible = false;
 
                         bottomSheetPortrait.IsVisible = true;
-                        await Task.Delay(100);
                         await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);
                         break;
                     }
@@ -341,7 +337,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// HIde the bottom sheet depending on the device orientation
+        /// Hide the bottom sheet depending on the device orientation
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>

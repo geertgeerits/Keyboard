@@ -6,10 +6,7 @@
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
-                  It is a custom keyboard that uses a bottomsheet.
-                  This works reasonably well in Android but less so in iOS.
-                  The bottomsheet is apparently always modal in iOS and does not always open when switching from
-                  portrait to landscape (and vice versa) if a different keyboard layout is used for portrait and landscape.
+                  It is a custom keyboard that uses a ContentView as overlay page
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
 */
 
@@ -42,12 +39,12 @@ namespace Keyboard
             // Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();
 
+            // Set the theme
+            ClassKeyboardMethods.SetTheme();
+
             // Show or hide the keyboard toggle button visibility
             imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
             ClassKeyboardMethods.SetImageKeyboardButtonSheetOpened(imgbtnToggleKeyboard);
-
-            // Set the theme
-            ClassKeyboardMethods.SetTheme();
         }
 
         /// <summary>
@@ -68,13 +65,7 @@ namespace Keyboard
                 Debug.WriteLine($"Received message: {message.Value}");
             });
 
-            // Delay to ensure the bottom sheet is shown after the page is fully loaded - needed for iOS
-            //_ = Task.Delay(200).ContinueWith(_ =>
-            //{
-            //    // Show the bottom sheet when the page is appearing
-            //    ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-            //}, TaskScheduler.FromCurrentSynchronizationContext());
-
+            // Show the bottom sheet when the page is appearing
             ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
@@ -90,9 +81,6 @@ namespace Keyboard
 
             // Unregister the message receiver to avoid memory leaks - if you don't do this, this receiver will be called if you are on another page
             WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
-
-            // Hide the bottom sheet when the page is disappearing
-            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>
