@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.20
-   Date ........: 2025-05-25 (YYYY-MM-DD)
+   Date ........: 2025-05-26 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -44,7 +44,7 @@ namespace Keyboard
 
             // Show or hide the keyboard toggle button visibility
             imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
-            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
+            ClassKeyboardMethods.SetImageKeyboardButtonSheetOpened(imgbtnToggleKeyboard);
 
             // Set the theme
             ClassKeyboardMethods.SetTheme();
@@ -69,13 +69,13 @@ namespace Keyboard
             });
 
             // Delay to ensure the bottom sheet is shown after the page is fully loaded - needed for iOS
-            _ = Task.Delay(200).ContinueWith(_ =>
-            {
-                // Show the bottom sheet when the page is appearing
-                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-            }, TaskScheduler.FromCurrentSynchronizationContext());
-            
-            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
+            //_ = Task.Delay(200).ContinueWith(_ =>
+            //{
+            //    // Show the bottom sheet when the page is appearing
+            //    ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            //}, TaskScheduler.FromCurrentSynchronizationContext());
+
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>
@@ -92,8 +92,7 @@ namespace Keyboard
             WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
 
             // Hide the bottom sheet when the page is disappearing
-            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-            ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
+            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>
@@ -113,8 +112,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         // Fix for CS1002 and CS0029 errors in the NumberEntryFocused method
@@ -128,8 +126,7 @@ namespace Keyboard
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)
                 {
-                    ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-                    ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
+                    ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
                 }
 
                 // Set the border color of the entry field
@@ -240,26 +237,6 @@ namespace Keyboard
                     ClassKeyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
                 }
             }
-        }
-
-        /// <summary>
-        /// Event when the keyboard bottom sheet is opened
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">An object that contains the event data.</param>
-        private void KeyboardDecimal_Opened(object sender, EventArgs e)
-        {
-            ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
-        }
-
-        /// <summary>
-        /// Event when the keyboard bottom sheet is closed
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void KeyboardDecimal_Closed(object sender, EventArgs e)
-        {
-            ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
         }
 
         /// <summary>

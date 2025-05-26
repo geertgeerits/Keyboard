@@ -39,8 +39,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
         });
 
         // Show the bottom sheet when the page is appearing
-        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-        ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
+        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
     }
 
     /// <summary>
@@ -57,8 +56,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
         WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
 
         // Hide the bottom sheet when the page is disappearing
-        ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-        ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
+        ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
     }
 
     /// <summary>
@@ -78,7 +76,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
     /// <param name="e"></param>
     private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
     {
-        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+        ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
     }
 
     /// <summary>
@@ -96,7 +94,7 @@ public partial class PageKeyboardDecimalSample : ContentPage
             // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
             if (!ClassKeyboardMethods.bKeyboardToggleButton)
             {
-                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
             }
 
             // Set the border color of the entry field
@@ -207,26 +205,6 @@ public partial class PageKeyboardDecimalSample : ContentPage
                 ClassKeyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
             }
         }
-    }
-
-    /// <summary>
-    /// Event when the keyboard bottom sheet is opened
-    /// </summary>
-    /// <param name="sender">The source of the event.</param>
-    /// <param name="e">An object that contains the event data.</param>
-    private void KeyboardDecimal_Opened(object sender, EventArgs e)
-    {
-        ClassKeyboardMethods.KeyboardBottomSheetOpened(imgbtnToggleKeyboard);
-    }
-
-    /// <summary>
-    /// Event when the keyboard bottom sheet is closed
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void KeyboardDecimal_Closed(object sender, EventArgs e)
-    {
-        ClassKeyboardMethods.KeyboardBottomSheetClosed(imgbtnToggleKeyboard);
     }
 
     /// <summary>
