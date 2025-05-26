@@ -90,7 +90,7 @@ namespace Keyboard
         /// <param name="imageButton">The source of the event.</param>
         public static void SetImageKeyboardButtonSheetOpened(ImageButton imageButton)
         {
-            if (bKeyboardToggleButton)
+            if (bKeyboardToggleButton && imageButton != null)
             {
                 imageButton.Source = Application.Current?.RequestedTheme switch
                 {
@@ -106,7 +106,7 @@ namespace Keyboard
         /// <param name="imageButton"></param>
         private static void SetImageKeyboardButtonSheetClosed(ImageButton imageButton)
         {
-            if (bKeyboardToggleButton)
+            if (bKeyboardToggleButton && imageButton != null)
             {
                 imageButton.Source = Application.Current?.RequestedTheme switch
                 {
