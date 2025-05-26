@@ -461,9 +461,11 @@
 
     <Style TargetType="ImageButton" x:Key="ToggleKeyboardImageButton">
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="HeightRequest" Value="50" />
-        <Setter Property="WidthRequest" Value="50" />
-        <Setter Property="Aspect" Value="Center" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="Aspect" Value="AspectFit" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
