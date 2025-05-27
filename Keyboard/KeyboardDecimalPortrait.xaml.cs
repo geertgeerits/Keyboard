@@ -207,5 +207,15 @@ namespace Keyboard
                 Debug.WriteLine($"Error sending message: {ex.Message}");
             }
         }
+
+        /// <summary>
+        /// Raise an event to notify the parent to hide the overlay
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnKeyboardHide_Clicked(object sender, EventArgs e)
+        {
+            _ = WeakReferenceMessenger.Default.Send(new StringMessage("btnKeyboardHide"));
+        }
     }
 }

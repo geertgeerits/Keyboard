@@ -8,7 +8,7 @@
     x:DataType="local:KeyboardDecimalLandscape">
 
     <Grid  
-        ColumnDefinitions="2, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 2"
+        ColumnDefinitions="50, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 50"
         RowDefinitions="Auto"  
         ColumnSpacing="2"  
         RowSpacing="2"  
@@ -197,5 +197,14 @@
                 Clicked="BtnKey_Clicked">
             </ImageButton>
         </Border>
+
+        <ImageButton
+            x:Name="ImgbtnKeyboardHide"
+            Style="{StaticResource KeyboardHideImageButton}"
+            Grid.Column="0"
+            Grid.Row="0"
+            Clicked="OnKeyboardHide_Clicked">
+        </ImageButton>
+
     </Grid>
 </ContentView>

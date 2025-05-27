@@ -317,7 +317,7 @@ namespace Keyboard
                     {
                         await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
                         bottomSheetPortrait.IsVisible = false;
-
+                        await Task.Delay(250);                                                      // Wait for the slide down animation to complete
                         bottomSheetLandscape.IsVisible = true;
                         await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
                         break;
@@ -326,7 +326,7 @@ namespace Keyboard
                     {
                         await bottomSheetLandscape.TranslateTo(0, 250, length: 250, Easing.SinIn);
                         bottomSheetLandscape.IsVisible = false;
-
+                        await Task.Delay(250);
                         bottomSheetPortrait.IsVisible = true;
                         await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);
                         break;

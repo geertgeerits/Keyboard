@@ -193,7 +193,11 @@ namespace Keyboard
 
             if (focusedEntry != null)
             {
-                if (cKey == "btnReturn")
+                if (cKey == "btnKeyboardHide")
+                {
+                    ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+                }
+                else if (cKey == "btnReturn")
                 {
                     GoToNextField(focusedEntry, null);
                 }

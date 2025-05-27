@@ -29,10 +29,7 @@
                 Style="{StaticResource ToggleKeyboardImageButton}"
                 Grid.Column="2"
                 Grid.Row="0"
-                HorizontalOptions="Start"
-                VerticalOptions="Center"
                 Margin="{x:OnPlatform Default='0', WinUI='0,0,0,35'}"
-                IsVisible="False"
                 Clicked="ImgbtnToggleKeyboard_Clicked">
             </ImageButton>
         </Grid>

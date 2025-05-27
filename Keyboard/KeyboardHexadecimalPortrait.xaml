@@ -7,7 +7,7 @@
     x:Name="RootKeyboardHexadecimalPortrait">
 
     <Grid  
-        ColumnDefinitions="Auto, Auto, Auto, Auto, Auto"  
+        ColumnDefinitions="50, Auto, Auto, Auto, Auto, Auto, 50"
         RowDefinitions="Auto, Auto, Auto, Auto"  
         ColumnSpacing="2"  
         RowSpacing="2"  
@@ -17,7 +17,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="0"  
+            Grid.Column="1"  
             Grid.Row="0">
 
             <Button  
@@ -30,7 +30,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="1"  
+            Grid.Column="2"  
             Grid.Row="0">
 
             <Button  
@@ -43,7 +43,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="2"  
+            Grid.Column="3"  
             Grid.Row="0">
 
             <Button  
@@ -56,7 +56,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="3"  
+            Grid.Column="4"  
             Grid.Row="0">
 
             <Button  
@@ -69,7 +69,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="4"  
+            Grid.Column="5"  
             Grid.Row="0">
 
             <Button  
@@ -82,7 +82,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="0"  
+            Grid.Column="1"  
             Grid.Row="1">
 
             <Button  
@@ -95,7 +95,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="1"  
+            Grid.Column="2"  
             Grid.Row="1">
 
             <Button  
@@ -108,7 +108,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="2"  
+            Grid.Column="3"  
             Grid.Row="1">
 
             <Button  
@@ -121,7 +121,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="3"  
+            Grid.Column="4"  
             Grid.Row="1">
 
             <Button  
@@ -134,7 +134,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="4"  
+            Grid.Column="5"  
             Grid.Row="1">
 
             <Button  
@@ -147,7 +147,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="0"  
+            Grid.Column="1"  
             Grid.Row="2">
 
             <Button  
@@ -160,7 +160,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="1"  
+            Grid.Column="2"  
             Grid.Row="2">
 
             <Button  
@@ -173,7 +173,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="2"  
+            Grid.Column="3"  
             Grid.Row="2">
 
             <Button  
@@ -186,7 +186,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="3"  
+            Grid.Column="4"  
             Grid.Row="2">
 
             <Button  
@@ -199,7 +199,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="4"  
+            Grid.Column="5"  
             Grid.Row="2">
 
             <Button  
@@ -212,7 +212,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="0"  
+            Grid.Column="1"  
             Grid.Row="3">
 
             <Button  
@@ -225,7 +225,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="1"  
+            Grid.Column="2"  
             Grid.Row="3">
 
             <Button  
@@ -240,7 +240,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="2"  
+            Grid.Column="3"  
             Grid.Row="3">
 
             <Button  
@@ -255,7 +255,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="3"  
+            Grid.Column="4"  
             Grid.Row="3">
 
             <ImageButton  
@@ -268,7 +268,7 @@
 
         <Border
             Style="{StaticResource KeyBorder}"
-            Grid.Column="4"  
+            Grid.Column="5"  
             Grid.Row="3">
 
             <ImageButton  
@@ -278,5 +278,14 @@
                 Clicked="BtnKey_Clicked">
             </ImageButton>
         </Border>
+
+        <ImageButton
+            x:Name="ImgbtnKeyboardHide"
+            Style="{StaticResource KeyboardHideImageButton}"
+            Grid.Column="0"
+            Grid.Row="3"
+            Clicked="OnKeyboardHide_Clicked">
+        </ImageButton>
+
     </Grid>
 </ContentView>

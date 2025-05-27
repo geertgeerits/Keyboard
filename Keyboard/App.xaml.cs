@@ -20,9 +20,9 @@
                 X = 300,
                 Y = 40,
                 Height = 1000,
-                Width = 600,
+                Width = 700,
                 MinimumHeight = 800,
-                MinimumWidth = 600,
+                MinimumWidth = 700,
                 MaximumHeight = 1100,
                 MaximumWidth = 900
             };
