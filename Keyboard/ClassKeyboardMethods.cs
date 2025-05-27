@@ -78,8 +78,8 @@ namespace Keyboard
 
                 border.Stroke = GetTheme() switch
                 {
-                    "Dark" => (Brush)Colors.Gray,
-                    _ => (Brush)Colors.DarkGray,
+                    "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
+                    _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
                 };
             }
         }

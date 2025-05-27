@@ -197,10 +197,6 @@ namespace Keyboard
             try
             {
                 WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
-
-                //MainPage mainPage = new MainPage(); // Assuming MainPage is the target for the message
-                //mainPage.BtnKeyboardClicked(cKeyPressed);
-                //ButtonOneText = "1";
             }
             catch (Exception ex)
             {
@@ -215,7 +211,10 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnKeyboardHide_Clicked(object sender, EventArgs e)
         {
-            _ = WeakReferenceMessenger.Default.Send(new StringMessage("btnKeyboardHide"));
+            if (sender is ImageButton imageButton)
+            {
+                _ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
+            }
         }
     }
 }

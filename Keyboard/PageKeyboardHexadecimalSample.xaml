@@ -45,7 +45,7 @@
             AbsoluteLayout.LayoutFlags="All">
 
             <Grid
-                ColumnDefinitions="300, *"
+                ColumnDefinitions="320, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
