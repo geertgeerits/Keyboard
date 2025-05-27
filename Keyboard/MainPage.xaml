@@ -84,20 +84,21 @@
             VerticalOptions="FillAndExpand"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All">
-            
+
+            <!--Add an extra row with the height of the keyboard (240) to the grid to ensure that the keyboard does not overlap the content-->
             <Grid
                 AbsoluteLayout.LayoutBounds="0,0,1,1"
                 AbsoluteLayout.LayoutFlags="All"
                 ColumnDefinitions="320, *"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, 100"
+                RowDefinitions="Auto, Auto, Auto, Auto, 240"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
-                Margin="5">
+                Margin="10">
             
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
-                    Grid.Row="1">
+                    Grid.Row="0">
 
                     <Entry  
                         x:Name="entTest1"
@@ -120,7 +121,7 @@
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
-                    Grid.Row="2">
+                    Grid.Row="1">
 
                     <Entry  
                         x:Name="entTest2"
@@ -143,7 +144,7 @@
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
-                    Grid.Row="3">
+                    Grid.Row="2">
 
                     <Entry  
                         x:Name="entTest3"
@@ -166,7 +167,7 @@
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     Grid.Column="0"
-                    Grid.Row="4">
+                    Grid.Row="3">
 
                     <Entry  
                         x:Name="entTest4"
@@ -188,9 +189,9 @@
 
                 <Label
                     Grid.Column="0"
-                    Grid.Row="5"
+                    Grid.Row="4"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center"
+                    VerticalOptions="End"
                     Text="MainPage">
                 </Label>
                                 

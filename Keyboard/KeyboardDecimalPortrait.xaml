@@ -22,7 +22,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnOne"
                 Text="{Binding ButtonOneText}"
                 Clicked="BtnKey_Clicked">
@@ -35,7 +35,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnTwo"
                 Text="{Binding ButtonTwoText}"
                 Clicked="BtnKey_Clicked">
@@ -48,7 +48,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnThree"
                 Text="{Binding ButtonThreeText}"
                 Clicked="BtnKey_Clicked">
@@ -61,7 +61,7 @@
             Grid.Row="0">
 
             <ImageButton  
-                Style="{StaticResource KeyNumericPortraitImageButton}"
+                Style="{StaticResource KeyDecimalPortraitImageButton}"
                 AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Clicked="BtnKey_Clicked">
@@ -74,7 +74,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnFour"
                 Text="{Binding ButtonFourText}"
                 Clicked="BtnKey_Clicked">
@@ -87,7 +87,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnFive"
                 Text="{Binding ButtonFiveText}"
                 Clicked="BtnKey_Clicked">
@@ -100,7 +100,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnSix"
                 Text="{Binding ButtonSixText}"
                 Clicked="BtnKey_Clicked">
@@ -113,7 +113,7 @@
             Grid.Row="1">
 
             <ImageButton  
-                Style="{StaticResource KeyNumericPortraitImageButton}"
+                Style="{StaticResource KeyDecimalPortraitImageButton}"
                 AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Clicked="BtnKey_Clicked">
@@ -126,7 +126,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnSeven"
                 Text="{Binding ButtonSevenText}"
                 Clicked="BtnKey_Clicked">
@@ -139,7 +139,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnEight"
                 Text="{Binding ButtonEightText}"
                 Clicked="BtnKey_Clicked">
@@ -152,7 +152,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnNine"
                 Text="{Binding ButtonNineText}"
                 Clicked="BtnKey_Clicked">
@@ -165,7 +165,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnMinus"
                 Text="{Binding ButtonMinusText}"
                 Clicked="BtnKey_Clicked">
@@ -178,7 +178,7 @@
             Grid.Row="3">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnZero"
                 Text="{Binding ButtonZeroText}"
                 Clicked="BtnKey_Clicked">
@@ -191,7 +191,7 @@
             Grid.Row="3">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyDecimalPortraitButton}"
                 AutomationId="btnDecimalPoint"
                 Text="{Binding ButtonDecimalPointText}"
                 Clicked="BtnKey_Clicked">

@@ -21,7 +21,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnZero"
                 Text="0"
                 Clicked="BtnKey_Clicked">
@@ -34,7 +34,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnOne"
                 Text="1"
                 Clicked="BtnKey_Clicked">
@@ -47,7 +47,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnTwo"
                 Text="2"
                 Clicked="BtnKey_Clicked">
@@ -60,7 +60,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnThree"
                 Text="3"
                 Clicked="BtnKey_Clicked">
@@ -73,7 +73,7 @@
             Grid.Row="0">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnFour"
                 Text="4"
                 Clicked="BtnKey_Clicked">
@@ -86,7 +86,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnFive"
                 Text="5"
                 Clicked="BtnKey_Clicked">
@@ -99,7 +99,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnSix"
                 Text="6"
                 Clicked="BtnKey_Clicked">
@@ -112,7 +112,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnSeven"
                 Text="7"
                 Clicked="BtnKey_Clicked">
@@ -125,7 +125,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnEight"
                 Text="8"
                 Clicked="BtnKey_Clicked">
@@ -138,7 +138,7 @@
             Grid.Row="1">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnNine"
                 Text="9"
                 Clicked="BtnKey_Clicked">
@@ -151,7 +151,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnA"
                 Text="A"
                 Clicked="BtnKey_Clicked">
@@ -164,7 +164,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnB"
                 Text="B"
                 Clicked="BtnKey_Clicked">
@@ -177,7 +177,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnC"
                 Text="C"
                 Clicked="BtnKey_Clicked">
@@ -190,7 +190,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnD"
                 Text="D"
                 Clicked="BtnKey_Clicked">
@@ -203,7 +203,7 @@
             Grid.Row="2">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnE"
                 Text="E"
                 Clicked="BtnKey_Clicked">
@@ -216,7 +216,7 @@
             Grid.Row="3">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnF"
                 Text="F"
                 Clicked="BtnKey_Clicked">
@@ -229,7 +229,7 @@
             Grid.Row="3">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnDecimalPoint"
                 BackgroundColor="Transparent"
                 Text=""
@@ -244,7 +244,7 @@
             Grid.Row="3">
 
             <Button  
-                Style="{StaticResource KeyNumericPortraitButton}"
+                Style="{StaticResource KeyHexadecimalPortraitButton}"
                 AutomationId="btnMinus"
                 BackgroundColor="Transparent"
                 Text=""
@@ -259,7 +259,7 @@
             Grid.Row="3">
 
             <ImageButton  
-                Style="{StaticResource KeyNumericPortraitImageButton}"
+                Style="{StaticResource KeyHexadecimalPortraitImageButton}"
                 AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Clicked="BtnKey_Clicked">
@@ -272,7 +272,7 @@
             Grid.Row="3">
 
             <ImageButton  
-                Style="{StaticResource KeyNumericPortraitImageButton}"
+                Style="{StaticResource KeyHexadecimalPortraitImageButton}"
                 AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Clicked="BtnKey_Clicked">
