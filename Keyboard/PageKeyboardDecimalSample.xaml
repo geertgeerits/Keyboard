@@ -169,10 +169,10 @@
         <ContentView
             x:Name="CustomKeyboardDecimalLandscape"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,50">
+            AbsoluteLayout.LayoutBounds="0,1,1,65">
 
             <local:KeyboardDecimalLandscape
-                HeightRequest="60">
+                HeightRequest="65">
             </local:KeyboardDecimalLandscape>
         </ContentView>
 
