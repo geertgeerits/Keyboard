@@ -49,7 +49,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Set the border color of the entry field based on the theme when the entry is focused
+        /// Set the border color and thickness of the entry field based on the theme when the entry is focused
         /// </summary>
         /// <param name="entry"></param>
         public static void SetEntryBorderColorFocused(Entry entry)
@@ -60,14 +60,16 @@ namespace Keyboard
 
                 border.Stroke = GetTheme() switch
                 {
-                    "Dark" => (Brush)Colors.Green,
-                    _ => (Brush)Colors.DarkGreen,
+                    "Dark" => (Brush)Colors.Blue,
+                    _ => (Brush)Colors.DarkBlue,
                 };
+
+                border.StrokeThickness = 2;
             }
         }
 
         /// <summary>
-        /// Set the border color of the entry field based on the theme when the entry is unfocused
+        /// Set the border color and thickness of the entry field based on the theme when the entry is unfocused
         /// </summary>
         /// <param name="entry"></param>
         public static void SetEntryBorderColorUnfocused(Entry entry)
@@ -81,6 +83,8 @@ namespace Keyboard
                     "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
                     _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
                 };
+
+                border.StrokeThickness = 1;
             }
         }
 
