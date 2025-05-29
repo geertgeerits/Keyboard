@@ -72,11 +72,11 @@ namespace Keyboard
 
                 border.Stroke = GetTheme() switch
                 {
-                    "Dark" => (Brush)Colors.Blue,
-                    _ => (Brush)Colors.DarkBlue,
+                    "Dark" => (Brush)Colors.LightBlue,
+                    _ => (Brush)Colors.Blue,
                 };
 
-                border.StrokeThickness = 2;
+                //border.StrokeThickness = 2;
             }
         }
 
@@ -96,7 +96,7 @@ namespace Keyboard
                     _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
                 };
 
-                border.StrokeThickness = 1;
+                //border.StrokeThickness = 1;
             }
         }
 
