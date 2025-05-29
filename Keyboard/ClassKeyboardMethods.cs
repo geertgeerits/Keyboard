@@ -6,7 +6,7 @@ namespace Keyboard
     {
 #if IOS
         // Do not use the keyboard for iOS
-        // !!!BUG!!!? When the custom keyboard is enabled, the Entry properties like selection, cursor position, Placeholder and Border color, will not showing
+        // !!!BUG!!!? When the custom keyboard is enabled, the Entry properties like Selection, Cursor position, Placeholder and Border color, will not showing
         private static bool bUseCustomKeyboardForIOS = false;
 
         // Default value for keyboard toggle button
