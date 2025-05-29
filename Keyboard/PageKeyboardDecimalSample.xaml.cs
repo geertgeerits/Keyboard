@@ -15,9 +15,6 @@ namespace Keyboard
 
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
-
-            // Show or hide the keyboard toggle button visibility
-            imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
         }
 
         /// <summary>
@@ -81,12 +78,12 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void NumberEntryFocused(object sender, FocusEventArgs e)
+        private void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
-                _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                // Hide the Android and iOS keyboard
+                ClassKeyboardMethods.HideKeyboard(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)

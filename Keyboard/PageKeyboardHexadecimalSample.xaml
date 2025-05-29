@@ -64,7 +64,7 @@
                         AutomationId="entTest1-Percentage"
                         Placeholder="0 - FF"
                         MaxLength="2"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -87,7 +87,7 @@
                         AutomationId="entTest2"
                         Placeholder="0 - FFFF"
                         MaxLength="4"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -110,7 +110,7 @@
                         AutomationId="entTest3"
                         Placeholder="0 - FFFFFF"
                         MaxLength="6"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -133,7 +133,7 @@
                         AutomationId="entTest4"
                         Placeholder="0 - FFFFFFFF"
                         MaxLength="12"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -159,7 +159,8 @@
         <ContentView
             x:Name="CustomKeyboardHexadecimalPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,240">
+            AbsoluteLayout.LayoutBounds="0,1,1,240"
+            IsVisible="False">
 
             <local:KeyboardHexadecimalPortrait
                 HeightRequest="240">
@@ -169,7 +170,8 @@
         <ContentView
             x:Name="CustomKeyboardHexadecimalLandscape"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,100">
+            AbsoluteLayout.LayoutBounds="0,1,1,100"
+            IsVisible="False">
 
             <local:KeyboardHexadecimalLandscape
                 HeightRequest="100">

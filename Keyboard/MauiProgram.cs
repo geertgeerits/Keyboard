@@ -22,7 +22,7 @@ namespace Keyboard
 #if ANDROID
                 handler.PlatformView.ShowSoftInputOnFocus = false;
 #elif IOS
-                handler.PlatformView.InputView = new UIKit.UIView();
+                //handler.PlatformView.InputView = new UIKit.UIView();
                 // Instead of assigning a blank UIView, assign null to InputView
                 // This disables the system keyboard but keeps selection and cursor working (does not works)
                 //handler.PlatformView.InputView = null;

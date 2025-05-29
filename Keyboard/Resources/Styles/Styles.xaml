@@ -526,6 +526,7 @@
         </Setter>
     </Style>
 
+    <!--The properties 'Keyboard', 'ReturnType' and 'Completed' are necessary when using the system keyboard instead of the custom keyboard-->
     <Style TargetType="Entry" x:Key="NumericEntry">
         <Setter Property="HorizontalTextAlignment" Value="End"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
@@ -535,6 +536,9 @@
         <Setter Property="FontSize" Value="16" />
         <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}" />
+        <Setter Property="Text" Value="" />
+        <Setter Property="Keyboard" Value="Numeric" />
+        <Setter Property="ReturnType" Value="Next" />
         <Setter Property="MinimumHeightRequest" Value="50" />
         <Setter Property="MinimumWidthRequest" Value="50" />
         <Setter Property="VisualStateManager.VisualStateGroups">

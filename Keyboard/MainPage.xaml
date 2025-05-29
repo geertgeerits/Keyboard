@@ -106,7 +106,7 @@
                         AutomationId="entTest1-Percentage"
                         Placeholder="0 - 100"
                         MaxLength="6"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -129,7 +129,7 @@
                         AutomationId="entTest2"
                         Placeholder="0 - 999999999999.99"
                         MaxLength="20"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -152,7 +152,7 @@
                         AutomationId="entTest3"
                         Placeholder="-999999999999.99 - 999999999999.99"
                         MaxLength="20"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -175,7 +175,7 @@
                         AutomationId="entTest4"
                         Placeholder="-999999999999.99 - 999999999999.99"
                         MaxLength="20"
-                        Text=""
+                        Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
@@ -201,7 +201,8 @@
         <ContentView
             x:Name="CustomKeyboardDecimalPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,240">
+            AbsoluteLayout.LayoutBounds="0,1,1,240"
+            IsVisible="False">
 
             <local:KeyboardDecimalPortrait
                 HeightRequest="240">
@@ -211,7 +212,8 @@
         <ContentView
             x:Name="CustomKeyboardDecimalLandscape"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,65">
+            AbsoluteLayout.LayoutBounds="0,1,1,65"
+            IsVisible="False">
             
             <local:KeyboardDecimalLandscape
                 HeightRequest="65">

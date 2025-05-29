@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.20
-   Date ........: 2025-05-28 (YYYY-MM-DD)
+   Date ........: 2025-05-29 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -42,8 +42,7 @@ namespace Keyboard
             // Set the theme
             ClassKeyboardMethods.SetTheme();
 
-            // Show or hide the keyboard toggle button visibility
-            imgbtnToggleKeyboard.IsVisible = ClassKeyboardMethods.bKeyboardToggleButton;
+            // Set the image source for the keyboard toggle button
             ClassKeyboardMethods.SetImageKeyboardButtonSheetOpened(imgbtnToggleKeyboard);
         }
 
@@ -104,12 +103,12 @@ namespace Keyboard
         }
 
         // Fix for CS1002 and CS0029 errors in the NumberEntryFocused method
-        private async void NumberEntryFocused(object sender, FocusEventArgs e)
+        private void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                // Hide the Android and iOS keyboard (method is in the class MauiProgram (MauiProgram.cs)
-                _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                // Hide the Android and iOS keyboard
+                ClassKeyboardMethods.HideKeyboard(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)

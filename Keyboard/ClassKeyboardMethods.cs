@@ -4,8 +4,20 @@ namespace Keyboard
 {
     internal static class ClassKeyboardMethods
     {
+#if IOS
+        // Do not use the keyboard for iOS
+        // !!!BUG!!!? When the keyboard is enabled, the Entry properties like selection, cursor position, Placeholder and Border color, will not showing
+        private static bool bUseKeyboardForIOS = false;
+
+        // Default value for keyboard toggle button
+        public static bool bKeyboardToggleButton = false;
+#else
+        // Use the keyboard for iOS
+        private static bool bUseKeyboardForIOS = true;
+
         // Default value for keyboard toggle button
         public static bool bKeyboardToggleButton = true;
+#endif
         
         // Enable border color change on focused Entry fields
         public static bool bEnableBorderColorOnFocused = true;
@@ -94,6 +106,16 @@ namespace Keyboard
         /// <param name="imageButton">The source of the event.</param>
         public static void SetImageKeyboardButtonSheetOpened(ImageButton imageButton)
         {
+            // The keyboard is not enabled for iOS
+            if (!bUseKeyboardForIOS)
+            {
+                imageButton.IsVisible = false;      // Hide the keyboard toggle button for iOS
+                return;
+            }
+
+            // Show or hide the keyboard toggle button visibility
+            imageButton.IsVisible = bKeyboardToggleButton;
+
             if (bKeyboardToggleButton && imageButton != null)
             {
                 imageButton.Source = Application.Current?.RequestedTheme switch
@@ -254,6 +276,12 @@ namespace Keyboard
         /// <param name="bottomSheetLandscape"></param>
         public async static void ImgbtnToggleKeyboardClicked(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
+            // The keyboard is not enabled for iOS
+            if (!bUseKeyboardForIOS)
+            {
+                return;
+            }
+
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
 
@@ -311,6 +339,12 @@ namespace Keyboard
         /// <param name="bottomSheetLandscape"></param>
         public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
+            // The keyboard is not enabled for iOS
+            if (!bUseKeyboardForIOS)
+            {
+                return;
+            }
+
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
 
@@ -347,6 +381,12 @@ namespace Keyboard
         /// <param name="bottomSheetLandscape"></param>
         public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
+            // The keyboard is not enabled for iOS
+            if (!bUseKeyboardForIOS)
+            {
+                return;
+            }
+
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
 
@@ -368,6 +408,36 @@ namespace Keyboard
             }
 
             SetImageKeyboardButtonSheetClosed(imageButton);
+        }
+
+        /// <summary>
+        /// Hide the keyboard
+        /// </summary>
+        /// <param name="entry"></param>
+        public async static void HideKeyboard(Entry entry)
+        {
+            // The keyboard is not enabled for iOS
+            if (!bUseKeyboardForIOS)
+            {
+                return;
+            }
+
+            try
+            {
+                if (entry.IsSoftInputShowing())
+                {
+#if ANDROID
+                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
+                    entry.Unfocus();
+#endif
+                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                }
+            }
+            catch (Exception)
+            {
+                entry.IsEnabled = false;
+                entry.IsEnabled = true;
+            }
         }
     }
 }

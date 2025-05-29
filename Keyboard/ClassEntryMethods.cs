@@ -400,29 +400,6 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Hide the keyboard
-        /// </summary>
-        /// <param name="entry"></param>
-        public async static void HideKeyboard(Entry entry)
-        {
-            try
-            {
-                if (entry.IsSoftInputShowing())
-                {
-                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
-                    entry.Unfocus();
-
-                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
-                }
-            }
-            catch (Exception)
-            {
-                entry.IsEnabled = false;
-                entry.IsEnabled = true;
-            }
-        }
-
-        /// <summary>
         /// Select all the text in the entry field
         /// </summary>
         public static void ModifyEntrySelectAllText()
@@ -445,6 +422,30 @@ namespace Keyboard
             });
         }
 
+        /// <summary>
+        /// Hide the keyboard
+        /// </summary>
+        /// <param name="entry"></param>
+        public async static void HideKeyboard(Entry entry)
+        {
+            try
+            {
+                if (entry.IsSoftInputShowing())
+                {
+#if ANDROID
+                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
+                    entry.Unfocus();
+#endif
+                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                }
+            }
+            catch (Exception)
+            {
+                entry.IsEnabled = false;
+                entry.IsEnabled = true;
+            }
+        }
+        
         ///// <summary>
         ///// Test the rounding of numbers
         ///// </summary>
@@ -460,9 +461,9 @@ namespace Keyboard
         //        cRoundNumber = "AwayFromZero";
         //        //cRoundNumber = "ToEven";
         //        //cRoundNumber = "ToZero";
-                
+
         //        string cRoundedNumber = RoundToNumDecimals(ref nNumber, nNumDec, cFormatSpecifier);
-                
+
         //        Debug.WriteLine($"Original: {number} - Rounded: {cRoundedNumber}");
         //    }
         //}
