@@ -6,14 +6,14 @@ namespace Keyboard
     {
 #if IOS
         // Do not use the keyboard for iOS
-        // !!!BUG!!!? When the keyboard is enabled, the Entry properties like selection, cursor position, Placeholder and Border color, will not showing
-        private static bool bUseKeyboardForIOS = false;
+        // !!!BUG!!!? When the custom keyboard is enabled, the Entry properties like selection, cursor position, Placeholder and Border color, will not showing
+        private static bool bUseCustomKeyboardForIOS = false;
 
         // Default value for keyboard toggle button
         public static bool bKeyboardToggleButton = false;
 #else
         // Use the keyboard for iOS
-        private static bool bUseKeyboardForIOS = true;
+        private static bool bUseCustomKeyboardForIOS = true;
 
         // Default value for keyboard toggle button
         public static bool bKeyboardToggleButton = true;
@@ -107,7 +107,7 @@ namespace Keyboard
         public static void SetImageKeyboardButtonSheetOpened(ImageButton imageButton)
         {
             // The keyboard is not enabled for iOS
-            if (!bUseKeyboardForIOS)
+            if (!bUseCustomKeyboardForIOS)
             {
                 imageButton.IsVisible = false;      // Hide the keyboard toggle button for iOS
                 return;
@@ -277,7 +277,7 @@ namespace Keyboard
         public async static void ImgbtnToggleKeyboardClicked(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
             // The keyboard is not enabled for iOS
-            if (!bUseKeyboardForIOS)
+            if (!bUseCustomKeyboardForIOS)
             {
                 return;
             }
@@ -340,7 +340,7 @@ namespace Keyboard
         public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
             // The keyboard is not enabled for iOS
-            if (!bUseKeyboardForIOS)
+            if (!bUseCustomKeyboardForIOS)
             {
                 return;
             }
@@ -382,7 +382,7 @@ namespace Keyboard
         public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
             // The keyboard is not enabled for iOS
-            if (!bUseKeyboardForIOS)
+            if (!bUseCustomKeyboardForIOS)
             {
                 return;
             }
@@ -411,13 +411,13 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Hide the keyboard
+        /// Hide system the keyboard
         /// </summary>
         /// <param name="entry"></param>
-        public async static void HideKeyboard(Entry entry)
+        public async static void HideSystemKeyboard(Entry entry)
         {
             // The keyboard is not enabled for iOS
-            if (!bUseKeyboardForIOS)
+            if (!bUseCustomKeyboardForIOS)
             {
                 return;
             }

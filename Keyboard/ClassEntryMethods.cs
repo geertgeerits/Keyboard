@@ -426,7 +426,7 @@ namespace Keyboard
         /// Hide the keyboard
         /// </summary>
         /// <param name="entry"></param>
-        public async static void HideKeyboard(Entry entry)
+        public async static void HideSystemKeyboard(Entry entry)
         {
             try
             {
