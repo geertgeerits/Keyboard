@@ -1,6 +1,6 @@
 ﻿namespace Keyboard
 {
-    public sealed class HexadecimalValidationTriggerAction : TriggerAction<Entry>
+    public sealed class ValidationTriggerActionHexadecimal : TriggerAction<Entry>
     {
         public string? MinValue { get; set; }
         public string? MaxValue { get; set; }

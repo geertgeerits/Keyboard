@@ -70,7 +70,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="100"/>
+                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="100"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -93,7 +93,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="0" MaxValue="999999999999.99"/>
+                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -116,7 +116,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99"/>
+                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -139,7 +139,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:NumericValidationTriggerAction MinValue="-999999999999.99" MaxValue="999999999999.99"/>
+                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

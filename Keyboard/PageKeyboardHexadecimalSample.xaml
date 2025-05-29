@@ -70,7 +70,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FF"/>
+                                <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -93,7 +93,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFF"/>
+                                <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -116,7 +116,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFF"/>
+                                <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>
@@ -139,7 +139,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:HexadecimalValidationTriggerAction MinValue="0" MaxValue="FFFFFFFF"/>
+                                <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFFFFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                     </Entry>

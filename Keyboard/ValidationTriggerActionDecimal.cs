@@ -1,6 +1,6 @@
 ﻿namespace Keyboard
 {
-    public sealed class NumericValidationTriggerAction : TriggerAction<Entry>
+    public sealed class ValidationTriggerActionDecimal : TriggerAction<Entry>
     {
         public decimal MinValue { get; set; }
         public decimal MaxValue { get; set; }
