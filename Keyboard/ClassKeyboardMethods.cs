@@ -5,14 +5,14 @@ namespace Keyboard
     internal static class ClassKeyboardMethods
     {
 #if IOS
-        // Do not use the keyboard for iOS
+        // Do not use the custom keyboard for iOS
         // !!!BUG!!!? When the custom keyboard is enabled, the Entry properties like Selection, Cursor position, Placeholder and Border color, will not showing
-        private static bool bUseCustomKeyboardForIOS = false;
+        private static bool bUseCustomKeyboardForIOS = true;
 
         // Default value for keyboard toggle button
-        public static bool bKeyboardToggleButton = false;
+        public static bool bKeyboardToggleButton = true;
 #else
-        // Use the keyboard for iOS
+        // Use the custom keyboard for iOS
         private static bool bUseCustomKeyboardForIOS = true;
 
         // Default value for keyboard toggle button

@@ -2,11 +2,16 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.20
-   Date ........: 2025-05-29 (YYYY-MM-DD)
+   Date ........: 2025-05-30 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
                   It is a custom keyboard that uses a ContentView as overlay page
+                  The custom keyboard works fine in Android and Windows.
+                  However In iOS when the custom keyboard is enabled, the Entry properties like Selection, Cursor position, Placeholder
+                  and Border color, will not showing.
+                  To use the system keyboard set in the file 'ClassKeyboardMethods.cs' the variable 'bUseCustomKeyboardForIOS' to false (line 10).
+                  In the file MauiProgram.cs comment out 'handler.PlatformView.InputView = new UIKit.UIView();' (line 27).
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
 */
 

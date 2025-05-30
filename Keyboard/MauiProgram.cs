@@ -22,7 +22,7 @@ namespace Keyboard
 #if ANDROID
                 handler.PlatformView.ShowSoftInputOnFocus = false;
 #elif IOS
-                // !!!BUG!!!? When the custom keyboard is enabled, the Entry properties like selection, cursor position, Placeholder and Border color, will not showing
+                // !!!BUG!!!? When the custom keyboard is enabled, the Entry properties like Selection, Cursor position, Placeholder and Border color, will not showing
                 // Also uncomment the next line to disable the system keyboard
                 //handler.PlatformView.InputView = new UIKit.UIView();
 
