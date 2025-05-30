@@ -19,7 +19,11 @@
 
                 // Set the border color if the input is invalid
                 Border border = (Border)entry.Parent;
-                border.Stroke = isValidNumber ? Color.FromArgb("969696") : Colors.OrangeRed;
+
+                if (border != null)
+                {
+                    border.Stroke = isValidNumber ? Color.FromArgb("969696") : Colors.OrangeRed;
+                }
             }
         }
     }

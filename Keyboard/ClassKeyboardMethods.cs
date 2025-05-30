@@ -66,17 +66,20 @@ namespace Keyboard
         /// <param name="entry"></param>
         public static void SetEntryBorderColorFocused(Entry entry)
         {
-            if (bEnableBorderColorOnFocused)
+            if (bEnableBorderColorOnFocused && entry != null)
             {
                 Border border = (Border)entry.Parent;
 
-                border.Stroke = GetTheme() switch
+                if (border != null)
                 {
-                    "Dark" => (Brush)Colors.LightBlue,
-                    _ => (Brush)Colors.Blue,
-                };
+                    border.Stroke = GetTheme() switch
+                    {
+                        "Dark" => (Brush)Colors.LightBlue,
+                        _ => (Brush)Colors.Blue,
+                    };
 
-                //border.StrokeThickness = 2;
+                    //border.StrokeThickness = 2;
+                }
             }
         }
 
@@ -86,17 +89,20 @@ namespace Keyboard
         /// <param name="entry"></param>
         public static void SetEntryBorderColorUnfocused(Entry entry)
         {
-            if (bEnableBorderColorOnFocused)
+            if (bEnableBorderColorOnFocused && entry != null)
             {
                 Border border = (Border)entry.Parent;
 
-                border.Stroke = GetTheme() switch
+                if (border != null)
                 {
-                    "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
-                    _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
-                };
+                    border.Stroke = GetTheme() switch
+                    {
+                        "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
+                        _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
+                    };
 
-                //border.StrokeThickness = 1;
+                    //border.StrokeThickness = 1;
+                }
             }
         }
 
@@ -106,6 +112,11 @@ namespace Keyboard
         /// <param name="imageButton">The source of the event.</param>
         public static void SetImageKeyboardButtonSheetOpened(ImageButton imageButton)
         {
+            if (imageButton == null)
+            {
+                return;
+            }
+            
             // The keyboard is not enabled for iOS
             if (!bUseCustomKeyboardForIOS)
             {
@@ -212,6 +223,11 @@ namespace Keyboard
         /// <returns></returns>
         private static string InsertCharacterInEntryField(Entry entry, string cCharacter)
         {
+            if (entry == null)
+            {
+                return string.Empty;
+            }
+
             // Get the current text in the Entry
             string currentText = entry.Text ?? string.Empty;
 
@@ -243,6 +259,11 @@ namespace Keyboard
         /// <returns></returns>
         private static string DeleteCharacterBeforeCursor(Entry entry)
         {
+            if (entry == null)
+            {
+                return string.Empty;
+            }
+
             // Get the current text in the Entry
             string currentText = entry.Text ?? string.Empty;
 
@@ -276,6 +297,11 @@ namespace Keyboard
         /// <param name="bottomSheetLandscape"></param>
         public async static void ImgbtnToggleKeyboardClicked(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
+            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
+            {
+                return;
+            }
+
             // The keyboard is not enabled for iOS
             if (!bUseCustomKeyboardForIOS)
             {
@@ -339,6 +365,11 @@ namespace Keyboard
         /// <param name="bottomSheetLandscape"></param>
         public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
+            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
+            {
+                return;
+            }
+
             // The keyboard is not enabled for iOS
             if (!bUseCustomKeyboardForIOS)
             {
@@ -381,6 +412,11 @@ namespace Keyboard
         /// <param name="bottomSheetLandscape"></param>
         public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
+            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
+            {
+                return;
+            }
+
             // The keyboard is not enabled for iOS
             if (!bUseCustomKeyboardForIOS)
             {
@@ -417,7 +453,7 @@ namespace Keyboard
         public async static void HideSystemKeyboard(Entry entry)
         {
             // The keyboard is not enabled for iOS
-            if (!bUseCustomKeyboardForIOS)
+            if (!bUseCustomKeyboardForIOS || entry == null)
             {
                 return;
             }
