@@ -20,11 +20,11 @@
                 X = 300,
                 Y = 40,
                 Height = 1000,
-                Width = 700,
+                Width = 800,
                 MinimumHeight = 800,
-                MinimumWidth = 700,
+                MinimumWidth = 800,
                 MaximumHeight = 1100,
-                MaximumWidth = 900
+                MaximumWidth = 1000
             };
         }
     }
