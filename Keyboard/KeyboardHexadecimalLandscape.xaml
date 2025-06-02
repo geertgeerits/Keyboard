@@ -6,17 +6,19 @@
     x:Class="Keyboard.KeyboardHexadecimalLandscape"
     x:Name="RootKeyboardHexadecimalLandscape">
 
-    <Grid  
+    <Grid
+        Style="{StaticResource KeyboardGrid}"
         ColumnDefinitions="50, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 50"
-        RowDefinitions="Auto, Auto"
-        ColumnSpacing="2"  
-        RowSpacing="2"  
-        Margin="0"
-        Padding="10,10,10,10"
-        HorizontalOptions="Center">
+        RowDefinitions="50, 50">
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyboardGridBorder}"
+            Grid.ColumnSpan="16"
+            Grid.RowSpan="2">
+        </Border>
+
+        <Border
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="1"  
             Grid.Row="0">
 
@@ -29,7 +31,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="2"  
             Grid.Row="0">
 
@@ -42,7 +44,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="3"  
             Grid.Row="0">
 
@@ -55,7 +57,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="4"  
             Grid.Row="0">
 
@@ -68,7 +70,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="5"  
             Grid.Row="0">
 
@@ -81,7 +83,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="6"  
             Grid.Row="0">
 
@@ -94,7 +96,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="7"  
             Grid.Row="0">
 
@@ -107,7 +109,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="8"  
             Grid.Row="0">
 
@@ -120,7 +122,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="9"  
             Grid.Row="0">
 
@@ -133,7 +135,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="10"  
             Grid.Row="0">
 
@@ -146,7 +148,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="1"  
             Grid.Row="1">
 
@@ -159,7 +161,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="2"  
             Grid.Row="1">
 
@@ -172,7 +174,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="3"  
             Grid.Row="1">
 
@@ -185,7 +187,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="4"  
             Grid.Row="1">
 
@@ -198,7 +200,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="5"  
             Grid.Row="1">
 
@@ -211,7 +213,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="6"  
             Grid.Row="1">
 
@@ -224,7 +226,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="7"  
             Grid.Row="1">
 
@@ -239,7 +241,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="8"  
             Grid.Row="1">
 
@@ -254,7 +256,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="9"  
             Grid.Row="1">
 
@@ -267,7 +269,7 @@
         </Border>
 
         <Border
-            Style="{StaticResource KeyBorder}"
+            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="10"  
             Grid.Row="1">
 

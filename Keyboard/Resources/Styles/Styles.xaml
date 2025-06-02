@@ -448,15 +448,48 @@
         <Setter Property="SelectedTabColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
-    <!-- ********************** Keyboard Styles ********************** -->
+    <!--*************************************************************************************************************************************
+        ********************************************************** Keyboard Styles ********************************************************** 
+        *************************************************************************************************************************************-->
+    
+    <Style TargetType="Border" x:Key="TitleViewButtonBorder">
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8" />
+            </Setter.Value>
+        </Setter>
+    </Style>
 
     <Style TargetType="ContentView" x:Key="BottomSheetKeyboard">
         <Setter Property="AbsoluteLayout.LayoutFlags" Value="WidthProportional,PositionProportional" />
         <Setter Property="AbsoluteLayout.LayoutBounds" Value="0,1,1,250" />
         <Setter Property="TranslationY" Value="0" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray400}}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="IsVisible" Value="True" />
+    </Style>
+
+    <Style TargetType="Grid" x:Key="KeyboardGrid">
+        <Setter Property="ColumnSpacing" Value="2" />
+        <Setter Property="RowSpacing" Value="2" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="KeyboardGridBorder">
+        <Setter Property="Grid.Row" Value="0" />
+        <Setter Property="Grid.Column" Value="0" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray400}}" />
+        <Setter Property="StrokeThickness" Value="0" />
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8,8,0,0" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="ImageButton" x:Key="ToggleKeyboardImageButton">
@@ -548,7 +581,11 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Border" x:Key="KeyBorder">
+    <Style TargetType="Border" x:Key="KeyPortraitBorder">
+        <Setter Property="MinimumHeightRequest" Value="50" />
+        <Setter Property="MaximumHeightRequest" Value="60" />
+        <Setter Property="MinimumWidthRequest" Value="60" />
+        <Setter Property="MaximumWidthRequest" Value="70" />
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="StrokeThickness" Value="1"/>
         <Setter Property="StrokeShape">
@@ -666,6 +703,20 @@
         </Setter>
     </Style>
 
+    <Style TargetType="Border" x:Key="KeyLandscape1RowBorder">
+        <Setter Property="MinimumHeightRequest" Value="35" />
+        <Setter Property="MaximumHeightRequest" Value="45" />
+        <Setter Property="MinimumWidthRequest" Value="30" />
+        <Setter Property="MaximumWidthRequest" Value="40" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="Button" x:Key="KeyNumericLandscape1RowButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
@@ -719,6 +770,20 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateGroupList>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Border" x:Key="KeyLandscape2RowBorder">
+        <Setter Property="MinimumHeightRequest" Value="35" />
+        <Setter Property="MaximumHeightRequest" Value="40" />
+        <Setter Property="MinimumWidthRequest" Value="35" />
+        <Setter Property="MaximumWidthRequest" Value="45" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8" />
+            </Setter.Value>
         </Setter>
     </Style>
 
