@@ -8,8 +8,8 @@
 
     <Grid
         Style="{StaticResource KeyboardGrid}"
-        ColumnDefinitions="50, Auto, Auto, Auto, Auto, Auto, 50"
-        RowDefinitions="Auto, Auto, Auto, Auto">
+        ColumnDefinitions="50, 60, 60, 60, 60, 60, 50"
+        RowDefinitions="60, 60, 60, 60">
 
         <BoxView
             Style="{StaticResource KeyboardGridBoxView}"
