@@ -9,14 +9,14 @@
 
     <Grid
         Style="{StaticResource KeyboardGrid}"
-        ColumnDefinitions="50, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 50"
+        ColumnDefinitions="50, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 50"
         RowDefinitions="65">
 
-        <Border
-            Style="{StaticResource KeyboardGridBorder}"
+        <BoxView
+            Style="{StaticResource KeyboardGridBoxView}"
             Grid.ColumnSpan="16"
             Grid.RowSpan="1">
-        </Border>
+        </BoxView>
 
         <Border
             Style="{StaticResource KeyLandscape1RowBorder}"

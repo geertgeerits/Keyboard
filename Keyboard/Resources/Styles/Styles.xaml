@@ -473,8 +473,8 @@
     </Style>
 
     <Style TargetType="Grid" x:Key="KeyboardGrid">
-        <Setter Property="ColumnSpacing" Value="2" />
-        <Setter Property="RowSpacing" Value="2" />
+        <Setter Property="ColumnSpacing" Value="0" />
+        <Setter Property="RowSpacing" Value="0" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="Margin" Value="10,0,10,0" />
         <Setter Property="Padding" Value="0" />
@@ -490,6 +490,13 @@
                 <RoundRectangle CornerRadius="8,8,0,0" />
             </Setter.Value>
         </Setter>
+    </Style>
+
+    <Style TargetType="BoxView" x:Key="KeyboardGridBoxView">
+        <Setter Property="Grid.Row" Value="0" />
+        <Setter Property="Grid.Column" Value="0" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray400}}" />
+        <Setter Property="CornerRadius" Value="8,8,0,0" />
     </Style>
 
     <Style TargetType="ImageButton" x:Key="ToggleKeyboardImageButton">
@@ -704,10 +711,10 @@
     </Style>
 
     <Style TargetType="Border" x:Key="KeyLandscape1RowBorder">
-        <Setter Property="MinimumHeightRequest" Value="35" />
-        <Setter Property="MaximumHeightRequest" Value="45" />
-        <Setter Property="MinimumWidthRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="40" />
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="StrokeThickness" Value="1"/>
         <Setter Property="StrokeShape">
@@ -720,13 +727,10 @@
     <Style TargetType="Button" x:Key="KeyNumericLandscape1RowButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
-        <Setter Property="FontSize" Value="15" />
+        <Setter Property="FontSize" Value="18" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="MinimumHeightRequest" Value="35" />
-        <Setter Property="MaximumHeightRequest" Value="45" />
-        <Setter Property="MinimumWidthRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="35" />
+        <Setter Property="FontAutoScalingEnabled" Value="False" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -748,11 +752,6 @@
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape1RowImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
-        <Setter Property="MinimumHeightRequest" Value="35" />
-        <Setter Property="MaximumHeightRequest" Value="45" />
-        <Setter Property="MinimumWidthRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="35" />
         <Setter Property="Aspect" Value="Center" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -774,10 +773,8 @@
     </Style>
 
     <Style TargetType="Border" x:Key="KeyLandscape2RowBorder">
-        <Setter Property="MinimumHeightRequest" Value="35" />
-        <Setter Property="MaximumHeightRequest" Value="40" />
-        <Setter Property="MinimumWidthRequest" Value="35" />
-        <Setter Property="MaximumWidthRequest" Value="45" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="StrokeThickness" Value="1"/>
         <Setter Property="StrokeShape">
@@ -792,11 +789,8 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="MinimumHeightRequest" Value="35" />
-        <Setter Property="MaximumHeightRequest" Value="40" />
-        <Setter Property="MinimumWidthRequest" Value="35" />
-        <Setter Property="MaximumWidthRequest" Value="45" />
-        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="FontAutoScalingEnabled" Value="False" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -818,11 +812,6 @@
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape2RowsImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
-        <Setter Property="MinimumHeightRequest" Value="35" />
-        <Setter Property="MaximumHeightRequest" Value="40" />
-        <Setter Property="MinimumWidthRequest" Value="35" />
-        <Setter Property="MaximumWidthRequest" Value="45" />
-        <Setter Property="WidthRequest" Value="40" />
         <Setter Property="Aspect" Value="Center" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
