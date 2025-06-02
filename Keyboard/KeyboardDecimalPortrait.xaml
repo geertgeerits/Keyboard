@@ -7,15 +7,17 @@
     x:Name="RootKeyboardDecimalPortrait"
     x:DataType="local:KeyboardDecimalPortrait">
 
-    <Grid  
-        ColumnDefinitions="50, Auto, Auto, Auto, Auto, 50"
-        RowDefinitions="Auto, Auto, Auto, Auto"  
-        ColumnSpacing="2"  
-        RowSpacing="2"  
-        Margin="0"
-        Padding="10,12,10,10"
-        HorizontalOptions="Center">
+    <Grid
+        Style="{StaticResource KeyboardGrid}"
+        ColumnDefinitions="50, 60, 60, 60, 60, 50"
+        RowDefinitions="50, 50, 50, 50">
 
+        <BoxView
+            Style="{StaticResource KeyboardGridBoxView}"
+            Grid.ColumnSpan="6"
+            Grid.RowSpan="4">
+        </BoxView>
+        
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="1"

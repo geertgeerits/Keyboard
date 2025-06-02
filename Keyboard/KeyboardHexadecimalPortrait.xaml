@@ -6,14 +6,16 @@
     x:Class="Keyboard.KeyboardHexadecimalPortrait"
     x:Name="RootKeyboardHexadecimalPortrait">
 
-    <Grid  
+    <Grid
+        Style="{StaticResource KeyboardGrid}"
         ColumnDefinitions="50, Auto, Auto, Auto, Auto, Auto, 50"
-        RowDefinitions="Auto, Auto, Auto, Auto"  
-        ColumnSpacing="2"  
-        RowSpacing="2"  
-        Margin="0"
-        Padding="10,12,10,10"
-        HorizontalOptions="Center">
+        RowDefinitions="Auto, Auto, Auto, Auto">
+
+        <BoxView
+            Style="{StaticResource KeyboardGridBoxView}"
+            Grid.ColumnSpan="7"
+            Grid.RowSpan="4">
+        </BoxView>
 
         <Border
             Style="{StaticResource KeyPortraitBorder}"

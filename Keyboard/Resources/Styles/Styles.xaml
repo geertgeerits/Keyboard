@@ -473,6 +473,7 @@
     </Style>
 
     <Style TargetType="Grid" x:Key="KeyboardGrid">
+        <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="ColumnSpacing" Value="0" />
         <Setter Property="RowSpacing" Value="0" />
         <Setter Property="BackgroundColor" Value="Transparent" />
@@ -589,9 +590,8 @@
     </Style>
 
     <Style TargetType="Border" x:Key="KeyPortraitBorder">
-        <Setter Property="MinimumHeightRequest" Value="50" />
-        <Setter Property="MaximumHeightRequest" Value="60" />
-        <Setter Property="MinimumWidthRequest" Value="60" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="WidthRequest" Value="60" />
         <Setter Property="MaximumWidthRequest" Value="70" />
         <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="StrokeThickness" Value="1"/>
@@ -607,10 +607,6 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="MinimumHeightRequest" Value="50" />
-        <Setter Property="MaximumHeightRequest" Value="60" />
-        <Setter Property="MinimumWidthRequest" Value="60" />
-        <Setter Property="MaximumWidthRequest" Value="70" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -632,10 +628,6 @@
 
     <Style TargetType="ImageButton" x:Key="KeyDecimalPortraitImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
-        <Setter Property="MinimumHeightRequest" Value="50" />
-        <Setter Property="MaximumHeightRequest" Value="60" />
-        <Setter Property="MinimumWidthRequest" Value="60" />
-        <Setter Property="MaximumWidthRequest" Value="70" />
         <Setter Property="Aspect" Value="Center" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -661,10 +653,6 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontAttributes" Value="Bold" />
-        <Setter Property="MinimumHeightRequest" Value="50" />
-        <Setter Property="MaximumHeightRequest" Value="60" />
-        <Setter Property="MinimumWidthRequest" Value="50" />
-        <Setter Property="MaximumWidthRequest" Value="60" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
@@ -686,10 +674,6 @@
 
     <Style TargetType="ImageButton" x:Key="KeyHexadecimalPortraitImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
-        <Setter Property="MinimumHeightRequest" Value="50" />
-        <Setter Property="MaximumHeightRequest" Value="60" />
-        <Setter Property="MinimumWidthRequest" Value="50" />
-        <Setter Property="MaximumWidthRequest" Value="60" />
         <Setter Property="Aspect" Value="Center" />
         <Setter Property="Padding" Value="0" />
         <Setter Property="VisualStateManager.VisualStateGroups">
