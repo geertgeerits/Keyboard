@@ -10,18 +10,18 @@
     <Grid
         Style="{StaticResource KeyboardGrid}"
         ColumnDefinitions="50, 60, 60, 60, 60, 50"
-        RowDefinitions="60, 60, 60, 60">
+        RowDefinitions="5, 60, 60, 60, 60, 5">
 
         <BoxView
             Style="{StaticResource KeyboardGridBoxView}"
             Grid.ColumnSpan="6"
-            Grid.RowSpan="4">
+            Grid.RowSpan="6">
         </BoxView>
         
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="1"
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -34,7 +34,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="2"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -47,7 +47,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="3"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -60,7 +60,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="4"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <ImageButton  
                 Style="{StaticResource KeyDecimalPortraitImageButton}"
@@ -73,7 +73,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="1"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -86,7 +86,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="2"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -99,7 +99,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="3"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -112,7 +112,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="4"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <ImageButton  
                 Style="{StaticResource KeyDecimalPortraitImageButton}"
@@ -125,7 +125,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="1"  
-            Grid.Row="2">
+            Grid.Row="3">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -138,7 +138,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="2"  
-            Grid.Row="2">
+            Grid.Row="3">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -151,7 +151,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="3"  
-            Grid.Row="2">
+            Grid.Row="3">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -164,7 +164,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="4"  
-            Grid.Row="2">
+            Grid.Row="3">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -177,7 +177,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="2"  
-            Grid.Row="3">
+            Grid.Row="4">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -190,7 +190,7 @@
         <Border
             Style="{StaticResource KeyPortraitBorder}"
             Grid.Column="4"  
-            Grid.Row="3">
+            Grid.Row="4">
 
             <Button  
                 Style="{StaticResource KeyDecimalPortraitButton}"
@@ -204,7 +204,7 @@
             x:Name="ImgbtnKeyboardHide"
             Style="{StaticResource KeyboardHideImageButton}"
             Grid.Column="0"
-            Grid.Row="3"
+            Grid.Row="4"
             Clicked="OnKeyboardHide_Clicked">
         </ImageButton>
 

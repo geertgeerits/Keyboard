@@ -227,36 +227,6 @@
 
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
-            Grid.Column="7"  
-            Grid.Row="1">
-
-            <Button  
-                Style="{StaticResource KeyNumericLandscape2RowsButton}"
-                AutomationId="btnDecimalPoint"
-                BackgroundColor="Transparent"
-                Text=""
-                IsEnabled="False"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyLandscape2RowBorder}"
-            Grid.Column="8"  
-            Grid.Row="1">
-
-            <Button  
-                Style="{StaticResource KeyNumericLandscape2RowsButton}"
-                AutomationId="btnMinus"
-                BackgroundColor="Transparent"
-                Text=""
-                IsEnabled="False"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="9"  
             Grid.Row="1">
 

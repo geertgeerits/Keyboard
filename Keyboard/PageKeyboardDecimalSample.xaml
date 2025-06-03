@@ -44,10 +44,10 @@
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All">
 
-            <!--Add an extra row with the height of the keyboard (240) to the grid to ensure that the keyboard does not overlap the content-->
+            <!--Add an extra row with the height of the keyboard (250) to the grid to ensure that the keyboard does not overlap the content-->
             <Grid
                 ColumnDefinitions="320, *"
-                RowDefinitions="Auto, Auto, Auto, Auto, 240"
+                RowDefinitions="Auto, Auto, Auto, Auto, 250"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
                 Margin="10">
@@ -159,11 +159,11 @@
         <ContentView
             x:Name="CustomKeyboardDecimalPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,240"
+            AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
             <local:KeyboardDecimalPortrait
-                HeightRequest="240">
+                HeightRequest="250">
             </local:KeyboardDecimalPortrait>
         </ContentView>
 
