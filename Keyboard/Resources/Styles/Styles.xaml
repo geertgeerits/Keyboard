@@ -477,20 +477,8 @@
         <Setter Property="ColumnSpacing" Value="0" />
         <Setter Property="RowSpacing" Value="0" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="Margin" Value="10,0,10,0" />
+        <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
-    </Style>
-
-    <Style TargetType="Border" x:Key="KeyboardGridBorder">
-        <Setter Property="Grid.Row" Value="0" />
-        <Setter Property="Grid.Column" Value="0" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray400}}" />
-        <Setter Property="StrokeThickness" Value="0" />
-        <Setter Property="StrokeShape">
-            <Setter.Value>
-                <RoundRectangle CornerRadius="8,8,0,0" />
-            </Setter.Value>
-        </Setter>
     </Style>
 
     <Style TargetType="BoxView" x:Key="KeyboardGridBoxView">

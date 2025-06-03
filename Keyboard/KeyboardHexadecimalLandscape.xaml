@@ -9,18 +9,18 @@
     <Grid
         Style="{StaticResource KeyboardGrid}"
         ColumnDefinitions="50, 45, 45, 45, 45, 45, 45, 45, 45, 45, 45, 50"
-        RowDefinitions="50, 50">
+        RowDefinitions="5, 45, 45, 5">
 
         <BoxView
             Style="{StaticResource KeyboardGridBoxView}"
             Grid.ColumnSpan="12"
-            Grid.RowSpan="2">
+            Grid.RowSpan="4">
         </BoxView>
 
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="1"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -33,7 +33,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="2"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -46,7 +46,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="3"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -59,7 +59,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="4"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -72,7 +72,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="5"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -85,7 +85,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="6"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -98,7 +98,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="7"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -111,7 +111,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="8"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -124,7 +124,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="9"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -137,7 +137,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="10"  
-            Grid.Row="0">
+            Grid.Row="1">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -150,7 +150,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="1"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -163,7 +163,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="2"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -176,7 +176,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="3"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -189,7 +189,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="4"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -202,7 +202,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="5"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -215,7 +215,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="6"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <Button  
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
@@ -228,7 +228,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="9"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <ImageButton  
                 Style="{StaticResource KeyNumericLandscape2RowsImageButton}"
@@ -241,7 +241,7 @@
         <Border
             Style="{StaticResource KeyLandscape2RowBorder}"
             Grid.Column="10"  
-            Grid.Row="1">
+            Grid.Row="2">
 
             <ImageButton  
                 Style="{StaticResource KeyNumericLandscape2RowsImageButton}"
@@ -255,7 +255,7 @@
             x:Name="ImgbtnKeyboardHide"
             Style="{StaticResource KeyboardHideImageButton}"
             Grid.Column="0"
-            Grid.Row="1"
+            Grid.Row="2"
             Clicked="OnKeyboardHide_Clicked">
         </ImageButton>
 
