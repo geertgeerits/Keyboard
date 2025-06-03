@@ -107,12 +107,16 @@ namespace Keyboard
             ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
-        // Fix for CS1002 and CS0029 errors in the NumberEntryFocused method
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        /// <summary>
+        /// Handles the focus event for an entry field, performing actions
+        /// </summary>
+        /// <param name="sender">The entry field that triggered the focus event.</param>
+        /// <param name="e">The event data associated with the focus event.</param>
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                // Hide the Android and iOS keyboard
+                // Hide the Android and iOS system keyboard
                 ClassKeyboardMethods.HideSystemKeyboard(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
@@ -131,6 +135,9 @@ namespace Keyboard
 
                 cEntryAutomationId = entry.AutomationId;
                 bEntryCompleted = false;
+
+                // Scroll to the focused entry field in the scroll view
+                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
             }
         }
 

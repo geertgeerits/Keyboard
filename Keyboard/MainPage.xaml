@@ -80,6 +80,7 @@
         <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
         https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
         <ScrollView
+            x:Name="scrollView"
             VerticalScrollBarVisibility="Always"
             VerticalOptions="FillAndExpand"
             AbsoluteLayout.LayoutBounds="0,0,1,1"

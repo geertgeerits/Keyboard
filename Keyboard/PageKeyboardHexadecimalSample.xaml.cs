@@ -73,15 +73,15 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Entry focused event: format the text value for a numeric entry without the number separator
+        /// Handles the focus event for an entry field, performing actions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                // Hide the Android and iOS keyboard
+                // Hide the Android and iOS system keyboard
                 ClassKeyboardMethods.HideSystemKeyboard(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
@@ -96,6 +96,9 @@ namespace Keyboard
                 //entry.CursorPosition = entry.Text.Length;  // The full selection of the text is gone when the cursor position is set to the end of the text
 
                 cEntryAutomationId = entry.AutomationId;
+
+                // Scroll to the focused entry field in the scroll view
+                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
             }
         }
 
