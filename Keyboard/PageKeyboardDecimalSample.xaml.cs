@@ -46,6 +46,9 @@ namespace Keyboard
         {
             base.OnDisappearing();
 
+            // Hide the bottom sheet when the page is disappearing
+            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+
             // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
             DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
 
@@ -195,7 +198,7 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+                    ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
                 }
                 else if (cKey == "btnReturn")
                 {
@@ -215,7 +218,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
         {
-            ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
     }
 }

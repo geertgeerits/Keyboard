@@ -291,11 +291,12 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Toggles the visibility of the numeric keyboard based on the current device orientation and theme.
+        /// Change the numeric keyboard based on the current device orientation and theme
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static void ImgbtnToggleKeyboardClicked(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
+        /// <param name="imageButton"></param>
+        public async static void ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -376,6 +377,9 @@ namespace Keyboard
                 return;
             }
 
+            // Hide the bottom sheet if it is already visible
+            HideBottomSheet(bottomSheetPortrait, bottomSheetLandscape, imageButton);
+
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
 
@@ -384,18 +388,26 @@ namespace Keyboard
             {
                 case "Landscape":
                     {
-                        await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
-                        bottomSheetPortrait.IsVisible = false;
-                        await Task.Delay(300);                                                      // Wait for the slide down animation to complete
+                        if (bottomSheetPortrait.IsVisible)
+                        {
+                            await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
+                            bottomSheetPortrait.IsVisible = false;
+                            await Task.Delay(300);                                                      // Wait for the slide down animation to complete
+                        }
+
                         bottomSheetLandscape.IsVisible = true;
                         await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
                         break;
                     }
                 default:
                     {
-                        await bottomSheetLandscape.TranslateTo(0, 250, length: 250, Easing.SinIn);
-                        bottomSheetLandscape.IsVisible = false;
-                        await Task.Delay(300);
+                        if (bottomSheetLandscape.IsVisible)
+                        {
+                            await bottomSheetLandscape.TranslateTo(0, 250, length: 250, Easing.SinIn);
+                            bottomSheetLandscape.IsVisible = false;
+                            await Task.Delay(300);
+                        }
+
                         bottomSheetPortrait.IsVisible = true;
                         await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);
                         break;
@@ -410,6 +422,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
+        /// <param name="imageButton"></param>
         public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
@@ -423,27 +436,19 @@ namespace Keyboard
                 return;
             }
 
-            // Get the current device orientation
-            string cOrientation = GetDeviceOrientation();
-
-            // Show the keyboard bottom sheet
-            switch (cOrientation)
+            if (bottomSheetLandscape.IsVisible)
             {
-                case "Landscape":
-                    {
-                        await bottomSheetLandscape.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
-                        bottomSheetLandscape.IsVisible = false;
-                        break;
-                    }
-                default:
-                    {
-                        await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);
-                        bottomSheetPortrait.IsVisible = false;
-                        break;
-                    }
+                await bottomSheetLandscape.TranslateTo(0, 250, length: 10, Easing.SinIn);
+                bottomSheetLandscape.IsVisible = false;
+            }
+            else if (bottomSheetPortrait.IsVisible)
+            {
+                await bottomSheetPortrait.TranslateTo(0, 250, length: 10, Easing.SinIn);
+                bottomSheetPortrait.IsVisible = false;
             }
 
             SetImageKeyboardButtonSheetClosed(imageButton);
+            await Task.Delay(300);
         }
 
         /// <summary>

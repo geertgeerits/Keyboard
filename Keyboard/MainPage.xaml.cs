@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.21
-   Date ........: 2025-06-03 (YYYY-MM-DD)
+   Date ........: 2025-06-04 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -79,7 +79,10 @@ namespace Keyboard
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            
+
+            // Hide the bottom sheet when the page is disappearing
+            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+
             // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
             DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
 
@@ -229,7 +232,7 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+                    ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
                 }
                 else if (cKey == "btnReturn")
                 {
@@ -249,7 +252,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
         {
-            ClassKeyboardMethods.ImgbtnToggleKeyboardClicked(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>
