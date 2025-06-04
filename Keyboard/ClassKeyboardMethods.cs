@@ -170,6 +170,7 @@ namespace Keyboard
         /// <summary>
         /// Handles the click event for the decimal keyboard buttons
         /// </summary>
+        /// <param name="focusedEntry"></param>
         /// <param name="cKey"></param>
         public static void KeyboardDecimalClicked(Entry focusedEntry, string cKey)
         {
@@ -202,6 +203,7 @@ namespace Keyboard
         /// <summary>
         /// Handles the click event for the hexadecimal keyboard buttons
         /// </summary>
+        /// <param name="focusedEntry"></param>
         /// <param name="cKey"></param>
         public static void KeyboardHexadecimalClicked(Entry focusedEntry, string cKey)
         {
@@ -364,6 +366,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
+        /// <param name="imageButton"></param>
         public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
@@ -396,7 +399,7 @@ namespace Keyboard
                         }
 
                         bottomSheetLandscape.IsVisible = true;
-                        await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
+                        await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);       // Slide up
                         break;
                     }
                 default:
