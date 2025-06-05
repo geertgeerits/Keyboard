@@ -441,17 +441,17 @@ namespace Keyboard
 
             if (bottomSheetLandscape.IsVisible)
             {
-                await bottomSheetLandscape.TranslateTo(0, 250, length: 10, Easing.SinIn);
+                await bottomSheetLandscape.TranslateTo(0, 250, length: 20, Easing.SinIn);
                 bottomSheetLandscape.IsVisible = false;
             }
             else if (bottomSheetPortrait.IsVisible)
             {
-                await bottomSheetPortrait.TranslateTo(0, 250, length: 10, Easing.SinIn);
+                await bottomSheetPortrait.TranslateTo(0, 250, length: 20, Easing.SinIn);
                 bottomSheetPortrait.IsVisible = false;
             }
 
             SetImageKeyboardButtonSheetClosed(imageButton);
-            await Task.Delay(300);
+            await Task.Delay(400);
         }
 
         /// <summary>
