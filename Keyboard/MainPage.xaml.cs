@@ -17,6 +17,7 @@
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
 */
 
+using Android.Views;
 using CommunityToolkit.Mvvm.Messaging;
 using CommunityToolkit.Mvvm.Messaging.Messages;
 using System.Diagnostics;
@@ -51,6 +52,9 @@ namespace Keyboard
 
             // Set the image source for the keyboard toggle button
             ClassKeyboardMethods.SetImageKeyboardButtonSheetOpened(imgbtnToggleKeyboard);
+
+            // Reads and logs the current device display information
+            //ClassKeyboardMethods.ReadDeviceDisplay();
         }
 
         /// <summary>

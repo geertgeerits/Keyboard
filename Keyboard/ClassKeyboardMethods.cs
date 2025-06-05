@@ -507,5 +507,22 @@ namespace Keyboard
                 entry.IsEnabled = true;
             }
         }
+
+        /// <summary>
+        /// Reads and logs the current device display information, including dimensions, density, orientation, rotation and refresh rate
+        /// </summary>
+        public static void ReadDeviceDisplay()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width} / Pixel Height: {DeviceDisplay.Current.MainDisplayInfo.Height}");
+            sb.AppendLine($"Density: {DeviceDisplay.Current.MainDisplayInfo.Density}");
+            sb.AppendLine($"Orientation: {DeviceDisplay.Current.MainDisplayInfo.Orientation}");
+            sb.AppendLine($"Rotation: {DeviceDisplay.Current.MainDisplayInfo.Rotation}");
+            sb.AppendLine($"Refresh Rate: {DeviceDisplay.Current.MainDisplayInfo.RefreshRate}");
+
+            string DisplayDetails = sb.ToString();
+            Debug.WriteLine("DisplayDetails: " + DisplayDetails);
+        }
     }
 }
