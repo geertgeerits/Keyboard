@@ -80,7 +80,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void NumberEntryFocused(object sender, FocusEventArgs e)
+        private void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -101,7 +101,7 @@ namespace Keyboard
                 cEntryAutomationId = entry.AutomationId;
 
                 // Scroll to the focused entry field in the scroll view
-                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry);
             }
         }
 

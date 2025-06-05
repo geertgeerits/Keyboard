@@ -61,6 +61,30 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Scrolls the specified 'Entry' into view within the given 'ScrollView'/>.
+        /// </summary>
+        /// <param name="scrollView"></param>
+        /// <param name="entry"></param>
+        public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry)
+        {
+            // Ensure the scrollView and entry are not null before attempting to scroll
+            if (scrollView == null || entry == null)
+            {
+                return;
+            }
+
+#if IOS
+            if (bUseCustomKeyboardForIOS)
+            {
+                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+            }
+#else
+
+            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+#endif
+        }
+
+        /// <summary>
         /// Set the border color and thickness of the entry field based on the theme when the entry is focused
         /// </summary>
         /// <param name="entry"></param>
