@@ -75,6 +75,7 @@
 	  <Compile Remove="SomeBottomSheet.xaml.cs" />
 	  <Compile Remove="SomeViewModel.cs" />
 	  <Compile Remove="ViewModel.cs" />
+	  <Compile Remove="VisualElementExtensions.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

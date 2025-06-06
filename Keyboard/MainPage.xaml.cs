@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.21
-   Date ........: 2025-06-05 (YYYY-MM-DD)
+   Date ........: 2025-06-06 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -143,6 +143,9 @@ namespace Keyboard
 
                 cEntryAutomationId = entry.AutomationId;
                 bEntryCompleted = false;
+
+                var a = ClassKeyboardMethods.GetEntryScreenPosition(entry);
+                Debug.WriteLine($"Entry '{cEntryAutomationId}' position: {a.X}, {a.Y}");
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry);
