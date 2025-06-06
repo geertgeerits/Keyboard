@@ -36,12 +36,9 @@
     </Shell.TitleView>
 
     <AbsoluteLayout>
-        <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
-        https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
         <ScrollView
             x:Name="scrollView"
-            VerticalScrollBarVisibility="Always"
-            VerticalOptions="FillAndExpand"
+            Style="{StaticResource PageScrollView}"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All">
 

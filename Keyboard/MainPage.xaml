@@ -77,19 +77,14 @@
     Example: number -123456789012.12 = 16 characters, -123,456,789,012.12 = 19 characters-->
 
     <AbsoluteLayout>
-        <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
-        https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
         <ScrollView
             x:Name="scrollView"
-            VerticalScrollBarVisibility="Always"
-            VerticalOptions="FillAndExpand"
+            Style="{StaticResource PageScrollView}"
             AbsoluteLayout.LayoutBounds="0,0,1,1"
             AbsoluteLayout.LayoutFlags="All">
 
             <!--Add an extra row with the height of the keyboard (250) to the grid to ensure that the keyboard does not overlap the content-->
             <Grid
-                AbsoluteLayout.LayoutBounds="0,0,1,1"
-                AbsoluteLayout.LayoutFlags="All"
                 ColumnDefinitions="320, *"
                 RowDefinitions="Auto, Auto, Auto, Auto, 400, 250"
                 ColumnSpacing="2"  

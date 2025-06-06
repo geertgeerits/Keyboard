@@ -472,6 +472,14 @@
         <Setter Property="IsVisible" Value="True" />
     </Style>
 
+    <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
+        https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY -->
+    <Style TargetType="ScrollView" x:Key="PageScrollView">
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalScrollBarVisibility" Value="Always" />
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+
     <Style TargetType="Grid" x:Key="KeyboardGrid">
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="ColumnSpacing" Value="0" />
