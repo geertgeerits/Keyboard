@@ -497,13 +497,13 @@ namespace Keyboard
                 return;
             }
 
-#if IOS
+#if ANDROID || WINDOWS
+            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+#elif IOS
             if (bUseCustomKeyboardForIOS)
             {
                 await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
             }
-#else
-            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 #endif
             return;
 
@@ -531,8 +531,6 @@ namespace Keyboard
             {
                 // If the entry is below the visible area, scroll it into view
                 await scrollView.ScrollToAsync(0, nViewHeight, true);
-
-
                 Debug.WriteLine($"Scrolling to position: {nViewHeight}");
             }
         }
@@ -545,11 +543,11 @@ namespace Keyboard
             System.Text.StringBuilder sb = new();
 
             sb.AppendLine($"Pixel Height: {DeviceDisplay.Current.MainDisplayInfo.Height}");
-            sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width}");
+            //sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width}");
             sb.AppendLine($"Density: {DeviceDisplay.Current.MainDisplayInfo.Density}");
-            sb.AppendLine($"Orientation: {DeviceDisplay.Current.MainDisplayInfo.Orientation}");
-            sb.AppendLine($"Rotation: {DeviceDisplay.Current.MainDisplayInfo.Rotation}");
-            sb.AppendLine($"Refresh Rate: {DeviceDisplay.Current.MainDisplayInfo.RefreshRate}");
+            //sb.AppendLine($"Orientation: {DeviceDisplay.Current.MainDisplayInfo.Orientation}");
+            //sb.AppendLine($"Rotation: {DeviceDisplay.Current.MainDisplayInfo.Rotation}");
+            //sb.AppendLine($"Refresh Rate: {DeviceDisplay.Current.MainDisplayInfo.RefreshRate}");
 
             string DisplayDetails = sb.ToString();
             Debug.WriteLine("DisplayDetails: " + DisplayDetails);
