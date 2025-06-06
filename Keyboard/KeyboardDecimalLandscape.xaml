@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
     x:Class="Keyboard.KeyboardDecimalLandscape"
-    x:Name="RootKeyboardDecimalLandscape"
     x:DataType="local:KeyboardDecimalLandscape">
 
     <Grid

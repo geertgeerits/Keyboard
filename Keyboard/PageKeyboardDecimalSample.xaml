@@ -164,6 +164,7 @@
             IsVisible="False">
 
             <local:KeyboardDecimalPortrait
+                x:Name="RootKeyboardDecimalPortrait"
                 HeightRequest="250">
             </local:KeyboardDecimalPortrait>
         </ContentView>
@@ -175,6 +176,7 @@
             IsVisible="False">
 
             <local:KeyboardDecimalLandscape
+                x:Name="RootKeyboardDecimalLandscape"
                 HeightRequest="65">
             </local:KeyboardDecimalLandscape>
         </ContentView>

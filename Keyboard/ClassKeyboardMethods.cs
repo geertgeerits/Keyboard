@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Keyboard
 {
@@ -60,30 +58,6 @@ namespace Keyboard
             }
 
             return "Unspecified";
-        }
-
-        /// <summary>
-        /// Scrolls the specified 'Entry' into view within the given 'ScrollView'/>.
-        /// </summary>
-        /// <param name="scrollView"></param>
-        /// <param name="entry"></param>
-        public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry)
-        {
-            // Ensure the scrollView and entry are not null before attempting to scroll
-            if (scrollView == null || entry == null)
-            {
-                return;
-            }
-
-#if IOS
-            if (bUseCustomKeyboardForIOS)
-            {
-                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
-            }
-#else
-
-            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
-#endif
         }
 
         /// <summary>
@@ -511,13 +485,67 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Scrolls the specified 'Entry' into view within the given 'ScrollView'/>.
+        /// </summary>
+        /// <param name="scrollView"></param>
+        /// <param name="entry"></param>
+        public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        {
+            // Ensure the scrollView and entry are not null before attempting to scroll
+            if (scrollView == null || entry == null)
+            {
+                return;
+            }
+
+#if IOS
+            if (bUseCustomKeyboardForIOS)
+            {
+                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+            }
+#else
+            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+#endif
+            return;
+
+            // Get the current device orientation
+            string cOrientation = GetDeviceOrientation();
+            
+            double nKeyboardHeight = cOrientation switch
+            {
+                "Landscape" => nKeyboardHeightLandscape,
+                _ => nKeyboardHeightPortrait,
+            };
+
+            // Get the display height
+            double nDisplayHeight = ReadDeviceDisplay();
+
+            // Get the position of the Entry within the ScrollView
+            Point entryPosition = GetEntryScreenPosition(entry);
+            Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
+
+            // Calculate the height of the ScrollView, excluding the keyboard and any additional padding
+            double nViewHeight = nDisplayHeight - nKeyboardHeight - 90;
+            Debug.WriteLine($"View Height: {nViewHeight}");
+
+            if (entryPosition.Y > nViewHeight)
+            {
+                // If the entry is below the visible area, scroll it into view
+                await scrollView.ScrollToAsync(0, nViewHeight, true);
+
+
+                Debug.WriteLine($"Scrolling to position: {nViewHeight}");
+            }
+        }
+
+        /// <summary>
         /// Reads and logs the current device display information, including dimensions, density, orientation, rotation and refresh rate
         /// </summary>
-        public static void ReadDeviceDisplay()
+        public static double ReadDeviceDisplay()
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            System.Text.StringBuilder sb = new();
 
-            sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width} / Pixel Height: {DeviceDisplay.Current.MainDisplayInfo.Height}");
+            sb.AppendLine($"Pixel Height: {DeviceDisplay.Current.MainDisplayInfo.Height}");
+            sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width}");
             sb.AppendLine($"Density: {DeviceDisplay.Current.MainDisplayInfo.Density}");
             sb.AppendLine($"Orientation: {DeviceDisplay.Current.MainDisplayInfo.Orientation}");
             sb.AppendLine($"Rotation: {DeviceDisplay.Current.MainDisplayInfo.Rotation}");
@@ -525,19 +553,32 @@ namespace Keyboard
 
             string DisplayDetails = sb.ToString();
             Debug.WriteLine("DisplayDetails: " + DisplayDetails);
+            
+            return DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
         }
 
+        /// <summary>
+        /// Calculates the screen position of the specified visual element.
+        /// </summary>
+        /// <param name="entry">The <see cref="VisualElement"/> whose screen position is to be determined. Cannot be <see langword="null"/>.</param>
+        /// <returns>A <see cref="Point"/> representing the screen position of the specified visual element.  Returns a point
+        /// with coordinates (0, 0) if <paramref name="entry"/> is <see langword="null"/>.</returns>
         public static Point GetEntryScreenPosition(VisualElement entry)
         {
             if (entry == null)
+            {
                 return new Point(0, 0);
+            }
 
             // Get the absolute position relative to the window
             var location = entry.GetAbsolutePosition();
             return location;
         }
     }
-    // Extension method for VisualElement
+
+    /// <summary>
+    /// Extension method for VisualElement
+    /// </summary>
     public static class VisualElementExtensions
     {
         public static Point GetAbsolutePosition(this VisualElement element)

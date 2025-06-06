@@ -164,6 +164,7 @@
             IsVisible="False">
 
             <local:KeyboardHexadecimalPortrait
+                x:Name="RootKeyboardHexadecimalPortrait"                
                 HeightRequest="250">
             </local:KeyboardHexadecimalPortrait>
         </ContentView>
@@ -175,6 +176,7 @@
             IsVisible="False">
 
             <local:KeyboardHexadecimalLandscape
+                x:Name="RootKeyboardHexadecimalLandscape"                
                 HeightRequest="100">
             </local:KeyboardHexadecimalLandscape>
         </ContentView>        

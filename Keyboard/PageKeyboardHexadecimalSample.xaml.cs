@@ -101,7 +101,7 @@ namespace Keyboard
                 cEntryAutomationId = entry.AutomationId;
 
                 // Scroll to the focused entry field in the scroll view
-                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry);
+                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, RootKeyboardHexadecimalPortrait.HeightRequest, RootKeyboardHexadecimalLandscape.HeightRequest);
             }
         }
 

@@ -144,11 +144,11 @@ namespace Keyboard
                 cEntryAutomationId = entry.AutomationId;
                 bEntryCompleted = false;
 
-                var a = ClassKeyboardMethods.GetEntryScreenPosition(entry);
-                Debug.WriteLine($"Entry '{cEntryAutomationId}' position: {a.X}, {a.Y}");
+                //Point point = ClassKeyboardMethods.GetEntryScreenPosition(entry);
+                //Debug.WriteLine($"Entry '{cEntryAutomationId}' position: {point.X}, {point.Y}");
 
                 // Scroll to the focused entry field in the scroll view
-                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry);
+                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
             }
         }
 
@@ -217,6 +217,10 @@ namespace Keyboard
             }
             else if (sender == entTest4)
             {
+                _ = entTest5.Focus();
+            }
+            else if (sender == entTest5)
+            {
                 _ = entTest1.Focus();
             }
         }
@@ -233,6 +237,7 @@ namespace Keyboard
                 "entTest2" => entTest2,
                 "entTest3" => entTest3,
                 "entTest4" => entTest4,
+                "entTest5" => entTest5,
                 _ => null
             };
 
