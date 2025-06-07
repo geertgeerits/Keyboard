@@ -2,16 +2,16 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.21
-   Date ........: 2025-06-06 (YYYY-MM-DD)
+   Date ........: 2025-06-07 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2022: .NET 9.0 MAUI C# 13.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
-                  It is a custom keyboard that uses a ContentView as overlay page
-                  The custom keyboard works fine in Android and Windows.
+                  It is a custom keyboard that uses a ContentView as overlay page.
+                  The custom keyboard works fine on an Android device (not always in the simulator) and Windows.
                   However In iOS when the custom keyboard is enabled, the Entry properties like Selection, Cursor position, Placeholder
                   and Border color, will not showing.
                   Also 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
-                  It centers horizontally and vertically in iOS even though the Orientation is only set to Vertical.
+                  It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
                   To use the system keyboard set in the file 'ClassKeyboardMethods.cs' the variable 'bUseCustomKeyboardForIOS' to 'false' (line 10).
                   In the file 'MauiProgram.cs' comment out 'handler.PlatformView.InputView = [];' (line 28).
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet

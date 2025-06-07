@@ -85,15 +85,21 @@
 
             <!--Add an extra row with the height of the keyboard (250) to the grid to ensure that the keyboard does not overlap the content-->
             <Grid
-                ColumnDefinitions="320, *"
+                ColumnDefinitions="40, 320"
                 RowDefinitions="Auto, Auto, Auto, Auto, 400, 250"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
                 Margin="10">
-            
+
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Text="Test 1">
+                </Label>
+                
                 <Border  
                     Style="{StaticResource EntryBorder}"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.Row="0">
 
                     <Entry  
@@ -114,9 +120,15 @@
                     </Entry>
                 </Border>
 
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Text="Test 2">
+                </Label>
+
                 <Border  
                     Style="{StaticResource EntryBorder}"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.Row="1">
 
                     <Entry  
@@ -137,9 +149,15 @@
                     </Entry>
                 </Border>
 
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="2"
+                    Text="Test 3">
+                </Label>
+
                 <Border  
                     Style="{StaticResource EntryBorder}"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.Row="2">
 
                     <Entry  
@@ -160,9 +178,15 @@
                     </Entry>
                 </Border>
 
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="3"
+                    Text="Test 4">
+                </Label>
+
                 <Border  
                     Style="{StaticResource EntryBorder}"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.Row="3">
 
                     <Entry  
@@ -183,10 +207,17 @@
                     </Entry>
                 </Border>
 
+                <Label
+                    Grid.Column="0"
+                    Grid.Row="4"
+                    VerticalOptions="End"
+                    Text="Test 5">
+                </Label>
+
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     VerticalOptions="End"
-                    Grid.Column="0"
+                    Grid.Column="1"
                     Grid.Row="4">
 
                     <Entry  
