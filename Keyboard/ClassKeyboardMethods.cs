@@ -501,8 +501,8 @@ namespace Keyboard
             }
 
 #if ANDROID || WINDOWS
-            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true).ConfigureAwait(false);
-            CalculateScrollEntryToPosition(scrollView, entry, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true).ConfigureAwait(false);
+            //CalculateScrollEntryToPosition(scrollView, entry, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #else
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
@@ -545,13 +545,43 @@ namespace Keyboard
             Point entryPosition = GetEntryScreenPosition(entry);
             Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
 
-            // Calculate the height of the ScrollView, excluding the keyboard and any additional padding
-            double nViewHeight = nDisplayHeight - nKeyboardHeight - 90;
-            Debug.WriteLine($"View Height: {nViewHeight}");
-
-            // Calculate the height of the TitleView, if it exists
+            // Calculate the height of the TitleView
             double nTitleViewHeight = GetTitleViewHeight();
             Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
+
+            // Calculate the height of the ScrollView, excluding the keyboard and any additional padding
+            double nViewHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight;
+            Debug.WriteLine($"View Height: {nViewHeight}");
+
+            // Adjust the correction value for each platform in portrait and landscape mode
+            double nCorrection = 0;
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                nCorrection = cOrientation switch
+                {
+                    "Landscape" => 160,
+                    _ => (double)0,
+                };
+            }
+            else if (DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                nCorrection = cOrientation switch
+                {
+                    "Landscape" => 160,
+                    _ => (double)0,
+                };
+            }
+            else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+            {
+                nCorrection = cOrientation switch
+                {
+                    "Landscape" => -490,
+                    _ => (double)0,
+                };
+            }
+            Debug.WriteLine($"Correction Value: {nCorrection}");
+            nViewHeight = nViewHeight + nCorrection;
+            Debug.WriteLine($"Adjusted View Height: {nViewHeight}");
 
             if (entryPosition.Y > nViewHeight)
             {
@@ -578,19 +608,16 @@ namespace Keyboard
         /// <returns></returns>
         private static double GetTitleViewHeight()
         {
-            // Get the height of the Shell.TitleView in the current page
-            var currentPage = Shell.Current?.CurrentPage;
+            Page? currentPage = Shell.Current?.CurrentPage;
             if (currentPage != null)
             {
                 var titleView = currentPage.FindByName<View>("grdTitleView");
                 if (titleView != null)
                 {
-                    return titleView.Height + 10;  // Add some padding to the height
+                    return titleView.Height;
                 }
             }
-#if WINDOWS
-            return 100;     // Default height for Windows, adjust as necessary
-#endif
+
             return 0;
         }
 
