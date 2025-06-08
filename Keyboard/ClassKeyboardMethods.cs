@@ -442,12 +442,12 @@ namespace Keyboard
 
             if (bottomSheetLandscape.IsVisible)
             {
-                await bottomSheetLandscape.TranslateTo(0, 250, length: 20, Easing.SinIn);
+                await bottomSheetLandscape.TranslateTo(0, 250, length: 20, Easing.SpringIn);
                 bottomSheetLandscape.IsVisible = false;
             }
             else if (bottomSheetPortrait.IsVisible)
             {
-                await bottomSheetPortrait.TranslateTo(0, 250, length: 20, Easing.SinIn);
+                await bottomSheetPortrait.TranslateTo(0, 250, length: 20, Easing.SpringIn);
                 bottomSheetPortrait.IsVisible = false;
             }
 
@@ -608,6 +608,7 @@ namespace Keyboard
         /// <returns></returns>
         private static double GetTitleViewHeight()
         {
+            // Shell.TitleView
             Page? currentPage = Shell.Current?.CurrentPage;
             if (currentPage != null)
             {
@@ -618,6 +619,17 @@ namespace Keyboard
                 }
             }
 
+            // NavigationPage.TitleView - NOT tested yet
+            //Page? currentPageNav = Application.Current?.Windows.FirstOrDefault()?.Page as NavigationPage;
+            //if (currentPageNav != null)
+            //{
+            //    var titleView = currentPageNav.FindByName<View>("grdTitleView");
+            //    if (titleView != null)
+            //    {
+            //        return titleView.Height;
+            //    }
+            //}
+
             return 0;
         }
 
@@ -626,7 +638,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="entry"></param>
         /// <returns>Returns a point representing the screen position of the specified visual element</returns>
-        public static Point GetEntryScreenPosition(VisualElement entry)
+        private static Point GetEntryScreenPosition(VisualElement entry)
         {
             if (entry == null)
             {
