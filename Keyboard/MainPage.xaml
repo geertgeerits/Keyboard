@@ -9,6 +9,7 @@
 
     <Shell.TitleView>
         <Grid
+            x:Name="grdTitleView"
             ColumnDefinitions="*, 60, 60, 60"
             RowDefinitions="Auto"
             Padding="0">

@@ -161,7 +161,7 @@ namespace Keyboard
         private static string GetDeviceOrientation()
         {
             // Get the current display information
-            var displayInfo = DeviceDisplay.MainDisplayInfo;
+            DisplayInfo displayInfo = DeviceDisplay.MainDisplayInfo;
 
             // Return the orientation, ensuring a non-null value
             Debug.WriteLine($"DisplayOrientation: {displayInfo.Orientation}");
@@ -501,7 +501,8 @@ namespace Keyboard
             }
 
 #if ANDROID || WINDOWS
-            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true).ConfigureAwait(false);
+            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true).ConfigureAwait(false);
+            CalculateScrollEntryToPosition(scrollView, entry, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #else
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
@@ -533,11 +534,12 @@ namespace Keyboard
                 "Landscape" => nKeyboardHeightLandscape,
                 _ => nKeyboardHeightPortrait,
             };
-            Debug.WriteLine($"App Orientation: {cOrientation}");
+            Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
+            Debug.WriteLine($"App Orientation: {cOrientation}, nKeyboardHeight {nKeyboardHeight}");
 
             // Get the display height
             double nDisplayHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
-            Debug.WriteLine($"Display Height: {nDisplayHeight}");
+            Debug.WriteLine($"Display Height: {DeviceDisplay.Current.MainDisplayInfo.Height} / {DeviceDisplay.Current.MainDisplayInfo.Density} = {nDisplayHeight}");
 
             // Get the position of the Entry within the ScrollView
             Point entryPosition = GetEntryScreenPosition(entry);
@@ -547,13 +549,17 @@ namespace Keyboard
             double nViewHeight = nDisplayHeight - nKeyboardHeight - 90;
             Debug.WriteLine($"View Height: {nViewHeight}");
 
+            // Calculate the height of the TitleView, if it exists
+            double nTitleViewHeight = GetTitleViewHeight();
+            Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
+
             if (entryPosition.Y > nViewHeight)
             {
                 // If the entry is below the visible area, scroll it into view
                 await scrollView.ScrollToAsync(0, nViewHeight, true);
                 Debug.WriteLine($"Scrolling to position: {nViewHeight}");
             }
-            else if (entryPosition.Y < 100)
+            else if (entryPosition.Y < nTitleViewHeight)
             {
                 // If the entry is above the visible area, scroll it to the top
                 await scrollView.ScrollToAsync(0, 0, true);
@@ -564,6 +570,28 @@ namespace Keyboard
                 // If the entry is within the visible area, no scrolling is needed
                 Debug.WriteLine("No scrolling needed, entry is already in view.");
             }
+        }
+
+        /// <summary>
+        /// Get the height of the Shell.TitleView in the current page
+        /// </summary>
+        /// <returns></returns>
+        private static double GetTitleViewHeight()
+        {
+            // Get the height of the Shell.TitleView in the current page
+            var currentPage = Shell.Current?.CurrentPage;
+            if (currentPage != null)
+            {
+                var titleView = currentPage.FindByName<View>("grdTitleView");
+                if (titleView != null)
+                {
+                    return titleView.Height + 10;  // Add some padding to the height
+                }
+            }
+#if WINDOWS
+            return 100;     // Default height for Windows, adjust as necessary
+#endif
+            return 0;
         }
 
         /// <summary>
