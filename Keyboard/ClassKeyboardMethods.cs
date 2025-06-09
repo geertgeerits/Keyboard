@@ -501,7 +501,7 @@ namespace Keyboard
             }
 
 #if ANDROID || WINDOWS
-            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true).ConfigureAwait(false);
+            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
             //CalculateScrollEntryToPosition(scrollView, entry, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #else
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
@@ -509,7 +509,7 @@ namespace Keyboard
             // Put a comment before one of the methods that you not want to use
             if (bUseCustomKeyboardForIOS)
             {
-                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true).ConfigureAwait(false);
+                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 
                 // For iOS, we need to calculate the position of the Entry within the ScrollView
                 //CalculateScrollEntryToPosition(scrollView, entry, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
@@ -545,12 +545,12 @@ namespace Keyboard
             Point entryPosition = GetEntryScreenPosition(entry);
             Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
 
-            // Calculate the height of the TitleView
+            // Get the height of the TitleView
             double nTitleViewHeight = GetTitleViewHeight();
             Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
 
-            // Calculate the height of the ScrollView, excluding the keyboard and any additional padding
-            double nViewHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight;
+            // Calculate the height of the ScrollView, excluding the keyboard, title, entry and any additional padding
+            double nViewHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight - entry.Height - 50;
             Debug.WriteLine($"View Height: {nViewHeight}");
 
             // Adjust the correction value for each platform in portrait and landscape mode
@@ -559,7 +559,7 @@ namespace Keyboard
             {
                 nCorrection = cOrientation switch
                 {
-                    "Landscape" => 160,
+                    "Landscape" => -100,
                     _ => (double)0,
                 };
             }
@@ -567,7 +567,7 @@ namespace Keyboard
             {
                 nCorrection = cOrientation switch
                 {
-                    "Landscape" => 160,
+                    "Landscape" => -100,
                     _ => (double)0,
                 };
             }
@@ -580,14 +580,12 @@ namespace Keyboard
                 };
             }
             Debug.WriteLine($"Correction Value: {nCorrection}");
-            nViewHeight = nViewHeight + nCorrection;
-            Debug.WriteLine($"Adjusted View Height: {nViewHeight}");
 
             if (entryPosition.Y > nViewHeight)
             {
                 // If the entry is below the visible area, scroll it into view
-                await scrollView.ScrollToAsync(0, nViewHeight, true);
-                Debug.WriteLine($"Scrolling to position: {nViewHeight}");
+                await scrollView.ScrollToAsync(0, entryPosition.Y + nCorrection, true);
+                Debug.WriteLine($"Scrolling to position: {entryPosition.Y} + {nCorrection}");
             }
             else if (entryPosition.Y < nTitleViewHeight)
             {
