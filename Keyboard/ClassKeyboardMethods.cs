@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.PlatformConfiguration;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Keyboard
 {
@@ -549,45 +548,45 @@ namespace Keyboard
             double nTitleViewHeight = GetTitleViewHeight();
             Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
 
-            // Calculate the height of the ScrollView, excluding the keyboard, title, entry and any additional padding
-            double nViewHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight - entry.Height - 50;
-            Debug.WriteLine($"View Height: {nViewHeight}");
-
-            // Adjust the correction value for each platform in portrait and landscape mode
-            double nCorrection = 0;
+            // Adjust the Padding value for each platform in portrait and landscape mode
+            double nPadding = 0;
             if (DeviceInfo.Platform == DevicePlatform.Android)
             {
-                nCorrection = cOrientation switch
+                nPadding = cOrientation switch
                 {
-                    "Landscape" => -100,
+                    "Landscape" => 40,
                     _ => (double)0,
                 };
             }
             else if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
-                nCorrection = cOrientation switch
+                nPadding = cOrientation switch
                 {
-                    "Landscape" => -100,
+                    "Landscape" => 30,
                     _ => (double)0,
                 };
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
-                nCorrection = cOrientation switch
+                nPadding = cOrientation switch
                 {
-                    "Landscape" => -490,
+                    "Landscape" => 500,
                     _ => (double)0,
                 };
             }
-            Debug.WriteLine($"Correction Value: {nCorrection}");
+            Debug.WriteLine($"Padding Value: {nPadding}");
 
-            if (entryPosition.Y > nViewHeight)
+            // Calculate the height of the ScrollView, excluding the keyboard, entry, title and any additional padding
+            double nViewHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+            Debug.WriteLine($"View Height: {nViewHeight}");
+
+            if (entryPosition.Y >= nViewHeight)
             {
                 // If the entry is below the visible area, scroll it into view
-                await scrollView.ScrollToAsync(0, entryPosition.Y + nCorrection, true);
-                Debug.WriteLine($"Scrolling to position: {entryPosition.Y} + {nCorrection}");
+                await scrollView.ScrollToAsync(0, entryPosition.Y, true);
+                Debug.WriteLine($"Scrolling to position: {entryPosition.Y}");
             }
-            else if (entryPosition.Y < nTitleViewHeight)
+            else if (entryPosition.Y < nViewHeight)
             {
                 // If the entry is above the visible area, scroll it to the top
                 await scrollView.ScrollToAsync(0, 0, true);
