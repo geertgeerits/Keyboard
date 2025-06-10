@@ -148,7 +148,7 @@ namespace Keyboard
                 //Debug.WriteLine($"Entry '{cEntryAutomationId}' position: {point.X}, {point.Y}");
 
                 // Scroll to the focused entry field in the scroll view
-                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
+                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
             }
         }
 

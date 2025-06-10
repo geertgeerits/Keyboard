@@ -455,7 +455,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Hide system the keyboard
+        /// Hide the system keyboard
         /// </summary>
         /// <param name="entry"></param>
         public async static void HideSystemKeyboard(Entry entry)
@@ -491,7 +491,7 @@ namespace Keyboard
         /// <param name="entry"></param>
         /// <param name="nKeyboardHeightPortrait"></param>
         /// <param name="nKeyboardHeightLandscape"></param>
-        public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             // Ensure the scrollView and entry are not null before attempting to scroll
             if (scrollView == null || entry == null)
@@ -501,7 +501,7 @@ namespace Keyboard
 
 #if ANDROID || WINDOWS
             await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
-            //CalculateScrollEntryToPosition(scrollView, entry, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+            //CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #else
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
@@ -511,7 +511,7 @@ namespace Keyboard
                 await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 
                 // For iOS, we need to calculate the position of the Entry within the ScrollView
-                //CalculateScrollEntryToPosition(scrollView, entry, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+                //CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
             }
 #endif
         }
@@ -523,21 +523,26 @@ namespace Keyboard
         /// <param name="entry"></param>
         /// <param name="nKeyboardHeightPortrait"></param>
         /// <param name="nKeyboardHeightLandscape"></param>
-        public static async void CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        public static async void CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
+            Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
+
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
-
-            double nKeyboardHeight = cOrientation switch
-            {
-                "Landscape" => nKeyboardHeightLandscape,
-                _ => nKeyboardHeightPortrait,
-            };
-            Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
+            double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
             Debug.WriteLine($"App Orientation: {cOrientation}, nKeyboardHeight {nKeyboardHeight}");
 
-            // Get the display height
-            double nDisplayHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+            // Get the window height for Windows and WinUI
+            double nDisplayHeight;
+            if (DeviceInfo.Platform == DevicePlatform.WinUI)
+            {
+                nDisplayHeight = GetWindowHeight();
+            }
+            // Get the display height for Android and iOS
+            else
+            {
+                nDisplayHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+            }
             Debug.WriteLine($"Display Height: {DeviceDisplay.Current.MainDisplayInfo.Height} / {DeviceDisplay.Current.MainDisplayInfo.Density} = {nDisplayHeight}");
 
             // Get the position of the Entry within the ScrollView
@@ -545,34 +550,22 @@ namespace Keyboard
             Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
 
             // Get the height of the TitleView
-            double nTitleViewHeight = GetTitleViewHeight();
+            double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
             Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
 
             // Adjust the Padding value for each platform in portrait and landscape mode
             double nPadding = 0;
             if (DeviceInfo.Platform == DevicePlatform.Android)
             {
-                nPadding = cOrientation switch
-                {
-                    "Landscape" => 40,
-                    _ => (double)0,
-                };
+                nPadding = cOrientation == "Landscape" ? 40 : 0;
             }
             else if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
-                nPadding = cOrientation switch
-                {
-                    "Landscape" => 30,
-                    _ => (double)0,
-                };
+                nPadding = cOrientation == "Landscape" ? 30 : 0;
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
-                nPadding = cOrientation switch
-                {
-                    "Landscape" => 500,
-                    _ => (double)0,
-                };
+                nPadding = cOrientation == "Landscape" ? 100 : 0;
             }
             Debug.WriteLine($"Padding Value: {nPadding}");
 
@@ -600,16 +593,38 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Get the height of the current window in Windows and WinUI applications
+        /// </summary>
+        /// <returns></returns>
+        private static double GetWindowHeight()
+        {
+            // Ensure Application.Current and its Windows collection are not null
+            if (Application.Current?.Windows != null && Application.Current.Windows.Count > 0)
+            {
+                Window? window = Application.Current.Windows[0];    // Access the first window directly
+                if (window != null)
+                {
+                    double width = window.Width;
+                    double height = window.Height;
+                    Debug.WriteLine($"Window Width: {width}, Window Height: {height}");
+                    return height;
+                }
+            }
+            
+            return 0;                                               // Return 0 if the window is not found
+        }
+
+        /// <summary>
         /// Get the height of the Shell.TitleView in the current page
         /// </summary>
         /// <returns></returns>
-        private static double GetTitleViewHeight()
+        private static double GetTitleViewHeight(string cTitleViewName)
         {
             // Shell.TitleView
             Page? currentPage = Shell.Current?.CurrentPage;
-            if (currentPage != null)
+            if (currentPage != null && !string.IsNullOrEmpty(cTitleViewName))
             {
-                var titleView = currentPage.FindByName<View>("grdTitleView");
+                View titleView = currentPage.FindByName<View>(cTitleViewName);
                 if (titleView != null)
                 {
                     return titleView.Height;
@@ -620,7 +635,7 @@ namespace Keyboard
             //Page? currentPageNav = Application.Current?.Windows.FirstOrDefault()?.Page as NavigationPage;
             //if (currentPageNav != null)
             //{
-            //    var titleView = currentPageNav.FindByName<View>("grdTitleView");
+            //    View titleView = currentPageNav.FindByName<View>("grdTitleView");
             //    if (titleView != null)
             //    {
             //        return titleView.Height;
@@ -643,7 +658,7 @@ namespace Keyboard
             }
 
             // Get the absolute position relative to the window
-            var location = entry.GetAbsolutePosition();
+            Point location = entry.GetAbsolutePosition();
             return location;
         }
     }
