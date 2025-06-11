@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using Microsoft.Maui.Controls;
+using System.Diagnostics;
 
 namespace Keyboard
 {
@@ -532,18 +533,19 @@ namespace Keyboard
             double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
             Debug.WriteLine($"App Orientation: {cOrientation}, nKeyboardHeight {nKeyboardHeight}");
 
-            // Get the window height for Windows and WinUI
+            // Get the window height for Windows WinUI
             double nDisplayHeight;
             if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
                 nDisplayHeight = GetWindowHeight();
+                Debug.WriteLine($"Window Height: {nDisplayHeight}");
             }
             // Get the display height for Android and iOS
             else
             {
-                nDisplayHeight = DeviceDisplay.Current.MainDisplayInfo.Height / DeviceDisplay.Current.MainDisplayInfo.Density;
+                nDisplayHeight = GetDisplayHeight();
+                Debug.WriteLine($"Display Height: {nDisplayHeight}");
             }
-            Debug.WriteLine($"Display Height: {DeviceDisplay.Current.MainDisplayInfo.Height} / {DeviceDisplay.Current.MainDisplayInfo.Density} = {nDisplayHeight}");
 
             // Get the position of the Entry within the ScrollView
             Point entryPosition = GetEntryScreenPosition(entry);
@@ -593,7 +595,8 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Get the height of the current window in Windows and WinUI applications
+        /// Get the height of the current window in Windows WinUI applications
+        /// Can not be used in Android and iOS applications because the height does not change when in landscape mode
         /// </summary>
         /// <returns></returns>
         private static double GetWindowHeight()
@@ -602,16 +605,32 @@ namespace Keyboard
             if (Application.Current?.Windows != null && Application.Current.Windows.Count > 0)
             {
                 Window? window = Application.Current.Windows[0];    // Access the first window directly
+                
                 if (window != null)
                 {
                     double width = window.Width;
                     double height = window.Height;
                     Debug.WriteLine($"Window Width: {width}, Window Height: {height}");
+                    
                     return height;
                 }
             }
             
             return 0;                                               // Return 0 if the window is not found
+        }
+
+        /// <summary>
+        /// Get the height of the display in Android and iOS applications
+        /// </summary>
+        /// <returns></returns>
+        private static double GetDisplayHeight()
+        {
+            double width = DeviceDisplay.Current.MainDisplayInfo.Width;
+            double height = DeviceDisplay.Current.MainDisplayInfo.Height;
+            double density = DeviceDisplay.Current.MainDisplayInfo.Density;
+            Debug.WriteLine($"Display Width: {width}, Display Height: {height}, Density: {density}");
+
+            return height / density;
         }
 
         /// <summary>
