@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace Keyboard
 {
@@ -509,10 +508,10 @@ namespace Keyboard
             // Put a comment before one of the methods that you not want to use
             if (bUseCustomKeyboardForIOS)
             {
-                await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+                //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 
                 // For iOS, we need to calculate the position of the Entry within the ScrollView
-                //CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+                CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
             }
 #endif
         }
