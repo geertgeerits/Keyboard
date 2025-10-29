@@ -70,16 +70,13 @@ namespace Keyboard
             {
                 Border border = (Border)entry.Parent;
 
-                if (border != null)
+                border?.Stroke = GetTheme() switch
                 {
-                    border.Stroke = GetTheme() switch
-                    {
-                        "Dark" => (Brush)Colors.LightBlue,
-                        _ => (Brush)Colors.Blue,
-                    };
-
-                    //border.StrokeThickness = 2;
-                }
+                    "Dark" => (Brush)Colors.LightBlue,
+                    _ => (Brush)Colors.Blue,
+                };
+                
+                //border.StrokeThickness = 2;
             }
         }
 
@@ -93,16 +90,13 @@ namespace Keyboard
             {
                 Border border = (Border)entry.Parent;
 
-                if (border != null)
+                border?.Stroke = GetTheme() switch
                 {
-                    border.Stroke = GetTheme() switch
-                    {
-                        "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
-                        _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
-                    };
+                    "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
+                    _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
+                };
 
-                    //border.StrokeThickness = 1;
-                }
+                //border.StrokeThickness = 1;
             }
         }
 
@@ -207,14 +201,11 @@ namespace Keyboard
         /// <param name="cKey"></param>
         public static void KeyboardHexadecimalClicked(Entry focusedEntry, string cKey)
         {
-            if (focusedEntry != null)
+            focusedEntry?.Text = cKey switch
             {
-                focusedEntry.Text = cKey switch
-                {
-                    "btnBackspace" => DeleteCharacterBeforeCursor(focusedEntry),
-                    _ => InsertCharacterInEntryField(focusedEntry, cKey),
-                };
-            }
+                "btnBackspace" => DeleteCharacterBeforeCursor(focusedEntry),
+                _ => InsertCharacterInEntryField(focusedEntry, cKey),
+            };
         }
 
         /// <summary>
@@ -316,7 +307,7 @@ namespace Keyboard
 
             // Hide or show the keyboard
             /* Animates an elements TranslationX and TranslationY properties from their current values to the new values. This ensures that the input layout is in the same position as the visual layout.
-               public static System.Threading.Tasks.Task<bool> TranslateTo(this Microsoft.Maui.Controls.VisualElement view, double x, double y, uint length = 250, Microsoft.Maui.Easing? easing = default);
+               public static System.Threading.Tasks.Task<bool> TranslateToAsync(this Microsoft.Maui.Controls.VisualElement view, double x, double y, uint length = 250, Microsoft.Maui.Easing? easing = default);
                Parameters:
                view, VisualElement, the view on which this method operates
                x, Double, the x component of the final translation vector
@@ -330,14 +321,14 @@ namespace Keyboard
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateTo(x: 0, y: 250, length: 250, Easing.SinIn);    // Slide down
+                            await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 250, Easing.SinIn);    // Slide down
                             bottomSheetLandscape.IsVisible = false;
                             SetImageKeyboardButtonSheetClosed(imageButton);                                     // Set the image source for the keyboard toggle button
                         }
                         else
                         {
                             bottomSheetLandscape.IsVisible = true;
-                            await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);   // Slide up
+                            await bottomSheetLandscape.TranslateToAsync(0, 0, length: 250, Easing.SinOut);   // Slide up
                             SetImageKeyboardButtonSheetOpened(imageButton);
                         }
                         break;
@@ -346,14 +337,14 @@ namespace Keyboard
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
+                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 250, Easing.SinIn);   // Slide down
                             bottomSheetPortrait.IsVisible = false;
                             SetImageKeyboardButtonSheetClosed(imageButton);
                         }
                         else
                         {
                             bottomSheetPortrait.IsVisible = true;
-                            await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);    // Slide up
+                            await bottomSheetPortrait.TranslateToAsync(0, 0, length: 250, Easing.SinOut);    // Slide up
                             SetImageKeyboardButtonSheetOpened(imageButton);
                         }
                         break;
@@ -393,26 +384,26 @@ namespace Keyboard
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateTo(0, 250, length: 250, Easing.SinIn);   // Slide down
+                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 250, Easing.SinIn);   // Slide down
                             bottomSheetPortrait.IsVisible = false;
                             await Task.Delay(300);                                                      // Wait for the slide down animation to complete
                         }
 
                         bottomSheetLandscape.IsVisible = true;
-                        await bottomSheetLandscape.TranslateTo(0, 0, length: 250, Easing.SinOut);       // Slide up
+                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 250, Easing.SinOut);       // Slide up
                         break;
                     }
                 default:
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateTo(0, 250, length: 250, Easing.SinIn);
+                            await bottomSheetLandscape.TranslateToAsync(0, 250, length: 250, Easing.SinIn);
                             bottomSheetLandscape.IsVisible = false;
                             await Task.Delay(300);
                         }
 
                         bottomSheetPortrait.IsVisible = true;
-                        await bottomSheetPortrait.TranslateTo(0, 0, length: 250, Easing.SinOut);
+                        await bottomSheetPortrait.TranslateToAsync(0, 0, length: 250, Easing.SinOut);
                         break;
                     }
             }
@@ -441,12 +432,12 @@ namespace Keyboard
 
             if (bottomSheetLandscape.IsVisible)
             {
-                await bottomSheetLandscape.TranslateTo(0, 250, length: 20, Easing.SpringIn);
+                await bottomSheetLandscape.TranslateToAsync(0, 250, length: 20, Easing.SpringIn);
                 bottomSheetLandscape.IsVisible = false;
             }
             else if (bottomSheetPortrait.IsVisible)
             {
-                await bottomSheetPortrait.TranslateTo(0, 250, length: 20, Easing.SpringIn);
+                await bottomSheetPortrait.TranslateToAsync(0, 250, length: 20, Easing.SpringIn);
                 bottomSheetPortrait.IsVisible = false;
             }
 
