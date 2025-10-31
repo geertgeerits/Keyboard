@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.22
-   Date ........: 2025-10-29 (YYYY-MM-DD)
+   Date ........: 2025-10-31 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -133,8 +133,8 @@ namespace Keyboard
                     ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
                 }
 
-                // Set the border color of the entry field
-                ClassKeyboardMethods.SetEntryBorderColorFocused(entry);
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 if (bEntryCompleted)
                 {
@@ -170,8 +170,8 @@ namespace Keyboard
                     ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
                 }
 
-                // Set the border color of the entry field
-                ClassKeyboardMethods.SetEntryBorderColorUnfocused(entry);
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }
         }
 

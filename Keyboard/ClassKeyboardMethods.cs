@@ -31,6 +31,10 @@ namespace Keyboard
         // Default theme for the application (Light, Dark, System)
         private static string cTheme = "System";
 
+        // Current background color of the entry field
+        private static readonly Dictionary<Entry, Color> _originalEntryBackgroundColor = [];
+        //private static readonly Dictionary<Entry, Color> _originalEntryTextColor = [];
+
         /// <summary>
         /// Set the theme
         /// </summary>
@@ -61,42 +65,46 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Set the border color and thickness of the entry field based on the theme when the entry is focused
+        /// Set the color of the entry field based on the theme when the entry is focused
         /// </summary>
         /// <param name="entry"></param>
-        public static void SetEntryBorderColorFocused(Entry entry)
+        public static void SetEntryColorFocused(Entry entry)
         {
             if (bEnableBorderColorOnFocused && entry != null)
             {
-                Border border = (Border)entry.Parent;
+                SaveOriginalEntryColors(entry);
 
-                border?.Stroke = GetTheme() switch
+                entry.BackgroundColor = GetTheme() switch
                 {
-                    "Dark" => (Brush)Colors.LightBlue,
-                    _ => (Brush)Colors.Blue,
+                    "Dark" => Colors.LightGreen,
+                    _ => Colors.LightBlue,
                 };
-                
-                //border.StrokeThickness = 2;
+
+                //Border border = (Border)entry.Parent;
+                //border?.Stroke = GetTheme() switch
+                //{
+                //    "Dark" => (Brush)Colors.LightBlue,
+                //    _ => (Brush)Colors.Blue,
+                //};
             }
         }
 
         /// <summary>
-        /// Set the border color and thickness of the entry field based on the theme when the entry is unfocused
+        /// Set the color of the entry field based on the theme when the entry is unfocused
         /// </summary>
         /// <param name="entry"></param>
-        public static void SetEntryBorderColorUnfocused(Entry entry)
+        public static void SetEntryColorUnfocused(Entry entry)
         {
             if (bEnableBorderColorOnFocused && entry != null)
             {
-                Border border = (Border)entry.Parent;
+                RestoreOriginalEntryColors(entry);
 
-                border?.Stroke = GetTheme() switch
-                {
-                    "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
-                    _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
-                };
-
-                //border.StrokeThickness = 1;
+                //Border border = (Border)entry.Parent;
+                //border?.Stroke = GetTheme() switch
+                //{
+                //    "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
+                //    _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
+                //};
             }
         }
 
@@ -461,10 +469,10 @@ namespace Keyboard
             {
                 if (entry.IsSoftInputShowing())
                 {
-#if ANDROID
+//#if ANDROID
                     // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
                     entry.Unfocus();
-#endif
+//#endif
                     _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
                 }
             }
@@ -475,14 +483,15 @@ namespace Keyboard
             }
         }
 
-        /// <summary>
-        /// Scrolls the specified 'Entry' into view within the given 'ScrollView'
-        /// </summary>
-        /// <param name="scrollView"></param>
-        /// <param name="entry"></param>
-        /// <param name="nKeyboardHeightPortrait"></param>
-        /// <param name="nKeyboardHeightLandscape"></param>
-        public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+
+    /// <summary>
+    /// Scrolls the specified 'Entry' into view within the given 'ScrollView'
+    /// </summary>
+    /// <param name="scrollView"></param>
+    /// <param name="entry"></param>
+    /// <param name="nKeyboardHeightPortrait"></param>
+    /// <param name="nKeyboardHeightLandscape"></param>
+    public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             // Ensure the scrollView and entry are not null before attempting to scroll
             if (scrollView == null || entry == null)
@@ -669,6 +678,38 @@ namespace Keyboard
             // Get the absolute position relative to the window
             Point location = entry.GetAbsolutePosition();
             return location;
+        }
+
+        /// <summary>
+        /// Save the original Entry colors
+        /// </summary>
+        /// <param name="entry"></param>
+        private static void SaveOriginalEntryColors(Entry entry)
+        {
+            if (entry != null && !_originalEntryBackgroundColor.ContainsKey(entry))
+            {
+                _originalEntryBackgroundColor[entry] = entry.BackgroundColor;
+                //_originalEntryTextColor[entry] = entry.TextColor;
+            }
+        }
+
+        /// <summary>
+        /// Restore the original Entry colors
+        /// </summary>
+        /// <param name="entry"></param>
+        private static void RestoreOriginalEntryColors(Entry entry)
+        {
+            if (entry != null && _originalEntryBackgroundColor.TryGetValue(entry, out var color))
+            {
+                entry.BackgroundColor = color;
+                _originalEntryBackgroundColor.Remove(entry);
+            }
+
+            //if (entry != null && _originalEntryTextColor.TryGetValue(entry, out color))
+            //{
+            //    entry.TextColor = color;
+            //    _originalEntryTextColor.Remove(entry);
+            //}
         }
     }
 

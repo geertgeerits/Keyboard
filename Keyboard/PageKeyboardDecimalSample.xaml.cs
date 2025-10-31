@@ -94,8 +94,8 @@ namespace Keyboard
                     ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
                 }
 
-                // Set the border color of the entry field
-                ClassKeyboardMethods.SetEntryBorderColorFocused(entry);
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 if (bEntryCompleted)
                 {
@@ -128,8 +128,8 @@ namespace Keyboard
                     ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
                 }
 
-                // Set the border color of the entry field
-                ClassKeyboardMethods.SetEntryBorderColorUnfocused(entry);
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }
         }
 

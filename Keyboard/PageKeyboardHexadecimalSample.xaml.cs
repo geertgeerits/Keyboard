@@ -93,8 +93,8 @@ namespace Keyboard
                     ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
                 }
 
-                // Set the border color of the entry field
-                ClassKeyboardMethods.SetEntryBorderColorFocused(entry);
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 //entry.CursorPosition = entry.Text.Length;  // The full selection of the text is gone when the cursor position is set to the end of the text
 
@@ -116,8 +116,8 @@ namespace Keyboard
             {
                 cEntryAutomationId = entry.AutomationId;
 
-                // Set the border color of the entry field
-                ClassKeyboardMethods.SetEntryBorderColorUnfocused(entry);
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }
         }
 
