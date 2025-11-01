@@ -574,8 +574,8 @@
         <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}" />
         <Setter Property="Text" Value="" />
-        <Setter Property="Keyboard" Value="Numeric" />
-        <Setter Property="ReturnType" Value="Next" />
+        <!--<Setter Property="Keyboard" Value="Numeric" />
+        <Setter Property="ReturnType" Value="Next" />-->
         <Setter Property="MinimumHeightRequest" Value="50" />
         <Setter Property="MinimumWidthRequest" Value="50" />
         <Setter Property="VisualStateManager.VisualStateGroups">

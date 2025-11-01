@@ -25,11 +25,11 @@ namespace Keyboard
                 // !!!BUG!!!? When the system keyboard is disabled,
                 // the Entry properties like Selection, Cursor position, Placeholder and Border color, will not showing
                 // Also uncomment the next line to disable the system keyboard
-                handler.PlatformView.InputView = [];
+                //handler.PlatformView.InputView = [];
 
                 // Instead of assigning a blank UIView, assign null to InputView
                 // This disables the system keyboard but keeps selection and cursor working (does not work !!!)
-                //handler.PlatformView.InputView = null;
+                handler.PlatformView.InputView = null;
 #endif
             });
 

@@ -4,23 +4,17 @@ namespace Keyboard
 {
     internal static class ClassKeyboardMethods
     {
-#if IOS
-        // Do not use the custom keyboard for iOS
-        // !!!BUG!!!? When the custom keyboard is enabled, the Entry properties like Selection, Cursor position, Placeholder and Border color, will not showing
-        private static bool bUseCustomKeyboardForIOS = true;
-
         // Default value for keyboard toggle button
         public static bool bKeyboardToggleButton = true;
-#else
-        // Use the custom keyboard for iOS
-        private static bool bUseCustomKeyboardForIOS = true;
-
-        // Default value for keyboard toggle button
-        public static bool bKeyboardToggleButton = true;
-#endif
         
-        // Enable border color change on focused Entry fields
-        public static bool bEnableBorderColorOnFocused = true;
+        // Enable color change on focused Entry fields
+        public static bool bEnableColorOnFocused = true;
+
+        // Colors for the entry field based on the theme
+        private static readonly Color originalEntryBackgroundColorLight = (Color)Application.Current.Resources["Gray050"];
+        private static readonly Color originalEntryBackgroundColorDark = (Color)Application.Current.Resources["Gray600"];
+        private static readonly Color originalEntryTextColorLight = (Color)Application.Current.Resources["Black"];
+        private static readonly Color originalEntryTextColorDark = (Color)Application.Current.Resources["White"];
 
         // Image source for the keyboard toggle button
         private static readonly string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";  // Dark theme image
@@ -70,10 +64,10 @@ namespace Keyboard
         /// <param name="entry"></param>
         public static void SetEntryColorFocused(Entry entry)
         {
-            if (bEnableBorderColorOnFocused && entry != null)
+            if (bEnableColorOnFocused && entry != null)
             {
-                SaveOriginalEntryColors(entry);
-
+                //SaveOriginalEntryColors(entry);
+                
                 entry.BackgroundColor = GetTheme() switch
                 {
                     "Dark" => Colors.LightGreen,
@@ -95,9 +89,21 @@ namespace Keyboard
         /// <param name="entry"></param>
         public static void SetEntryColorUnfocused(Entry entry)
         {
-            if (bEnableBorderColorOnFocused && entry != null)
+            if (bEnableColorOnFocused && entry != null)
             {
-                RestoreOriginalEntryColors(entry);
+                //RestoreOriginalEntryColors(entry);
+
+                entry.BackgroundColor = GetTheme() switch
+                {
+                    "Dark" => Colors.LightCyan,
+                    _ => Colors.LightGray,
+                };
+
+                //entry.BackgroundColor = GetTheme() switch
+                //{
+                //    "Dark" => originalEntryBackgroundColorDark,
+                //    _ => originalEntryBackgroundColorLight,
+                //};
 
                 //Border border = (Border)entry.Parent;
                 //border?.Stroke = GetTheme() switch
@@ -119,13 +125,6 @@ namespace Keyboard
                 return;
             }
             
-            // The keyboard is not enabled for iOS
-            if (!bUseCustomKeyboardForIOS)
-            {
-                imageButton.IsVisible = false;      // Hide the keyboard toggle button for iOS
-                return;
-            }
-
             // Show or hide the keyboard toggle button visibility
             imageButton.IsVisible = bKeyboardToggleButton;
 
@@ -304,12 +303,6 @@ namespace Keyboard
                 return;
             }
 
-            // The keyboard is not enabled for iOS
-            if (!bUseCustomKeyboardForIOS)
-            {
-                return;
-            }
-
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
 
@@ -373,12 +366,6 @@ namespace Keyboard
                 return;
             }
 
-            // The keyboard is not enabled for iOS
-            if (!bUseCustomKeyboardForIOS)
-            {
-                return;
-            }
-
             // Hide the bottom sheet if it is already visible
             HideBottomSheet(bottomSheetPortrait, bottomSheetLandscape, imageButton);
 
@@ -432,12 +419,6 @@ namespace Keyboard
                 return;
             }
 
-            // The keyboard is not enabled for iOS
-            if (!bUseCustomKeyboardForIOS)
-            {
-                return;
-            }
-
             if (bottomSheetLandscape.IsVisible)
             {
                 await bottomSheetLandscape.TranslateToAsync(0, 250, length: 20, Easing.SpringIn);
@@ -459,12 +440,6 @@ namespace Keyboard
         /// <param name="entry"></param>
         public async static void HideSystemKeyboard(Entry entry)
         {
-            // The keyboard is not enabled for iOS
-            if (!bUseCustomKeyboardForIOS || entry == null)
-            {
-                return;
-            }
-
             try
             {
                 if (entry.IsSoftInputShowing())
@@ -506,13 +481,10 @@ namespace Keyboard
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
             // Put a comment before one of the methods that you not want to use
-            if (bUseCustomKeyboardForIOS)
-            {
-                //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 
-                // For iOS, we need to calculate the position of the Entry within the ScrollView
-                CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
-            }
+            // For iOS, we need to calculate the position of the Entry within the ScrollView
+            CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #endif
         }
 
@@ -638,29 +610,49 @@ namespace Keyboard
         /// <returns></returns>
         private static double GetTitleViewHeight(string cTitleViewName)
         {
-            // Shell.TitleView
-            Page? currentPage = Shell.Current?.CurrentPage;
-            if (currentPage != null && !string.IsNullOrEmpty(cTitleViewName))
+            if (GetNavigationType() == "Shell")
             {
-                View titleView = currentPage.FindByName<View>(cTitleViewName);
-                if (titleView != null)
+                // Shell.TitleView
+                Page? currentPage = Shell.Current?.CurrentPage;
+                if (currentPage != null && !string.IsNullOrEmpty(cTitleViewName))
                 {
-                    return titleView.Height;
+                    View titleView = currentPage.FindByName<View>(cTitleViewName);
+                    if (titleView != null)
+                    {
+                        return titleView.Height;
+                    }
                 }
             }
 
-            // NavigationPage.TitleView - NOT tested yet
-            //Page? currentPageNav = Application.Current?.Windows.FirstOrDefault()?.Page as NavigationPage;
-            //if (currentPageNav != null)
-            //{
-            //    View titleView = currentPageNav.FindByName<View>("grdTitleView");
-            //    if (titleView != null)
-            //    {
-            //        return titleView.Height;
-            //    }
-            //}
+            else if (GetNavigationType() == "NavigationPage")
+            {
+                // NavigationPage.TitleView - NOT tested yet
+                Page? currentPageNav = Application.Current?.Windows.FirstOrDefault()?.Page as NavigationPage;
+                if (currentPageNav != null)
+                {
+                    View titleView = currentPageNav.FindByName<View>("grdTitleView");
+                    if (titleView != null)
+                    {
+                        return titleView.Height;
+                    }
+                }
+            }
 
             return 0;
+        }
+
+        /// <summary>
+        /// Get navigation type
+        /// </summary>
+        /// <returns></returns>
+        public static string GetNavigationType()
+        {
+            if (Shell.Current != null)
+                return "Shell";
+            if (Application.Current?.Windows != null && Application.Current.Windows.Count > 0 &&
+                Application.Current.Windows[0].Page is NavigationPage)
+                return "NavigationPage";
+            return "Other";
         }
 
         /// <summary>

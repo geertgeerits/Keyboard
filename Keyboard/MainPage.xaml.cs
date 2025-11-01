@@ -1,8 +1,8 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
-   Version .....: 1.0.22
-   Date ........: 2025-10-31 (YYYY-MM-DD)
+   Version .....: 1.0.24
+   Date ........: 2025-11-01 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -12,7 +12,6 @@
                   and Border color, will not showing.
                   Also 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
                   It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
-                  To use the system keyboard set in the file 'ClassKeyboardMethods.cs' the variable 'bUseCustomKeyboardForIOS' to 'false' (line 10).
                   In the file 'MauiProgram.cs' comment out 'handler.PlatformView.InputView = [];' (line 28).
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
 */
@@ -124,6 +123,9 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorFocused(entry);
+
                 // Hide the Android and iOS system keyboard
                 ClassKeyboardMethods.HideSystemKeyboard(entry);
 
@@ -132,9 +134,6 @@ namespace Keyboard
                 {
                     ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
                 }
-
-                // Set the color of the entry field
-                ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 if (bEntryCompleted)
                 {
@@ -165,13 +164,13 @@ namespace Keyboard
 
                 //entry.MaxLength = -1;
 
+                // Restore the color of the entry field and format the number
                 if (bEntryCompleted)
                 {
+                    //entry.BackgroundColor = Colors.Orange;
+                    //ClassKeyboardMethods.SetEntryColorUnfocused(entry);
                     ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
                 }
-
-                // Set the color of the entry field
-                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }
         }
 
