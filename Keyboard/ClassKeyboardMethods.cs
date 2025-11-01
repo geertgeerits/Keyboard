@@ -96,7 +96,7 @@ namespace Keyboard
                 entry.BackgroundColor = GetTheme() switch
                 {
                     "Dark" => Colors.LightCyan,
-                    _ => Colors.LightGray,
+                    _ => Colors.LightYellow,
                 };
 
                 //entry.BackgroundColor = GetTheme() switch

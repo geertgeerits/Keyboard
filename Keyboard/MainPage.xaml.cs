@@ -119,7 +119,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender">The entry field that triggered the focus event.</param>
         /// <param name="e">The event data associated with the focus event.</param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -148,6 +148,8 @@ namespace Keyboard
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
+
+                await Task.Delay(300);
             }
         }
 
@@ -156,7 +158,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
+        private async void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -164,11 +166,17 @@ namespace Keyboard
 
                 //entry.MaxLength = -1;
 
+                await Task.Delay(500);
+                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
+                await Task.Delay(100);
+
                 // Restore the color of the entry field and format the number
                 if (bEntryCompleted)
                 {
-                    //entry.BackgroundColor = Colors.Orange;
+                    //await Task.Delay(500);
                     //ClassKeyboardMethods.SetEntryColorUnfocused(entry);
+                    //await Task.Delay(100);
+
                     ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
                 }
             }
