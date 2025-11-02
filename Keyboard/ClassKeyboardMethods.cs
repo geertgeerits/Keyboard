@@ -440,14 +440,18 @@ namespace Keyboard
         /// <param name="entry"></param>
         public async static void HideSystemKeyboard(Entry entry)
         {
+            // !!!BUG!!!: when this method is called, the entry field loses focus on iOS
+            // The entry control's unfocused event is executed immediately after the focused event in net maui, only on iOS
+            // The keyboard has been disabled for all Entry controls in the MauiProgram.cs
+
             try
             {
                 if (entry.IsSoftInputShowing())
                 {
-//#if ANDROID
+#if ANDROID
                     // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
                     entry.Unfocus();
-//#endif
+#endif
                     _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
                 }
             }

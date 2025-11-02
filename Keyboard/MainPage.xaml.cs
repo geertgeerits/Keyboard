@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.24
-   Date ........: 2025-11-01 (YYYY-MM-DD)
+   Date ........: 2025-11-02 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -119,7 +119,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender">The entry field that triggered the focus event.</param>
         /// <param name="e">The event data associated with the focus event.</param>
-        private async void NumberEntryFocused(object sender, FocusEventArgs e)
+        private void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -127,7 +127,9 @@ namespace Keyboard
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 // Hide the Android and iOS system keyboard
-                ClassKeyboardMethods.HideSystemKeyboard(entry);
+                // !!!BUG!!!?: when this method is called here, the entry field loses focus on iOS
+                // The entry control's unfocused event is executed immediately after the focused event in net maui, only on iOS
+                //ClassKeyboardMethods.HideSystemKeyboard(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)
@@ -148,8 +150,6 @@ namespace Keyboard
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
-
-                await Task.Delay(300);
             }
         }
 
@@ -158,7 +158,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void NumberEntryUnfocused(object sender, FocusEventArgs e)
+        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -166,17 +166,11 @@ namespace Keyboard
 
                 //entry.MaxLength = -1;
 
-                await Task.Delay(500);
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
-                await Task.Delay(100);
 
                 // Restore the color of the entry field and format the number
                 if (bEntryCompleted)
                 {
-                    //await Task.Delay(500);
-                    //ClassKeyboardMethods.SetEntryColorUnfocused(entry);
-                    //await Task.Delay(100);
-
                     ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
                 }
             }

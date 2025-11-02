@@ -85,9 +85,6 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
-                // Hide the Android and iOS system keyboard
-                ClassKeyboardMethods.HideSystemKeyboard(entry);
-
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)
                 {
