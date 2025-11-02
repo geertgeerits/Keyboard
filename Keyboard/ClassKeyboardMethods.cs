@@ -11,10 +11,10 @@ namespace Keyboard
         public static bool bEnableColorOnFocused = true;
 
         // Colors for the entry field based on the theme
-        private static readonly Color originalEntryBackgroundColorLight = (Color)Application.Current.Resources["Gray050"];
-        private static readonly Color originalEntryBackgroundColorDark = (Color)Application.Current.Resources["Gray600"];
-        private static readonly Color originalEntryTextColorLight = (Color)Application.Current.Resources["Black"];
-        private static readonly Color originalEntryTextColorDark = (Color)Application.Current.Resources["White"];
+        //private static readonly Color originalEntryBackgroundColorLight = (Color)Application.Current.Resources["Gray050"];
+        //private static readonly Color originalEntryBackgroundColorDark = (Color)Application.Current.Resources["Gray600"];
+        //private static readonly Color originalEntryTextColorLight = (Color)Application.Current.Resources["Black"];
+        //private static readonly Color originalEntryTextColorDark = (Color)Application.Current.Resources["White"];
 
         // Image source for the keyboard toggle button
         private static readonly string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";  // Dark theme image
@@ -66,7 +66,7 @@ namespace Keyboard
         {
             if (bEnableColorOnFocused && entry != null)
             {
-                //SaveOriginalEntryColors(entry);
+                SaveOriginalEntryColors(entry);
                 
                 entry.BackgroundColor = GetTheme() switch
                 {
@@ -91,19 +91,7 @@ namespace Keyboard
         {
             if (bEnableColorOnFocused && entry != null)
             {
-                //RestoreOriginalEntryColors(entry);
-
-                entry.BackgroundColor = GetTheme() switch
-                {
-                    "Dark" => Colors.LightCyan,
-                    _ => Colors.LightYellow,
-                };
-
-                //entry.BackgroundColor = GetTheme() switch
-                //{
-                //    "Dark" => originalEntryBackgroundColorDark,
-                //    _ => originalEntryBackgroundColorLight,
-                //};
+                RestoreOriginalEntryColors(entry);
 
                 //Border border = (Border)entry.Parent;
                 //border?.Stroke = GetTheme() switch
@@ -112,6 +100,38 @@ namespace Keyboard
                 //    _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
                 //};
             }
+        }
+
+        /// <summary>
+        /// Save the original Entry colors
+        /// </summary>
+        /// <param name="entry"></param>
+        private static void SaveOriginalEntryColors(Entry entry)
+        {
+            if (entry != null && !_originalEntryBackgroundColor.ContainsKey(entry))
+            {
+                _originalEntryBackgroundColor[entry] = entry.BackgroundColor;
+                //_originalEntryTextColor[entry] = entry.TextColor;
+            }
+        }
+
+        /// <summary>
+        /// Restore the original Entry colors
+        /// </summary>
+        /// <param name="entry"></param>
+        private static void RestoreOriginalEntryColors(Entry entry)
+        {
+            if (entry != null && _originalEntryBackgroundColor.TryGetValue(entry, out var color))
+            {
+                entry.BackgroundColor = color;
+                _originalEntryBackgroundColor.Remove(entry);
+            }
+
+            //if (entry != null && _originalEntryTextColor.TryGetValue(entry, out color))
+            //{
+            //    entry.TextColor = color;
+            //    _originalEntryTextColor.Remove(entry);
+            //}
         }
 
         /// <summary>
@@ -243,12 +263,8 @@ namespace Keyboard
             entry.Text = newText;
 
             // Move the cursor to the position after the inserted character
-#if IOS
-            // !!!BUG!!!: iOS does not support CursorPosition, so we need to set it to the end of the text            
-            entry.CursorPosition = entry.Text.Length;
-#else
             entry.CursorPosition = cursorPosition + 1;
-#endif
+
             return newText;
         }
 
@@ -674,38 +690,6 @@ namespace Keyboard
             // Get the absolute position relative to the window
             Point location = entry.GetAbsolutePosition();
             return location;
-        }
-
-        /// <summary>
-        /// Save the original Entry colors
-        /// </summary>
-        /// <param name="entry"></param>
-        private static void SaveOriginalEntryColors(Entry entry)
-        {
-            if (entry != null && !_originalEntryBackgroundColor.ContainsKey(entry))
-            {
-                _originalEntryBackgroundColor[entry] = entry.BackgroundColor;
-                //_originalEntryTextColor[entry] = entry.TextColor;
-            }
-        }
-
-        /// <summary>
-        /// Restore the original Entry colors
-        /// </summary>
-        /// <param name="entry"></param>
-        private static void RestoreOriginalEntryColors(Entry entry)
-        {
-            if (entry != null && _originalEntryBackgroundColor.TryGetValue(entry, out var color))
-            {
-                entry.BackgroundColor = color;
-                _originalEntryBackgroundColor.Remove(entry);
-            }
-
-            //if (entry != null && _originalEntryTextColor.TryGetValue(entry, out color))
-            //{
-            //    entry.TextColor = color;
-            //    _originalEntryTextColor.Remove(entry);
-            //}
         }
     }
 

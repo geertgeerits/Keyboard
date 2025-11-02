@@ -28,7 +28,7 @@ namespace Keyboard
                 //handler.PlatformView.InputView = [];
 
                 // Instead of assigning a blank UIView, assign null to InputView
-                // This disables the system keyboard but keeps selection and cursor working (does not work !!!)
+                // This disables the system keyboard but keeps selection and cursor working
                 handler.PlatformView.InputView = null;
 #endif
             });
