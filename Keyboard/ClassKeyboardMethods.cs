@@ -10,12 +10,6 @@ namespace Keyboard
         // Enable color change on focused Entry fields
         public static bool bEnableColorOnFocused = true;
 
-        // Colors for the entry field based on the theme
-        //private static readonly Color originalEntryBackgroundColorLight = (Color)Application.Current.Resources["Gray050"];
-        //private static readonly Color originalEntryBackgroundColorDark = (Color)Application.Current.Resources["Gray600"];
-        //private static readonly Color originalEntryTextColorLight = (Color)Application.Current.Resources["Black"];
-        //private static readonly Color originalEntryTextColorDark = (Color)Application.Current.Resources["White"];
-
         // Image source for the keyboard toggle button
         private static readonly string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";  // Dark theme image
         private static readonly string cImageKeyboardHideLight = "keyboard_hide_32p_black.png"; // Light theme image
@@ -23,7 +17,7 @@ namespace Keyboard
         private static readonly string cImageKeyboardShowLight = "keyboard_32p_black.png";      // Light theme image
 
         // Default theme for the application (Light, Dark, System)
-        private static string cTheme = "System";
+        private static readonly string cTheme = "System";
 
         // Current background color of the entry field
         private static readonly Dictionary<Entry, Color> _originalEntryBackgroundColor = [];
@@ -66,20 +60,24 @@ namespace Keyboard
         {
             if (bEnableColorOnFocused && entry != null)
             {
-                SaveOriginalEntryColors(entry);
-                
-                entry.BackgroundColor = GetTheme() switch
-                {
-                    "Dark" => Colors.LightGreen,
-                    _ => Colors.LightBlue,
-                };
+                //SaveOriginalEntryColors(entry);
 
-                //Border border = (Border)entry.Parent;
-                //border?.Stroke = GetTheme() switch
-                //{
-                //    "Dark" => (Brush)Colors.LightBlue,
-                //    _ => (Brush)Colors.Blue,
-                //};
+                string theme = GetTheme();
+                switch (theme)
+                {
+                    case "Dark":
+                        if (Application.Current?.Resources != null && Application.Current.Resources.TryGetValue("EntryBackgroundFocusedDark", out var darkColor) && darkColor is Color darkColorValue)
+                        {
+                            entry.BackgroundColor = darkColorValue;
+                        }
+                        break;
+                    default:
+                        if (Application.Current?.Resources != null && Application.Current.Resources.TryGetValue("EntryBackgroundFocusedLight", out var lightColor) && lightColor is Color lightColorValue)
+                        {
+                            entry.BackgroundColor = lightColorValue;
+                        }
+                        break;
+                }
             }
         }
 
@@ -91,13 +89,29 @@ namespace Keyboard
         {
             if (bEnableColorOnFocused && entry != null)
             {
-                RestoreOriginalEntryColors(entry);
+                //RestoreOriginalEntryColors(entry);
 
-                //Border border = (Border)entry.Parent;
-                //border?.Stroke = GetTheme() switch
+                string theme = GetTheme();
+                switch (theme)
+                {
+                    case "Dark":
+                        if (Application.Current?.Resources != null && Application.Current.Resources.TryGetValue("EntryBackgroundUnfocusedDark", out var darkColor) && darkColor is Color darkColorValue)
+                        {
+                            entry.BackgroundColor = darkColorValue;
+                        }
+                        break;
+                    default:
+                        if (Application.Current?.Resources != null && Application.Current.Resources.TryGetValue("EntryBackgroundUnfocusedLight", out var lightColor) && lightColor is Color lightColorValue)
+                        {
+                            entry.BackgroundColor = lightColorValue;
+                        }
+                        break;
+                }
+
+                //entry.BackgroundColor = GetTheme() switch
                 //{
-                //    "Dark" => Application.Current?.Resources["Gray200"] is Color gray200Color ? new SolidColorBrush(gray200Color) : new SolidColorBrush(Colors.Transparent),
-                //    _ => Application.Current?.Resources["Gray400"] is Color gray400Color ? new SolidColorBrush(gray400Color) : new SolidColorBrush(Colors.Transparent),
+                //    "Dark" => (Color)Application.Current.Resources["EntryBackgroundUnfocusedDark"],
+                //    _ => (Color)Application.Current.Resources["EntryBackgroundUnfocusedLight"],
                 //};
             }
         }
@@ -595,14 +609,13 @@ namespace Keyboard
             // Ensure Application.Current and its Windows collection are not null
             if (Application.Current?.Windows != null && Application.Current.Windows.Count > 0)
             {
-                Window? window = Application.Current.Windows[0];    // Access the first window directly
-                
+                // Access the first window directly without using LINQ methods
+                Window window = Application.Current.Windows[0];
                 if (window != null)
                 {
                     double width = window.Width;
                     double height = window.Height;
                     Debug.WriteLine($"Window Width: {width}, Window Height: {height}");
-                    
                     return height;
                 }
             }
@@ -647,7 +660,11 @@ namespace Keyboard
             else if (GetNavigationType() == "NavigationPage")
             {
                 // NavigationPage.TitleView - NOT tested yet
-                Page? currentPageNav = Application.Current?.Windows.FirstOrDefault()?.Page as NavigationPage;
+                Page? currentPageNav = null;
+                if (Application.Current?.Windows != null && Application.Current.Windows.Count > 0)
+                {
+                    currentPageNav = Application.Current.Windows[0].Page as NavigationPage;
+                }
                 if (currentPageNav != null)
                 {
                     View titleView = currentPageNav.FindByName<View>("grdTitleView");

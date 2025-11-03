@@ -357,11 +357,17 @@ namespace Keyboard
             }
 
             // Set the color for negative and positive numbers
-            const string cColorNegNumberLight = "#FF0000";
-            const string cColorPosNumberLight = "#000000";
-            const string cColorNegNumberDark = "#FFB0B0";
-            const string cColorPosNumberDark = "#FFFFFF";
+            //const string cColorNegNumberLight = "#FF0000";
+            //const string cColorPosNumberLight = "#000000";
+            //const string cColorNegNumberDark = "#FFB0B0";
+            //const string cColorPosNumberDark = "#FFFFFF";
 
+            string cColorNegNumberLight = ColorToHex((Color)Application.Current.Resources["EntryTextNegativeNumberLight"]);
+            string cColorPosNumberLight = ColorToHex((Color)Application.Current.Resources["EntryTextUnfocusedLight"]);
+            string cColorNegNumberDark = ColorToHex((Color)Application.Current.Resources["EntryTextNegativeNumberDark"]);
+            string cColorPosNumberDark = ColorToHex((Color)Application.Current.Resources["EntryTextUnfocusedDark"]);
+            Debug.WriteLine($"cColorNegNumberLight: {cColorNegNumberLight}");
+            
             // Get the current device theme
             AppTheme currentTheme = Microsoft.Maui.Controls.Application.Current.RequestedTheme;
 
@@ -452,7 +458,29 @@ namespace Keyboard
                 entry.IsEnabled = true;
             }
         }
-        
+
+        /// <summary>
+        /// Converts the specified color to its hexadecimal string representation
+        /// </summary>
+        /// <remarks>The returned string includes the alpha component only if the color is not fully
+        /// opaque. Each component is represented as a two-digit hexadecimal value.</remarks>
+        /// <param name="color">The color to convert to a hexadecimal string. The color's red, green, blue, and alpha components are used to
+        /// generate the output.</param>
+        /// <returns>A hexadecimal string representing the color. Returns a string in the format "#RRGGBB" if the color is fully
+        /// opaque, or "#AARRGGBB" if the color has transparency.</returns>
+        public static string ColorToHex(Color color)
+        {
+            int r = (int)(color.Red * 255);
+            int g = (int)(color.Green * 255);
+            int b = (int)(color.Blue * 255);
+            int a = (int)(color.Alpha * 255);
+
+            // If alpha is less than 255, include it; otherwise, use #RRGGBB
+            return a < 255
+                ? $"#{a:X2}{r:X2}{g:X2}{b:X2}"
+                : $"#{r:X2}{g:X2}{b:X2}";
+        }
+
         ///// <summary>
         ///// Test the rounding of numbers
         ///// </summary>

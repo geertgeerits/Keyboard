@@ -198,11 +198,6 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
-    <Style TargetType="ListView">
-        <Setter Property="SeparatorColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
-        <Setter Property="RefreshControlColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
-    </Style>
-
     <Style TargetType="Picker">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource White}}" />
         <Setter Property="TitleColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray200}}" />
@@ -566,8 +561,8 @@
     <!--The properties 'Keyboard', 'ReturnType' and 'Completed' are necessary when using the system keyboard instead of the custom keyboard-->
     <Style TargetType="Entry" x:Key="NumericEntry">
         <Setter Property="HorizontalTextAlignment" Value="End"/>
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray050}, Dark={StaticResource Gray600}}" />
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource EntryBackgroundUnfocusedLight}, Dark={StaticResource EntryBackgroundUnfocusedDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource EntryTextUnfocusedLight}, Dark={StaticResource EntryTextUnfocusedDark}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontSize" Value="16" />
