@@ -6,13 +6,15 @@
 
     <!-- Note: For Android please see also Platforms\Android\Resources\values\colors.xml -->
 
+    <!--***** Keyboard Colors *****-->
+
     <Color x:Key="EntryBackgroundUnfocusedLight">#F9F9F9</Color>
     <Color x:Key="EntryBackgroundUnfocusedDark">#404040</Color>
     <Color x:Key="EntryTextUnfocusedLight">Black</Color>
     <Color x:Key="EntryTextUnfocusedDark">White</Color>
 
-    <Color x:Key="EntryBackgroundFocusedLight">#E1E1E1</Color>
-    <Color x:Key="EntryBackgroundFocusedDark">#ACACAC</Color>
+    <Color x:Key="EntryBackgroundFocusedLight">#E9E9E9</Color>
+    <Color x:Key="EntryBackgroundFocusedDark">#545454</Color>
     <Color x:Key="EntryTextFocusedLight">Black</Color>
     <Color x:Key="EntryTextFocusedDark">White</Color>
     
@@ -20,12 +22,14 @@
     <Color x:Key="EntryTextNegativeNumberDark">#FFB0B0</Color>
 
     <Color x:Key="KeyBoardBackgroundLight">#E1E1E1</Color>
-    <Color x:Key="KeyBoardBackgroundDark">#E1E1E1</Color>
+    <Color x:Key="KeyBoardBackgroundDark">#6E6E6E</Color>
     <Color x:Key="KeyBoardKeyBackgroundLight">#F9F9F9</Color>
-    <Color x:Key="KeyBoardKeyBackgroundDark">#F9F9F9</Color>
+    <Color x:Key="KeyBoardKeyBackgroundDark">#404040</Color>
     <Color x:Key="KeyBoardKeyTextLight">Black</Color>
     <Color x:Key="KeyBoardKeyTextDark">White</Color>
 
+    <!--***** Other Colors *****-->
+    
     <Color x:Key="Primary">#512BD4</Color>
     <Color x:Key="PrimaryDark">#ac99ea</Color>
     <Color x:Key="PrimaryDarkText">#242424</Color>
