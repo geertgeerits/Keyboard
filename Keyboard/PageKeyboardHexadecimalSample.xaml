@@ -72,6 +72,9 @@
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FF"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -95,6 +98,9 @@
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -118,6 +124,9 @@
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -141,6 +150,9 @@
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFFFFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 

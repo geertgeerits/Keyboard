@@ -84,16 +84,14 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorFocused(entry);
+
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)
                 {
                     ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
                 }
-
-                // Set the color of the entry field
-                ClassKeyboardMethods.SetEntryColorFocused(entry);
-
-                //entry.CursorPosition = entry.Text.Length;  // The full selection of the text is gone when the cursor position is set to the end of the text
 
                 cEntryAutomationId = entry.AutomationId;
 
@@ -113,7 +111,7 @@ namespace Keyboard
             {
                 cEntryAutomationId = entry.AutomationId;
 
-                // Set the color of the entry field
+                // Restore the color of the entry field
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }
         }
@@ -129,6 +127,16 @@ namespace Keyboard
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
+        }
+
+        /// <summary>
+        /// Show/Hide the keyboard bottom sheet when the entry control is tapped
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
+        {
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>

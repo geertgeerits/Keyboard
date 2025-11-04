@@ -19,10 +19,6 @@ namespace Keyboard
         // Default theme for the application (Light, Dark, System)
         private static readonly string cTheme = "System";
 
-        // Current background color of the entry field
-        private static readonly Dictionary<Entry, Color> _originalEntryBackgroundColor = [];
-        //private static readonly Dictionary<Entry, Color> _originalEntryTextColor = [];
-
         /// <summary>
         /// Set the theme
         /// </summary>
@@ -60,8 +56,6 @@ namespace Keyboard
         {
             if (bEnableColorOnFocused && entry != null)
             {
-                //SaveOriginalEntryColors(entry);
-
                 string theme = GetTheme();
                 switch (theme)
                 {
@@ -89,8 +83,6 @@ namespace Keyboard
         {
             if (bEnableColorOnFocused && entry != null)
             {
-                //RestoreOriginalEntryColors(entry);
-
                 string theme = GetTheme();
                 switch (theme)
                 {
@@ -108,38 +100,6 @@ namespace Keyboard
                         break;
                 }
             }
-        }
-
-        /// <summary>
-        /// Save the original Entry colors
-        /// </summary>
-        /// <param name="entry"></param>
-        private static void SaveOriginalEntryColors(Entry entry)
-        {
-            if (entry != null && !_originalEntryBackgroundColor.ContainsKey(entry))
-            {
-                _originalEntryBackgroundColor[entry] = entry.BackgroundColor;
-                //_originalEntryTextColor[entry] = entry.TextColor;
-            }
-        }
-
-        /// <summary>
-        /// Restore the original Entry colors
-        /// </summary>
-        /// <param name="entry"></param>
-        private static void RestoreOriginalEntryColors(Entry entry)
-        {
-            if (entry != null && _originalEntryBackgroundColor.TryGetValue(entry, out var color))
-            {
-                entry.BackgroundColor = color;
-                _originalEntryBackgroundColor.Remove(entry);
-            }
-
-            //if (entry != null && _originalEntryTextColor.TryGetValue(entry, out color))
-            //{
-            //    entry.TextColor = color;
-            //    _originalEntryTextColor.Remove(entry);
-            //}
         }
 
         /// <summary>
@@ -390,9 +350,6 @@ namespace Keyboard
                 return;
             }
 
-            // Hide the bottom sheet if it is already visible
-            HideBottomSheet(bottomSheetPortrait, bottomSheetLandscape, imageButton);
-
             // Get the current device orientation
             string cOrientation = GetDeviceOrientation();
 
@@ -459,42 +416,13 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Hide the system keyboard
+        /// Scrolls the specified 'Entry' into view within the given 'ScrollView'
         /// </summary>
+        /// <param name="scrollView"></param>
         /// <param name="entry"></param>
-        public async static void HideSystemKeyboard(Entry entry)
-        {
-            // !!!BUG!!!: when this method is called, the entry field loses focus on iOS
-            // The entry control's unfocused event is executed immediately after the focused event in net maui, only on iOS
-            // The keyboard has been disabled for all Entry controls in the MauiProgram.cs
-
-            try
-            {
-                if (entry.IsSoftInputShowing())
-                {
-#if ANDROID
-                    // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
-                    entry.Unfocus();
-#endif
-                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
-                }
-            }
-            catch (Exception)
-            {
-                entry.IsEnabled = false;
-                entry.IsEnabled = true;
-            }
-        }
-
-
-    /// <summary>
-    /// Scrolls the specified 'Entry' into view within the given 'ScrollView'
-    /// </summary>
-    /// <param name="scrollView"></param>
-    /// <param name="entry"></param>
-    /// <param name="nKeyboardHeightPortrait"></param>
-    /// <param name="nKeyboardHeightLandscape"></param>
-    public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        /// <param name="nKeyboardHeightPortrait"></param>
+        /// <param name="nKeyboardHeightLandscape"></param>
+        public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             // Ensure the scrollView and entry are not null before attempting to scroll
             if (scrollView == null || entry == null)
@@ -504,7 +432,6 @@ namespace Keyboard
 
 #if ANDROID || WINDOWS
             await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
-            //CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #else
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
@@ -679,10 +606,16 @@ namespace Keyboard
         public static string GetNavigationType()
         {
             if (Shell.Current != null)
+            {
                 return "Shell";
+            }
+
             if (Application.Current?.Windows != null && Application.Current.Windows.Count > 0 &&
                 Application.Current.Windows[0].Page is NavigationPage)
+            {
                 return "NavigationPage";
+            }
+
             return "Other";
         }
 

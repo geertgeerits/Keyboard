@@ -72,6 +72,9 @@
                                 <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="100"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -95,6 +98,9 @@
                                 <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -118,6 +124,9 @@
                                 <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -141,6 +150,9 @@
                                 <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
                             </EventTrigger>
                         </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 

@@ -2,11 +2,12 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.24
-   Date ........: 2025-11-03 (YYYY-MM-DD)
+   Date ........: 2025-11-04 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
-                  It is a custom keyboard that uses a ContentView as overlay page.
+                  It is a custom keyboard for numeric and hex values that uses a ContentView as overlay page.
+                  Hide the Android and iOS system keyboard, method in MauiProgram.cs: Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping
                   In iOS the 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
                   It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -122,11 +123,6 @@ namespace Keyboard
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
-                // Hide the Android and iOS system keyboard
-                // !!!BUG!!!?: when this method is called here, the entry field loses focus on iOS
-                // The entry control's unfocused event is executed immediately after the focused event in net maui, only on iOS
-                //ClassKeyboardMethods.HideSystemKeyboard(entry);
-
                 // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
                 if (!ClassKeyboardMethods.bKeyboardToggleButton)
                 {
@@ -140,9 +136,6 @@ namespace Keyboard
 
                 cEntryAutomationId = entry.AutomationId;
                 bEntryCompleted = false;
-
-                //Point point = ClassKeyboardMethods.GetEntryScreenPosition(entry);
-                //Debug.WriteLine($"Entry '{cEntryAutomationId}' position: {point.X}, {point.Y}");
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -160,11 +153,9 @@ namespace Keyboard
             {
                 cEntryAutomationId = entry.AutomationId;
 
-                //entry.MaxLength = -1;
-
+                // Restore the color of the entry field and format the number
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
 
-                // Restore the color of the entry field and format the number
                 if (bEntryCompleted)
                 {
                     ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
@@ -183,6 +174,16 @@ namespace Keyboard
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
+        }
+
+        /// <summary>
+        /// Show/Hide the keyboard bottom sheet when the entry control is tapped
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
+        {
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>
