@@ -621,8 +621,8 @@
 
     <Style TargetType="ImageButton" x:Key="KeyDecimalPortraitImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="Aspect" Value="Center" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Aspect" Value="AspectFit" />
+        <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -668,8 +668,8 @@
 
     <Style TargetType="ImageButton" x:Key="KeyHexadecimalPortraitImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="Aspect" Value="Center" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Aspect" Value="AspectFit" />
+        <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -730,8 +730,8 @@
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape1RowImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="Aspect" Value="Center" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Aspect" Value="AspectFit" />
+        <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -790,8 +790,8 @@
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape2RowsImageButton">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="Aspect" Value="Center" />
-        <Setter Property="Padding" Value="0" />
+        <Setter Property="Aspect" Value="AspectFit" />
+        <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">

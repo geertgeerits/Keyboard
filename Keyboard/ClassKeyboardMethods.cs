@@ -107,12 +107,6 @@ namespace Keyboard
                         }
                         break;
                 }
-
-                //entry.BackgroundColor = GetTheme() switch
-                //{
-                //    "Dark" => (Color)Application.Current.Resources["EntryBackgroundUnfocusedDark"],
-                //    _ => (Color)Application.Current.Resources["EntryBackgroundUnfocusedLight"],
-                //};
             }
         }
 
