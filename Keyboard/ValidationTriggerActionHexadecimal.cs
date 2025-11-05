@@ -17,10 +17,22 @@
             {
                 isValidNumber = nHexResult >= nMinValue && nHexResult <= nMaxValue;
 
-                // Set the border color if the input is invalid
-                if (entry.Parent is Border border)
+                if (entry.Parent is Border border && Application.Current?.Resources != null)
                 {
-                    border.Stroke = isValidNumber ? Color.FromArgb("969696") : Colors.OrangeRed;
+                    if (isValidNumber)
+                    {
+                        if (Application.Current.Resources.TryGetValue("EntryValidNumber", out var validColor) && validColor is Color validColorValue)
+                        {
+                            border.Stroke = validColorValue;
+                        }
+                    }
+                    else
+                    {
+                        if (Application.Current.Resources.TryGetValue("EntryInvalidNumber", out var InvalidColor) && InvalidColor is Color InvalidColorValue)
+                        {
+                            border.Stroke = InvalidColorValue;
+                        }
+                    }
                 }
             }
         }
