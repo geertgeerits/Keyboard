@@ -35,7 +35,7 @@ namespace Keyboard
             });
 
             // Show the bottom sheet when the page is appearing
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Keyboard
             base.OnDisappearing();
 
             // Hide the bottom sheet when the page is disappearing
-            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
 
             // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
             DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
@@ -72,7 +72,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
         }
 
         /// <summary>
@@ -87,11 +87,8 @@ namespace Keyboard
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
-                // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
-                if (!ClassKeyboardMethods.bKeyboardToggleButton)
-                {
-                    ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
-                }
+                // Show the keyboard bottom sheet when the entry field is focused
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
 
                 cEntryAutomationId = entry.AutomationId;
 
@@ -136,7 +133,7 @@ namespace Keyboard
         /// <param name="args"></param>
         void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
         {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
         }
 
         /// <summary>
@@ -184,7 +181,7 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
+                    ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
                 }
                 else if (cKey == "btnReturn")
                 {
@@ -195,16 +192,6 @@ namespace Keyboard
                     ClassKeyboardMethods.KeyboardHexadecimalClicked(focusedEntry, cKey);
                 }
             }
-        }
-
-        /// <summary>
-        /// Toggles the visibility of the numeric keyboard based on the current device orientation and theme.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
-        {
-            ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape, imgbtnToggleKeyboard);
         }
     }
 }

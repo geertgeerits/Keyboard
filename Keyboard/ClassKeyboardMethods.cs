@@ -4,17 +4,8 @@ namespace Keyboard
 {
     internal static class ClassKeyboardMethods
     {
-        // Default value for keyboard toggle button
-        public static bool bKeyboardToggleButton = true;
-        
         // Enable color change on focused Entry fields
         public static bool bEnableColorOnFocused = true;
-
-        // Image source for the keyboard toggle button
-        private static readonly string cImageKeyboardHideDark = "keyboard_hide_32p_white.png";  // Dark theme image
-        private static readonly string cImageKeyboardHideLight = "keyboard_hide_32p_black.png"; // Light theme image
-        private static readonly string cImageKeyboardShowDark = "keyboard_32p_white.png";       // Dark theme image
-        private static readonly string cImageKeyboardShowLight = "keyboard_32p_black.png";      // Light theme image
 
         // Default theme for the application (Light, Dark, System)
         private static readonly string cTheme = "System";
@@ -99,46 +90,6 @@ namespace Keyboard
                         }
                         break;
                 }
-            }
-        }
-
-        /// <summary>
-        /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is opened
-        /// </summary>
-        /// <param name="imageButton">The source of the event.</param>
-        public static void SetImageKeyboardButtonSheetOpened(ImageButton imageButton)
-        {
-            if (imageButton == null)
-            {
-                return;
-            }
-            
-            // Show or hide the keyboard toggle button visibility
-            imageButton.IsVisible = bKeyboardToggleButton;
-
-            if (bKeyboardToggleButton && imageButton != null)
-            {
-                imageButton.Source = Application.Current?.RequestedTheme switch
-                {
-                    AppTheme.Dark => (ImageSource)cImageKeyboardHideDark,
-                    _ => (ImageSource)cImageKeyboardHideLight,
-                };
-            }
-        }
-
-        /// <summary>
-        /// Set the image source for the keyboard toggle button depending on the theme when the keyboard is closed
-        /// </summary>
-        /// <param name="imageButton"></param>
-        private static void SetImageKeyboardButtonSheetClosed(ImageButton imageButton)
-        {
-            if (bKeyboardToggleButton && imageButton != null)
-            {
-                imageButton.Source = Application.Current?.RequestedTheme switch
-                {
-                    AppTheme.Dark => (ImageSource)cImageKeyboardShowDark,
-                    _ => (ImageSource)cImageKeyboardShowLight,
-                };
             }
         }
 
@@ -279,8 +230,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        /// <param name="imageButton"></param>
-        public async static void ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
+        public async static void ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -308,13 +258,11 @@ namespace Keyboard
                         {
                             await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 250, Easing.SinIn);    // Slide down
                             bottomSheetLandscape.IsVisible = false;
-                            SetImageKeyboardButtonSheetClosed(imageButton);                                     // Set the image source for the keyboard toggle button
                         }
                         else
                         {
                             bottomSheetLandscape.IsVisible = true;
                             await bottomSheetLandscape.TranslateToAsync(0, 0, length: 250, Easing.SinOut);   // Slide up
-                            SetImageKeyboardButtonSheetOpened(imageButton);
                         }
                         break;
                     }
@@ -324,13 +272,11 @@ namespace Keyboard
                         {
                             await bottomSheetPortrait.TranslateToAsync(0, 250, length: 250, Easing.SinIn);   // Slide down
                             bottomSheetPortrait.IsVisible = false;
-                            SetImageKeyboardButtonSheetClosed(imageButton);
                         }
                         else
                         {
                             bottomSheetPortrait.IsVisible = true;
                             await bottomSheetPortrait.TranslateToAsync(0, 0, length: 250, Easing.SinOut);    // Slide up
-                            SetImageKeyboardButtonSheetOpened(imageButton);
                         }
                         break;
                     }
@@ -342,8 +288,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        /// <param name="imageButton"></param>
-        public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
+        public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -383,8 +328,6 @@ namespace Keyboard
                         break;
                     }
             }
-
-            SetImageKeyboardButtonSheetOpened(imageButton);
         }
 
         /// <summary>
@@ -392,8 +335,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        /// <param name="imageButton"></param>
-        public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape, ImageButton imageButton)
+        public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -411,7 +353,6 @@ namespace Keyboard
                 bottomSheetPortrait.IsVisible = false;
             }
 
-            SetImageKeyboardButtonSheetClosed(imageButton);
             await Task.Delay(400);
         }
 

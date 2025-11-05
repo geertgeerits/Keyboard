@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.24
-   Date ........: 2025-11-04 (YYYY-MM-DD)
+   Date ........: 2025-11-05 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -45,9 +45,6 @@ namespace Keyboard
             // Set the theme
             ClassKeyboardMethods.SetTheme();
 
-            // Set the image source for the keyboard toggle button
-            ClassKeyboardMethods.SetImageKeyboardButtonSheetOpened(imgbtnToggleKeyboard);
-
             // Reads and logs the current device display information
             //ClassKeyboardMethods.ReadDeviceDisplay();
         }
@@ -71,7 +68,7 @@ namespace Keyboard
             });
 
             // Show the bottom sheet when the page is appearing
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
@@ -82,7 +79,7 @@ namespace Keyboard
             base.OnDisappearing();
 
             // Hide the bottom sheet when the page is disappearing
-            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
             // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
             DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
@@ -108,7 +105,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
@@ -123,11 +120,8 @@ namespace Keyboard
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
-                // Show the keyboard bottom sheet when the entry field is focused and the keyboard toggle button is not visible
-                if (!ClassKeyboardMethods.bKeyboardToggleButton)
-                {
-                    ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
-                }
+                // Show the keyboard bottom sheet when the entry field is focused
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 if (bEntryCompleted)
                 {
@@ -183,7 +177,7 @@ namespace Keyboard
         /// <param name="args"></param>
         void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
         {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
@@ -243,7 +237,7 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
+                    ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 }
                 else if (cKey == "btnReturn")
                 {
@@ -254,16 +248,6 @@ namespace Keyboard
                     ClassKeyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
                 }
             }
-        }
-
-        /// <summary>
-        /// Toggles the visibility of the numeric keyboard based on the current device orientation and theme.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ImgbtnToggleKeyboard_Clicked(object sender, EventArgs e)
-        {
-            ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape, imgbtnToggleKeyboard);
         }
 
         /// <summary>
