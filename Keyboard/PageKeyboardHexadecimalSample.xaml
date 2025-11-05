@@ -10,7 +10,7 @@
     <Shell.TitleView>
         <Grid
             x:Name="grdTitleView"
-            ColumnDefinitions="*, 60"
+            ColumnDefinitions="*"
             RowDefinitions="*"
             Padding="0">
 
@@ -48,7 +48,7 @@
                     Grid.Column="0"
                     Grid.Row="0">
 
-                    <Entry  
+                    <Entry
                         x:Name="entTest1"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest1-Percentage"
@@ -74,7 +74,7 @@
                     Grid.Column="0"
                     Grid.Row="1">
 
-                    <Entry  
+                    <Entry
                         x:Name="entTest2"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest2"

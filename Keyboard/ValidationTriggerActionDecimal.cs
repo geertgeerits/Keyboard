@@ -1,4 +1,6 @@
-﻿namespace Keyboard
+﻿using System.Diagnostics;
+
+namespace Keyboard
 {
     public sealed class ValidationTriggerActionDecimal : TriggerAction<Entry>
     {
@@ -12,9 +14,7 @@
             isValid = isValid && result >= MinValue && result <= MaxValue;
 
             // Set the border color if the input is invalid
-            Border border = (Border)entry.Parent;
-
-            if (border != null)
+            if (entry.Parent is Border border)
             {
                 if (entry.Text.Contains(ClassEntryMethods.cNumGroupSeparator))
                 {

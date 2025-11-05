@@ -10,7 +10,7 @@
     <Shell.TitleView>
         <Grid
             x:Name="grdTitleView"
-            ColumnDefinitions="*, 60, 60"
+            ColumnDefinitions="*, 70, 70"
             RowDefinitions="Auto"
             Padding="0">
             
@@ -33,7 +33,7 @@
 
                 <Button
                     HeightRequest="40"
-                    WidthRequest="60"
+                    WidthRequest="70"
                     Margin="{x:OnPlatform Default='0', WinUI='0,0,0,40'}"
                     BackgroundColor="Transparent"
                     TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
@@ -52,7 +52,7 @@
 
                 <Button
                     HeightRequest="40"
-                    WidthRequest="60"
+                    WidthRequest="70"
                     Margin="{x:OnPlatform Default='0', WinUI='0,0,0,40'}"
                     BackgroundColor="Transparent"
                     TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
@@ -126,7 +126,7 @@
                     Grid.Column="1"
                     Grid.Row="1">
 
-                    <Entry  
+                    <Entry
                         x:Name="entTest2"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest2"

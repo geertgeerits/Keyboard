@@ -8,18 +8,21 @@
 
     <!--***** Keyboard Colors *****-->
 
+    <Color x:Key="EntryBackgroundFocusedLight">#E9E9E9</Color>
+    <Color x:Key="EntryBackgroundFocusedDark">#545454</Color>
+    <Color x:Key="EntryTextFocusedLight">Black</Color>
+    <Color x:Key="EntryTextFocusedDark">White</Color>
+
     <Color x:Key="EntryBackgroundUnfocusedLight">#F9F9F9</Color>
     <Color x:Key="EntryBackgroundUnfocusedDark">#404040</Color>
     <Color x:Key="EntryTextUnfocusedLight">Black</Color>
     <Color x:Key="EntryTextUnfocusedDark">White</Color>
 
-    <Color x:Key="EntryBackgroundFocusedLight">#E9E9E9</Color>
-    <Color x:Key="EntryBackgroundFocusedDark">#545454</Color>
-    <Color x:Key="EntryTextFocusedLight">Black</Color>
-    <Color x:Key="EntryTextFocusedDark">White</Color>
-    
     <Color x:Key="EntryTextNegativeNumberLight">#FF0000</Color>
     <Color x:Key="EntryTextNegativeNumberDark">#FFB0B0</Color>
+
+    <Color x:Key="EntryValidNumber">#969696</Color>
+    <Color x:Key="EntryInvalidNumber">OrangeRed</Color>
 
     <Color x:Key="KeyBoardBackgroundLight">#E1E1E1</Color>
     <Color x:Key="KeyBoardBackgroundDark">#6E6E6E</Color>

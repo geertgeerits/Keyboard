@@ -1,4 +1,6 @@
-﻿namespace Keyboard
+﻿using System.Diagnostics;
+
+namespace Keyboard
 {
     public sealed class ValidationTriggerActionHexadecimal : TriggerAction<Entry>
     {
@@ -18,9 +20,7 @@
                 isValidNumber = nHexResult >= nMinValue && nHexResult <= nMaxValue;
 
                 // Set the border color if the input is invalid
-                Border border = (Border)entry.Parent;
-
-                if (border != null)
+                if (entry.Parent is Border border)
                 {
                     border.Stroke = isValidNumber ? Color.FromArgb("969696") : Colors.OrangeRed;
                 }

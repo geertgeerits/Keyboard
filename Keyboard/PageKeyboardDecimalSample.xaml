@@ -10,7 +10,7 @@
     <Shell.TitleView>
         <Grid
             x:Name="grdTitleView"
-            ColumnDefinitions="*, 60"
+            ColumnDefinitions="*"
             RowDefinitions="*"
             Padding="0">
 
