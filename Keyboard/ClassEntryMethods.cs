@@ -357,11 +357,6 @@ namespace Keyboard
             }
 
             // Set the color for negative and positive numbers
-            //const string cColorNegNumberLight = "#FF0000";
-            //const string cColorPosNumberLight = "#000000";
-            //const string cColorNegNumberDark = "#FFB0B0";
-            //const string cColorPosNumberDark = "#FFFFFF";
-
             string cColorNegNumberLight = ColorToHex((Color)Application.Current.Resources["EntryTextNegativeNumberLight"]);
             string cColorPosNumberLight = ColorToHex((Color)Application.Current.Resources["EntryTextUnfocusedLight"]);
             string cColorNegNumberDark = ColorToHex((Color)Application.Current.Resources["EntryTextNegativeNumberDark"]);

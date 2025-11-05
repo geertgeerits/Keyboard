@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Keyboard
+﻿namespace Keyboard
 {
     public sealed class ValidationTriggerActionHexadecimal : TriggerAction<Entry>
     {
