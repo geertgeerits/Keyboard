@@ -524,7 +524,7 @@
     </Style>
 
     <Style TargetType="Border" x:Key="EntryBorder">
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray300}, Dark={StaticResource Gray300}}" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}" />
         <Setter Property="StrokeThickness" Value="1" />
         <Setter Property="StrokeShape">
             <Setter.Value>

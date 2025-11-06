@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.24
-   Date ........: 2025-11-05 (YYYY-MM-DD)
+   Date ........: 2025-11-06 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -109,6 +109,21 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Show/Hide the keyboard bottom sheet when the entry control is tapped
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="args"></param>
+        void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
+        {
+            if (sender is Entry entry)
+            {
+                entry.Focus();              // This will trigger the Focused event
+                Task.Delay(100).Wait();     // Small delay to ensure the Focused event is processed
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+            }
+        }
+
+        /// <summary>
         /// Handles the focus event for an entry field, performing actions
         /// </summary>
         /// <param name="sender">The entry field that triggered the focus event.</param>
@@ -150,10 +165,8 @@ namespace Keyboard
                 // Restore the color of the entry field and format the number
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
 
-                if (bEntryCompleted)
-                {
-                    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
-                }
+                // Set the formatted number in the entry field
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
         }
 
@@ -168,16 +181,6 @@ namespace Keyboard
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }
-        }
-
-        /// <summary>
-        /// Show/Hide the keyboard bottom sheet when the entry control is tapped
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
-        void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
-        {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>

@@ -18,10 +18,13 @@
     <Color x:Key="EntryTextUnfocusedLight">Black</Color>
     <Color x:Key="EntryTextUnfocusedDark">White</Color>
 
-    <Color x:Key="EntryTextNegativeNumberLight">#FF0000</Color>
-    <Color x:Key="EntryTextNegativeNumberDark">#FFB0B0</Color>
+    <Color x:Key="EntryTextNegativeNumberLight">Red</Color>
+    <Color x:Key="EntryTextNegativeNumberDark">LightPink</Color>
 
-    <Color x:Key="EntryValidNumber">#ACACAC</Color>
+    <Color x:Key="EntryBorderLight">DarkGray</Color>
+    <Color x:Key="EntryBorderDark">DarkGray</Color>
+
+    <Color x:Key="EntryValidNumber">DarkGray</Color>
     <Color x:Key="EntryInvalidNumber">Orange</Color>
 
     <Color x:Key="KeyBoardBackgroundLight">#E1E1E1</Color>
