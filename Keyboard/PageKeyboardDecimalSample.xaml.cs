@@ -7,7 +7,6 @@ namespace Keyboard
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;
-        private bool bEntryCompleted;
 
         public PageKeyboardDecimalSample()
     	{
@@ -75,9 +74,9 @@ namespace Keyboard
         {
             ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
-
+        
         /// <summary>
-        /// Show/Hide the keyboard bottom sheet when the entry control is tapped
+        /// Show the keyboard bottom sheet when the entry control is tapped
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -85,9 +84,7 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
-                entry.Focus();              // This will trigger the Focused event
-                Task.Delay(100).Wait();     // Small delay to ensure the Focused event is processed
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
             }
         }
 
@@ -106,13 +103,10 @@ namespace Keyboard
                 // Show the keyboard bottom sheet when the entry field is focused
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
-                if (bEntryCompleted)
-                {
-                    ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
-                }
+                // Set the unformatted number in the entry field
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
 
                 cEntryAutomationId = entry.AutomationId;
-                bEntryCompleted = false;
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -152,20 +146,12 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Go to the next field when the return key have been pressed 
+        /// Go to the next field when the next or return key have been pressed 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs? e)
         {
-            // Format the number
-            if (sender is Entry entry)
-            {
-                bEntryCompleted = true;
-                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
-            }
-
-            // Go to the next field
             if (sender == entTest1)
             {
                 _ = entTest2.Focus();

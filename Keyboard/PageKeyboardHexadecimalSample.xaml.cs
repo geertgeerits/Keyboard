@@ -76,7 +76,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Show/Hide the keyboard bottom sheet when the entry control is tapped
+        /// Show the keyboard bottom sheet when the entry control is tapped
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
@@ -84,8 +84,7 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
-                entry.Focus();              // This will trigger the Focused event
-                Task.Delay(100).Wait();     // Small delay to ensure the Focused event is processed
+                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
             }
         }
 
