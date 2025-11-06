@@ -1,5 +1,4 @@
 ﻿global using System.Globalization;
-using System.Diagnostics;
 
 namespace Keyboard
 {

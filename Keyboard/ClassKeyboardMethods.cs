@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace Keyboard
+﻿namespace Keyboard
 {
     internal static class ClassKeyboardMethods
     {

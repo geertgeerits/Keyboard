@@ -9,3 +9,6 @@ The 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does 
 It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
 
 
+
+.NET 10 - C# 14.0
+

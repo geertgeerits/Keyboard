@@ -13,10 +13,6 @@
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
 */
 
-using CommunityToolkit.Mvvm.Messaging;
-using CommunityToolkit.Mvvm.Messaging.Messages;
-using System.Diagnostics;
-
 namespace Keyboard
 {
     public partial class MainPage : ContentPage
@@ -117,8 +113,9 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-                //entry.Focus();              // This will trigger the Focused event
-                //Task.Delay(100).Wait();     // Small delay to ensure the Focused event is processed
+#if IOS
+                entry.Focus();              // This will trigger the Focused event
+#endif
             }
         }
 

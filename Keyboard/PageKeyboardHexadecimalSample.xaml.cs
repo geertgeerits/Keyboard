@@ -1,6 +1,3 @@
-using CommunityToolkit.Mvvm.Messaging;
-using System.Diagnostics;
-
 namespace Keyboard
 {
     public partial class PageKeyboardHexadecimalSample : ContentPage
@@ -85,6 +82,9 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+#if IOS
+                entry.Focus();              // This will trigger the Focused event
+#endif
             }
         }
 
