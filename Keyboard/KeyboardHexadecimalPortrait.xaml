@@ -7,8 +7,8 @@
 
     <Grid
         Style="{StaticResource KeyboardGrid}"
-        ColumnDefinitions="40, 60, 60, 60, 60, 60, 40"
-        RowDefinitions="5, 60, 60, 60, 60, 5">
+        ColumnDefinitions="40, 54, 54, 54, 54, 54, 40"
+        RowDefinitions="5, 54, 54, 54, 54, 5">
 
         <BoxView
             Style="{StaticResource KeyboardGridBoxView}"
@@ -16,239 +16,167 @@
             Grid.RowSpan="6">
         </BoxView>
 
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="1"  
-            Grid.Row="1">
+            Grid.Row="1"
+            AutomationId="btnZero"
+            Text="0"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnZero"
-                Text="0"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="2"  
-            Grid.Row="1">
+            Grid.Row="1"
+            AutomationId="btnOne"
+            Text="1"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnOne"
-                Text="1"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="3"  
-            Grid.Row="1">
+            Grid.Row="1"
+            AutomationId="btnTwo"
+            Text="2"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnTwo"
-                Text="2"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="4"  
-            Grid.Row="1">
+            Grid.Row="1"
+            AutomationId="btnThree"
+            Text="3"
+            Clicked="BtnKey_Clicked">
+        </Button>
+ 
+        <Button  
+           Style="{StaticResource KeyHexadecimalPortraitButton}"
+           Grid.Column="5"  
+           Grid.Row="1"
+           AutomationId="btnFour"
+           Text="4"
+           Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnThree"
-                Text="3"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
-            Grid.Column="5"  
-            Grid.Row="1">
-
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnFour"
-                Text="4"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="1"  
-            Grid.Row="2">
+            Grid.Row="2"
+            AutomationId="btnFive"
+            Text="5"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnFive"
-                Text="5"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="2"  
-            Grid.Row="2">
+            Grid.Row="2"
+            AutomationId="btnSix"
+            Text="6"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnSix"
-                Text="6"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="3"  
-            Grid.Row="2">
+            Grid.Row="2"
+            AutomationId="btnSeven"
+            Text="7"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnSeven"
-                Text="7"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="4"  
-            Grid.Row="2">
+            Grid.Row="2"
+            AutomationId="btnEight"
+            Text="8"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnEight"
-                Text="8"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="5"  
-            Grid.Row="2">
+            Grid.Row="2"
+            AutomationId="btnNine"
+            Text="9"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnNine"
-                Text="9"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="1"  
-            Grid.Row="3">
+            Grid.Row="3"
+            AutomationId="btnA"
+            Text="A"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnA"
-                Text="A"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="2"  
-            Grid.Row="3">
+            Grid.Row="3"
+            AutomationId="btnB"
+            Text="B"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnB"
-                Text="B"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="3"  
-            Grid.Row="3">
+            Grid.Row="3"
+            AutomationId="btnC"
+            Text="C"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnC"
-                Text="C"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="4"  
-            Grid.Row="3">
+            Grid.Row="3"
+            AutomationId="btnD"
+            Text="D"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnD"
-                Text="D"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="5"  
-            Grid.Row="3">
+            Grid.Row="3"
+            AutomationId="btnE"
+            Text="E"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnE"
-                Text="E"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <Button  
+            Style="{StaticResource KeyHexadecimalPortraitButton}"
             Grid.Column="1"  
-            Grid.Row="4">
+            Grid.Row="4"
+            AutomationId="btnF"
+            Text="F"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
-            <Button  
-                Style="{StaticResource KeyHexadecimalPortraitButton}"
-                AutomationId="btnF"
-                Text="F"
-                Clicked="BtnKey_Clicked">
-            </Button>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <ImageButton  
+            Style="{StaticResource KeyHexadecimalPortraitImageButton}"
             Grid.Column="4"  
-            Grid.Row="4">
+            Grid.Row="4"
+            AutomationId="btnBackspace"
+            Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
+            Clicked="BtnKey_Clicked">
+        </ImageButton>
 
-            <ImageButton  
-                Style="{StaticResource KeyHexadecimalPortraitImageButton}"
-                AutomationId="btnBackspace"
-                Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
-                Clicked="BtnKey_Clicked">
-            </ImageButton>
-        </Border>
-
-        <Border
-            Style="{StaticResource KeyPortraitBorder}"
+        <ImageButton  
+            Style="{StaticResource KeyHexadecimalPortraitImageButton}"
             Grid.Column="5"  
-            Grid.Row="4">
-
-            <ImageButton  
-                Style="{StaticResource KeyHexadecimalPortraitImageButton}"
-                AutomationId="btnReturn"
-                Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
-                Clicked="BtnKey_Clicked">
-            </ImageButton>
-        </Border>
+            Grid.Row="4"
+            AutomationId="btnReturn"
+            Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
+            Clicked="BtnKey_Clicked">
+        </ImageButton>
 
         <ImageButton
             x:Name="ImgbtnKeyboardHide"

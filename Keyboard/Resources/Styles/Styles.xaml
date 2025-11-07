@@ -480,8 +480,8 @@
 
     <Style TargetType="Grid" x:Key="KeyboardGrid">
         <Setter Property="HorizontalOptions" Value="Center" />
-        <Setter Property="ColumnSpacing" Value="0" />
-        <Setter Property="RowSpacing" Value="0" />
+        <Setter Property="ColumnSpacing" Value="4" />
+        <Setter Property="RowSpacing" Value="4" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
@@ -555,21 +555,9 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Border" x:Key="KeyPortraitBorder">
-        <Setter Property="HeightRequest" Value="54" />
-        <Setter Property="WidthRequest" Value="54" />
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
-        <Setter Property="StrokeThickness" Value="1"/>
-        <Setter Property="StrokeShape">
-            <Setter.Value>
-                <RoundRectangle CornerRadius="8" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
     <Style TargetType="Button" x:Key="KeyDecimalPortraitButton">
-        <Setter Property="HeightRequest" Value="54" />
-        <Setter Property="WidthRequest" Value="54" />
+        <Setter Property="HeightRequest" Value="52" />
+        <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
@@ -598,8 +586,8 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyDecimalPortraitImageButton">
-        <Setter Property="HeightRequest" Value="54" />
-        <Setter Property="WidthRequest" Value="54" />
+        <Setter Property="HeightRequest" Value="52" />
+        <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
@@ -625,6 +613,11 @@
     </Style>
 
     <Style TargetType="Button" x:Key="KeyHexadecimalPortraitButton">
+        <Setter Property="HeightRequest" Value="52" />
+        <Setter Property="WidthRequest" Value="52" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
         <Setter Property="FontSize" Value="20" />
@@ -650,6 +643,11 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyHexadecimalPortraitImageButton">
+        <Setter Property="HeightRequest" Value="52" />
+        <Setter Property="WidthRequest" Value="52" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
@@ -671,21 +669,12 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Border" x:Key="KeyLandscape1RowBorder">
+    <Style TargetType="Button" x:Key="KeyNumericLandscape1RowButton">
         <Setter Property="HeightRequest" Value="45" />
         <Setter Property="WidthRequest" Value="40" />
-        <Setter Property="Margin" Value="0" />
-        <Setter Property="Padding" Value="0" />
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
-        <Setter Property="StrokeThickness" Value="1"/>
-        <Setter Property="StrokeShape">
-            <Setter.Value>
-                <RoundRectangle CornerRadius="8" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="Button" x:Key="KeyNumericLandscape1RowButton">
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
         <Setter Property="FontSize" Value="18" />
@@ -712,6 +701,11 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape1RowImageButton">
+        <Setter Property="HeightRequest" Value="45" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
@@ -733,19 +727,12 @@
         </Setter>
     </Style>
 
-    <Style TargetType="Border" x:Key="KeyLandscape2RowBorder">
+    <Style TargetType="Button" x:Key="KeyNumericLandscape2RowsButton">
         <Setter Property="HeightRequest" Value="40" />
         <Setter Property="WidthRequest" Value="40" />
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
-        <Setter Property="StrokeThickness" Value="1"/>
-        <Setter Property="StrokeShape">
-            <Setter.Value>
-                <RoundRectangle CornerRadius="8" />
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style TargetType="Button" x:Key="KeyNumericLandscape2RowsButton">
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
         <Setter Property="FontSize" Value="18" />
@@ -772,6 +759,11 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape2RowsImageButton">
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="BorderWidth" Value="1" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
