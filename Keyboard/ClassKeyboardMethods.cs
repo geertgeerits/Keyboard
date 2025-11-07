@@ -375,7 +375,7 @@
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
             // Put a comment before one of the methods that you not want to use
-            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
+            //await scrollView.ScrollToAsync(entry, ScrollToPosition.MakeVisible, true);
 
             // For iOS, we need to calculate the position of the Entry within the ScrollView
             CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);

@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2025
    Version .....: 1.0.24
-   Date ........: 2025-11-06 (YYYY-MM-DD)
+   Date ........: 2025-11-07 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is an example and experimental.
@@ -19,6 +19,7 @@ namespace Keyboard
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;
+        private Entry? _focusedEntry;
 
         public MainPage()
         {
@@ -101,6 +102,12 @@ namespace Keyboard
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
             ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+
+            // Scroll to the focused entry field in the scroll view
+            if (_focusedEntry is not null)
+            {
+                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, _focusedEntry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
+            }
         }
 
         /// <summary>
@@ -128,6 +135,8 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+                _focusedEntry = entry;
+
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
@@ -151,6 +160,8 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
+            _focusedEntry = null;
+
             if (sender is Entry entry)
             {
                 cEntryAutomationId = entry.AutomationId;

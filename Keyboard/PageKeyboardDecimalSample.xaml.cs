@@ -4,6 +4,7 @@ namespace Keyboard
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;
+        private Entry? _focusedEntry;
 
         public PageKeyboardDecimalSample()
     	{
@@ -70,6 +71,12 @@ namespace Keyboard
         private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
             ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+
+            // Scroll to the focused entry field in the scroll view
+            if (_focusedEntry is not null)
+            {
+                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, _focusedEntry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
+            }
         }
         
         /// <summary>
@@ -97,6 +104,8 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+                _focusedEntry = entry;
+
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
@@ -120,6 +129,8 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
+            _focusedEntry = null;
+
             if (sender is Entry entry)
             {
                 cEntryAutomationId = entry.AutomationId;
