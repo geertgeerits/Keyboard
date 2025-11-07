@@ -560,7 +560,7 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
         <Setter Property="FontSize" Value="20" />
@@ -590,7 +590,7 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
@@ -617,7 +617,7 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
         <Setter Property="FontSize" Value="20" />
@@ -647,7 +647,7 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
@@ -674,7 +674,7 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
         <Setter Property="FontSize" Value="18" />
@@ -705,7 +705,7 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
@@ -732,7 +732,7 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
         <Setter Property="FontSize" Value="18" />
@@ -763,7 +763,7 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />

@@ -33,6 +33,8 @@
     <Color x:Key="KeyBoardKeyBackgroundDark">#404040</Color>
     <Color x:Key="KeyBoardKeyTextLight">Black</Color>
     <Color x:Key="KeyBoardKeyTextDark">White</Color>
+    <Color x:Key="KeyBoardKeyBorderLight">#404040</Color>
+    <Color x:Key="KeyBoardKeyBorderDark">#F9F9F9</Color>
 
     <!--***** Other Colors *****-->
     
