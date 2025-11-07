@@ -1,6 +1,6 @@
 Custom keyboard for decimal and hexadecimal entry fields
 
-This app is an example and experimental.
+This app is a sample, experimental and still in development.
 It is a custom keyboard that uses a ContentView as overlay page.
 
 Note for iOS:

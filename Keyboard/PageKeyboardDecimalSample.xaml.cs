@@ -10,6 +10,8 @@ namespace Keyboard
     	{
     		InitializeComponent();
 
+            //ClassKeyboardMethods.EnableKeyboardEntryControls();
+
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
         }

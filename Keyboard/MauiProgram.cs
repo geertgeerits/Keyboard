@@ -16,15 +16,15 @@ namespace Keyboard
                 });
 
             // Disable the keyboard for all Entry controls
-            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoKeyboardEntry", static (handler, entry) =>
-            {
-#if ANDROID
-                handler.PlatformView.ShowSoftInputOnFocus = false;
-#elif IOS
-                handler.PlatformView.InputView = [];                // Hide keyboard
-                handler.PlatformView.InputAccessoryView = null;     // Hide accessory bar ('Done' key)
-#endif
-            });
+//            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoKeyboardEntry", static (handler, entry) =>
+//            {
+//#if ANDROID
+//                handler.PlatformView.ShowSoftInputOnFocus = false;
+//#elif IOS
+//                handler.PlatformView.InputView = [];                // Hide keyboard
+//                handler.PlatformView.InputAccessoryView = null;     // Hide accessory bar ('Done' key)
+//#endif
+//            });
 
             // Enable the keyboard for all Entry controls, reset the InputView to null on iOS and set ShowSoftInputOnFocus to true on Android
 //            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("RestoreKeyboardEntry", static (handler, entry) =>

@@ -1,17 +1,19 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
-   Copyright ...: (C) 2025-2025
-   Version .....: 1.0.24
+   Copyright ...: (C) 2025-2026
+   Version .....: 1.0.26
    Date ........: 2025-11-07 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
-   Note:........: This app is an example and experimental.
+   Note:........: This app is a sample, experimental and still in development.
                   It is a custom keyboard for numeric and hex values that uses a ContentView as overlay page.
                   Hide the Android and iOS system keyboard, method in MauiProgram.cs: Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping
                   In iOS the 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
                   It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
 */
+
+using Android.Telecom;
 
 namespace Keyboard
 {
@@ -34,6 +36,9 @@ namespace Keyboard
             {
                 Debug.WriteLine($"Error initializing MainPage: {ex.Message}\n{ex.StackTrace}");
             }
+            
+            // Disable the keyboard for all Entry controls
+            ClassKeyboardMethods.DisableKeyboardEntryControls();
 
             // Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();

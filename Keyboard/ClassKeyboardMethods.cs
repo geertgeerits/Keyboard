@@ -9,6 +9,38 @@
         private static readonly string cTheme = "System";
 
         /// <summary>
+        /// Disable the keyboard for all Entry controls
+        /// </summary>
+        public static void DisableKeyboardEntryControls()
+        {
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoKeyboardEntry", static (handler, entry) =>
+            {
+#if ANDROID
+                handler.PlatformView.ShowSoftInputOnFocus = false;
+#elif IOS
+                handler.PlatformView.InputView = [];                // Hide keyboard
+                handler.PlatformView.InputAccessoryView = null;     // Hide accessory bar ('Done' key)
+#endif
+            });
+        }
+
+        /// <summary>
+        /// Enable the keyboard for all Entry controls, reset the InputView to null on iOS and set ShowSoftInputOnFocus to true on Android 
+        /// </summary>
+        public static void EnableKeyboardEntryControls()
+        {
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("RestoreKeyboardEntry", static (handler, entry) =>
+            {
+#if ANDROID
+                handler.PlatformView.ShowSoftInputOnFocus = true;
+#elif IOS
+                handler.PlatformView.InputView = null;
+                handler.PlatformView.InputAccessoryView = null;
+#endif
+            });
+        }
+
+        /// <summary>
         /// Set the theme
         /// </summary>
         public static void SetTheme()
