@@ -26,17 +26,6 @@ namespace Keyboard
 //#endif
 //            });
 
-            // Enable the keyboard for all Entry controls, reset the InputView to null on iOS and set ShowSoftInputOnFocus to true on Android
-//            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("RestoreKeyboardEntry", static (handler, entry) =>
-//            {
-//#if ANDROID
-//                handler.PlatformView.ShowSoftInputOnFocus = true;
-//#elif IOS
-//                handler.PlatformView.InputView = null;
-//                handler.PlatformView.InputAccessoryView = null;
-//#endif
-//            });
-
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

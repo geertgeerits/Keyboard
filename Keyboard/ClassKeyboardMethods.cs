@@ -2,16 +2,19 @@
 {
     internal static class ClassKeyboardMethods
     {
+        // Using the system keyboard (default is false)
+        private static bool bUseSystemKeyboard;
+
         // Enable color change on focused Entry fields
-        public static bool bEnableColorOnFocused = true;
+        private static readonly bool bEnableColorOnFocused = true;
 
         // Default theme for the application (Light, Dark, System)
         private static readonly string cTheme = "System";
 
         /// <summary>
-        /// Disable the keyboard for all Entry controls
+        /// Disable the system keyboard for all Entry controls
         /// </summary>
-        public static void DisableKeyboardEntryControls()
+        public static void DisableSystemKeyboardEntryControls()
         {
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoKeyboardEntry", static (handler, entry) =>
             {
@@ -22,12 +25,14 @@
                 handler.PlatformView.InputAccessoryView = null;     // Hide accessory bar ('Done' key)
 #endif
             });
+
+            bUseSystemKeyboard = false;
         }
 
         /// <summary>
-        /// Enable the keyboard for all Entry controls, reset the InputView to null on iOS and set ShowSoftInputOnFocus to true on Android 
+        /// Enable the system keyboard for all Entry controls, reset the InputView to null on iOS and set ShowSoftInputOnFocus to true on Android 
         /// </summary>
-        public static void EnableKeyboardEntryControls()
+        public static void EnableSystemKeyboardEntryControls()
         {
             Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("RestoreKeyboardEntry", static (handler, entry) =>
             {
@@ -38,6 +43,8 @@
                 handler.PlatformView.InputAccessoryView = null;
 #endif
             });
+
+            bUseSystemKeyboard = true;
         }
 
         /// <summary>
@@ -320,7 +327,7 @@
         /// <param name="bottomSheetLandscape"></param>
         public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
-            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
+            if (bUseSystemKeyboard || bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
                 return;
             }
@@ -335,13 +342,13 @@
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 250, Easing.SinIn);   // Slide down
+                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 250, Easing.SinIn);  // Slide down
                             bottomSheetPortrait.IsVisible = false;
-                            await Task.Delay(300);                                                      // Wait for the slide down animation to complete
+                            await Task.Delay(300);                                                          // Wait for the slide down animation to complete
                         }
 
                         bottomSheetLandscape.IsVisible = true;
-                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 250, Easing.SinOut);       // Slide up
+                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 250, Easing.SinOut);      // Slide up
                         break;
                     }
                 default:
@@ -396,7 +403,7 @@
         public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             // Ensure the scrollView and entry are not null before attempting to scroll
-            if (scrollView == null || entry == null)
+            if (bUseSystemKeyboard || scrollView == null || entry == null)
             {
                 return;
             }
