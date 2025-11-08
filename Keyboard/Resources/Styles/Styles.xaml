@@ -544,8 +544,29 @@
         <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
         <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}" />
         <Setter Property="Text" Value="" />
-        <!--<Setter Property="Keyboard" Value="Numeric" />
-        <Setter Property="ReturnType" Value="Next" />-->
+        <Setter Property="Keyboard" Value="Numeric" />
+        <Setter Property="ReturnType" Value="Next" />
+        <Setter Property="MinimumHeightRequest" Value="50" />
+        <Setter Property="MinimumWidthRequest" Value="50" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="Entry" x:Key="TextEntry">
+        <Setter Property="HorizontalTextAlignment" Value="End"/>
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource EntryBackgroundUnfocusedLight}, Dark={StaticResource EntryBackgroundUnfocusedDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource EntryTextUnfocusedLight}, Dark={StaticResource EntryTextUnfocusedDark}}" />
+        <Setter Property="FontFamily" Value="OpenSansRegular" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="ClearButtonVisibility" Value="WhileEditing" />
+        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray400}, Dark={StaticResource Gray400}}" />
+        <Setter Property="Text" Value="" />
+        <Setter Property="Keyboard" Value="Default" />
+        <Setter Property="ReturnType" Value="Next" />
         <Setter Property="MinimumHeightRequest" Value="50" />
         <Setter Property="MinimumWidthRequest" Value="50" />
         <Setter Property="VisualStateManager.VisualStateGroups">

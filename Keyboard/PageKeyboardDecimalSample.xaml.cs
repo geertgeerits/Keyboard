@@ -99,7 +99,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the focus event for an entry field, performing actions
+        /// Handles the focus event for the numeric entry field, performing actions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -147,6 +147,41 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Handles the focus event for a text entry control, enabling the system keyboard and displaying the soft input keyboard
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextEntryFocused(object sender, FocusEventArgs e)
+        {
+            // Hide the bottom sheet when the page is disappearing
+            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+
+            // Enable the system keyboard for all Entry controls
+            ClassKeyboardMethods.EnableSystemKeyboardEntryControls();
+
+            if (sender is Entry entry)
+            {
+                entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+            }
+        }
+
+        /// <summary>
+        /// Handles the unfocused event for a text entry control, hiding the soft keyboard and disabling the system keyboard for all entry controls
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TextEntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+            }
+
+            // Disable the system keyboard for all Entry controls
+            ClassKeyboardMethods.DisableSystemKeyboardEntryControls();
+        }
+
+        /// <summary>
         /// Check if the value is numeric and clear result fields if the text have changed
         /// </summary>
         /// <param name="sender"></param>
@@ -180,6 +215,10 @@ namespace Keyboard
             }
             else if (sender == entTest4)
             {
+                _ = entTest5.Focus();
+            }
+            else if (sender == entTest5)
+            {
                 _ = entTest1.Focus();
             }
         }
@@ -194,8 +233,8 @@ namespace Keyboard
             {
                 "entTest1-Percentage" => entTest1,
                 "entTest2" => entTest2,
-                "entTest3" => entTest3,
                 "entTest4" => entTest4,
+                "entTest5" => entTest5,
                 _ => null
             };
 
@@ -215,5 +254,6 @@ namespace Keyboard
                 }
             }
         }
+
     }
 }

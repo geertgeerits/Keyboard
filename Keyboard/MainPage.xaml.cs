@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.26
-   Date ........: 2025-11-07 (YYYY-MM-DD)
+   Date ........: 2025-11-08 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -133,7 +133,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the focus event for an entry field, performing actions
+        /// Handles the focus event for the numeric entry field, performing actions
         /// </summary>
         /// <param name="sender">The entry field that triggered the focus event.</param>
         /// <param name="e">The event data associated with the focus event.</param>

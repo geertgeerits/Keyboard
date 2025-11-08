@@ -10,6 +10,9 @@ namespace Keyboard
     	{
     		InitializeComponent();
 
+            // Disable the system keyboard for all Entry controls
+            ClassKeyboardMethods.DisableSystemKeyboardEntryControls();
+
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
         }
@@ -104,6 +107,10 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+                //_ = entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                //entry.IsEnabled = false;
+                //entry.IsEnabled = true;
+
                 _focusedEntry = entry;
 
                 // Set the color of the entry field
