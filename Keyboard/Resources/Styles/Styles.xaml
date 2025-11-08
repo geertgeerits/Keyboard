@@ -547,7 +547,7 @@
         <Setter Property="Keyboard" Value="Numeric" />
         <Setter Property="ReturnType" Value="Next" />
         <Setter Property="MinimumHeightRequest" Value="50" />
-        <Setter Property="MinimumWidthRequest" Value="50" />
+        <Setter Property="MinimumWidthRequest" Value="100" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <Setter.Value>
                 <RoundRectangle CornerRadius="8" />
@@ -568,7 +568,7 @@
         <Setter Property="Keyboard" Value="Default" />
         <Setter Property="ReturnType" Value="Next" />
         <Setter Property="MinimumHeightRequest" Value="50" />
-        <Setter Property="MinimumWidthRequest" Value="50" />
+        <Setter Property="MinimumWidthRequest" Value="100" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <Setter.Value>
                 <RoundRectangle CornerRadius="8" />

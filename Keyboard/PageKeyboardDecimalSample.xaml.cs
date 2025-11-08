@@ -1,3 +1,4 @@
+
 namespace Keyboard
 {
     public partial class PageKeyboardDecimalSample : ContentPage
@@ -9,9 +10,6 @@ namespace Keyboard
         public PageKeyboardDecimalSample()
     	{
     		InitializeComponent();
-
-            // Enable the system keyboard for all Entry controls (for testing purposes)
-            //ClassKeyboardMethods.EnableSystemKeyboardEntryControls();
 
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
@@ -147,38 +145,34 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the focus event for a text entry control, enabling the system keyboard and displaying the soft input keyboard
+        /// Handles the focus event for a text entry control, displaying the system soft input keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextEntryFocused(object sender, FocusEventArgs e)
+        private async void TextEntryFocused(object sender, FocusEventArgs e)
         {
-            // Hide the bottom sheet when the page is disappearing
+            // Hide the bottom sheet if visible
             ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-
-            // Enable the system keyboard for all Entry controls
-            ClassKeyboardMethods.EnableSystemKeyboardEntryControls();
 
             if (sender is Entry entry)
             {
-                entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+                // Show the system soft input keyboard
+                await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
         }
 
         /// <summary>
-        /// Handles the unfocused event for a text entry control, hiding the soft keyboard and disabling the system keyboard for all entry controls
+        /// Handles the unfocused event for a text entry control, hiding the system soft input keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TextEntryUnfocused(object sender, FocusEventArgs e)
+        private async void TextEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
-                entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                // Hide the system soft input keyboard
+                await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
             }
-
-            // Disable the system keyboard for all Entry controls
-            ClassKeyboardMethods.DisableSystemKeyboardEntryControls();
         }
 
         /// <summary>

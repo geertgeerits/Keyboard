@@ -38,9 +38,6 @@ namespace Keyboard
             // Disable the system keyboard for all Entry controls
             ClassKeyboardMethods.DisableSystemKeyboardEntryControls();
 
-            // Enable the system keyboard for all Entry controls (for testing purposes)
-            //ClassKeyboardMethods.EnableSystemKeyboardEntryControls();
-
             // Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();
 
