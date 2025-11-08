@@ -2,9 +2,6 @@
 {
     internal static class ClassKeyboardMethods
     {
-        // Using the system keyboard (default is false)
-        private static bool bUseSystemKeyboard;
-
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
 
@@ -29,8 +26,6 @@
                 handler.PlatformView.InputAccessoryView = null;     // Hide accessory bar ('Done' key)
 #endif
             });
-
-            bUseSystemKeyboard = false;
         }
 
         /// <summary>
@@ -48,8 +43,6 @@
                 handler.PlatformView.InputAccessoryView = null;
 #endif
             });
-
-            bUseSystemKeyboard = true;
         }
 
         /// <summary>
@@ -332,7 +325,7 @@
         /// <param name="bottomSheetLandscape"></param>
         public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
-            if (bUseSystemKeyboard || bottomSheetPortrait == null || bottomSheetLandscape == null)
+            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
                 return;
             }
@@ -408,7 +401,7 @@
         public static async void ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             // Ensure the scrollView and entry are not null before attempting to scroll
-            if (bUseSystemKeyboard || scrollView == null || entry == null)
+            if (scrollView == null || entry == null)
             {
                 return;
             }
