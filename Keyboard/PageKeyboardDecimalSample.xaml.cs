@@ -5,6 +5,7 @@ namespace Keyboard
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;
+        private bool bEntryCompleted;
         private Entry? _focusedEntry;
 
         public PageKeyboardDecimalSample()
@@ -106,6 +107,7 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
+                cEntryAutomationId = entry.AutomationId;
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
@@ -114,9 +116,11 @@ namespace Keyboard
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 // Set the unformatted number in the entry field
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
-
-                cEntryAutomationId = entry.AutomationId;
+                if (bEntryCompleted)
+                {
+                    ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                }
+                bEntryCompleted = false;
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -140,7 +144,10 @@ namespace Keyboard
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
 
                 // Set the formatted number in the entry field
-                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+                if (bEntryCompleted)
+                {
+                    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+                }
             }
         }
 
@@ -195,6 +202,13 @@ namespace Keyboard
         /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs? e)
         {
+            // Format the number
+            if (sender is Entry entry)
+            {
+                bEntryCompleted = true;
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+            }
+
             if (sender == entTest1)
             {
                 _ = entTest2.Focus();

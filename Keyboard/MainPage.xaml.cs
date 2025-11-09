@@ -18,8 +18,9 @@ namespace Keyboard
     public partial class MainPage : ContentPage
     {
         // Declare variables
-        private string cEntryAutomationId = string.Empty;
-        private Entry? _focusedEntry;
+        private string cEntryAutomationId = string.Empty;   // Used to store the AutomationId of the focused entry field
+        private bool bEntryCompleted;                       // Used to indicate that the entry field editing is completed (Needed fpr spurious Unfocused events on Windows)
+        private Entry? _focusedEntry;                       // Used to store the currently focused entry field
 
         public MainPage()
         {
@@ -138,6 +139,9 @@ namespace Keyboard
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
 
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                bEntryCompleted = false;
+
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
@@ -145,7 +149,10 @@ namespace Keyboard
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 // Set the unformatted number in the entry field
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                if (bEntryCompleted)
+                {
+                    ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                }
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -159,12 +166,25 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
+            //if (_focusedEntry is not null)
+            //{
+            //    // Set the formatted number in the entry field
+            //    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(_focusedEntry);
+
+            //    // Restore the color of the entry field
+            //    ClassKeyboardMethods.SetEntryColorUnfocused(_focusedEntry);
+
+
+            //    cEntryAutomationId = _focusedEntry.AutomationId;
+            //    _focusedEntry = null;
+            //}
+
             if (sender is Entry entry)
             {
-                // Ignore spurious Unfocused events on Windows
+                //Ignore spurious Unfocused events on Windows
                 if (entry.IsFocused)
                 {
-                    //return;
+                    return;
                 }
 
                 _focusedEntry = null;
@@ -174,7 +194,11 @@ namespace Keyboard
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
 
                 // Set the formatted number in the entry field
-                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+                if (bEntryCompleted)
+                {
+                    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+                }
+                _focusedEntry = null;
             }
         }
 
@@ -198,6 +222,13 @@ namespace Keyboard
         /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs? e)
         {
+            // Format the number
+            if (sender is Entry entry)
+            {
+                bEntryCompleted = true;
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+            }
+
             if (sender == entTest1)
             {
                 _ = entTest2.Focus();
