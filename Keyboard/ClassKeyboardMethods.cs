@@ -9,43 +9,6 @@
         private static readonly string cTheme = "System";
 
         /// <summary>
-        /// Disables the system software keyboard for all Entry controls in the application
-        /// </summary>
-        /// <remarks>After calling this method, Entry controls will no longer display the system keyboard when focused on supported platforms.
-        /// This change applies globally and may affect user input scenarios that rely on the software keyboard.
-        /// If you need the system software keyboard for some entry controls use 'entry.ShowSoftInputAsync' in the 'Focused' event
-        /// of the entry control and 'entry.HideSoftInputAsync' in the Unfocused event of the entry control</remarks>
-        public static void DisableSystemKeyboardEntryControls()
-        {
-            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoKeyboardEntry", static (handler, entry) =>
-            {
-#if ANDROID
-                handler.PlatformView.ShowSoftInputOnFocus = false;
-#elif IOS
-                handler.PlatformView.InputView = [];                // Hide keyboard
-                handler.PlatformView.InputAccessoryView = null;     // Hide accessory bar ('Done' key)
-#endif
-            });
-        }
-
-        /// <summary>
-        /// Enable the system keyboard for all Entry controls, reset the InputView to null on iOS and set ShowSoftInputOnFocus to true on Android
-        /// </summary>
-        /// <remarks>It is not recommended to use this method because it does not always give the desired result.</remarks>
-        public static void EnableSystemKeyboardEntryControls()
-        {
-            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("RestoreKeyboardEntry", static (handler, entry) =>
-            {
-#if ANDROID
-                handler.PlatformView.ShowSoftInputOnFocus = true;
-#elif IOS
-                handler.PlatformView.InputView = null;
-                handler.PlatformView.InputAccessoryView = null;
-#endif
-            });
-        }
-
-        /// <summary>
         /// Set the theme
         /// </summary>
         public static void SetTheme()

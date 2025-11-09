@@ -1,13 +1,13 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
-   Version .....: 1.0.26
-   Date ........: 2025-11-08 (YYYY-MM-DD)
+   Version .....: 1.0.27
+   Date ........: 2025-11-09 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
                   It is a custom keyboard for numeric and hex values that uses a ContentView as overlay page.
-                  Hide the Android and iOS system keyboard, method in MauiProgram.cs: Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping
+                  Hiding the Android and iOS system keyboard happens in the 'MauiProgram.cs' file, method: Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping
                   In iOS the 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
                   It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
    Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
@@ -34,9 +34,6 @@ namespace Keyboard
             {
                 Debug.WriteLine($"Error initializing MainPage: {ex.Message}\n{ex.StackTrace}");
             }
-
-            // Disable the system keyboard for all Entry controls
-            ClassKeyboardMethods.DisableSystemKeyboardEntryControls();
 
             // Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();
@@ -139,6 +136,7 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
+                cEntryAutomationId = entry.AutomationId;
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
@@ -148,8 +146,6 @@ namespace Keyboard
 
                 // Set the unformatted number in the entry field
                 ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
-
-                cEntryAutomationId = entry.AutomationId;
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -163,13 +159,18 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
-            _focusedEntry = null;
-
             if (sender is Entry entry)
             {
+                // Ignore spurious Unfocused events on Windows
+                if (entry.IsFocused)
+                {
+                    //return;
+                }
+
+                _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
 
-                // Restore the color of the entry field and format the number
+                // Restore the color of the entry field
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
 
                 // Set the formatted number in the entry field
