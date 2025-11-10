@@ -141,7 +141,6 @@ namespace Keyboard
         /// <returns></returns>
         public static bool IsDecimalNumber(Entry entry, string cText)
         {
-            // Do not execute this method because this is only to show the formatted number just like in a label
             if (bShowFormattedNumber)
             {
                 return true;
@@ -175,26 +174,36 @@ namespace Keyboard
             }
 
             // Get the number of decimals allowed after the decimal separator
-            int nDecimals;
-            
-            //ValidationTriggerActionDecimal validationTriggerActionDecimal = new();
-            //if (validationTriggerActionDecimal.MaxDecimalPlaces > -1)
+            // The method 'IsDecimalNumber' is called before the 'ValidationTriggerActionDecimal' class, so the properties of the 'ValidationTriggerActionDecimal' class cannot be accessed directly
+            int nDecimals = -1;
+
+            // Find the ValidationTriggerActionDecimal attached to the Entry
+            //var trigger = entry.Triggers
+            //    .OfType<EventTrigger>()
+            //    .SelectMany(t => t.Actions)
+            //    .OfType<ValidationTriggerActionDecimal>()
+            //    .FirstOrDefault();
+
+            //if (trigger != null)
             //{
-            //    // Use the MaxDecimalPlaces property from the ValidationTriggerActionDecimal if it is set (> -1)
-            //    // In the entry XAML add the ValidationTriggerActionDecimal with the MaxDecimalPlaces property set
-            //    // This overrides the global settings for decimal digits (cNumDecimalDigits and cPercDecimalDigits)
-            //    nDecimals = validationTriggerActionDecimal.MaxDecimalPlaces;
+            //    // Use these values as needed
+            //    //decimal nMinValue = trigger.MinValue;
+            //    //decimal nMaxValue = trigger.MaxValue;
+            //    nDecimals = trigger.MaxDecimalPlaces;
+                
+            //    Debug.WriteLine($"IsDecimalNumber - MinValue: {trigger.MinValue}");
+            //    Debug.WriteLine($"IsDecimalNumber - MaxValue: {trigger.MaxValue}");
+            //    Debug.WriteLine($"IsDecimalNumber - MaxDecimalPlaces: {trigger.MaxDecimalPlaces}");
             //}
-            //else
-            //{
+
+            if (nDecimals == -1)
+            {
                 // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
                 nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? int.Parse(cPercDecimalDigits)
                     : int.Parse(cNumDecimalDigits);
-            //}
-
-            //validationTriggerActionDecimal.MaxDecimalPlaces = -1;  // Reset to default value
-            //Debug.WriteLine($"IsDecimalNumber - nDecimals: {nDecimals}");
+            }
+            Debug.WriteLine($"IsDecimalNumber - nDecimals: {nDecimals}");
 
             // Check if the decimal separator is allowed
             if (cText.Contains(cNumDecimalSeparator) && nDecimals == 0)
@@ -268,7 +277,6 @@ namespace Keyboard
                 entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? nValue.ToString(format: "F" + cPercDecimalDigits)
                     : nValue.ToString(format: "F" + cNumDecimalDigits);
-
 
                 // Select all the text in the entry field
                 entry.CursorPosition = 0;

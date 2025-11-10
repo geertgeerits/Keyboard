@@ -11,10 +11,6 @@
             // Validate the number of decimal places
             bool isDecimalPlacesValid = true;
 
-            Debug.WriteLine($"ValidationTriggerActionDecimal - MinValue: {MinValue}");
-            Debug.WriteLine($"ValidationTriggerActionDecimal - MaxValue: {MaxValue}");
-            Debug.WriteLine($"ValidationTriggerActionDecimal - MaxDecimalPlaces: {MaxDecimalPlaces}");
-
             if (MaxDecimalPlaces > -1)
             {
                 // Get the current culture's decimal separator
