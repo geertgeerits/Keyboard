@@ -105,14 +105,13 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
+                cEntryAutomationId = entry.AutomationId;
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
-
-                cEntryAutomationId = entry.AutomationId;
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardHexadecimalPortrait.HeightRequest, RootKeyboardHexadecimalLandscape.HeightRequest);
@@ -126,10 +125,15 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
-            _focusedEntry = null;
-
             if (sender is Entry entry)
             {
+                // Ignore false Unfocused events on Windows
+                if (entry.IsFocused)
+                {
+                    return;
+                }
+
+                _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
 
                 // Restore the color of the entry field

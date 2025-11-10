@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.27
-   Date ........: 2025-11-09 (YYYY-MM-DD)
+   Date ........: 2025-11-10 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -19,7 +19,7 @@ namespace Keyboard
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;   // Used to store the AutomationId of the focused entry field
-        private bool bEntryCompleted;                       // Used to indicate that the entry field editing is completed (Needed fpr spurious Unfocused events on Windows)
+        private bool bEntryCompleted;                       // Used to indicate that the entry field editing is completed (Needed for false Unfocused events on Windows)
         private Entry? _focusedEntry;                       // Used to store the currently focused entry field
 
         public MainPage()
@@ -138,21 +138,16 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
-
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
                 bEntryCompleted = false;
+
+                // Set the unformatted number in the entry field
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-
-                // Set the unformatted number in the entry field
-                if (bEntryCompleted)
-                {
-                    ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
-                }
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -166,22 +161,9 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
-            //if (_focusedEntry is not null)
-            //{
-            //    // Set the formatted number in the entry field
-            //    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(_focusedEntry);
-
-            //    // Restore the color of the entry field
-            //    ClassKeyboardMethods.SetEntryColorUnfocused(_focusedEntry);
-
-
-            //    cEntryAutomationId = _focusedEntry.AutomationId;
-            //    _focusedEntry = null;
-            //}
-
             if (sender is Entry entry)
             {
-                //Ignore spurious Unfocused events on Windows
+                // Ignore false Unfocused events on Windows
                 if (entry.IsFocused)
                 {
                     return;
@@ -190,15 +172,11 @@ namespace Keyboard
                 _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
 
+                // Set the formatted number in the entry field
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+
                 // Restore the color of the entry field
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
-
-                // Set the formatted number in the entry field
-                if (bEntryCompleted)
-                {
-                    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
-                }
-                _focusedEntry = null;
             }
         }
 

@@ -108,19 +108,16 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
+                bEntryCompleted = false;
+
+                // Set the unformatted number in the entry field
+                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-
-                // Set the unformatted number in the entry field
-                if (bEntryCompleted)
-                {
-                    ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
-                }
-                bEntryCompleted = false;
 
                 // Scroll to the focused entry field in the scroll view
                 ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -134,20 +131,22 @@ namespace Keyboard
         /// <param name="e"></param>
         private void NumberEntryUnfocused(object sender, FocusEventArgs e)
         {
-            _focusedEntry = null;
-
             if (sender is Entry entry)
             {
+                // Ignore false Unfocused events on Windows
+                if (entry.IsFocused)
+                {
+                    return;
+                }
+
+                _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
+
+                // Set the formatted number in the entry field
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
 
                 // Restore the color of the entry field and format the number
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
-
-                // Set the formatted number in the entry field
-                if (bEntryCompleted)
-                {
-                    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
-                }
             }
         }
 
