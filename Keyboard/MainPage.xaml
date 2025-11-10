@@ -130,7 +130,7 @@
                         x:Name="entTest2"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest2"
-                        Placeholder="0 - 999999999999.99"
+                        Placeholder="0 - 999999999999"
                         MaxLength="20"
                         Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
@@ -138,7 +138,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.99"/>
+                                <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999" MaxDecimalPlaces="0"/>
                             </EventTrigger>
                         </Entry.Triggers>
                         <Entry.GestureRecognizers>
@@ -162,15 +162,15 @@
                         x:Name="entTest3"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest3"
-                        Placeholder="-999999999999.99 - 999999999999.99"
-                        MaxLength="20"
+                        Placeholder="-999999999999.9999 - 999999999999.9999"
+                        MaxLength="22"
                         Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
                         Focused="NumberEntryFocused"  
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
+                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.9999" MaxValue="999999999999.9999" MaxDecimalPlaces="4"/>
                             </EventTrigger>
                         </Entry.Triggers>
                         <Entry.GestureRecognizers>

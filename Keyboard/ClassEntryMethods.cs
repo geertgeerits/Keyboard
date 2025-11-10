@@ -175,10 +175,26 @@ namespace Keyboard
             }
 
             // Get the number of decimals allowed after the decimal separator
-            // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
-            int nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
-                ? int.Parse(cPercDecimalDigits)
-                : int.Parse(cNumDecimalDigits);
+            int nDecimals;
+            
+            //ValidationTriggerActionDecimal validationTriggerActionDecimal = new();
+            //if (validationTriggerActionDecimal.MaxDecimalPlaces > -1)
+            //{
+            //    // Use the MaxDecimalPlaces property from the ValidationTriggerActionDecimal if it is set (> -1)
+            //    // In the entry XAML add the ValidationTriggerActionDecimal with the MaxDecimalPlaces property set
+            //    // This overrides the global settings for decimal digits (cNumDecimalDigits and cPercDecimalDigits)
+            //    nDecimals = validationTriggerActionDecimal.MaxDecimalPlaces;
+            //}
+            //else
+            //{
+                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                    ? int.Parse(cPercDecimalDigits)
+                    : int.Parse(cNumDecimalDigits);
+            //}
+
+            //validationTriggerActionDecimal.MaxDecimalPlaces = -1;  // Reset to default value
+            //Debug.WriteLine($"IsDecimalNumber - nDecimals: {nDecimals}");
 
             // Check if the decimal separator is allowed
             if (cText.Contains(cNumDecimalSeparator) && nDecimals == 0)
