@@ -37,7 +37,7 @@ namespace Keyboard
             }
 
             // Set the placeholder text for the entry fields if the Placeholder property is empty or null and
-            // the ValidationTriggerActionDecimal MinValue and MaxValue is set
+            // the ValidationTriggerActionDecimal MinValue and MaxValue are set
             ClassEntryMethods.SetNumberEntryProperties(entTest1);
             ClassEntryMethods.SetNumberEntryProperties(entTest4);
 
