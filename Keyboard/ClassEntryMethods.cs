@@ -105,33 +105,20 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Set the Placeholder for a numeric entry field
-        /// Use: ClassEntryMethods.SetNumberEntryProperties(entTest1, "0", "0", "100", "0", ClassEntryMethods.cPercDecimalDigits);
+        /// Set the placeholder text for the entry fields if the Placeholder property is empty or null
+        /// and the ValidationTriggerActionDecimal MinValue and MaxValue is set
         /// </summary>
         /// <param name="entry"></param>
-        /// <param name="cWholeNumFrom"></param>
-        /// <param name="cDecDigetFrom"></param>
-        /// <param name="cWholeNumTo"></param>
-        /// <param name="cDecDigetTo"></param>
-        /// <param name="cNumberOfDecimals"></param>
-        public static void SetNumberEntryProperties(Entry entry, string cWholeNumFrom, string cDecDigetFrom, string cWholeNumTo, string cDecDigetTo, string cNumberOfDecimals)
+        public static void SetNumberEntryProperties(Entry entry)
         {
-            if (!decimal.TryParse(cWholeNumFrom, out _) || !int.TryParse(cDecDigetFrom, out _) || !decimal.TryParse(cWholeNumTo, out _) || !int.TryParse(cDecDigetTo, out _) || !int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals))
+            if (entry.Placeholder is null or "")
             {
-                return;
+                // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+                (decimal nMinValue, decimal nMaxValue, _) = EntryFindValidationTriggerActionDecimal(entry);
+
+                // Set the Placeholder for the entry field
+                entry.Placeholder = $"{nMinValue} - {nMaxValue}";
             }
-
-            string cDecimalSeparator = nNumberOfDecimals switch
-            {
-                0 => "",
-                _ => cNumDecimalSeparator,
-            };
-
-            string cValueFrom = cDecDigetFrom == "0" ? cWholeNumFrom : $"{cWholeNumFrom}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetFrom, nNumberOfDecimals))}";
-            string cValueTo = $"{cWholeNumTo}{cDecimalSeparator}{string.Concat(Enumerable.Repeat(cDecDigetTo, nNumberOfDecimals))}";
-
-            // Set the Placeholder for the entry field
-            entry.Placeholder = $"{cValueFrom} - {cValueTo}";
         }
 
         /// <summary>
@@ -177,24 +164,8 @@ namespace Keyboard
             // The method 'IsDecimalNumber' is called before the 'ValidationTriggerActionDecimal' class, so the properties of the 'ValidationTriggerActionDecimal' class cannot be accessed directly
             int nDecimals = -1;
 
-            // Find the ValidationTriggerActionDecimal attached to the Entry
-            //var trigger = entry.Triggers
-            //    .OfType<EventTrigger>()
-            //    .SelectMany(t => t.Actions)
-            //    .OfType<ValidationTriggerActionDecimal>()
-            //    .FirstOrDefault();
-
-            //if (trigger != null)
-            //{
-            //    // Use these values as needed
-            //    //decimal nMinValue = trigger.MinValue;
-            //    //decimal nMaxValue = trigger.MaxValue;
-            //    nDecimals = trigger.MaxDecimalPlaces;
-                
-            //    Debug.WriteLine($"IsDecimalNumber - MinValue: {trigger.MinValue}");
-            //    Debug.WriteLine($"IsDecimalNumber - MaxValue: {trigger.MaxValue}");
-            //    Debug.WriteLine($"IsDecimalNumber - MaxDecimalPlaces: {trigger.MaxDecimalPlaces}");
-            //}
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (decimal nMinValue, decimal nMaxValue, nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
 
             if (nDecimals == -1)
             {
@@ -271,12 +242,24 @@ namespace Keyboard
                 return;
             }
 
+            int nDecimals = -1;
+
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (_, _, nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
+
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
-                entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
-                    ? nValue.ToString(format: "F" + cPercDecimalDigits)
-                    : nValue.ToString(format: "F" + cNumDecimalDigits);
+                if (nDecimals != -1)
+                {
+                    entry.Text = nValue.ToString(format: "F" + nDecimals);
+                }
+                else
+                {
+                    // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                    entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                        ? nValue.ToString(format: "F" + cPercDecimalDigits)
+                        : nValue.ToString(format: "F" + cNumDecimalDigits);
+                }
 
                 // Select all the text in the entry field
                 entry.CursorPosition = 0;
@@ -298,12 +281,24 @@ namespace Keyboard
             // Do not allow the IsDecimalNumber method to execute
             bShowFormattedNumber = true;
 
+            int nDecimals = -1;
+
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (_, _, nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
+
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
-                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
-                entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
+                if (nDecimals != -1)
+                {
+                    entry.Text = nValue.ToString(format: "N" + nDecimals);
+                }
+                else
+                {
+                    // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                    entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? nValue.ToString(format: "N" + cPercDecimalDigits)
                     : nValue.ToString(format: "N" + cNumDecimalDigits);
+                }
             }
             else
             {
@@ -475,6 +470,39 @@ namespace Keyboard
                 entry.IsEnabled = false;
                 entry.IsEnabled = true;
             }
+        }
+
+        /// <summary>
+        /// Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
+        private static Tuple<decimal, decimal, int> EntryFindValidationTriggerActionDecimal(Entry entry)
+        {
+            decimal nMinValue = 0;
+            decimal nMaxValue = 0;
+            int nDecimals = -1;
+
+            // Find the ValidationTriggerActionDecimal attached to the Entry
+            var trigger = entry.Triggers
+                .OfType<EventTrigger>()
+                .SelectMany(t => t.Actions)
+                .OfType<ValidationTriggerActionDecimal>()
+                .FirstOrDefault();
+
+            if (trigger != null)
+            {
+                // Use these values as needed
+                nMinValue = trigger.MinValue;
+                nMaxValue = trigger.MaxValue;
+                nDecimals = trigger.MaxDecimalPlaces;
+
+                Debug.WriteLine($"IsDecimalNumber - MinValue: {trigger.MinValue}");
+                Debug.WriteLine($"IsDecimalNumber - MaxValue: {trigger.MaxValue}");
+                Debug.WriteLine($"IsDecimalNumber - MaxDecimalPlaces: {trigger.MaxDecimalPlaces}");
+            }
+
+            return Tuple.Create(nMinValue, nMaxValue, nDecimals);
         }
 
         /// <summary>

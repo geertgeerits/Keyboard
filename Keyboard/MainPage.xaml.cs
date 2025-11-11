@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.27
-   Date ........: 2025-11-10 (YYYY-MM-DD)
+   Date ........: 2025-11-11 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -35,6 +35,11 @@ namespace Keyboard
             {
                 Debug.WriteLine($"Error initializing MainPage: {ex.Message}\n{ex.StackTrace}");
             }
+
+            // Set the placeholder text for the entry fields if the Placeholder property is empty or null and
+            // the ValidationTriggerActionDecimal MinValue and MaxValue is set
+            ClassEntryMethods.SetNumberEntryProperties(entTest1);
+            ClassEntryMethods.SetNumberEntryProperties(entTest4);
 
             // Select all the text in the entry field - works for all pages in the app
             ClassEntryMethods.ModifyEntrySelectAllText();

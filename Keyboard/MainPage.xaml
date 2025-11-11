@@ -98,7 +98,6 @@
                         x:Name="entTest1"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest1-Percentage"
-                        Placeholder="0 - 100"
                         MaxLength="6"
                         Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
@@ -194,7 +193,6 @@
                         x:Name="entTest4"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest4"
-                        Placeholder="-999999999999.99 - 999999999999.99"
                         MaxLength="20"
                         Completed="GoToNextField"
                         TextChanged="NumberEntryTextChanged"
@@ -202,7 +200,7 @@
                         Unfocused="NumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
+                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.999" MaxValue="999999999999.999" MaxDecimalPlaces="3"/>
                             </EventTrigger>
                         </Entry.Triggers>
                         <Entry.GestureRecognizers>
