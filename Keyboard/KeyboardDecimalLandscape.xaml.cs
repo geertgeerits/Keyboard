@@ -1,6 +1,3 @@
-using CommunityToolkit.Mvvm.Messaging;
-using System.Diagnostics;
-
 namespace Keyboard
 {
     public partial class KeyboardDecimalLandscape : ContentView

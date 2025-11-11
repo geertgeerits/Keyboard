@@ -50,7 +50,7 @@ namespace Keyboard
                 Preferences.Default.Set("SettingPercDecimalDigits", cPercDecimalDigits);
             }
 
-            // Set the rounding system of numbers
+            // Set the rounding system of numbers (AwayFromZero, ToEven, ToZero)
             if (string.IsNullOrEmpty(cRoundNumber))
             {
                 cRoundNumber = "AwayFromZero";
@@ -106,7 +106,7 @@ namespace Keyboard
 
         /// <summary>
         /// Set the placeholder text for the entry fields if the Placeholder property is empty or null
-        /// and the ValidationTriggerActionDecimal MinValue and MaxValue is set
+        /// and the ValidationTriggerActionDecimal MinValue and MaxValue are set
         /// </summary>
         /// <param name="entry"></param>
         public static void SetNumberEntryProperties(Entry entry)
@@ -169,7 +169,11 @@ namespace Keyboard
 
             if (nDecimals == -1)
             {
-                // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                // If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                // is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                // AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                // Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                // <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>`
                 nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? int.Parse(cPercDecimalDigits)
                     : int.Parse(cNumDecimalDigits);
@@ -242,10 +246,10 @@ namespace Keyboard
                 return;
             }
 
-            int nDecimals = -1;
+            //int nDecimals;
 
             // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
-            (_, _, nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
+            (_, _, int nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
@@ -255,7 +259,11 @@ namespace Keyboard
                 }
                 else
                 {
-                    // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                    // If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                    // is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                    // AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                    // Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                    // <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>`                    
                     entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                         ? nValue.ToString(format: "F" + cPercDecimalDigits)
                         : nValue.ToString(format: "F" + cNumDecimalDigits);
@@ -281,10 +289,10 @@ namespace Keyboard
             // Do not allow the IsDecimalNumber method to execute
             bShowFormattedNumber = true;
 
-            int nDecimals = -1;
+            //int nDecimals;
 
             // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
-            (_, _, nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
+            (_, _, int nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
 
             if (decimal.TryParse(entry.Text, out decimal nValue))
             {
@@ -294,7 +302,11 @@ namespace Keyboard
                 }
                 else
                 {
-                    // Ensure AutomationId is set in case of a "percentage" entry field, if so it has to contain "Percentage" before accessing it (Entry property: AutomationId="Percentage" or AutomationId="xxx-Percentage")
+                    // If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                    // is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                    // AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                    // Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                    // <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>`
                     entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? nValue.ToString(format: "N" + cPercDecimalDigits)
                     : nValue.ToString(format: "N" + cNumDecimalDigits);
@@ -310,7 +322,7 @@ namespace Keyboard
         /* Rounding numbers
            Round away from zero: MidpointRounding.AwayFromZero = 1-4 down ; 5-9 up
            Round half to even or banker's rounding: MidpointRounding.ToEven
-           Round towards zero: 1-9 down
+           Round towards zero: MidpointRounding.ToZero 1-9 down
 
            Value      Default    ToEven     AwayFromZero    ToZero
             12.0       12         12         12              12

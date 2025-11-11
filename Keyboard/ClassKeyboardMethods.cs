@@ -369,6 +369,20 @@
                 return;
             }
 
+            //// Get the current device orientation
+            //string cOrientation = GetDeviceOrientation();
+
+            //Point entryPosition = GetEntryScreenPosition(entry);
+
+            //if (cOrientation == "Landscape")
+            //{
+            //    await scrollView.ScrollToAsync(0, entryPosition.Y - nKeyboardHeightLandscape, true);
+            //}
+            //else
+            //{
+            //    await scrollView.ScrollToAsync(0, entryPosition.Y - nKeyboardHeightPortrait, true);
+            //}
+
 #if ANDROID || WINDOWS
             await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 #else
