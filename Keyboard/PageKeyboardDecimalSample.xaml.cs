@@ -69,14 +69,14 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
+        private async void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
             ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
             // Scroll to the focused entry field in the scroll view
             if (_focusedEntry is not null)
             {
-                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, _focusedEntry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
+                await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, _focusedEntry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
             }
         }
         
@@ -101,7 +101,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void NumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -118,7 +118,7 @@ namespace Keyboard
                 ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 // Scroll to the focused entry field in the scroll view
-                ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
+                await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
             }
         }
 
