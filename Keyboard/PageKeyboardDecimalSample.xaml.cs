@@ -5,7 +5,6 @@ namespace Keyboard
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;
-        private bool bEntryCompleted;
         private Entry? _focusedEntry;
 
         public PageKeyboardDecimalSample()
@@ -108,7 +107,6 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
-                bEntryCompleted = false;
 
                 // Set the unformatted number in the entry field
                 ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
@@ -133,12 +131,13 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+#if WINDOWS
                 // Ignore false Unfocused events on Windows
                 if (entry.IsFocused)
                 {
                     return;
                 }
-
+#endif
                 _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
 
@@ -204,8 +203,9 @@ namespace Keyboard
             // Format the number
             if (sender is Entry entry)
             {
-                bEntryCompleted = true;
+#if WINDOWS
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+#endif
             }
 
             if (sender == entTest1)

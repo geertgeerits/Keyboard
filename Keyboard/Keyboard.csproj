@@ -50,6 +50,11 @@
 	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
 	</PropertyGroup>
 
+	<PropertyGroup>
+		<DefineConstants>$(DefineConstants);MauiAllowImplicitXmlnsDeclaration</DefineConstants>
+		<EnablePreviewFeatures>true</EnablePreviewFeatures>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -66,33 +71,6 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Remove="CustomNoKeyboardEntry.cs" />
-	  <Compile Remove="KeyboardNumeric.xaml.cs" />
-	  <Compile Remove="KeyboardNumericLandscape.xaml.cs" />
-	  <Compile Remove="KeyboardNumericPortrait.xaml.cs" />
-	  <Compile Remove="NewPage1.xaml.cs" />
-	  <Compile Remove="NewPage2.xaml.cs" />
-	  <Compile Remove="SomeBottomSheet.xaml.cs" />
-	  <Compile Remove="SomeViewModel.cs" />
-	  <Compile Remove="ViewModel.cs" />
-	  <Compile Remove="VisualElementExtensions.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Remove="KeyboardNumeric.xaml" />
-	  <MauiXaml Remove="KeyboardNumericLandscape.xaml" />
-	  <MauiXaml Remove="KeyboardNumericPortrait.xaml" />
-	  <MauiXaml Remove="NewPage1.xaml" />
-	  <MauiXaml Remove="NewPage2.xaml" />
-	  <MauiXaml Remove="SomeBottomSheet.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="KeyboardNumericPortrait.txt" />
-	  <None Remove="NewPage1.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -130,11 +108,4 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
-
-	<!--From .NET 9 on the following is needed due an error in the build process:
-	Samsung Galaxy A3 (2017) SM-A320FL Android 8.0.0 -> Error ADB0020: Mono.AndroidTools.IncompatibleCpuAbiException:
-	The package does not support the CPU architecture of this device.-->
-	<!--<PropertyGroup>
-		<RuntimeIdentifiers Condition="$(TargetFramework.Contains('-android'))">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
-	</PropertyGroup>-->	
 </Project>

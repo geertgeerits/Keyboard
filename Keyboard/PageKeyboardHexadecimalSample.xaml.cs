@@ -127,12 +127,13 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+#if WINDOWS
                 // Ignore false Unfocused events on Windows
                 if (entry.IsFocused)
                 {
                     return;
                 }
-
+#endif
                 _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
 

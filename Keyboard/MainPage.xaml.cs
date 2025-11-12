@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.27
-   Date ........: 2025-11-11 (YYYY-MM-DD)
+   Date ........: 2025-11-12 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -19,7 +19,6 @@ namespace Keyboard
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;   // Used to store the AutomationId of the focused entry field
-        private bool bEntryCompleted;                       // Used to indicate that the entry field editing is completed (Needed for false Unfocused events on Windows)
         private Entry? _focusedEntry;                       // Used to store the currently focused entry field
 
         public MainPage()
@@ -143,7 +142,6 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
-                bEntryCompleted = false;
 
                 // Set the unformatted number in the entry field
                 ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
@@ -168,12 +166,13 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+#if WINDOWS
                 // Ignore false Unfocused events on Windows
                 if (entry.IsFocused)
                 {
                     return;
                 }
-
+#endif
                 _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
 
@@ -208,8 +207,9 @@ namespace Keyboard
             // Format the number
             if (sender is Entry entry)
             {
-                bEntryCompleted = true;
+#if WINDOWS
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+#endif
             }
 
             if (sender == entTest1)
