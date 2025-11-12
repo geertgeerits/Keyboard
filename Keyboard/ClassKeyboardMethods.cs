@@ -369,20 +369,6 @@
                 return;
             }
 
-            //// Get the current device orientation
-            //string cOrientation = GetDeviceOrientation();
-
-            //Point entryPosition = GetEntryScreenPosition(entry);
-
-            //if (cOrientation == "Landscape")
-            //{
-            //    await scrollView.ScrollToAsync(0, entryPosition.Y - nKeyboardHeightLandscape, true);
-            //}
-            //else
-            //{
-            //    await scrollView.ScrollToAsync(0, entryPosition.Y - nKeyboardHeightPortrait, true);
-            //}
-
 #if ANDROID || WINDOWS
             await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 #else
@@ -587,6 +573,23 @@
             // Get the absolute position relative to the window
             Point location = entry.GetAbsolutePosition();
             return location;
+        }
+
+        /// <summary>
+        /// Get the main display info
+        /// </summary>
+        public static void ReadDeviceDisplay()
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+
+            sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width} / Pixel Height: {DeviceDisplay.Current.MainDisplayInfo.Height}");
+            sb.AppendLine($"Density: {DeviceDisplay.Current.MainDisplayInfo.Density}");
+            sb.AppendLine($"Orientation: {DeviceDisplay.Current.MainDisplayInfo.Orientation}");
+            sb.AppendLine($"Rotation: {DeviceDisplay.Current.MainDisplayInfo.Rotation}");
+            sb.AppendLine($"Refresh Rate: {DeviceDisplay.Current.MainDisplayInfo.RefreshRate}");
+
+            //DisplayDetailsLabel.Text = sb.ToString();
+            Debug.WriteLine($"ReadDeviceDisplay:\n{sb}");
         }
     }
 

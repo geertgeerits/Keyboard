@@ -156,7 +156,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void TextEntryFocused(object sender, FocusEventArgs e)
         {
-            // Hide the bottom sheet if visible
+            // Hide the bottom sheet with the custom keyboard
             ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
             if (sender is Entry entry)
@@ -178,6 +178,10 @@ namespace Keyboard
                 // Hide the system soft input keyboard
                 await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
             }
+
+            // Show the bottom sheet with the custom keyboard
+            // Needed for iOS, on Android and Windows the bottom sheet is already shown when the next entry field is focused
+            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>

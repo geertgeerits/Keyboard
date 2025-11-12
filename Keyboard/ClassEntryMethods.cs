@@ -169,11 +169,12 @@ namespace Keyboard
 
             if (nDecimals == -1)
             {
-                // If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
-                // is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
-                // AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
-                // Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
-                // <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>`
+                /* If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                   is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                   AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                   Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                   <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>
+                */
                 nDecimals = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? int.Parse(cPercDecimalDigits)
                     : int.Parse(cNumDecimalDigits);
@@ -259,11 +260,12 @@ namespace Keyboard
                 }
                 else
                 {
-                    // If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
-                    // is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
-                    // AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
-                    // Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
-                    // <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>`                    
+                    /* If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                       is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                       AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                       Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                       <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>
+                    */
                     entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                         ? nValue.ToString(format: "F" + cPercDecimalDigits)
                         : nValue.ToString(format: "F" + cNumDecimalDigits);
@@ -302,11 +304,12 @@ namespace Keyboard
                 }
                 else
                 {
-                    // If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
-                    // is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
-                    // AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
-                    // Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
-                    // <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>`
+                    /* If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
+                       is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                       AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
+                       Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
+                       <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>
+                    */
                     entry.Text = !string.IsNullOrEmpty(entry.AutomationId) && entry.AutomationId.Contains("Percentage")
                     ? nValue.ToString(format: "N" + cPercDecimalDigits)
                     : nValue.ToString(format: "N" + cNumDecimalDigits);
