@@ -376,7 +376,7 @@
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
             // Put a comment before one of the methods that you not want to use
-            //await scrollView.ScrollToAsync(entry, ScrollToPosition.MakeVisible, true);
+            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, true);
 
             // For iOS, we need to calculate the position of the Entry within the ScrollView
             await CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
@@ -392,6 +392,7 @@
         /// <param name="nKeyboardHeightLandscape"></param>
         public static async Task CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
+            Debug.WriteLine($"scrollView.Height: {scrollView.Height}");
             Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
 
             // Get the current device orientation
@@ -438,7 +439,8 @@
             Debug.WriteLine($"Padding Value: {nPadding}");
 
             // Calculate the height of the ScrollView, excluding the keyboard, entry, title and any additional padding
-            double nViewHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+            //double nViewHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+            double nViewHeight = scrollView.Height - nKeyboardHeight;// - entry.Height;// - nTitleViewHeight - nPadding;
             Debug.WriteLine($"View Height: {nViewHeight}");
 
             if (entryPosition.Y >= nViewHeight)
@@ -464,7 +466,9 @@
         public static async Task CalculateScrollEntryToPositionNEW(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             if (scrollView == null || entry == null)
+            {
                 return;
+            }
 
             // small margin so the entry isn't flush against the keyboard/title
             const double margin = 12.0;
@@ -482,14 +486,25 @@
             // title view height and per-platform padding
             double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
             double nPadding = 0;
-            if (DeviceInfo.Platform == DevicePlatform.Android) nPadding = cOrientation == "Landscape" ? 40 : 0;
-            else if (DeviceInfo.Platform == DevicePlatform.iOS) nPadding = cOrientation == "Landscape" ? 30 : 0;
-            else if (DeviceInfo.Platform == DevicePlatform.WinUI) nPadding = cOrientation == "Landscape" ? 100 : 0;
+            if (DeviceInfo.Platform == DevicePlatform.Android)
+            {
+                nPadding = cOrientation == "Landscape" ? -180 : 90;
+            }
+            else if (DeviceInfo.Platform == DevicePlatform.iOS)
+            {
+                nPadding = cOrientation == "Landscape" ? 30 : 0;
+            }
+            else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+            {
+                nPadding = cOrientation == "Landscape" ? 100 : 0;
+            }
 
             // visible area height (content area not covered by keyboard/title/padding)
             double visibleHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight - nPadding;
             if (visibleHeight <= 0)
+            {
                 return;
+            }
 
             // compute entry Y relative to scrollView content:
             // entryScreenY - scrollViewScreenY + currentScrollY
@@ -569,7 +584,7 @@
         }
 
         /// <summary>
-        /// Get the height of the Shell.TitleView in the current page
+        /// Get the height of the TitleView in the current page
         /// </summary>
         /// <returns></returns>
         private static double GetTitleViewHeight(string cTitleViewName)
