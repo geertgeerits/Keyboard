@@ -228,7 +228,7 @@
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static void ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        public async static Task ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -286,7 +286,7 @@
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static void ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        public async static Task ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -333,7 +333,7 @@
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static void HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        public async static Task HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -390,9 +390,11 @@
         /// <param name="entry"></param>
         /// <param name="nKeyboardHeightPortrait"></param>
         /// <param name="nKeyboardHeightLandscape"></param>
-        public static async Task CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        private static async Task CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             Debug.WriteLine($"scrollView.Height: {scrollView.Height}");
+            Debug.WriteLine($"scrollView.ContentSize: {scrollView.ContentSize}");
+            Debug.WriteLine($"scrollView.ScrollX/ScrollY: {scrollView.ScrollX} / {scrollView.ScrollY}");
             Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
 
             // Get the current device orientation
@@ -430,7 +432,7 @@
             }
             else if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
-                nPadding = cOrientation == "Landscape" ? 30 : 0;
+                nPadding = cOrientation == "Landscape" ? -160 : 0;
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
@@ -439,18 +441,18 @@
             Debug.WriteLine($"Padding Value: {nPadding}");
 
             // Calculate the height of the ScrollView, excluding the keyboard, entry, title and any additional padding
-            //double nViewHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
-            double nViewHeight = scrollView.Height - nKeyboardHeight;// - entry.Height;// - nTitleViewHeight - nPadding;
-            Debug.WriteLine($"View Height: {nViewHeight}");
+            double nVisibleHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+            //double nVisibleHeight = scrollView.Height - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+            Debug.WriteLine($"View Height: {nVisibleHeight}");
 
-            if (entryPosition.Y >= nViewHeight)
+            if (entryPosition.Y >= nVisibleHeight)
             {
                 // If the entry is below the visible area, scroll it into view
                 //await scrollView.ScrollToAsync(0, entryPosition.Y, true);
-                await scrollView.ScrollToAsync(0, nViewHeight, true);
+                await scrollView.ScrollToAsync(0, nVisibleHeight, true);
                 Debug.WriteLine($"Scrolling to position: {entryPosition.Y}");
             }
-            else if (entryPosition.Y < nViewHeight)
+            else if (entryPosition.Y < nVisibleHeight)
             {
                 // If the entry is above the visible area, scroll it to the top
                 await scrollView.ScrollToAsync(0, 0, true);
@@ -463,27 +465,27 @@
             }
         }
 
-        public static async Task CalculateScrollEntryToPositionNEW(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        private static async Task CalculateScrollEntryToPositionNEW(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             if (scrollView == null || entry == null)
             {
                 return;
             }
 
-            // small margin so the entry isn't flush against the keyboard/title
+            // Small margin so the entry isn't flush against the keyboard/title
             const double margin = 12.0;
 
-            // ensure layout has been measured (avoid zero heights)
+            // Ensure layout has been measured (avoid zero heights)
             await Task.Yield();
 
-            // orientation & keyboard height
+            // Orientation & keyboard height
             string cOrientation = GetDeviceOrientation();
             double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
 
-            // display / window height
+            // Display / window height
             double nDisplayHeight = DeviceInfo.Platform == DevicePlatform.WinUI ? GetWindowHeight() : GetDisplayHeight();
 
-            // title view height and per-platform padding
+            // Title view height and per-platform padding
             double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
             double nPadding = 0;
             if (DeviceInfo.Platform == DevicePlatform.Android)
@@ -492,53 +494,52 @@
             }
             else if (DeviceInfo.Platform == DevicePlatform.iOS)
             {
-                nPadding = cOrientation == "Landscape" ? 30 : 0;
+                nPadding = cOrientation == "Landscape" ? 0 : 100;
             }
             else if (DeviceInfo.Platform == DevicePlatform.WinUI)
             {
                 nPadding = cOrientation == "Landscape" ? 100 : 0;
             }
 
-            // visible area height (content area not covered by keyboard/title/padding)
+            // Visible area height (content area not covered by keyboard/title/padding)
             double visibleHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight - nPadding;
             if (visibleHeight <= 0)
             {
                 return;
             }
 
-            // compute entry Y relative to scrollView content:
-            // entryScreenY - scrollViewScreenY + currentScrollY
+            // Compute entry Y relative to scrollView content: entryScreenY - scrollViewScreenY + currentScrollY
             Point scrollViewScreen = GetEntryScreenPosition(scrollView);
             Point entryScreen = GetEntryScreenPosition(entry);
             double relativeY = entryScreen.Y - scrollViewScreen.Y + scrollView.ScrollY;
 
-            // current visible top/bottom in content coordinates
+            // Current visible top/bottom in content coordinates
             double topVisible = scrollView.ScrollY;
             double bottomVisible = topVisible + visibleHeight;
 
-            // heights of content and entry for clamping
+            // Heights of content and entry for clamping
             double contentHeight = scrollView.Content?.Height ?? (visibleHeight + entry.Height);
             double entryBottom = relativeY + entry.Height;
 
-            // decide if scroll needed:
-            double targetY = topVisible; // default no change
+            // Decide if scroll needed:
+            double targetY = topVisible;  // default no change
             if (entryBottom > bottomVisible - margin)
             {
-                // entry is partially/fully below visible area -> scroll down so entry bottom is visible
+                // Entry is partially/fully below visible area -> scroll down so entry bottom is visible
                 targetY = relativeY + entry.Height - visibleHeight + margin;
             }
             else if (relativeY < topVisible + margin)
             {
-                // entry is above visible area -> scroll up so entry top is visible with margin
+                // Entry is above visible area -> scroll up so entry top is visible with margin
                 targetY = relativeY - margin;
             }
             else
             {
-                // already visible
+                // Already visible
                 return;
             }
 
-            // clamp targetY to valid range
+            // Clamp targetY to valid range
             double maxScroll = Math.Max(0, contentHeight - visibleHeight);
             targetY = Math.Max(0, Math.Min(targetY, maxScroll));
 
@@ -628,7 +629,7 @@
         /// Get navigation type
         /// </summary>
         /// <returns></returns>
-        public static string GetNavigationType()
+        private static string GetNavigationType()
         {
             if (Shell.Current != null)
             {

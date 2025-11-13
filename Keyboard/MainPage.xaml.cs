@@ -64,12 +64,12 @@ namespace Keyboard
             WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
             {
                 // Display the received message in the UI, this method is called when a message is received
-                BtnKeyboardClicked(message.Value);
+                _ = BtnKeyboardClicked(message.Value);
                 Debug.WriteLine($"Received message: {message.Value}");
             });
 
             // Show the bottom sheet when the page is appearing
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            _ = ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Keyboard
             base.OnDisappearing();
 
             // Hide the bottom sheet when the page is disappearing
-            ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            _ = ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
             // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
             DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
@@ -106,7 +106,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
             // Scroll to the focused entry field in the scroll view
             if (_focusedEntry is not null)
@@ -120,11 +120,11 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
+        private async void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
         {
             if (sender is Entry entry)
             {
-                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 #if IOS
                 entry.Focus();              // This will trigger the Focused event
 #endif
@@ -150,7 +150,7 @@ namespace Keyboard
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
                 // Show the keyboard bottom sheet when the entry field is focused
-                ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 // Scroll to the focused entry field in the scroll view
                 await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
@@ -238,7 +238,7 @@ namespace Keyboard
         /// Handles the click event for the keyboard buttons.
         /// </summary>
         /// <param name="cKey"></param>
-        private void BtnKeyboardClicked(string cKey)
+        private async Task BtnKeyboardClicked(string cKey)
         {
             Entry? focusedEntry = cEntryAutomationId switch
             {
@@ -254,7 +254,7 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                    await ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 }
                 else if (cKey == "btnReturn")
                 {
