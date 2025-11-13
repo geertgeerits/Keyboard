@@ -228,7 +228,7 @@
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static Task ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        public static async Task ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -286,7 +286,7 @@
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static Task ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        public static async Task ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
@@ -333,7 +333,7 @@
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public async static Task HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        public static async Task HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null)
             {
