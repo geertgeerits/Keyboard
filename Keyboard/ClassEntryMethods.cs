@@ -1,6 +1,4 @@
-﻿global using System.Globalization;
-
-namespace Keyboard
+﻿namespace Keyboard
 {
     internal static class ClassEntryMethods
     {
@@ -231,12 +229,12 @@ namespace Keyboard
         /// Entry focused event: format the text value for a numeric entry without the number separator and select the entire text value
         /// </summary>
         /// <param name="entry"></param>
-        public async static void FormatDecimalNumberEntryFocused(Entry entry)
+        public static async Task FormatDecimalNumberEntryFocused(Entry entry)
         {
             // Show the keyboard if it is not already shown and no custom keyboard is used
             if (!entry.IsSoftInputShowing() && cKeyboard != "Custom")
             {
-                _ = await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+                await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
 
             // Allow the IsDecimalNumber method to execute
@@ -246,8 +244,6 @@ namespace Keyboard
             {
                 return;
             }
-
-            //int nDecimals;
 
             // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
             (_, _, int nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
@@ -290,8 +286,6 @@ namespace Keyboard
 
             // Do not allow the IsDecimalNumber method to execute
             bShowFormattedNumber = true;
-
-            //int nDecimals;
 
             // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
             (_, _, int nDecimals) = EntryFindValidationTriggerActionDecimal(entry);
@@ -467,7 +461,7 @@ namespace Keyboard
         /// Hide the keyboard
         /// </summary>
         /// <param name="entry"></param>
-        public async static void HideSystemKeyboard(Entry entry)
+        public static async Task HideSystemKeyboard(Entry entry)
         {
             try
             {
@@ -477,7 +471,7 @@ namespace Keyboard
                     // Android !!!BUG!!!: entry.Unfocus() must be called before HideSoftInputAsync() otherwise entry.Unfocus() is not called
                     entry.Unfocus();
 #endif
-                    _ = await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                    await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
                 }
             }
             catch (Exception)
