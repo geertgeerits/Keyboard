@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Keyboard"
+    x:Class="Keyboard.KeyboardAlphanumericPortrait">
+
+    <Grid
+        Style="{StaticResource KeyboardGrid}"
+        ColumnDefinitions="40, 24, 24, 24, 24, 24, 24, 24, 24, 24, 24, 40"
+        RowDefinitions="5, 24, 24, 24, 24, 5">
+
+        <BoxView
+            Style="{StaticResource KeyboardGridBoxView}"
+            Grid.ColumnSpan="12"
+            Grid.RowSpan="6">
+        </BoxView>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="1"  
+            Grid.Row="1"
+            AutomationId="btn-1"
+            Text="1"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"  
+            Grid.Row="1"
+            AutomationId="btn-2"
+            Text="2"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="3"  
+            Grid.Row="1"
+            AutomationId="btn-3"
+            Text="3"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="4"  
+            Grid.Row="1"
+            AutomationId="btn-4"
+            Text="4"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+           Style="{StaticResource KeyAlphanumericPortraitButton}"
+           Grid.Column="5"  
+           Grid.Row="1"
+           AutomationId="btn-5"
+           Text="5"
+           Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="6"  
+            Grid.Row="1"
+            AutomationId="btn-6"
+            Text="6"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="7"  
+            Grid.Row="1"
+            AutomationId="btn-7"
+            Text="7"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="8"  
+            Grid.Row="1"
+            AutomationId="btn-8"
+            Text="8"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="9"  
+            Grid.Row="1"
+            AutomationId="btn-9"
+            Text="9"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="10"  
+            Grid.Row="1"
+            AutomationId="btn-0"
+            Text="0"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="1"
+            Grid.Row="2"
+            AutomationId="btn-A"
+            Text="A"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"  
+            Grid.Row="2"
+            AutomationId="btn-B"
+            Text="B"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="3"  
+            Grid.Row="2"
+            AutomationId="btn-C"
+            Text="C"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="4"  
+            Grid.Row="2"
+            AutomationId="btn-D"
+            Text="D"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="5"  
+            Grid.Row="2"
+            AutomationId="btn-E"
+            Text="E"
+            Clicked="BtnKey_Clicked">
+        </Button>
+        
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="6"  
+            Grid.Row="2"
+            AutomationId="btn-F"
+            Text="F"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="7"  
+            Grid.Row="2"
+            AutomationId="btn-G"
+            Text="G"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="8"  
+            Grid.Row="2"
+            AutomationId="btn-H"
+            Text="H"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="9"  
+            Grid.Row="2"
+            AutomationId="btn-I"
+            Text="I"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="10"  
+            Grid.Row="2"
+            AutomationId="btn-J"
+            Text="J"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="1"  
+            Grid.Row="3"
+            AutomationId="btn-K"
+            Text="K"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"  
+            Grid.Row="3"
+            AutomationId="btn-L"
+            Text="L"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="3"  
+            Grid.Row="3"
+            AutomationId="btn-M"
+            Text="M"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="4"  
+            Grid.Row="3"
+            AutomationId="btn-N"
+            Text="N"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="5"  
+            Grid.Row="3"
+            AutomationId="btn-O"
+            Text="O"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="6"  
+            Grid.Row="3"
+            AutomationId="btn-P"
+            Text="P"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="7"  
+            Grid.Row="3"
+            AutomationId="btn-Q"
+            Text="Q"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="8"  
+            Grid.Row="3"
+            AutomationId="btn-R"
+            Text="R"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="9"  
+            Grid.Row="3"
+            AutomationId="btn-S"
+            Text="S"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="10"  
+            Grid.Row="3"
+            AutomationId="btn-T"
+            Text="T"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="1"  
+            Grid.Row="4"
+            AutomationId="btn-U"
+            Text="U"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"  
+            Grid.Row="4"
+            AutomationId="btn-V"
+            Text="V"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="3"  
+            Grid.Row="4"
+            AutomationId="btn-W"
+            Text="W"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="4"  
+            Grid.Row="4"
+            AutomationId="btn-X"
+            Text="X"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="5"  
+            Grid.Row="4"
+            AutomationId="btn-Y"
+            Text="Y"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="6"  
+            Grid.Row="4"
+            AutomationId="btn-Z"
+            Text="Z"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <ImageButton  
+            Style="{StaticResource KeyAlphanumericPortraitImageButton}"
+            Grid.Column="9"  
+            Grid.Row="4"
+            AutomationId="btnBackspace"
+            Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
+            Clicked="BtnKey_Clicked">
+        </ImageButton>
+
+        <ImageButton  
+            Style="{StaticResource KeyAlphanumericPortraitImageButton}"
+            Grid.Column="10"  
+            Grid.Row="4"
+            AutomationId="btnReturn"
+            Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
+            Clicked="BtnKey_Clicked">
+        </ImageButton>
+
+        <ImageButton
+            x:Name="ImgbtnKeyboardHide"
+            Style="{StaticResource KeyboardHideImageButton}"
+            Grid.Column="0"
+            Grid.Row="4"
+            Clicked="OnKeyboardHide_Clicked">
+        </ImageButton>
+
+    </Grid>
+</ContentView>

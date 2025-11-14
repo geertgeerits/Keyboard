@@ -46,6 +46,13 @@ namespace Keyboard
             // Set the theme
             ClassKeyboardMethods.SetTheme();
 
+            // Respond to theme changes
+            Application.Current?.RequestedThemeChanged += static (s, a) =>
+            {
+                // Set the entry text color to a different color for a negative and a positive number
+                ClassEntryMethods.SetNumberColor();
+            };
+
             // Reads and logs the current device display information
             //ClassKeyboardMethods.ReadDeviceDisplay();
         }

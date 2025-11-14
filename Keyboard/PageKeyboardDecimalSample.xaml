@@ -37,7 +37,7 @@
             <!--Add an extra row with the height of the keyboard (250) to the grid to ensure that the keyboard does not overlap the content-->
             <Grid
                 ColumnDefinitions="320, *"
-                RowDefinitions="Auto, Auto, Auto, Auto, Auto, 250"
+                RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, 250"
                 ColumnSpacing="2"  
                 RowSpacing="10"  
                 Margin="10">
@@ -119,22 +119,13 @@
 
                     <Entry  
                         x:Name="entTest4"
-                        Style="{StaticResource NumericEntry}"
+                        Style="{StaticResource TextEntry}"
                         AutomationId="entTest4"
-                        Placeholder="-999999999999.99 - 999999999999.99"
-                        MaxLength="20"
+                        Placeholder="Enter text"
+                        MaxLength="100"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
-                        <Entry.Triggers>
-                            <EventTrigger Event="TextChanged">
-                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
-                            </EventTrigger>
-                        </Entry.Triggers>
-                        <Entry.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
-                        </Entry.GestureRecognizers>
+                        Focused="TextEntryFocused"  
+                        Unfocused="TextEntryUnfocused">
                     </Entry>
                 </Border>
 
@@ -164,9 +155,35 @@
                     </Entry>
                 </Border>
 
+                <Border  
+                    Style="{StaticResource EntryBorder}"
+                    Grid.Column="0"
+                    Grid.Row="5">
+
+                    <Entry  
+                        x:Name="entTest6"
+                        Style="{StaticResource NumericEntry}"
+                        AutomationId="entTest6"
+                        Placeholder="-999999999999.99 - 999999999999.99"
+                        MaxLength="20"
+                        Completed="GoToNextField"
+                        TextChanged="NumberEntryTextChanged"
+                        Focused="NumberEntryFocused"  
+                        Unfocused="NumberEntryUnfocused">
+                        <Entry.Triggers>
+                            <EventTrigger Event="TextChanged">
+                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
+                            </EventTrigger>
+                        </Entry.Triggers>
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
+                    </Entry>
+                </Border>
+
                 <Label
                     Grid.Column="0"
-                    Grid.Row="5"
+                    Grid.Row="6"
                     HorizontalOptions="Center"
                     VerticalOptions="End"
                     Text="PageKeyboardDecimalSample">
@@ -197,6 +214,30 @@
                 x:Name="RootKeyboardDecimalLandscape"
                 HeightRequest="65">
             </local:KeyboardDecimalLandscape>
+        </ContentView>
+
+        <ContentView
+            x:Name="CustomKeyboardAlphanumericPortrait"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,250"
+            IsVisible="False">
+
+            <local:KeyboardAlphanumericPortrait
+                x:Name="RootKeyboardAlphanumericPortrait"
+                HeightRequest="250">
+            </local:KeyboardAlphanumericPortrait>
+        </ContentView>
+
+        <ContentView
+            x:Name="CustomKeyboardAlphanumericLandscape"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,110"
+            IsVisible="False">
+
+            <local:KeyboardAlphanumericLandscape
+                x:Name="RootKeyboardAlphanumericLandscape"
+                HeightRequest="110">
+            </local:KeyboardAlphanumericLandscape>
         </ContentView>
 
     </AbsoluteLayout>

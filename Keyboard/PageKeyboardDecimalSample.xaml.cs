@@ -159,6 +159,9 @@ namespace Keyboard
             // Hide the bottom sheet with the custom keyboard
             await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
+            // Show the custom alphanumeric keyboard
+            //await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+
             if (sender is Entry entry)
             {
                 // Show the system soft input keyboard
@@ -230,6 +233,10 @@ namespace Keyboard
             }
             else if (sender == entTest5)
             {
+                _ = entTest6.Focus();
+            }
+            else if (sender == entTest6)
+            {
                 _ = entTest1.Focus();
             }
         }
@@ -244,8 +251,10 @@ namespace Keyboard
             {
                 "entTest1-Percentage" => entTest1,
                 "entTest2" => entTest2,
+                "entTest3" => entTest3,
                 "entTest4" => entTest4,
                 "entTest5" => entTest5,
+                "entTest6" => entTest6,
                 _ => null
             };
 
