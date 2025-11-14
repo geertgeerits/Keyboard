@@ -124,6 +124,10 @@
                         {
                             focusedEntry.Text = ClassEntryMethods.cNumNegativeSign + focusedEntry.Text;
                         }
+                        else
+                        {
+                            focusedEntry.Text = focusedEntry.Text.Replace(ClassEntryMethods.cNumNegativeSign, string.Empty);
+                        }
                         break;
                     case "btnDecimalPoint":
                         if (!focusedEntry.Text.Contains(ClassEntryMethods.cNumDecimalSeparator))
@@ -170,8 +174,7 @@
 
             // Ensure CursorPosition is valid and entry.Text is not null
             int cursorPosition = entry.CursorPosition >= 0 && entry.CursorPosition <= currentText.Length
-                ? entry.CursorPosition
-                : currentText.Length;
+                ? entry.CursorPosition : currentText.Length;
 
             // Insert the character at the cursor position
             string newText = currentText.Insert(cursorPosition, cCharacter);
