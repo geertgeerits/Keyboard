@@ -109,7 +109,7 @@ namespace Keyboard
                 cEntryAutomationId = entry.AutomationId;
 
                 // Set the unformatted number in the entry field
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);

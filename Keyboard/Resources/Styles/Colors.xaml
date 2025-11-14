@@ -18,6 +18,8 @@
     <Color x:Key="EntryTextUnfocusedLight">Black</Color>
     <Color x:Key="EntryTextUnfocusedDark">White</Color>
 
+    <Color x:Key="EntryTextPositiveNumberLight">Black</Color>
+    <Color x:Key="EntryTextPositiveNumberDark">White</Color>
     <Color x:Key="EntryTextNegativeNumberLight">Red</Color>
     <Color x:Key="EntryTextNegativeNumberDark">LightPink</Color>
 

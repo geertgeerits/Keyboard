@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.27
-   Date ........: 2025-11-13 (YYYY-MM-DD)
+   Date ........: 2025-11-14 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -144,7 +144,7 @@ namespace Keyboard
                 cEntryAutomationId = entry.AutomationId;
 
                 // Set the unformatted number in the entry field
-                ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);

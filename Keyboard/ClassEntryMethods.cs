@@ -384,14 +384,46 @@
             }
 
             // Set the color for negative and positive numbers
-            string cColorNegNumberLight = ColorToHex((Color)Application.Current.Resources["EntryTextNegativeNumberLight"]);
-            string cColorPosNumberLight = ColorToHex((Color)Application.Current.Resources["EntryTextUnfocusedLight"]);
-            string cColorNegNumberDark = ColorToHex((Color)Application.Current.Resources["EntryTextNegativeNumberDark"]);
-            string cColorPosNumberDark = ColorToHex((Color)Application.Current.Resources["EntryTextUnfocusedDark"]);
-            Debug.WriteLine($"cColorNegNumberLight: {cColorNegNumberLight}");
-            
+            string cColorPosNumberLight, cColorPosNumberDark, cColorNegNumberLight, cColorNegNumberDark;
+
+            if (Application.Current?.Resources?.TryGetValue("EntryTextPositiveNumberLight", out object? v1) == true && v1 is Color colPosLight)
+            {
+                cColorPosNumberLight = ColorToHex(colPosLight);
+            }
+            else
+            {
+                cColorPosNumberLight = "#000000";  // fallback
+            }
+
+            if (Application.Current?.Resources?.TryGetValue("EntryTextPositiveNumberDark", out object? v2) == true && v2 is Color colPosDark)
+            {
+                cColorPosNumberDark = ColorToHex(colPosDark);
+            }
+            else
+            {
+                cColorPosNumberDark = "#FFFFFF";  // fallback
+            }
+
+            if (Application.Current?.Resources?.TryGetValue("EntryTextNegativeNumberLight", out object? v3) == true && v3 is Color colNegLight)
+            {
+                cColorNegNumberLight = ColorToHex(colNegLight);
+            }
+            else
+            {
+                cColorNegNumberLight = "#FF0000";  // fallback
+            }
+
+            if (Application.Current?.Resources?.TryGetValue("EntryTextNegativeNumberDark", out object? v4) == true && v4 is Color colNegDark)
+            {
+                cColorNegNumberDark = ColorToHex(colNegDark);
+            }
+            else
+            {
+                cColorNegNumberDark = "#FFB6C1";  // fallback
+            }
+
             // Get the current device theme
-            AppTheme currentTheme = Microsoft.Maui.Controls.Application.Current.RequestedTheme;
+            AppTheme currentTheme = Application.Current != null ? Application.Current.RequestedTheme : AppTheme.Unspecified;
 
             // Set the number text color
             switch (currentTheme)
