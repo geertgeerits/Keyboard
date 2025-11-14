@@ -160,12 +160,14 @@ namespace Keyboard
             await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
             // Show the custom alphanumeric keyboard
-            //await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+            await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
 
             if (sender is Entry entry)
             {
+                cEntryAutomationId = entry.AutomationId;
+
                 // Show the system soft input keyboard
-                await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+                //await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
         }
 
@@ -176,10 +178,14 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void TextEntryUnfocused(object sender, FocusEventArgs e)
         {
+            await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+
             if (sender is Entry entry)
             {
                 // Hide the system soft input keyboard
-                await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+                //await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
+
+                cEntryAutomationId = entry.AutomationId;
             }
 
             // Show the bottom sheet with the custom keyboard
@@ -247,6 +253,8 @@ namespace Keyboard
         /// <param name="cKey"></param>
         private async Task BtnKeyboardClicked(string cKey)
         {
+            Debug.WriteLine($"BtnKeyboardClicked: {cKey}, Focused Entry AutomationId: {cEntryAutomationId}");
+
             Entry? focusedEntry = cEntryAutomationId switch
             {
                 "entTest1-Percentage" => entTest1,

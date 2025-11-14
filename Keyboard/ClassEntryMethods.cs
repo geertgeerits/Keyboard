@@ -13,12 +13,14 @@
         public static string cNumDecimalSeparator = "";
         public static string cNumNegativeSign = "";
         public static string cNumNativeDigits = "";
+        public static string cAlphaNumCharacters = "";
 
         // Local variables
         private static string cDecimalCharacters = "";
         private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
+        private static string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN";
 
         /// <summary>
         /// Initialize the number format settings based on the current culture
@@ -97,6 +99,9 @@
             // Set the allowed characters for numeric input
             cDecimalCharacters = $"{cNumDecimalSeparator}{cNumNegativeSign}{cNumNativeDigits}";
             Debug.WriteLine($"cDecimalCharacters: {cDecimalCharacters}");
+
+            // Set the allowed characters for alphanumeric input
+            cAlphaNumCharacters = cKeyboard_AZERTY_BE;
 
             // Set the entry text color to a different color for a negative and a positive number
             SetNumberColor();
