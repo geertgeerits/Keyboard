@@ -208,7 +208,7 @@ namespace Keyboard
                 }
                 else
                 {
-                    ClassKeyboardMethods.KeyboardHexadecimalClicked(focusedEntry, cKey);
+                    ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
                 }
             }
         }

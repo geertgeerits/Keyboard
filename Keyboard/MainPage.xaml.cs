@@ -269,7 +269,7 @@ namespace Keyboard
                 }
                 else
                 {
-                    ClassKeyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
+                    ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
                 }
             }
         }

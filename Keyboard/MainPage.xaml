@@ -39,7 +39,7 @@
                     TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
                     FontSize="16"
                     FontAttributes="Bold"
-                    Text="Dec"
+                    Text="Mix"
                     Clicked="BtnDecimal_Clicked">
                 </Button>
             </Border>

@@ -22,7 +22,7 @@
                 FontSize="16"  
                 FontAttributes="Bold"  
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                Text="Keyboard decimal">
+                Text="Keyboard mixed">
             </Label>
         </Grid>
     </Shell.TitleView>
@@ -109,6 +109,9 @@
                         Completed="GoToNextField"
                         Focused="TextEntryFocused"  
                         Unfocused="TextEntryUnfocused">
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -126,6 +129,9 @@
                         Completed="GoToNextField"
                         Focused="TextEntryFocused"  
                         Unfocused="TextEntryUnfocused">
+                        <Entry.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapShowKeyboardTapped" />
+                        </Entry.GestureRecognizers>
                     </Entry>
                 </Border>
 
@@ -219,12 +225,12 @@
         <ContentView
             x:Name="CustomKeyboardAlphanumericPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,200"
+            AbsoluteLayout.LayoutBounds="0,1,1,160"
             IsVisible="False">
 
             <local:KeyboardAlphanumericPortrait
                 x:Name="RootKeyboardAlphanumericPortrait"
-                HeightRequest="200">
+                HeightRequest="160">
             </local:KeyboardAlphanumericPortrait>
         </ContentView>
 

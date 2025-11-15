@@ -1,4 +1,3 @@
-
 namespace Keyboard
 {
     public partial class PageKeyboardDecimalSample : ContentPage
@@ -89,7 +88,19 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
-                await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                switch (entry.AutomationId)
+                {
+                    case "entTest1-Percentage":
+                    case "entTest2":
+                    case "entTest5":
+                    case "entTest6":
+                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                        break;
+                    case "entTest3":
+                    case "entTest4":
+                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+                        break;
+                }
 #if IOS
                 entry.Focus();              // This will trigger the Focused event
 #endif
@@ -114,7 +125,8 @@ namespace Keyboard
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
 
-                // Show the keyboard bottom sheet when the entry field is focused
+                // Hide/Show the custom keyboard bottom sheet when the entry field is focused
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 // Scroll to the focused entry field in the scroll view
@@ -156,18 +168,14 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void TextEntryFocused(object sender, FocusEventArgs e)
         {
-            // Hide the bottom sheet with the custom keyboard
-            await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-
-            // Show the custom alphanumeric keyboard
-            await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
-
             if (sender is Entry entry)
             {
+                _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
 
-                // Show the system soft input keyboard
-                //await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
+                // Hide/Show the custom keyboard bottom sheet when the entry field is focused
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
             }
         }
 
@@ -178,19 +186,18 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void TextEntryUnfocused(object sender, FocusEventArgs e)
         {
-            await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
-
             if (sender is Entry entry)
             {
-                // Hide the system soft input keyboard
-                //await entry.HideSoftInputAsync(System.Threading.CancellationToken.None);
-
+#if WINDOWS
+                // Ignore false Unfocused events on Windows
+                if (entry.IsFocused)
+                {
+                    return;
+                }
+#endif
+                _focusedEntry = null;
                 cEntryAutomationId = entry.AutomationId;
             }
-
-            // Show the bottom sheet with the custom keyboard
-            // Needed for iOS, on Android and Windows the bottom sheet is already shown when the next entry field is focused
-            await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
@@ -270,7 +277,8 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    await ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                    await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                    await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
                 }
                 else if (cKey == "btnShift")
                 {
@@ -282,7 +290,7 @@ namespace Keyboard
                 }
                 else
                 {
-                    ClassKeyboardMethods.KeyboardDecimalClicked(focusedEntry, cKey);
+                    ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
                 }
             }
         }

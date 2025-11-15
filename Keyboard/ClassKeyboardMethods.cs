@@ -106,11 +106,11 @@
         }
 
         /// <summary>
-        /// Handles the click event for the decimal keyboard buttons
+        /// Handles the click event for the keyboard buttons
         /// </summary>
         /// <param name="focusedEntry"></param>
         /// <param name="cKey"></param>
-        public static void KeyboardDecimalClicked(Entry focusedEntry, string cKey)
+        public static void KeyboardKeyClicked(Entry focusedEntry, string cKey)
         {
             if (focusedEntry != null)
             {
@@ -140,20 +140,6 @@
                         break;
                 }
             }
-        }
-
-        /// <summary>
-        /// Handles the click event for the hexadecimal keyboard buttons
-        /// </summary>
-        /// <param name="focusedEntry"></param>
-        /// <param name="cKey"></param>
-        public static void KeyboardHexadecimalClicked(Entry focusedEntry, string cKey)
-        {
-            focusedEntry?.Text = cKey switch
-            {
-                "btnBackspace" => DeleteCharacterBeforeCursor(focusedEntry),
-                _ => InsertCharacterInEntryField(focusedEntry, cKey),
-            };
         }
 
         /// <summary>
