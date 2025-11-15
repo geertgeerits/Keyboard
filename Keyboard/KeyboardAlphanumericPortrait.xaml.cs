@@ -23,6 +23,26 @@ namespace Keyboard
         private string _button_18_Text = string.Empty;
         private string _button_19_Text = string.Empty;
         private string _button_20_Text = string.Empty;
+        private string _button_21_Text = string.Empty;
+        private string _button_22_Text = string.Empty;
+        private string _button_23_Text = string.Empty;
+        private string _button_24_Text = string.Empty;
+        private string _button_25_Text = string.Empty;
+        private string _button_26_Text = string.Empty;
+        private string _button_27_Text = string.Empty;
+        private string _button_28_Text = string.Empty;
+        private string _button_29_Text = string.Empty;
+        private string _button_30_Text = string.Empty;
+        private string _button_31_Text = string.Empty;
+        private string _button_32_Text = string.Empty;
+        private string _button_33_Text = string.Empty;
+        private string _button_34_Text = string.Empty;
+        private string _button_35_Text = string.Empty;
+        private string _button_36_Text = string.Empty;
+        private string _button_37_Text = string.Empty;
+        private string _button_38_Text = string.Empty;
+        private string _button_39_Text = string.Empty;
+        private string _button_40_Text = string.Empty;
 
         private string _buttonDecimalPointText = string.Empty;
         private string _buttonMinusText = string.Empty;
@@ -227,6 +247,205 @@ namespace Keyboard
             }
         }
 
+        public string Button_21_Text
+        {
+            get => _button_21_Text;
+            set
+            {
+                _button_21_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_22_Text
+        {
+            get => _button_22_Text;
+            set
+            {
+                _button_22_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_23_Text
+        {
+            get => _button_23_Text;
+            set
+            {
+                _button_23_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_24_Text
+        {
+            get => _button_24_Text;
+            set
+            {
+                _button_24_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_25_Text
+        {
+            get => _button_25_Text;
+            set
+            {
+                _button_25_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_26_Text
+        {
+            get => _button_26_Text;
+            set
+            {
+                _button_26_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_27_Text
+        {
+            get => _button_27_Text;
+            set
+            {
+                _button_27_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_28_Text
+        {
+            get => _button_28_Text;
+            set
+            {
+                _button_28_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_29_Text
+        {
+            get => _button_29_Text;
+            set
+            {
+                _button_29_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_30_Text
+        {
+            get => _button_30_Text;
+            set
+            {
+                _button_30_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_31_Text
+        {
+            get => _button_31_Text;
+            set
+            {
+                _button_31_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_32_Text
+        {
+            get => _button_32_Text;
+            set
+            {
+                _button_32_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_33_Text
+        {
+            get => _button_33_Text;
+            set
+            {
+                _button_33_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_34_Text
+        {
+            get => _button_34_Text;
+            set
+            {
+                _button_34_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_35_Text
+        {
+            get => _button_35_Text;
+            set
+            {
+                _button_35_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_36_Text
+        {
+            get => _button_36_Text;
+            set
+            {
+                _button_36_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_37_Text
+        {
+            get => _button_37_Text;
+            set
+            {
+                _button_37_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_38_Text
+        {
+            get => _button_38_Text;
+            set
+            {
+                _button_38_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_39_Text
+        {
+            get => _button_39_Text;
+            set
+            {
+                _button_39_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_40_Text
+        {
+            get => _button_40_Text;
+            set
+            {
+                _button_40_Text = value;
+                OnPropertyChanged();
+            }
+        }
 
 
 
@@ -277,6 +496,26 @@ namespace Keyboard
             Button_18_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(17, 1);
             Button_19_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(18, 1);
             Button_20_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(19, 1);
+            Button_21_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(20, 1);
+            Button_22_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(21, 1);
+            Button_23_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(22, 1);
+            Button_24_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(23, 1);
+            Button_25_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(24, 1);
+            Button_26_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(25, 1);
+            Button_27_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(26, 1);
+            Button_28_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(27, 1);
+            Button_29_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(28, 1);
+            Button_30_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(29, 1);
+            Button_31_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(30, 1);
+            Button_32_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(31, 1);
+            Button_33_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(32, 1);
+            Button_34_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(33, 1);
+            Button_35_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(34, 1);
+            Button_36_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(35, 1);
+            Button_37_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(36, 1);
+            Button_38_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(37, 1);
+            Button_39_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(38, 1);
+            Button_40_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(39, 1);
 
             ButtonDecimalPointText = ClassEntryMethods.cNumDecimalSeparator;
             ButtonMinusText = ClassEntryMethods.cNumNegativeSign;
@@ -315,6 +554,29 @@ namespace Keyboard
                     "Key_18" => ClassEntryMethods.cAlphaNumCharacters.Substring(17, 1),
                     "Key_19" => ClassEntryMethods.cAlphaNumCharacters.Substring(18, 1),
                     "Key_20" => ClassEntryMethods.cAlphaNumCharacters.Substring(19, 1),
+                    "Key_21" => ClassEntryMethods.cAlphaNumCharacters.Substring(20, 1),
+                    "Key_22" => ClassEntryMethods.cAlphaNumCharacters.Substring(21, 1),
+                    "Key_23" => ClassEntryMethods.cAlphaNumCharacters.Substring(22, 1),
+                    "Key_24" => ClassEntryMethods.cAlphaNumCharacters.Substring(23, 1),
+                    "Key_25" => ClassEntryMethods.cAlphaNumCharacters.Substring(24, 1),
+                    "Key_26" => ClassEntryMethods.cAlphaNumCharacters.Substring(25, 1),
+                    "Key_27" => ClassEntryMethods.cAlphaNumCharacters.Substring(26, 1),
+                    "Key_28" => ClassEntryMethods.cAlphaNumCharacters.Substring(27, 1),
+                    "Key_29" => ClassEntryMethods.cAlphaNumCharacters.Substring(28, 1),
+                    "Key_30" => ClassEntryMethods.cAlphaNumCharacters.Substring(29, 1),
+                    "Key_31" => ClassEntryMethods.cAlphaNumCharacters.Substring(30, 1),
+                    "Key_32" => ClassEntryMethods.cAlphaNumCharacters.Substring(31, 1),
+                    "Key_33" => ClassEntryMethods.cAlphaNumCharacters.Substring(32, 1),
+                    "Key_34" => ClassEntryMethods.cAlphaNumCharacters.Substring(33, 1),
+                    "Key_35" => ClassEntryMethods.cAlphaNumCharacters.Substring(34, 1),
+                    "Key_36" => ClassEntryMethods.cAlphaNumCharacters.Substring(35, 1),
+                    "Key_37" => ClassEntryMethods.cAlphaNumCharacters.Substring(36, 1),
+                    "Key_38" => ClassEntryMethods.cAlphaNumCharacters.Substring(37, 1),
+                    "Key_39" => ClassEntryMethods.cAlphaNumCharacters.Substring(38, 1),
+                    "Key_40" => ClassEntryMethods.cAlphaNumCharacters.Substring(39, 1),
+
+                    //"Key_DecimalPoint" => ClassEntryMethods.cNumDecimalSeparator,
+                    //"Key_Minus" => ClassEntryMethods.cNumNegativeSign,
 
                     _ => button.AutomationId,
                 };

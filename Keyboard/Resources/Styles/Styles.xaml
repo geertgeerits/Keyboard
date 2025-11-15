@@ -806,15 +806,16 @@
         </Setter>
     </Style>
 
+    <!--!!!BUG!!! HeightRequest and WidthRequest does not work-->
     <Style TargetType="Button" x:Key="KeyAlphanumericPortraitButton">
-        <Setter Property="HeightRequest" Value="22" />
-        <Setter Property="WidthRequest" Value="22" />
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="MaximumHeightRequest" Value="22" />
+        <Setter Property="MaximumWidthRequest" Value="22" />
+        <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
-        <Setter Property="FontSize" Value="20" />
+        <Setter Property="FontSize" Value="12" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
         <Setter Property="Padding" Value="0" />
@@ -837,14 +838,14 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyAlphanumericPortraitImageButton">
-        <Setter Property="HeightRequest" Value="22" />
-        <Setter Property="WidthRequest" Value="22" />
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="MaximumHeightRequest" Value="22" />
+        <Setter Property="MaximumWidthRequest" Value="22" />
+        <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
-        <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
+        <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='0', iOS='0', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
@@ -864,9 +865,9 @@
     </Style>
 
     <Style TargetType="Button" x:Key="KeyAlphanumericLandscapeButton">
-        <Setter Property="HeightRequest" Value="20" />
-        <Setter Property="WidthRequest" Value="20" />
-        <Setter Property="CornerRadius" Value="8" />
+        <Setter Property="HeightRequest" Value="22" />
+        <Setter Property="WidthRequest" Value="22" />
+        <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
