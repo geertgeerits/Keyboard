@@ -20,7 +20,9 @@
         private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
         private static string cColorNegNumber = "";
         private static string cColorPosNumber = "";
-        private static string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?./+,;:=";
+
+        // Keyboard layouts (Key_1 to Key_44 ; Key_43 = space)
+        private static string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/_-, .";
 
         /// <summary>
         /// Initialize the number format settings based on the current culture

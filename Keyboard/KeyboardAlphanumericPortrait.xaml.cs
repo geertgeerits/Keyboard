@@ -43,9 +43,10 @@ namespace Keyboard
         private string _button_38_Text = string.Empty;
         private string _button_39_Text = string.Empty;
         private string _button_40_Text = string.Empty;
-
-        private string _buttonDecimalPointText = string.Empty;
-        private string _buttonMinusText = string.Empty;
+        private string _button_41_Text = string.Empty;
+        private string _button_42_Text = string.Empty;
+        private string _button_43_Text = string.Empty;
+        private string _button_44_Text = string.Empty;
 
         // Properties for the button texts of the keyboard
         public string Button_1_Text
@@ -447,24 +448,42 @@ namespace Keyboard
             }
         }
 
-
-
-        public string ButtonDecimalPointText
+        public string Button_41_Text
         {
-            get => _buttonDecimalPointText;
+            get => _button_41_Text;
             set
             {
-                _buttonDecimalPointText = value;
+                _button_41_Text = value;
                 OnPropertyChanged();
             }
         }
 
-        public string ButtonMinusText
+        public string Button_42_Text
         {
-            get => _buttonMinusText;
+            get => _button_42_Text;
             set
             {
-                _buttonMinusText = value;
+                _button_42_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_43_Text
+        {
+            get => _button_43_Text;
+            set
+            {
+                _button_43_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_44_Text
+        {
+            get => _button_44_Text;
+            set
+            {
+                _button_44_Text = value;
                 OnPropertyChanged();
             }
         }
@@ -516,9 +535,10 @@ namespace Keyboard
             Button_38_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(37, 1);
             Button_39_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(38, 1);
             Button_40_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(39, 1);
-
-            ButtonDecimalPointText = ClassEntryMethods.cNumDecimalSeparator;
-            ButtonMinusText = ClassEntryMethods.cNumNegativeSign;
+            Button_41_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(40, 1);
+            Button_42_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(41, 1);
+            Button_43_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(42, 1);
+            Button_44_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(43, 1);
         }
 
         /// <summary>
@@ -574,9 +594,10 @@ namespace Keyboard
                     "Key_38" => ClassEntryMethods.cAlphaNumCharacters.Substring(37, 1),
                     "Key_39" => ClassEntryMethods.cAlphaNumCharacters.Substring(38, 1),
                     "Key_40" => ClassEntryMethods.cAlphaNumCharacters.Substring(39, 1),
-
-                    //"Key_DecimalPoint" => ClassEntryMethods.cNumDecimalSeparator,
-                    //"Key_Minus" => ClassEntryMethods.cNumNegativeSign,
+                    "Key_41" => ClassEntryMethods.cAlphaNumCharacters.Substring(40, 1),
+                    "Key_42" => ClassEntryMethods.cAlphaNumCharacters.Substring(41, 1),
+                    "Key_43" => ClassEntryMethods.cAlphaNumCharacters.Substring(42, 1),
+                    "Key_44" => ClassEntryMethods.cAlphaNumCharacters.Substring(43, 1),
 
                     _ => button.AutomationId,
                 };

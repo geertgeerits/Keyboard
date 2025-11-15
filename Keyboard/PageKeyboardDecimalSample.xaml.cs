@@ -272,6 +272,10 @@ namespace Keyboard
                 {
                     await ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 }
+                else if (cKey == "btnShift")
+                {
+                    // Do something for shift key if needed
+                }
                 else if (cKey == "btnReturn")
                 {
                     GoToNextField(focusedEntry, null);

@@ -377,8 +377,52 @@
             Clicked="BtnKey_Clicked">
         </Button>
 
+        <ImageButton  
+            Style="{StaticResource KeyAlphanumericPortraitImageButton}"
+            Grid.Column="1"  
+            Grid.Row="5"
+            AutomationId="btnShift"
+            Source="{AppThemeBinding Light=keyboard_arrow_top_32p_black.png, Dark=keyboard_arrow_top_32p_white.png}"
+            Clicked="BtnKey_Clicked">
+        </ImageButton>
 
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"
+            Grid.Row="5"
+            AutomationId="Key_41"
+            Text="{Binding Button_41_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="3"
+            Grid.Row="5"
+            AutomationId="Key_42"
+            Text="{Binding Button_42_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="4"
+            Grid.Row="5"
+            Grid.ColumnSpan="4"
+            MaximumWidthRequest="88"
+            AutomationId="Key_43"
+            Text="{Binding Button_43_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="8"
+            Grid.Row="5"
+            AutomationId="Key_44"
+            Text="{Binding Button_44_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
         <ImageButton  
             Style="{StaticResource KeyAlphanumericPortraitImageButton}"
