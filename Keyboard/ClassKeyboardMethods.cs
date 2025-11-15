@@ -5,6 +5,7 @@
         // Keyboard layouts for alphanumeric input
         public static string[] cAlphaNumCharacters = new string[44];
         private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/_-, .";
+        private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM?!/_-, .";
 
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
@@ -118,6 +119,30 @@
         public static void InitializeAlphanumericKeyboard()
         {
             cAlphaNumCharacters = cKeyboard_AZERTY_BE.Select(static c => c.ToString()).ToArray();
+        }
+
+        /// <summary>
+        /// Selects the active alphanumeric keyboard layout based on the specified layout identifier.
+        /// </summary>
+        /// <remarks>Use this method to change the set of alphanumeric characters available for input
+        /// according to the desired keyboard layout. Only supported layouts can be selected; unsupported values will
+        /// result in the default layout being applied.</remarks>
+        /// <param name="cLayout">The identifier of the keyboard layout to activate. For example, "AZERTY_BE" selects the Belgian AZERTY
+        /// layout. If an unrecognized value is provided, the default layout is used.</param>
+        public static void SelectAlphanumericKeyboardLayout(string cLayout)
+        {
+            switch (cLayout)
+            {
+                case "AZERTY_BE":
+                    cAlphaNumCharacters = cKeyboard_AZERTY_BE.Select(static c => c.ToString()).ToArray();
+                    break;
+                case "QWERTY_US":
+                    cAlphaNumCharacters = cKeyboard_QWERTY_US.Select(static c => c.ToString()).ToArray();
+                    break;
+                default:
+                    cAlphaNumCharacters = cKeyboard_AZERTY_BE.Select(static c => c.ToString()).ToArray();
+                    break;
+            }
         }
 
         /// <summary>
