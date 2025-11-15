@@ -488,6 +488,9 @@ namespace Keyboard
             }
         }
 
+        /// <summary>
+        /// Set the BindingContext
+        /// </summary>
         public KeyboardAlphanumericPortrait()
         {
             InitializeComponent();
@@ -495,50 +498,50 @@ namespace Keyboard
             // Set the BindingContext to this (the current page)
             this.BindingContext = this;
 
-            Button_1_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(0, 1);
-            Button_2_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(1, 1);
-            Button_3_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(2, 1);
-            Button_4_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(3, 1);
-            Button_5_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(4, 1);
-            Button_6_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(5, 1);
-            Button_7_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(6, 1);
-            Button_8_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(7, 1);
-            Button_9_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(8, 1);
-            Button_10_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(9, 1);
-            Button_11_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(10, 1);
-            Button_12_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(11, 1);
-            Button_13_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(12, 1);
-            Button_14_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(13, 1);
-            Button_15_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(14, 1);
-            Button_16_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(15, 1);
-            Button_17_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(16, 1);
-            Button_18_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(17, 1);
-            Button_19_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(18, 1);
-            Button_20_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(19, 1);
-            Button_21_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(20, 1);
-            Button_22_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(21, 1);
-            Button_23_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(22, 1);
-            Button_24_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(23, 1);
-            Button_25_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(24, 1);
-            Button_26_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(25, 1);
-            Button_27_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(26, 1);
-            Button_28_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(27, 1);
-            Button_29_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(28, 1);
-            Button_30_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(29, 1);
-            Button_31_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(30, 1);
-            Button_32_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(31, 1);
-            Button_33_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(32, 1);
-            Button_34_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(33, 1);
-            Button_35_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(34, 1);
-            Button_36_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(35, 1);
-            Button_37_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(36, 1);
-            Button_38_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(37, 1);
-            Button_39_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(38, 1);
-            Button_40_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(39, 1);
-            Button_41_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(40, 1);
-            Button_42_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(41, 1);
-            Button_43_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(42, 1);
-            Button_44_Text = ClassEntryMethods.cAlphaNumCharacters.Substring(43, 1);
+            Button_1_Text = ClassKeyboardMethods.cAlphaNumCharacters[0];
+            Button_2_Text = ClassKeyboardMethods.cAlphaNumCharacters[1];
+            Button_3_Text = ClassKeyboardMethods.cAlphaNumCharacters[2];
+            Button_4_Text = ClassKeyboardMethods.cAlphaNumCharacters[3];
+            Button_5_Text = ClassKeyboardMethods.cAlphaNumCharacters[4];
+            Button_6_Text = ClassKeyboardMethods.cAlphaNumCharacters[5];
+            Button_7_Text = ClassKeyboardMethods.cAlphaNumCharacters[6];
+            Button_8_Text = ClassKeyboardMethods.cAlphaNumCharacters[7];
+            Button_9_Text = ClassKeyboardMethods.cAlphaNumCharacters[8];
+            Button_10_Text = ClassKeyboardMethods.cAlphaNumCharacters[9];
+            Button_11_Text = ClassKeyboardMethods.cAlphaNumCharacters[10];
+            Button_12_Text = ClassKeyboardMethods.cAlphaNumCharacters[11];
+            Button_13_Text = ClassKeyboardMethods.cAlphaNumCharacters[12];
+            Button_14_Text = ClassKeyboardMethods.cAlphaNumCharacters[13];
+            Button_15_Text = ClassKeyboardMethods.cAlphaNumCharacters[14];
+            Button_16_Text = ClassKeyboardMethods.cAlphaNumCharacters[15];
+            Button_17_Text = ClassKeyboardMethods.cAlphaNumCharacters[16];
+            Button_18_Text = ClassKeyboardMethods.cAlphaNumCharacters[17];
+            Button_19_Text = ClassKeyboardMethods.cAlphaNumCharacters[18];
+            Button_20_Text = ClassKeyboardMethods.cAlphaNumCharacters[19];
+            Button_21_Text = ClassKeyboardMethods.cAlphaNumCharacters[20];
+            Button_22_Text = ClassKeyboardMethods.cAlphaNumCharacters[21];
+            Button_23_Text = ClassKeyboardMethods.cAlphaNumCharacters[22];
+            Button_24_Text = ClassKeyboardMethods.cAlphaNumCharacters[23];
+            Button_25_Text = ClassKeyboardMethods.cAlphaNumCharacters[24];
+            Button_26_Text = ClassKeyboardMethods.cAlphaNumCharacters[25];
+            Button_27_Text = ClassKeyboardMethods.cAlphaNumCharacters[26];
+            Button_28_Text = ClassKeyboardMethods.cAlphaNumCharacters[27];
+            Button_29_Text = ClassKeyboardMethods.cAlphaNumCharacters[28];
+            Button_30_Text = ClassKeyboardMethods.cAlphaNumCharacters[29];
+            Button_31_Text = ClassKeyboardMethods.cAlphaNumCharacters[30];
+            Button_32_Text = ClassKeyboardMethods.cAlphaNumCharacters[31];
+            Button_33_Text = ClassKeyboardMethods.cAlphaNumCharacters[32];
+            Button_34_Text = ClassKeyboardMethods.cAlphaNumCharacters[33];
+            Button_35_Text = ClassKeyboardMethods.cAlphaNumCharacters[34];
+            Button_36_Text = ClassKeyboardMethods.cAlphaNumCharacters[35];
+            Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[36];
+            Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[37];
+            Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[38];
+            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[39];
+            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[40];
+            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[41];
+            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[42];
+            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[43];
         }
 
         /// <summary>
@@ -554,50 +557,50 @@ namespace Keyboard
             {
                 cKeyPressed = button.AutomationId switch
                 {
-                    "Key_1" => ClassEntryMethods.cAlphaNumCharacters.Substring(0, 1),
-                    "Key_2" => ClassEntryMethods.cAlphaNumCharacters.Substring(1, 1),
-                    "Key_3" => ClassEntryMethods.cAlphaNumCharacters.Substring(2, 1),
-                    "Key_4" => ClassEntryMethods.cAlphaNumCharacters.Substring(3, 1),
-                    "Key_5" => ClassEntryMethods.cAlphaNumCharacters.Substring(4, 1),
-                    "Key_6" => ClassEntryMethods.cAlphaNumCharacters.Substring(5, 1),
-                    "Key_7" => ClassEntryMethods.cAlphaNumCharacters.Substring(6, 1),
-                    "Key_8" => ClassEntryMethods.cAlphaNumCharacters.Substring(7, 1),
-                    "Key_9" => ClassEntryMethods.cAlphaNumCharacters.Substring(8, 1),
-                    "Key_10" => ClassEntryMethods.cAlphaNumCharacters.Substring(9, 1),
-                    "Key_11" => ClassEntryMethods.cAlphaNumCharacters.Substring(10, 1),
-                    "Key_12" => ClassEntryMethods.cAlphaNumCharacters.Substring(11, 1),
-                    "Key_13" => ClassEntryMethods.cAlphaNumCharacters.Substring(12, 1),
-                    "Key_14" => ClassEntryMethods.cAlphaNumCharacters.Substring(13, 1),
-                    "Key_15" => ClassEntryMethods.cAlphaNumCharacters.Substring(14, 1),
-                    "Key_16" => ClassEntryMethods.cAlphaNumCharacters.Substring(15, 1),
-                    "Key_17" => ClassEntryMethods.cAlphaNumCharacters.Substring(16, 1),
-                    "Key_18" => ClassEntryMethods.cAlphaNumCharacters.Substring(17, 1),
-                    "Key_19" => ClassEntryMethods.cAlphaNumCharacters.Substring(18, 1),
-                    "Key_20" => ClassEntryMethods.cAlphaNumCharacters.Substring(19, 1),
-                    "Key_21" => ClassEntryMethods.cAlphaNumCharacters.Substring(20, 1),
-                    "Key_22" => ClassEntryMethods.cAlphaNumCharacters.Substring(21, 1),
-                    "Key_23" => ClassEntryMethods.cAlphaNumCharacters.Substring(22, 1),
-                    "Key_24" => ClassEntryMethods.cAlphaNumCharacters.Substring(23, 1),
-                    "Key_25" => ClassEntryMethods.cAlphaNumCharacters.Substring(24, 1),
-                    "Key_26" => ClassEntryMethods.cAlphaNumCharacters.Substring(25, 1),
-                    "Key_27" => ClassEntryMethods.cAlphaNumCharacters.Substring(26, 1),
-                    "Key_28" => ClassEntryMethods.cAlphaNumCharacters.Substring(27, 1),
-                    "Key_29" => ClassEntryMethods.cAlphaNumCharacters.Substring(28, 1),
-                    "Key_30" => ClassEntryMethods.cAlphaNumCharacters.Substring(29, 1),
-                    "Key_31" => ClassEntryMethods.cAlphaNumCharacters.Substring(30, 1),
-                    "Key_32" => ClassEntryMethods.cAlphaNumCharacters.Substring(31, 1),
-                    "Key_33" => ClassEntryMethods.cAlphaNumCharacters.Substring(32, 1),
-                    "Key_34" => ClassEntryMethods.cAlphaNumCharacters.Substring(33, 1),
-                    "Key_35" => ClassEntryMethods.cAlphaNumCharacters.Substring(34, 1),
-                    "Key_36" => ClassEntryMethods.cAlphaNumCharacters.Substring(35, 1),
-                    "Key_37" => ClassEntryMethods.cAlphaNumCharacters.Substring(36, 1),
-                    "Key_38" => ClassEntryMethods.cAlphaNumCharacters.Substring(37, 1),
-                    "Key_39" => ClassEntryMethods.cAlphaNumCharacters.Substring(38, 1),
-                    "Key_40" => ClassEntryMethods.cAlphaNumCharacters.Substring(39, 1),
-                    "Key_41" => ClassEntryMethods.cAlphaNumCharacters.Substring(40, 1),
-                    "Key_42" => ClassEntryMethods.cAlphaNumCharacters.Substring(41, 1),
-                    "Key_43" => ClassEntryMethods.cAlphaNumCharacters.Substring(42, 1),
-                    "Key_44" => ClassEntryMethods.cAlphaNumCharacters.Substring(43, 1),
+                    "Key_1" => ClassKeyboardMethods.cAlphaNumCharacters[0],
+                    "Key_2" => ClassKeyboardMethods.cAlphaNumCharacters[1],
+                    "Key_3" => ClassKeyboardMethods.cAlphaNumCharacters[2],
+                    "Key_4" => ClassKeyboardMethods.cAlphaNumCharacters[3],
+                    "Key_5" => ClassKeyboardMethods.cAlphaNumCharacters[4],
+                    "Key_6" => ClassKeyboardMethods.cAlphaNumCharacters[5],
+                    "Key_7" => ClassKeyboardMethods.cAlphaNumCharacters[6],
+                    "Key_8" => ClassKeyboardMethods.cAlphaNumCharacters[7],
+                    "Key_9" => ClassKeyboardMethods.cAlphaNumCharacters[8],
+                    "Key_10" => ClassKeyboardMethods.cAlphaNumCharacters[9],
+                    "Key_11" => ClassKeyboardMethods.cAlphaNumCharacters[10],
+                    "Key_12" => ClassKeyboardMethods.cAlphaNumCharacters[11],
+                    "Key_13" => ClassKeyboardMethods.cAlphaNumCharacters[12],
+                    "Key_14" => ClassKeyboardMethods.cAlphaNumCharacters[13],
+                    "Key_15" => ClassKeyboardMethods.cAlphaNumCharacters[14],
+                    "Key_16" => ClassKeyboardMethods.cAlphaNumCharacters[15],
+                    "Key_17" => ClassKeyboardMethods.cAlphaNumCharacters[16],
+                    "Key_18" => ClassKeyboardMethods.cAlphaNumCharacters[17],
+                    "Key_19" => ClassKeyboardMethods.cAlphaNumCharacters[18],
+                    "Key_20" => ClassKeyboardMethods.cAlphaNumCharacters[19],
+                    "Key_21" => ClassKeyboardMethods.cAlphaNumCharacters[20],
+                    "Key_22" => ClassKeyboardMethods.cAlphaNumCharacters[21],
+                    "Key_23" => ClassKeyboardMethods.cAlphaNumCharacters[22],
+                    "Key_24" => ClassKeyboardMethods.cAlphaNumCharacters[23],
+                    "Key_25" => ClassKeyboardMethods.cAlphaNumCharacters[24],
+                    "Key_26" => ClassKeyboardMethods.cAlphaNumCharacters[25],
+                    "Key_27" => ClassKeyboardMethods.cAlphaNumCharacters[26],
+                    "Key_28" => ClassKeyboardMethods.cAlphaNumCharacters[27],
+                    "Key_29" => ClassKeyboardMethods.cAlphaNumCharacters[28],
+                    "Key_30" => ClassKeyboardMethods.cAlphaNumCharacters[29],
+                    "Key_31" => ClassKeyboardMethods.cAlphaNumCharacters[30],
+                    "Key_32" => ClassKeyboardMethods.cAlphaNumCharacters[31],
+                    "Key_33" => ClassKeyboardMethods.cAlphaNumCharacters[32],
+                    "Key_34" => ClassKeyboardMethods.cAlphaNumCharacters[33],
+                    "Key_35" => ClassKeyboardMethods.cAlphaNumCharacters[34],
+                    "Key_36" => ClassKeyboardMethods.cAlphaNumCharacters[35],
+                    "Key_37" => ClassKeyboardMethods.cAlphaNumCharacters[36],
+                    "Key_38" => ClassKeyboardMethods.cAlphaNumCharacters[37],
+                    "Key_39" => ClassKeyboardMethods.cAlphaNumCharacters[38],
+                    "Key_40" => ClassKeyboardMethods.cAlphaNumCharacters[39],
+                    "Key_41" => ClassKeyboardMethods.cAlphaNumCharacters[40],
+                    "Key_42" => ClassKeyboardMethods.cAlphaNumCharacters[41],
+                    "Key_43" => ClassKeyboardMethods.cAlphaNumCharacters[42],
+                    "Key_44" => ClassKeyboardMethods.cAlphaNumCharacters[43],
 
                     _ => button.AutomationId,
                 };

@@ -2,6 +2,10 @@
 {
     internal static class ClassKeyboardMethods
     {
+        // Keyboard layouts for alphanumeric input
+        public static string[] cAlphaNumCharacters = new string[44];
+        private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/_-, .";
+
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
 
@@ -103,6 +107,17 @@
             // Return the orientation, ensuring a non-null value
             Debug.WriteLine($"DisplayOrientation: {displayInfo.Orientation}");
             return displayInfo.Orientation.ToString() ?? "Unknown";
+        }
+
+        /// <summary>
+        /// Initializes the alphanumeric keyboard configuration for input operations.
+        /// </summary>
+        /// <remarks>Call this method before using alphanumeric keyboard features to ensure the keyboard
+        /// is set up with the appropriate character set. This method is typically required once during application
+        /// startup or before the first use of alphanumeric input functionality.</remarks>
+        public static void InitializeAlphanumericKeyboard()
+        {
+            cAlphaNumCharacters = cKeyboard_AZERTY_BE.Select(static c => c.ToString()).ToArray();
         }
 
         /// <summary>

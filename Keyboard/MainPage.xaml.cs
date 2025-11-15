@@ -23,8 +23,10 @@ namespace Keyboard
 
         public MainPage()
         {
-            // Initialize the number format settings based on the current culture - must be placed on the MainPage before InitializeComponent()
+            // Initialize the number format settings based on the current culture and the alphanumeric keyboard
+            // Must be placed on the MainPage before InitializeComponent()
             ClassEntryMethods.InitializeNumberFormat();
+            ClassKeyboardMethods.InitializeAlphanumericKeyboard();
 
             try
             {
