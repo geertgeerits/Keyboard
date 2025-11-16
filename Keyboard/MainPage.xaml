@@ -100,9 +100,9 @@
                         AutomationId="entTest1-Percentage"
                         MaxLength="6"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="100"/>
@@ -132,9 +132,9 @@
                         Placeholder="0 - 999999999999"
                         MaxLength="20"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999" MaxDecimalPlaces="0"/>
@@ -164,9 +164,9 @@
                         Placeholder="-999999999999.9999 - 999999999999.9999"
                         MaxLength="22"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="-999999999999.9999" MaxValue="999999999999.9999" MaxDecimalPlaces="4"/>
@@ -195,9 +195,9 @@
                         AutomationId="entTest4"
                         MaxLength="20"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="-999999999999.999" MaxValue="999999999999.999" MaxDecimalPlaces="3"/>
@@ -229,9 +229,9 @@
                         Placeholder="-999999999999.99 - 999999999999.99"
                         MaxLength="20"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>

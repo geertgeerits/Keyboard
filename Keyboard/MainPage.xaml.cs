@@ -141,11 +141,11 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the focus event for the numeric entry field, performing actions
+        /// Handles the focus event for the decimal numeric entry field, performing actions
         /// </summary>
         /// <param name="sender">The entry field that triggered the focus event.</param>
         /// <param name="e">The event data associated with the focus event.</param>
-        private async void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void DecimalNumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -167,11 +167,11 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// Entry unfocused event: format the text value for a decimal numeric entry field with the number separator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
+        private void DecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -198,7 +198,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        private void DecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
             if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
             {

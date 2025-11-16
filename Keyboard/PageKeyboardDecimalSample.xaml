@@ -55,9 +55,9 @@
                         Placeholder="0 - 100"
                         MaxLength="6"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="100"/>
@@ -81,9 +81,9 @@
                         Placeholder="0 - 999999999999.99"
                         MaxLength="20"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="0" MaxValue="999999999999.99"/>
@@ -144,15 +144,15 @@
                         x:Name="entTest5"
                         Style="{StaticResource NumericEntry}"
                         AutomationId="entTest5"
-                        Placeholder="-999999999999.99 - 999999999999.99"
-                        MaxLength="20"
+                        Placeholder="0 - FFFFFFFF"
+                        MaxLength="12"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="HexadecimalNumberEntryTextChanged"
+                        Focused="HexadecimalNumberEntryFocused"  
+                        Unfocused="HexadecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
-                                <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
+                                <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFFFFFF"/>
                             </EventTrigger>
                         </Entry.Triggers>
                         <Entry.GestureRecognizers>
@@ -173,9 +173,9 @@
                         Placeholder="-999999999999.99 - 999999999999.99"
                         MaxLength="20"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="DecimalNumberEntryTextChanged"
+                        Focused="DecimalNumberEntryFocused"  
+                        Unfocused="DecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionDecimal MinValue="-999999999999.99" MaxValue="999999999999.99"/>
@@ -197,6 +197,30 @@
 
             </Grid>
         </ScrollView>
+
+        <ContentView
+            x:Name="CustomKeyboardAlphanumericPortrait"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,215"
+            IsVisible="False">
+
+            <local:KeyboardAlphanumericPortrait
+                x:Name="RootKeyboardAlphanumericPortrait"
+                HeightRequest="215">
+            </local:KeyboardAlphanumericPortrait>
+        </ContentView>
+
+        <ContentView
+            x:Name="CustomKeyboardAlphanumericLandscape"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,110"
+            IsVisible="False">
+
+            <local:KeyboardAlphanumericLandscape
+                x:Name="RootKeyboardAlphanumericLandscape"
+                HeightRequest="110">
+            </local:KeyboardAlphanumericLandscape>
+        </ContentView>
 
         <ContentView
             x:Name="CustomKeyboardDecimalPortrait"
@@ -223,27 +247,27 @@
         </ContentView>
 
         <ContentView
-            x:Name="CustomKeyboardAlphanumericPortrait"
+            x:Name="CustomKeyboardHexadecimalPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,215"
+            AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <local:KeyboardAlphanumericPortrait
-                x:Name="RootKeyboardAlphanumericPortrait"
-                HeightRequest="215">
-            </local:KeyboardAlphanumericPortrait>
+            <local:KeyboardHexadecimalPortrait
+                x:Name="RootKeyboardHexadecimalPortrait"                
+                HeightRequest="250">
+            </local:KeyboardHexadecimalPortrait>
         </ContentView>
 
         <ContentView
-            x:Name="CustomKeyboardAlphanumericLandscape"
+            x:Name="CustomKeyboardHexadecimalLandscape"
             Style="{StaticResource BottomSheetKeyboard}"
             AbsoluteLayout.LayoutBounds="0,1,1,110"
             IsVisible="False">
 
-            <local:KeyboardAlphanumericLandscape
-                x:Name="RootKeyboardAlphanumericLandscape"
+            <local:KeyboardHexadecimalLandscape
+                x:Name="RootKeyboardHexadecimalLandscape"                
                 HeightRequest="110">
-            </local:KeyboardAlphanumericLandscape>
+            </local:KeyboardHexadecimalLandscape>
         </ContentView>
 
     </AbsoluteLayout>

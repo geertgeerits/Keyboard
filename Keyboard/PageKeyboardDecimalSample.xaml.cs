@@ -88,76 +88,29 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
+                // Hide/Show the custom keyboard bottom sheet when the entry field is focused
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+
                 switch (entry.AutomationId)
                 {
-                    case "entTest1-Percentage":
-                    case "entTest2":
-                    case "entTest5":
-                    case "entTest6":
-                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-                        break;
                     case "entTest3":
                     case "entTest4":
                         await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+                        break;
+                    case "entTest1-Percentage":
+                    case "entTest2":
+                    case "entTest6":
+                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                        break;
+                    case "entTest5":
+                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
                         break;
                 }
 #if IOS
                 entry.Focus();              // This will trigger the Focused event
 #endif
-            }
-        }
-
-        /// <summary>
-        /// Handles the focus event for the numeric entry field, performing actions
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void NumberEntryFocused(object sender, FocusEventArgs e)
-        {
-            if (sender is Entry entry)
-            {
-                _focusedEntry = entry;
-                cEntryAutomationId = entry.AutomationId;
-
-                // Set the unformatted number in the entry field
-                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
-
-                // Set the color of the entry field
-                ClassKeyboardMethods.SetEntryColorFocused(entry);
-
-                // Hide/Show the custom keyboard bottom sheet when the entry field is focused
-                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
-                await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-
-                // Scroll to the focused entry field in the scroll view
-                await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
-            }
-        }
-
-        /// <summary>
-        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
-        {
-            if (sender is Entry entry)
-            {
-#if WINDOWS
-                // Ignore false Unfocused events on Windows
-                if (entry.IsFocused)
-                {
-                    return;
-                }
-#endif
-                _focusedEntry = null;
-                cEntryAutomationId = entry.AutomationId;
-
-                // Set the formatted number in the entry field
-                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
-
-                // Restore the color of the entry field and format the number
-                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }
         }
 
@@ -175,7 +128,11 @@ namespace Keyboard
 
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+
+                // Scroll to the focused entry field in the scroll view
+                await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardAlphanumericPortrait.HeightRequest, RootKeyboardAlphanumericLandscape.HeightRequest);
             }
         }
 
@@ -201,13 +158,130 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Check if the value is numeric and clear result fields if the text have changed
+        /// Handles the focus event for the numeric entry field, performing actions
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        private async void DecimalNumberEntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                _focusedEntry = entry;
+                cEntryAutomationId = entry.AutomationId;
+
+                // Set the unformatted number in the entry field
+                await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
+
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorFocused(entry);
+
+                // Hide/Show the custom keyboard bottom sheet when the entry field is focused
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+                await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+
+                // Scroll to the focused entry field in the scroll view
+                await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
+            }
+        }
+
+        /// <summary>
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+#if WINDOWS
+                // Ignore false Unfocused events on Windows
+                if (entry.IsFocused)
+                {
+                    return;
+                }
+#endif
+                _focusedEntry = null;
+                cEntryAutomationId = entry.AutomationId;
+
+                // Set the formatted number in the entry field
+                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+
+                // Restore the color of the entry field and format the number
+                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
+            }
+        }
+
+        /// <summary>
+        /// Handles the focus event for the hexadecimal numeric entry field, performing actions
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private async void HexadecimalNumberEntryFocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+                _focusedEntry = entry;
+                cEntryAutomationId = entry.AutomationId;
+
+                // Set the color of the entry field
+                ClassKeyboardMethods.SetEntryColorFocused(entry);
+
+                // Hide/Show the custom keyboard bottom sheet when the entry field is focused
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+
+                // Scroll to the focused entry field in the scroll view
+                await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, entry, "grdTitleView", RootKeyboardHexadecimalPortrait.HeightRequest, RootKeyboardHexadecimalLandscape.HeightRequest);
+            }
+        }
+
+        /// <summary>
+        /// Entry unfocused event: format the text value for a hexadecimal numeric entry field with the number separator
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HexadecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
+        {
+            if (sender is Entry entry)
+            {
+#if WINDOWS
+                // Ignore false Unfocused events on Windows
+                if (entry.IsFocused)
+                {
+                    return;
+                }
+#endif
+                _focusedEntry = null;
+                cEntryAutomationId = entry.AutomationId;
+
+                // Restore the color of the entry field and format the number
+                ClassKeyboardMethods.SetEntryColorUnfocused(entry);
+            }
+        }
+
+        /// <summary>
+        /// Check if the value is decimal numeric and clear result fields if the text have changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
             if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
+            {
+                ((Entry)sender).Text = e.OldTextValue;
+            }
+        }
+
+        /// <summary>
+        /// Check if the value is hexadecimal numeric and clear result fields if the text have changed
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HexadecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!ClassEntryMethods.IsHexadecimalNumber(e.NewTextValue))
             {
                 ((Entry)sender).Text = e.OldTextValue;
             }

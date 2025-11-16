@@ -100,7 +100,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void NumberEntryFocused(object sender, FocusEventArgs e)
+        private async void HexadecimalNumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -123,7 +123,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryUnfocused(object sender, FocusEventArgs e)
+        private void HexadecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -147,7 +147,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void NumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        private void HexadecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
         {
             if (!ClassEntryMethods.IsHexadecimalNumber(e.NewTextValue))
             {

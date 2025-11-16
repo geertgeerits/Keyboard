@@ -55,9 +55,9 @@
                         Placeholder="0 - FF"
                         MaxLength="2"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="HexadecimalNumberEntryTextChanged"
+                        Focused="HexadecimalNumberEntryFocused"  
+                        Unfocused="HexadecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FF"/>
@@ -81,9 +81,9 @@
                         Placeholder="0 - FFFF"
                         MaxLength="4"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="HexadecimalNumberEntryTextChanged"
+                        Focused="HexadecimalNumberEntryFocused"  
+                        Unfocused="HexadecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFF"/>
@@ -107,9 +107,9 @@
                         Placeholder="0 - FFFFFF"
                         MaxLength="6"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="HexadecimalNumberEntryTextChanged"
+                        Focused="HexadecimalNumberEntryFocused"  
+                        Unfocused="HexadecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFFFF"/>
@@ -133,9 +133,9 @@
                         Placeholder="0 - FFFFFFFF"
                         MaxLength="12"
                         Completed="GoToNextField"
-                        TextChanged="NumberEntryTextChanged"
-                        Focused="NumberEntryFocused"  
-                        Unfocused="NumberEntryUnfocused">
+                        TextChanged="HexadecimalNumberEntryTextChanged"
+                        Focused="HexadecimalNumberEntryFocused"  
+                        Unfocused="HexadecimalNumberEntryUnfocused">
                         <Entry.Triggers>
                             <EventTrigger Event="TextChanged">
                                 <local:ValidationTriggerActionHexadecimal MinValue="0" MaxValue="FFFFFFFF"/>
