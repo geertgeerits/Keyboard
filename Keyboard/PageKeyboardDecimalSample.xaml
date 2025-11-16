@@ -225,12 +225,12 @@
         <ContentView
             x:Name="CustomKeyboardAlphanumericPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,160"
+            AbsoluteLayout.LayoutBounds="0,1,1,215"
             IsVisible="False">
 
             <local:KeyboardAlphanumericPortrait
                 x:Name="RootKeyboardAlphanumericPortrait"
-                HeightRequest="160">
+                HeightRequest="215">
             </local:KeyboardAlphanumericPortrait>
         </ContentView>
 

@@ -2,10 +2,10 @@
 {
     internal static class ClassKeyboardMethods
     {
-        // Keyboard layouts for alphanumeric input
-        public static string[] cAlphaNumCharacters = new string[44];
-        private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/_-, .";
-        private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM?!/_-, .";
+        // Keyboard layouts for alphanumeric input (space is at position 45 in the string= index 44 in the array)
+        public static string[] cAlphaNumCharacters = new string[48];
+        private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!%/=_-, .@#+";
+        private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKLZXCVBNM?!%/=_-, .@#+";
 
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;

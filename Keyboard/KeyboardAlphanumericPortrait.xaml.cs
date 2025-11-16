@@ -47,6 +47,11 @@ namespace Keyboard
         private string _button_42_Text = string.Empty;
         private string _button_43_Text = string.Empty;
         private string _button_44_Text = string.Empty;
+        private string _button_45_Text = string.Empty;
+        private string _button_46_Text = string.Empty;
+        private string _button_47_Text = string.Empty;
+        private string _button_48_Text = string.Empty;
+        private string _button_49_Text = string.Empty;
 
         // Properties for the button texts of the keyboard
         public string Button_1_Text
@@ -488,6 +493,56 @@ namespace Keyboard
             }
         }
 
+        public string Button_45_Text
+        {
+            get => _button_45_Text;
+            set
+            {
+                _button_45_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_46_Text
+        {
+            get => _button_46_Text;
+            set
+            {
+                _button_46_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_47_Text
+        {
+            get => _button_47_Text;
+            set
+            {
+                _button_47_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_48_Text
+        {
+            get => _button_48_Text;
+            set
+            {
+                _button_48_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_49_Text
+        {
+            get => _button_49_Text;
+            set
+            {
+                _button_49_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
         /// <summary>
         /// Set the BindingContext
         /// </summary>
@@ -542,6 +597,11 @@ namespace Keyboard
             Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[41];
             Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[42];
             Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[43];
+            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[44];
+            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[45];
+            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
+            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
+            Button_49_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
         }
 
         /// <summary>
@@ -601,6 +661,11 @@ namespace Keyboard
                     "Key_42" => ClassKeyboardMethods.cAlphaNumCharacters[41],
                     "Key_43" => ClassKeyboardMethods.cAlphaNumCharacters[42],
                     "Key_44" => ClassKeyboardMethods.cAlphaNumCharacters[43],
+                    "Key_45" => ClassKeyboardMethods.cAlphaNumCharacters[44],
+                    "Key_46" => ClassKeyboardMethods.cAlphaNumCharacters[45],
+                    "Key_47" => ClassKeyboardMethods.cAlphaNumCharacters[46],
+                    "Key_48" => ClassKeyboardMethods.cAlphaNumCharacters[47],
+                    "Key_49" => ClassKeyboardMethods.cAlphaNumCharacters[48],
 
                     _ => button.AutomationId,
                 };
