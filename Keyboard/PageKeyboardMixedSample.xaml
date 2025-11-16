@@ -3,7 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
     xmlns:local="clr-namespace:Keyboard"  
-    x:Class="Keyboard.PageKeyboardDecimalSample"  
+    x:Class="Keyboard.PageKeyboardMixedSample"  
     Loaded="OnPageLoaded"
     Shell.BackgroundColor="{AppThemeBinding Light=LightGreen, Dark=Green}">
 
@@ -213,12 +213,12 @@
         <ContentView
             x:Name="CustomKeyboardAlphanumericLandscape"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,110"
+            AbsoluteLayout.LayoutBounds="0,1,1,215"
             IsVisible="False">
 
             <local:KeyboardAlphanumericLandscape
                 x:Name="RootKeyboardAlphanumericLandscape"
-                HeightRequest="110">
+                HeightRequest="215">
             </local:KeyboardAlphanumericLandscape>
         </ContentView>
 

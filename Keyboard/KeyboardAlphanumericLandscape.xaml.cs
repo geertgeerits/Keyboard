@@ -1,10 +1,573 @@
+using System.Reflection;
+
 namespace Keyboard
 {
     public partial class KeyboardAlphanumericLandscape : ContentView
     {
+        // Declare variables for binding properties
+        private string _button_1_Text = string.Empty;
+        private string _button_2_Text = string.Empty;
+        private string _button_3_Text = string.Empty;
+        private string _button_4_Text = string.Empty;
+        private string _button_5_Text = string.Empty;
+        private string _button_6_Text = string.Empty;
+        private string _button_7_Text = string.Empty;
+        private string _button_8_Text = string.Empty;
+        private string _button_9_Text = string.Empty;
+        private string _button_10_Text = string.Empty;
+        private string _button_11_Text = string.Empty;
+        private string _button_12_Text = string.Empty;
+        private string _button_13_Text = string.Empty;
+        private string _button_14_Text = string.Empty;
+        private string _button_15_Text = string.Empty;
+        private string _button_16_Text = string.Empty;
+        private string _button_17_Text = string.Empty;
+        private string _button_18_Text = string.Empty;
+        private string _button_19_Text = string.Empty;
+        private string _button_20_Text = string.Empty;
+        private string _button_21_Text = string.Empty;
+        private string _button_22_Text = string.Empty;
+        private string _button_23_Text = string.Empty;
+        private string _button_24_Text = string.Empty;
+        private string _button_25_Text = string.Empty;
+        private string _button_26_Text = string.Empty;
+        private string _button_27_Text = string.Empty;
+        private string _button_28_Text = string.Empty;
+        private string _button_29_Text = string.Empty;
+        private string _button_30_Text = string.Empty;
+        private string _button_31_Text = string.Empty;
+        private string _button_32_Text = string.Empty;
+        private string _button_33_Text = string.Empty;
+        private string _button_34_Text = string.Empty;
+        private string _button_35_Text = string.Empty;
+        private string _button_36_Text = string.Empty;
+        private string _button_37_Text = string.Empty;
+        private string _button_38_Text = string.Empty;
+        private string _button_39_Text = string.Empty;
+        private string _button_40_Text = string.Empty;
+        private string _button_41_Text = string.Empty;
+        private string _button_42_Text = string.Empty;
+        private string _button_43_Text = string.Empty;
+        private string _button_44_Text = string.Empty;
+        private string _button_45_Text = string.Empty;
+        private string _button_46_Text = string.Empty;
+        private string _button_47_Text = string.Empty;
+        private string _button_48_Text = string.Empty;
+        private string _button_49_Text = string.Empty;
+
+        // Properties for the button texts of the keyboard
+        public string Button_1_Text
+        {
+            get => _button_1_Text;
+            set
+            {
+                _button_1_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_2_Text
+        {
+            get => _button_2_Text;
+            set
+            {
+                _button_2_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_3_Text
+        {
+            get => _button_3_Text;
+            set
+            {
+                _button_3_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_4_Text
+        {
+            get => _button_4_Text;
+            set
+            {
+                _button_4_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_5_Text
+        {
+            get => _button_5_Text;
+            set
+            {
+                _button_5_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_6_Text
+        {
+            get => _button_6_Text;
+            set
+            {
+                _button_6_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_7_Text
+        {
+            get => _button_7_Text;
+            set
+            {
+                _button_7_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_8_Text
+        {
+            get => _button_8_Text;
+            set
+            {
+                _button_8_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_9_Text
+        {
+            get => _button_9_Text;
+            set
+            {
+                _button_9_Text = value;
+                OnPropertyChanged();
+            }
+        }
+        public string Button_10_Text
+        {
+            get => _button_10_Text;
+            set
+            {
+                _button_10_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_11_Text
+        {
+            get => _button_11_Text;
+            set
+            {
+                _button_11_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_12_Text
+        {
+            get => _button_12_Text;
+            set
+            {
+                _button_12_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_13_Text
+        {
+            get => _button_13_Text;
+            set
+            {
+                _button_13_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_14_Text
+        {
+            get => _button_14_Text;
+            set
+            {
+                _button_14_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_15_Text
+        {
+            get => _button_15_Text;
+            set
+            {
+                _button_15_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_16_Text
+        {
+            get => _button_16_Text;
+            set
+            {
+                _button_16_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_17_Text
+        {
+            get => _button_17_Text;
+            set
+            {
+                _button_17_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_18_Text
+        {
+            get => _button_18_Text;
+            set
+            {
+                _button_18_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_19_Text
+        {
+            get => _button_19_Text;
+            set
+            {
+                _button_19_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_20_Text
+        {
+            get => _button_20_Text;
+            set
+            {
+                _button_20_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_21_Text
+        {
+            get => _button_21_Text;
+            set
+            {
+                _button_21_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_22_Text
+        {
+            get => _button_22_Text;
+            set
+            {
+                _button_22_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_23_Text
+        {
+            get => _button_23_Text;
+            set
+            {
+                _button_23_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_24_Text
+        {
+            get => _button_24_Text;
+            set
+            {
+                _button_24_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_25_Text
+        {
+            get => _button_25_Text;
+            set
+            {
+                _button_25_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_26_Text
+        {
+            get => _button_26_Text;
+            set
+            {
+                _button_26_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_27_Text
+        {
+            get => _button_27_Text;
+            set
+            {
+                _button_27_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_28_Text
+        {
+            get => _button_28_Text;
+            set
+            {
+                _button_28_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_29_Text
+        {
+            get => _button_29_Text;
+            set
+            {
+                _button_29_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_30_Text
+        {
+            get => _button_30_Text;
+            set
+            {
+                _button_30_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_31_Text
+        {
+            get => _button_31_Text;
+            set
+            {
+                _button_31_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_32_Text
+        {
+            get => _button_32_Text;
+            set
+            {
+                _button_32_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_33_Text
+        {
+            get => _button_33_Text;
+            set
+            {
+                _button_33_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_34_Text
+        {
+            get => _button_34_Text;
+            set
+            {
+                _button_34_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_35_Text
+        {
+            get => _button_35_Text;
+            set
+            {
+                _button_35_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_36_Text
+        {
+            get => _button_36_Text;
+            set
+            {
+                _button_36_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_37_Text
+        {
+            get => _button_37_Text;
+            set
+            {
+                _button_37_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_38_Text
+        {
+            get => _button_38_Text;
+            set
+            {
+                _button_38_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_39_Text
+        {
+            get => _button_39_Text;
+            set
+            {
+                _button_39_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_40_Text
+        {
+            get => _button_40_Text;
+            set
+            {
+                _button_40_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_41_Text
+        {
+            get => _button_41_Text;
+            set
+            {
+                _button_41_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_42_Text
+        {
+            get => _button_42_Text;
+            set
+            {
+                _button_42_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_43_Text
+        {
+            get => _button_43_Text;
+            set
+            {
+                _button_43_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_44_Text
+        {
+            get => _button_44_Text;
+            set
+            {
+                _button_44_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_45_Text
+        {
+            get => _button_45_Text;
+            set
+            {
+                _button_45_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_46_Text
+        {
+            get => _button_46_Text;
+            set
+            {
+                _button_46_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_47_Text
+        {
+            get => _button_47_Text;
+            set
+            {
+                _button_47_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_48_Text
+        {
+            get => _button_48_Text;
+            set
+            {
+                _button_48_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_49_Text
+        {
+            get => _button_49_Text;
+            set
+            {
+                _button_49_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /// <summary>
+        /// Set the BindingContext
+        /// </summary>
         public KeyboardAlphanumericLandscape()
         {
             InitializeComponent();
+
+            // Set the BindingContext to this (the current page)
+            this.BindingContext = this;
+
+            // Assign button texts in a loop using reflection
+            for (int i = 1; i <= 49; i++)
+            {
+                PropertyInfo? prop = GetType().GetProperty($"Button_{i}_Text");
+                if (prop == null)
+                    continue;
+
+                int index = i - 1;
+                if (index >= 0 && index < ClassKeyboardMethods.cAlphaNumCharacters.Length)
+                {
+                    prop.SetValue(this, ClassKeyboardMethods.cAlphaNumCharacters[index]);
+                }
+            }
         }
 
         /// <summary>
@@ -18,54 +581,38 @@ namespace Keyboard
 
             if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
             {
-                cKeyPressed = button.AutomationId switch
-                {
-                    "btn-1" => "1",
-                    "btn-2" => "2",
-                    "btn-3" => "3",
-                    "btn-4" => "4",
-                    "btn-5" => "5",
-                    "btn-6" => "6",
-                    "btn-7" => "7",
-                    "btn-8" => "8",
-                    "btn-9" => "9",
-                    "btn-0" => "0",
-                    "btn-A" => "A",
-                    "btn-B" => "B",
-                    "btn-C" => "C",
-                    "btn-D" => "D",
-                    "btn-E" => "E",
-                    "btn-F" => "F",
-                    "btn-G" => "G",
-                    "btn-H" => "H",
-                    "btn-I" => "I",
-                    "btn-J" => "J",
-                    "btn-K" => "K",
-                    "btn-L" => "L",
-                    "btn-M" => "M",
-                    "btn-N" => "N",
-                    "btn-O" => "O",
-                    "btn-P" => "P",
-                    "btn-Q" => "Q",
-                    "btn-R" => "R",
-                    "btn-S" => "S",
-                    "btn-T" => "T",
-                    "btn-U" => "U",
-                    "btn-V" => "V",
-                    "btn-W" => "W",
-                    "btn-X" => "X",
-                    "btn-Y" => "Y",
-                    "btn-Z" => "Z",
-                    _ => button.AutomationId,
-                };
-            }
+                string automationId = button.AutomationId;
 
-            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
+                if (automationId.StartsWith("Key_", StringComparison.OrdinalIgnoreCase))
+                {
+                    string numberPart = automationId[4..];
+                    if (int.TryParse(numberPart, out int keyNum))
+                    {
+                        int index = keyNum - 1;
+                        if (index >= 0 && index < ClassKeyboardMethods.cAlphaNumCharacters.Length)
+                        {
+                            cKeyPressed = ClassKeyboardMethods.cAlphaNumCharacters[index];
+                        }
+                        else
+                        {
+                            cKeyPressed = automationId; // fallback if out of range
+                        }
+                    }
+                    else
+                    {
+                        cKeyPressed = automationId; // fallback if parse fails
+                    }
+                }
+                else
+                {
+                    cKeyPressed = automationId; // not a Key_<n> id
+                }
+            }
+            else if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
             {
                 cKeyPressed = imageButton.AutomationId;
             }
 
-            // Send the message with the key pressed to the page
             try
             {
                 WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));

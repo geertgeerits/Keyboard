@@ -6,8 +6,9 @@
         public static string[] cAlphaNumCharacters = new string[48];
         // Index in array (space at 44)                       0123456789012345678901234567890123456789012345678
         // Position in string (space at 45)                   1234567890123456789012345678901234567890123456789
-        private static readonly string cKeyboard_ABCDEF_XX = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!%/=_-, .@#+";
-        private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!%/=_-, .@#+";
+        private static readonly string cKeyboard_ABCDEF_XX = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!%/:_-, .@#+";
+        private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!%/:_-, .@#+";
+        private static readonly string cKeyboard_QWERTY_UK = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#%";
         private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM?!%/_-, .@#+";
 
         // Enable color change on focused Entry fields
@@ -126,6 +127,7 @@
             cAlphaNumCharacters = cLayout switch
             {
                 "AZERTY_BE" => cKeyboard_AZERTY_BE.Select(static c => c.ToString()).ToArray(),
+                "QWERTY_UK" => cKeyboard_QWERTY_UK.Select(static c => c.ToString()).ToArray(),
                 "QWERTY_US" => cKeyboard_QWERTY_US.Select(static c => c.ToString()).ToArray(),
                 _ => cKeyboard_ABCDEF_XX.Select(static c => c.ToString()).ToArray(),
             };
@@ -269,13 +271,13 @@
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 150, Easing.SinIn);    // Slide down
+                            await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 100, Easing.SinIn);    // Slide down
                             bottomSheetLandscape.IsVisible = false;
                         }
                         else
                         {
                             bottomSheetLandscape.IsVisible = true;
-                            await bottomSheetLandscape.TranslateToAsync(0, 0, length: 150, Easing.SinOut);   // Slide up
+                            await bottomSheetLandscape.TranslateToAsync(0, 0, length: 100, Easing.SinOut);   // Slide up
                         }
                         break;
                     }
@@ -283,13 +285,13 @@
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 150, Easing.SinIn);   // Slide down
+                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 100, Easing.SinIn);   // Slide down
                             bottomSheetPortrait.IsVisible = false;
                         }
                         else
                         {
                             bottomSheetPortrait.IsVisible = true;
-                            await bottomSheetPortrait.TranslateToAsync(0, 0, length: 150, Easing.SinOut);    // Slide up
+                            await bottomSheetPortrait.TranslateToAsync(0, 0, length: 100, Easing.SinOut);    // Slide up
                         }
                         break;
                     }
@@ -318,26 +320,26 @@
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 150, Easing.SinIn);  // Slide down
+                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 100, Easing.SinIn);  // Slide down
                             bottomSheetPortrait.IsVisible = false;
                             await Task.Delay(300);                                                          // Wait for the slide down animation to complete
                         }
 
                         bottomSheetLandscape.IsVisible = true;
-                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 150, Easing.SinOut);      // Slide up
+                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 100, Easing.SinOut);      // Slide up
                         break;
                     }
                 default:
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateToAsync(0, 250, length: 150, Easing.SinIn);
+                            await bottomSheetLandscape.TranslateToAsync(0, 250, length: 100, Easing.SinIn);
                             bottomSheetLandscape.IsVisible = false;
                             await Task.Delay(300);
                         }
 
                         bottomSheetPortrait.IsVisible = true;
-                        await bottomSheetPortrait.TranslateToAsync(0, 0, length: 150, Easing.SinOut);
+                        await bottomSheetPortrait.TranslateToAsync(0, 0, length: 100, Easing.SinOut);
                         break;
                     }
             }

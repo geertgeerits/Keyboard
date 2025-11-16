@@ -85,6 +85,9 @@
 	  <Compile Update="KeyboardDecimalPortrait.xaml.cs">
 	    <DependentUpon>KeyboardDecimalPortrait.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="PageKeyboardMixedSample.xaml.cs">
+	    <DependentUpon>PageKeyboardMixedSample.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="PageKeyboardHexadecimalSample.xaml.cs">
 	    <DependentUpon>PageKeyboardHexadecimalSample.xaml</DependentUpon>
 	  </Compile>
@@ -109,7 +112,7 @@
 	  <MauiXaml Update="KeyboardHexadecimalPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="PageKeyboardDecimalSample.xaml">
+	  <MauiXaml Update="PageKeyboardMixedSample.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PageKeyboardHexadecimalSample.xaml">

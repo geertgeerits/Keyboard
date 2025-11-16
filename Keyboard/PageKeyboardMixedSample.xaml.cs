@@ -1,12 +1,12 @@
 namespace Keyboard
 {
-    public partial class PageKeyboardDecimalSample : ContentPage
+    public partial class PageKeyboardMixedSample : ContentPage
     {
         // Declare variables
         private string cEntryAutomationId = string.Empty;
         private Entry? _focusedEntry;
 
-        public PageKeyboardDecimalSample()
+        public PageKeyboardMixedSample()
     	{
     		InitializeComponent();
 
