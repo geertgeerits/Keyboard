@@ -26,7 +26,7 @@ namespace Keyboard
             // Initialize the number format settings based on the current culture and the alphanumeric keyboard
             // Must be placed on the MainPage before InitializeComponent()
             ClassEntryMethods.InitializeNumberFormat();
-            ClassKeyboardMethods.InitializeAlphanumericKeyboard();
+            ClassKeyboardMethods.SelectAlphanumericKeyboardLayout("QWERTY_US");
 
             try
             {

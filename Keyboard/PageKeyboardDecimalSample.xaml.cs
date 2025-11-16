@@ -88,11 +88,6 @@ namespace Keyboard
         {
             if (sender is Entry entry)
             {
-                // Hide/Show the custom keyboard bottom sheet when the entry field is focused
-                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
-                await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
-
                 switch (entry.AutomationId)
                 {
                     case "entTest3":
@@ -351,8 +346,9 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                     await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+                    await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                    await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
                 }
                 else if (cKey == "btnShift")
                 {
@@ -368,6 +364,5 @@ namespace Keyboard
                 }
             }
         }
-
     }
 }
