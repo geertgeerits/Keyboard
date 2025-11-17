@@ -4,12 +4,14 @@
     {
         // Keyboard layouts for alphanumeric input
         public static string[] cAlphaNumCharacters = new string[48];
+
         // Index in array (space at 44)                       0123456789012345678901234567890123456789012345678
         // Position in string (space at 45)                   1234567890123456789012345678901234567890123456789
         private static readonly string cKeyboard_ABCDEF_XX = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!%/:_-, .@#+";
         private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!%/:_-, .@#+";
         private static readonly string cKeyboard_QWERTY_UK = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#%";
         private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM?!%/_-, .@#+";
+        private static readonly string cKeyboard_OTHER =     "1234567890+×÷=/_<>[]!@#€%^&*()-'\":;,?.          Z";
 
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
@@ -126,11 +128,14 @@
         {
             cAlphaNumCharacters = cLayout switch
             {
+                "OTHER" => cKeyboard_OTHER.Select(static c => c.ToString()).ToArray(),
                 "AZERTY_BE" => cKeyboard_AZERTY_BE.Select(static c => c.ToString()).ToArray(),
                 "QWERTY_UK" => cKeyboard_QWERTY_UK.Select(static c => c.ToString()).ToArray(),
                 "QWERTY_US" => cKeyboard_QWERTY_US.Select(static c => c.ToString()).ToArray(),
                 _ => cKeyboard_ABCDEF_XX.Select(static c => c.ToString()).ToArray(),
             };
+
+            ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters.AsSpan();
         }
 
         /// <summary>

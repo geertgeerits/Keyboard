@@ -143,7 +143,7 @@ namespace Keyboard
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
-                await Task.Delay(200);  // Small delay to let the bottom sheet hide animation complete
+                await Task.Delay(150);  // Small delay to let the bottom sheet hide animation complete
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
 
                 // Scroll to the focused entry field in the scroll view
@@ -194,7 +194,7 @@ namespace Keyboard
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
-                await Task.Delay(200);  // Small delay to let the bottom sheet hide animation complete
+                await Task.Delay(150);  // Small delay to let the bottom sheet hide animation complete
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 // Scroll to the focused entry field in the scroll view
@@ -248,7 +248,7 @@ namespace Keyboard
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-                await Task.Delay(200);  // Small delay to let the bottom sheet hide animation complete
+                await Task.Delay(150);  // Small delay to let the bottom sheet hide animation complete
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
 
                 // Scroll to the focused entry field in the scroll view

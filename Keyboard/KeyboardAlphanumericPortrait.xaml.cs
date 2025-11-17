@@ -553,10 +553,10 @@ namespace Keyboard
             InitializeComponent();
 
             // Set the BindingContext to this (the current page)
-            this.BindingContext = this;
+            BindingContext = this;
 
             // Assign button texts in a loop using reflection
-            for (int i = 1; i <= 49; i++)
+            for (int i = 1; i <= ClassKeyboardMethods.cAlphaNumCharacters.Length; i++)
             {
                 PropertyInfo? prop = GetType().GetProperty($"Button_{i}_Text");
                 if (prop == null)
