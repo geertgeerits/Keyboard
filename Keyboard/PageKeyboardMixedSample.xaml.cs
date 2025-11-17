@@ -5,6 +5,7 @@ namespace Keyboard
         // Declare variables
         private string cEntryAutomationId = string.Empty;
         private Entry? _focusedEntry;
+        private bool bShiftKeyEnabled;
 
         public PageKeyboardMixedSample()
     	{
@@ -31,20 +32,19 @@ namespace Keyboard
                 _ = BtnKeyboardClicked(message.Value);
                 Debug.WriteLine($"Received message: {message.Value}");
             });
-
-            // Show the bottom sheet when the page is appearing
-            _ = ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
         /// To do when the page is disappearing
         /// </summary>
-        protected override void OnDisappearing()
+        protected async override void OnDisappearing()
         {
             base.OnDisappearing();
 
             // Hide the bottom sheet when the page is disappearing
-            _ = ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+            await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
 
             // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
             DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
@@ -70,11 +70,12 @@ namespace Keyboard
         /// <param name="e"></param>
         private async void OnMainDisplayInfoChanged(object? sender, DisplayInfoChangedEventArgs e)
         {
-            await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-
-            // Scroll to the focused entry field in the scroll view
             if (_focusedEntry is not null)
             {
+                // Show the appropriate keyboard bottom sheet for the focused entry field
+                await ShowKeyboard(_focusedEntry);
+
+                // Scroll to the focused entry field in the scroll view
                 await ClassKeyboardMethods.ScrollEntryToPosition(scrollView, _focusedEntry, "grdTitleView", RootKeyboardDecimalPortrait.HeightRequest, RootKeyboardDecimalLandscape.HeightRequest);
             }
         }
@@ -86,7 +87,27 @@ namespace Keyboard
         /// <param name="args"></param>
         private async void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
         {
+            if (_focusedEntry is not null)
+            {
+                await ShowKeyboard(_focusedEntry);
+            }
+
             if (sender is Entry entry)
+            {
+#if IOS
+                entry.Focus();              // This will trigger the Focused event
+#endif
+            }
+        }
+
+        /// <summary>
+        /// Show the keyboard bottom sheet
+        /// </summary>
+        /// <param name="entry"></param>
+        /// <returns></returns>
+        private async Task ShowKeyboard(Entry entry)
+        {
+            if (entry is not null)
             {
                 switch (entry.AutomationId)
                 {
@@ -103,9 +124,6 @@ namespace Keyboard
                         await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
                         break;
                 }
-#if IOS
-                entry.Focus();              // This will trigger the Focused event
-#endif
             }
         }
 
@@ -120,10 +138,12 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
+                bShiftKeyEnabled = false;
 
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+                await Task.Delay(200);  // Small delay to let the bottom sheet hide animation complete
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
 
                 // Scroll to the focused entry field in the scroll view
@@ -163,6 +183,7 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
+                bShiftKeyEnabled = false;
 
                 // Set the unformatted number in the entry field
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
@@ -173,6 +194,7 @@ namespace Keyboard
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+                await Task.Delay(200);  // Small delay to let the bottom sheet hide animation complete
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
                 // Scroll to the focused entry field in the scroll view
@@ -218,6 +240,7 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
+                bShiftKeyEnabled = false;
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
@@ -225,6 +248,7 @@ namespace Keyboard
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                await Task.Delay(200);  // Small delay to let the bottom sheet hide animation complete
                 await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
 
                 // Scroll to the focused entry field in the scroll view
@@ -352,7 +376,7 @@ namespace Keyboard
                 }
                 else if (cKey == "btnShift")
                 {
-                    // Do something for shift key if needed
+                    bShiftKeyEnabled = !bShiftKeyEnabled;
                 }
                 else if (cKey == "btnReturn")
                 {
@@ -360,6 +384,16 @@ namespace Keyboard
                 }
                 else
                 {
+                    if (bShiftKeyEnabled)
+                    {
+                        // Validate input: must be exactly one character
+                        if (!string.IsNullOrEmpty(cKey) && cKey.Length == 1)
+                        {
+                            // Convert to lowercase
+                            cKey = cKey.ToLower();
+                        }
+                    }
+
                     ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
                 }
             }
