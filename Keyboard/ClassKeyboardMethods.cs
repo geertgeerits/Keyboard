@@ -135,7 +135,7 @@
                 _ => cKeyboard_ABCDEF_XX.Select(static c => c.ToString()).ToArray(),
             };
 
-            ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters.AsSpan();
+            //ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters.AsSpan();
         }
 
         /// <summary>
@@ -276,13 +276,13 @@
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 100, Easing.SinIn);    // Slide down
+                            await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 10, Easing.Linear);    // Slide down
                             bottomSheetLandscape.IsVisible = false;
                         }
                         else
                         {
                             bottomSheetLandscape.IsVisible = true;
-                            await bottomSheetLandscape.TranslateToAsync(0, 0, length: 100, Easing.SinOut);   // Slide up
+                            await bottomSheetLandscape.TranslateToAsync(0, 0, length: 10, Easing.Linear);   // Slide up
                         }
                         break;
                     }
@@ -290,13 +290,13 @@
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 100, Easing.SinIn);   // Slide down
+                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 10, Easing.Linear);   // Slide down
                             bottomSheetPortrait.IsVisible = false;
                         }
                         else
                         {
                             bottomSheetPortrait.IsVisible = true;
-                            await bottomSheetPortrait.TranslateToAsync(0, 0, length: 100, Easing.SinOut);    // Slide up
+                            await bottomSheetPortrait.TranslateToAsync(0, 0, length: 10, Easing.Linear);    // Slide up
                         }
                         break;
                     }
@@ -325,26 +325,26 @@
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 100, Easing.SinIn);  // Slide down
+                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 10, Easing.Linear);  // Slide down
                             bottomSheetPortrait.IsVisible = false;
                             await Task.Delay(300);                                                          // Wait for the slide down animation to complete
                         }
 
                         bottomSheetLandscape.IsVisible = true;
-                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 100, Easing.SinOut);      // Slide up
+                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 10, Easing.Linear);      // Slide up
                         break;
                     }
                 default:
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateToAsync(0, 250, length: 100, Easing.SinIn);
+                            await bottomSheetLandscape.TranslateToAsync(0, 250, length: 10, Easing.Linear);
                             bottomSheetLandscape.IsVisible = false;
                             await Task.Delay(300);
                         }
 
                         bottomSheetPortrait.IsVisible = true;
-                        await bottomSheetPortrait.TranslateToAsync(0, 0, length: 100, Easing.SinOut);
+                        await bottomSheetPortrait.TranslateToAsync(0, 0, length: 10, Easing.Linear);
                         break;
                     }
             }
