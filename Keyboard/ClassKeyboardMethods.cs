@@ -5,8 +5,8 @@
         // Keyboard layouts for alphanumeric input
         public static string[] cAlphaNumCharacters = new string[48];
 
-        // Index in array (space at 44)                       0123456789012345678901234567890123456789012345678
-        // Position in string (space at 45)                   1234567890123456789012345678901234567890123456789
+        // The key 'space' is at index 44 zero based and 45 one based
+        //                                                    0123456789012345678901234567890123456789012345678
         private static readonly string cKeyboard_ABCDEF_XX = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!%/:_-, .@#+";
         private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!%/:_-, .@#+";
         private static readonly string cKeyboard_QWERTY_UK = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#%";
@@ -135,7 +135,8 @@
                 _ => cKeyboard_ABCDEF_XX.Select(static c => c.ToString()).ToArray(),
             };
 
-            //ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters.AsSpan();
+            // Convert to ReadOnlySpan for performance optimization
+            ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
         }
 
         /// <summary>

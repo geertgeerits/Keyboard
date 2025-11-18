@@ -21,6 +21,15 @@
             Style="{StaticResource KeyAlphanumericPortraitButton}"
             Grid.Column="1"
             Grid.Row="1"
+            AutomationId="Key_0"
+            Text="{Binding Button_0_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"  
+            Grid.Row="1"
             AutomationId="Key_1"
             Text="{Binding Button_1_Text}"
             Clicked="BtnKey_Clicked">
@@ -28,7 +37,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="2"  
+            Grid.Column="3"  
             Grid.Row="1"
             AutomationId="Key_2"
             Text="{Binding Button_2_Text}"
@@ -37,7 +46,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="3"  
+            Grid.Column="4"
             Grid.Row="1"
             AutomationId="Key_3"
             Text="{Binding Button_3_Text}"
@@ -46,7 +55,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="4"
+            Grid.Column="5"  
             Grid.Row="1"
             AutomationId="Key_4"
             Text="{Binding Button_4_Text}"
@@ -55,7 +64,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="5"  
+            Grid.Column="6"  
             Grid.Row="1"
             AutomationId="Key_5"
             Text="{Binding Button_5_Text}"
@@ -64,7 +73,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="6"  
+            Grid.Column="7"  
             Grid.Row="1"
             AutomationId="Key_6"
             Text="{Binding Button_6_Text}"
@@ -73,7 +82,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="7"  
+            Grid.Column="8"  
             Grid.Row="1"
             AutomationId="Key_7"
             Text="{Binding Button_7_Text}"
@@ -82,7 +91,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="8"  
+            Grid.Column="9"  
             Grid.Row="1"
             AutomationId="Key_8"
             Text="{Binding Button_8_Text}"
@@ -91,7 +100,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="9"  
+            Grid.Column="10"  
             Grid.Row="1"
             AutomationId="Key_9"
             Text="{Binding Button_9_Text}"
@@ -100,8 +109,8 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="10"  
-            Grid.Row="1"
+            Grid.Column="1"  
+            Grid.Row="2"
             AutomationId="Key_10"
             Text="{Binding Button_10_Text}"
             Clicked="BtnKey_Clicked">
@@ -109,7 +118,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="1"  
+            Grid.Column="2"  
             Grid.Row="2"
             AutomationId="Key_11"
             Text="{Binding Button_11_Text}"
@@ -118,7 +127,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="2"  
+            Grid.Column="3"
             Grid.Row="2"
             AutomationId="Key_12"
             Text="{Binding Button_12_Text}"
@@ -127,7 +136,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="3"
+            Grid.Column="4"  
             Grid.Row="2"
             AutomationId="Key_13"
             Text="{Binding Button_13_Text}"
@@ -136,7 +145,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="4"  
+            Grid.Column="5"  
             Grid.Row="2"
             AutomationId="Key_14"
             Text="{Binding Button_14_Text}"
@@ -145,7 +154,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="5"  
+            Grid.Column="6"  
             Grid.Row="2"
             AutomationId="Key_15"
             Text="{Binding Button_15_Text}"
@@ -154,25 +163,25 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="6"  
+            Grid.Column="7"  
             Grid.Row="2"
             AutomationId="Key_16"
             Text="{Binding Button_16_Text}"
-            Clicked="BtnKey_Clicked">
-        </Button>
-
-        <Button  
-            Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="7"  
-            Grid.Row="2"
-            AutomationId="Key_17"
-            Text="{Binding Button_17_Text}"
             Clicked="BtnKey_Clicked">
         </Button>
         
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
             Grid.Column="8"  
+            Grid.Row="2"
+            AutomationId="Key_17"
+            Text="{Binding Button_17_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button  
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="9"  
             Grid.Row="2"
             AutomationId="Key_18"
             Text="{Binding Button_18_Text}"
@@ -181,7 +190,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="9"  
+            Grid.Column="10"  
             Grid.Row="2"
             AutomationId="Key_19"
             Text="{Binding Button_19_Text}"
@@ -190,8 +199,8 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="10"  
-            Grid.Row="2"
+            Grid.Column="1"  
+            Grid.Row="3"
             AutomationId="Key_20"
             Text="{Binding Button_20_Text}"
             Clicked="BtnKey_Clicked">
@@ -199,7 +208,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="1"  
+            Grid.Column="2"  
             Grid.Row="3"
             AutomationId="Key_21"
             Text="{Binding Button_21_Text}"
@@ -208,7 +217,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="2"  
+            Grid.Column="3"  
             Grid.Row="3"
             AutomationId="Key_22"
             Text="{Binding Button_22_Text}"
@@ -217,7 +226,7 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="3"  
+            Grid.Column="4"  
             Grid.Row="3"
             AutomationId="Key_23"
             Text="{Binding Button_23_Text}"
@@ -226,16 +235,16 @@
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="4"  
+            Grid.Column="5"  
             Grid.Row="3"
             AutomationId="Key_24"
             Text="{Binding Button_24_Text}"
             Clicked="BtnKey_Clicked">
         </Button>
 
-        <Button  
+        <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="5"  
+            Grid.Column="6"
             Grid.Row="3"
             AutomationId="Key_25"
             Text="{Binding Button_25_Text}"
@@ -244,7 +253,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="6"
+            Grid.Column="7"
             Grid.Row="3"
             AutomationId="Key_26"
             Text="{Binding Button_26_Text}"
@@ -253,7 +262,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="7"
+            Grid.Column="8"
             Grid.Row="3"
             AutomationId="Key_27"
             Text="{Binding Button_27_Text}"
@@ -262,7 +271,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="8"
+            Grid.Column="9"
             Grid.Row="3"
             AutomationId="Key_28"
             Text="{Binding Button_28_Text}"
@@ -271,7 +280,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="9"
+            Grid.Column="10"
             Grid.Row="3"
             AutomationId="Key_29"
             Text="{Binding Button_29_Text}"
@@ -280,8 +289,8 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="10"
-            Grid.Row="3"
+            Grid.Column="1"
+            Grid.Row="4"
             AutomationId="Key_30"
             Text="{Binding Button_30_Text}"
             Clicked="BtnKey_Clicked">
@@ -289,7 +298,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="1"
+            Grid.Column="2"
             Grid.Row="4"
             AutomationId="Key_31"
             Text="{Binding Button_31_Text}"
@@ -298,7 +307,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="2"
+            Grid.Column="3"
             Grid.Row="4"
             AutomationId="Key_32"
             Text="{Binding Button_32_Text}"
@@ -307,7 +316,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="3"
+            Grid.Column="4"
             Grid.Row="4"
             AutomationId="Key_33"
             Text="{Binding Button_33_Text}"
@@ -316,7 +325,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="4"
+            Grid.Column="5"
             Grid.Row="4"
             AutomationId="Key_34"
             Text="{Binding Button_34_Text}"
@@ -325,7 +334,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="5"
+            Grid.Column="6"
             Grid.Row="4"
             AutomationId="Key_35"
             Text="{Binding Button_35_Text}"
@@ -334,7 +343,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="6"
+            Grid.Column="7"
             Grid.Row="4"
             AutomationId="Key_36"
             Text="{Binding Button_36_Text}"
@@ -343,7 +352,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="7"
+            Grid.Column="8"
             Grid.Row="4"
             AutomationId="Key_37"
             Text="{Binding Button_37_Text}"
@@ -352,7 +361,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="8"
+            Grid.Column="9"
             Grid.Row="4"
             AutomationId="Key_38"
             Text="{Binding Button_38_Text}"
@@ -361,25 +370,25 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="9"
+            Grid.Column="10"
             Grid.Row="4"
             AutomationId="Key_39"
             Text="{Binding Button_39_Text}"
-            Clicked="BtnKey_Clicked">
-        </Button>
-
-        <Button
-            Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="10"
-            Grid.Row="4"
-            AutomationId="Key_40"
-            Text="{Binding Button_40_Text}"
             Clicked="BtnKey_Clicked">
         </Button>
         
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
             Grid.Column="1"
+            Grid.Row="5"
+            AutomationId="Key_40"
+            Text="{Binding Button_40_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"
             Grid.Row="5"
             AutomationId="Key_41"
             Text="{Binding Button_41_Text}"
@@ -388,7 +397,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="2"
+            Grid.Column="3"
             Grid.Row="5"
             AutomationId="Key_42"
             Text="{Binding Button_42_Text}"
@@ -397,19 +406,10 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="3"
+            Grid.Column="4"
             Grid.Row="5"
             AutomationId="Key_43"
             Text="{Binding Button_43_Text}"
-            Clicked="BtnKey_Clicked">
-        </Button>
-
-        <Button
-            Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="4"
-            Grid.Row="5"
-            AutomationId="Key_44"
-            Text="{Binding Button_44_Text}"
             Clicked="BtnKey_Clicked">
         </Button>
 
@@ -419,6 +419,15 @@
             Grid.Row="5"
             Grid.ColumnSpan="2"
             MaximumWidthRequest="64"
+            AutomationId="Key_44"
+            Text="{Binding Button_44_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="7"
+            Grid.Row="5"
             AutomationId="Key_45"
             Text="{Binding Button_45_Text}"
             Clicked="BtnKey_Clicked">
@@ -426,7 +435,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="7"
+            Grid.Column="8"
             Grid.Row="5"
             AutomationId="Key_46"
             Text="{Binding Button_46_Text}"
@@ -435,7 +444,7 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="8"
+            Grid.Column="9"
             Grid.Row="5"
             AutomationId="Key_47"
             Text="{Binding Button_47_Text}"
@@ -444,19 +453,10 @@
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="9"
+            Grid.Column="10"
             Grid.Row="5"
             AutomationId="Key_48"
             Text="{Binding Button_48_Text}"
-            Clicked="BtnKey_Clicked">
-        </Button>
-
-        <Button
-            Style="{StaticResource KeyAlphanumericPortraitButton}"
-            Grid.Column="10"
-            Grid.Row="5"
-            AutomationId="Key_49"
-            Text="{Binding Button_49_Text}"
             Clicked="BtnKey_Clicked">
         </Button>
 
