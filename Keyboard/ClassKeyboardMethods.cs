@@ -11,7 +11,7 @@
         private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!%/:_-, .@#+";
         private static readonly string cKeyboard_QWERTY_UK = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#%";
         private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM?!%/_-, .@#+";
-        private static readonly string cKeyboard_OTHER =     "1234567890+×÷=/_<>[]!@#€%^&*()-'\":;,?.          Z";
+        private static readonly string cKeyboard_OTHER =     "1234567890+×÷=/\\<>[]!@#€%^&*()_-'\":;,?.         Z";
 
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
@@ -128,11 +128,11 @@
         {
             cAlphaNumCharacters = cLayout switch
             {
-                "OTHER" => cKeyboard_OTHER.Select(static c => c.ToString()).ToArray(),
-                "AZERTY_BE" => cKeyboard_AZERTY_BE.Select(static c => c.ToString()).ToArray(),
-                "QWERTY_UK" => cKeyboard_QWERTY_UK.Select(static c => c.ToString()).ToArray(),
-                "QWERTY_US" => cKeyboard_QWERTY_US.Select(static c => c.ToString()).ToArray(),
-                _ => cKeyboard_ABCDEF_XX.Select(static c => c.ToString()).ToArray(),
+                "OTHER" => [.. cKeyboard_OTHER.Select(static c => c.ToString())],
+                "AZERTY_BE" => [.. cKeyboard_AZERTY_BE.Select(static c => c.ToString())],
+                "QWERTY_UK" => [.. cKeyboard_QWERTY_UK.Select(static c => c.ToString())],
+                "QWERTY_US" => [.. cKeyboard_QWERTY_US.Select(static c => c.ToString())],
+                _ => [.. cKeyboard_ABCDEF_XX.Select(static c => c.ToString())],
             };
 
             // Convert to ReadOnlySpan for performance optimization
@@ -277,13 +277,23 @@
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 10, Easing.Linear);    // Slide down
-                            bottomSheetLandscape.IsVisible = false;
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                // Move off-screen then hide so next show is consistent
+                                //await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 10, Easing.Linear);    // Slide down
+                                bottomSheetLandscape.TranslationY = 250;
+                                bottomSheetLandscape.IsVisible = false;
+                            });
                         }
                         else
                         {
-                            bottomSheetLandscape.IsVisible = true;
-                            await bottomSheetLandscape.TranslateToAsync(0, 0, length: 10, Easing.Linear);   // Slide up
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                // Ensure off-screen position for hide state, then show at 0 when visible
+                                //await bottomSheetLandscape.TranslateToAsync(0, 0, length: 10, Easing.Linear);   // Slide up
+                                bottomSheetLandscape.TranslationY = 0;
+                                bottomSheetLandscape.IsVisible = true;
+                            });
                         }
                         break;
                     }
@@ -291,13 +301,23 @@
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 10, Easing.Linear);   // Slide down
-                            bottomSheetPortrait.IsVisible = false;
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                // Move off-screen then hide so next show is consistent
+                                //await bottomSheetPortrait.TranslateToAsync(0, 250, length: 10, Easing.Linear);   // Slide down
+                                bottomSheetPortrait.TranslationY = 250;
+                                bottomSheetPortrait.IsVisible = false;
+                            });
                         }
                         else
                         {
-                            bottomSheetPortrait.IsVisible = true;
-                            await bottomSheetPortrait.TranslateToAsync(0, 0, length: 10, Easing.Linear);    // Slide up
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                // Ensure off-screen position for hide state, then show at 0 when visible
+                                //await bottomSheetPortrait.TranslateToAsync(0, 0, length: 10, Easing.Linear);    // Slide up
+                                bottomSheetPortrait.TranslationY = 0;
+                                bottomSheetPortrait.IsVisible = true;
+                            });
                         }
                         break;
                     }
@@ -326,26 +346,45 @@
                     {
                         if (bottomSheetPortrait.IsVisible)
                         {
-                            await bottomSheetPortrait.TranslateToAsync(0, 250, length: 10, Easing.Linear);  // Slide down
-                            bottomSheetPortrait.IsVisible = false;
-                            await Task.Delay(300);                                                          // Wait for the slide down animation to complete
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                // Move off-screen then hide so next show is consistent
+                                //await bottomSheetPortrait.TranslateToAsync(0, 250, length: 10, Easing.Linear);  // Slide down
+                                bottomSheetPortrait.TranslationY = 250;
+                                bottomSheetPortrait.IsVisible = false;
+                            });
                         }
 
-                        bottomSheetLandscape.IsVisible = true;
-                        await bottomSheetLandscape.TranslateToAsync(0, 0, length: 10, Easing.Linear);      // Slide up
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            // Ensure off-screen position for hide state, then show at 0 when visible
+                            //await bottomSheetLandscape.TranslateToAsync(0, 0, length: 10, Easing.Linear);      // Slide up
+                            bottomSheetLandscape.TranslationY = 0;
+                            bottomSheetLandscape.IsVisible = true;
+                        });
+
                         break;
                     }
                 default:
                     {
                         if (bottomSheetLandscape.IsVisible)
                         {
-                            await bottomSheetLandscape.TranslateToAsync(0, 250, length: 10, Easing.Linear);
-                            bottomSheetLandscape.IsVisible = false;
-                            await Task.Delay(300);
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                // Move off-screen then hide so next show is consistent
+                                //await bottomSheetLandscape.TranslateToAsync(0, 250, length: 10, Easing.Linear);
+                                bottomSheetLandscape.TranslationY = 250;
+                                bottomSheetLandscape.IsVisible = false;
+                            });
                         }
 
-                        bottomSheetPortrait.IsVisible = true;
-                        await bottomSheetPortrait.TranslateToAsync(0, 0, length: 10, Easing.Linear);
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            // Ensure off-screen position for hide state, then show at 0 when visible
+                            //await bottomSheetPortrait.TranslateToAsync(0, 0, length: 10, Easing.Linear);
+                            bottomSheetPortrait.TranslationY = 0;
+                            bottomSheetPortrait.IsVisible = true;
+                        });
                         break;
                     }
             }
@@ -365,16 +404,24 @@
 
             if (bottomSheetLandscape.IsVisible)
             {
-                await bottomSheetLandscape.TranslateToAsync(0, 250, length: 20, Easing.SpringIn);
-                bottomSheetLandscape.IsVisible = false;
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    // Move off-screen then hide so next show is consistent
+                    //await bottomSheetLandscape.TranslateToAsync(0, 250, length: 20, Easing.SpringIn);
+                    bottomSheetLandscape.TranslationY = 250;
+                    bottomSheetLandscape.IsVisible = false;
+                });
             }
             else if (bottomSheetPortrait.IsVisible)
             {
-                await bottomSheetPortrait.TranslateToAsync(0, 250, length: 20, Easing.SpringIn);
-                bottomSheetPortrait.IsVisible = false;
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    // Move off-screen then hide so next show is consistent
+                    //await bottomSheetPortrait.TranslateToAsync(0, 250, length: 20, Easing.SpringIn);
+                    bottomSheetPortrait.TranslationY = 250;
+                    bottomSheetPortrait.IsVisible = false;
+                });
             }
-
-            await Task.Delay(400);
         }
 
         /// <summary>
@@ -701,7 +748,7 @@
         /// </summary>
         public static void ReadDeviceDisplay()
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            System.Text.StringBuilder sb = new();
 
             sb.AppendLine($"Pixel width: {DeviceDisplay.Current.MainDisplayInfo.Width} / Pixel Height: {DeviceDisplay.Current.MainDisplayInfo.Height}");
             sb.AppendLine($"Density: {DeviceDisplay.Current.MainDisplayInfo.Density}");
