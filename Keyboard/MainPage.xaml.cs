@@ -23,10 +23,13 @@ namespace Keyboard
 
         public MainPage()
         {
-            // Initialize the number format settings based on the current culture and the alphanumeric keyboard
+            // Initialize the number format settings based on the current culture and 
             // Must be placed on the MainPage before InitializeComponent()
             ClassEntryMethods.InitializeNumberFormat();
-            ClassKeyboardMethods.SelectAlphanumericKeyboardLayout("QWERTY_US");
+
+            // Set the default alphanumeric keyboard layout
+            ClassKeyboardMethods.cCurrentKeyboardLayout = "QWERTY_US";
+            ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
 
             try
             {

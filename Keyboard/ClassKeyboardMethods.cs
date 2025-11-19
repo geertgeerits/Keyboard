@@ -4,6 +4,7 @@
     {
         // Keyboard layouts for alphanumeric input
         public static string[] cAlphaNumCharacters = new string[48];
+        public static string? cCurrentKeyboardLayout;
 
         // The key 'space' is at index 44 zero based and 45 one based
         //                                                    0123456789012345678901234567890123456789012345678

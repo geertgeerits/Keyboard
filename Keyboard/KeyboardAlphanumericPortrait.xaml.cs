@@ -2,7 +2,9 @@
 {
     public partial class KeyboardAlphanumericPortrait : ContentView
     {
+        // Declare variables for shift key and layout change state
         private bool bShiftKeyEnabled;
+        private bool bChangeLayoutEnabled;
 
         // Declare variables for binding properties
         private string _button_0_Text = string.Empty;
@@ -546,17 +548,26 @@
         }
 
         /// <summary>
-        /// Set the BindingContext - Using line by line is a bit faster than using a loop
+        /// Set the BindingContext
         /// </summary>
         public KeyboardAlphanumericPortrait()
         {
             InitializeComponent();
 
-            // Start the stopwatch
-            //long startTime = Stopwatch.GetTimestamp();
-
             // Set the BindingContext to this (the current page)
             BindingContext = this;
+
+            InitializeKeyboard();
+        }
+
+        /// <summary>
+        /// Initializes the keyboard by assigning character values to each button
+        /// Using line by line is a bit faster than using a loop
+        /// </summary>
+        private void InitializeKeyboard()
+        {
+            // Start the stopwatch
+            //long startTime = Stopwatch.GetTimestamp();
 
             Button_0_Text = ClassKeyboardMethods.cAlphaNumCharacters[0];
             Button_1_Text = ClassKeyboardMethods.cAlphaNumCharacters[1];
@@ -569,17 +580,26 @@
             Button_8_Text = ClassKeyboardMethods.cAlphaNumCharacters[8];
             Button_9_Text = ClassKeyboardMethods.cAlphaNumCharacters[9];
 
-            // Set the original keys 10-48 (characters in uppercase)
+            // Set the original keys 10-39, row 2-3-4 of the keyboard (characters in uppercase)
             SetOriginalKeys();
 
-            // Stop the stopwatch
+            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[40];
+            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[41];
+            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[42];
+            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[43];
+            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[44];
+            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[45];
+            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
+            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
+            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
+
+            //// Stop the stopwatch
             //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
-            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("KeyboardAlphanumericPortrait", $"Time elapsed (hh:mm:ss.xxxxxxx): {delta}", "OK");
+            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("InitializeKeyboard", $"Time elapsed (hh:mm:ss.xxxxxxx): {delta}", "OK");
         }
 
         /// <summary>
         /// This method is called when a button is clicked, it sends a message with the key pressed to the page
-        /// Using line by line is a bit faster than using a loop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -597,24 +617,6 @@
                 cKeyPressed = imageButton.AutomationId;
             }
 
-            if (cKeyPressed == "btnShift")
-            {
-                bShiftKeyEnabled = !bShiftKeyEnabled;
-
-                if (bShiftKeyEnabled)
-                {
-                    // Convert characters to lowercase
-                    ConvertKeysToLowerCase();
-                }
-                else
-                {
-                    // set the original keys (characters in uppercase)
-                    SetOriginalKeys();
-                }
-                
-                return;
-            }
-
             // Send the message with the key pressed to the page
             try
             {
@@ -623,6 +625,54 @@
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error sending message: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// BtnShift_Clicked event handler to toggle the shift key state
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnShiftKey_Clicked(object sender, EventArgs e)
+        {
+            bShiftKeyEnabled = !bShiftKeyEnabled;
+
+            if (bShiftKeyEnabled)
+            {
+                // Convert characters to lowercase
+                ConvertKeysToLowerCase();
+            }
+            else
+            {
+                // set the original keys (characters in uppercase)
+                SetOriginalKeys();
+            }
+        }
+
+        /// <summary>
+        /// btnChangeLayout_Clicked event handler to toggle the keyboard layout state
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnChangeLayout_Clicked(object sender, EventArgs e)
+        {
+            bChangeLayoutEnabled = !bChangeLayoutEnabled;
+
+            if (bChangeLayoutEnabled)
+            {
+                // Change to !#1 layout (characters in uppercase)
+                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout("OTHER");
+                InitializeKeyboard();
+                btnChangeLayout.Text = "ABC";
+                btnShiftKey.IsEnabled = false;
+            }
+            else
+            {
+                // Change to ABC layout (special characters)
+                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
+                InitializeKeyboard();
+                btnChangeLayout.Text = "!#1";
+                btnShiftKey.IsEnabled = true;
             }
         }
 
@@ -640,7 +690,7 @@
         }
 
         /// <summary>
-        /// Set the original keys (characters in uppercase)
+        /// Set the original keys, row 2-3-4 of the keyboard (characters in uppercase)
         /// </summary>
         private void SetOriginalKeys()
         {
@@ -674,19 +724,10 @@
             Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37];
             Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38];
             Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39];
-            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[40];
-            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[41];
-            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[42];
-            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[43];
-            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[44];
-            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[45];
-            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
-            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
-            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
         }
 
         /// <summary>
-        /// Convert characters keys to lowercase
+        /// Convert characters keys to lowercase, row 2-3-4 of the keyboard
         /// </summary>
         private void ConvertKeysToLowerCase()
         {
@@ -720,15 +761,6 @@
             Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37].ToLower();
             Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38].ToLower();
             Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
-            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[40].ToLower();
-            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[41].ToLower();
-            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[42].ToLower();
-            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[43].ToLower();
-            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[44].ToLower();
-            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[45].ToLower();
-            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46].ToLower();
-            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47].ToLower();
-            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48].ToLower();
         }
     }
 }

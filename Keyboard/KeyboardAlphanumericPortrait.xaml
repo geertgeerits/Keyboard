@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
     x:Class="Keyboard.KeyboardAlphanumericPortrait"
@@ -411,20 +411,31 @@
             Clicked="BtnKey_Clicked">
         </Button>
 
-        <ImageButton  
+        <ImageButton
+            x:Name="btnShiftKey"
             Style="{StaticResource KeyAlphanumericPortraitImageButton}"
             Grid.Column="1"  
             Grid.Row="6"
-            AutomationId="btnShift"
             Source="{AppThemeBinding Light=keyboard_arrow_top_32p_black.png, Dark=keyboard_arrow_top_32p_white.png}"
-            Clicked="BtnKey_Clicked">
+            Clicked="BtnShiftKey_Clicked">
         </ImageButton>
+
+        <Button
+            x:Name="btnChangeLayout"
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="2"  
+            Grid.Row="6"
+            FontSize="12"
+            Text="!#1"
+            Clicked="btnChangeLayout_Clicked">
+        </Button>
 
         <ImageButton
             Style="{StaticResource KeyboardHideImageButton}"
             Grid.Column="5"
             Grid.Row="6"
             Grid.ColumnSpan="2"
+            AutomationId="btnKeyboardHide"
             HorizontalOptions="Center"
             MaximumHeightRequest="30"
             MaximumWidthRequest="30"
