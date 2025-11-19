@@ -469,7 +469,6 @@
         </ImageButton>
 
         <ImageButton
-            x:Name="ImgbtnKeyboardHide"
             Style="{StaticResource KeyboardHideImageButton}"
             Grid.Column="5"
             Grid.Row="6"

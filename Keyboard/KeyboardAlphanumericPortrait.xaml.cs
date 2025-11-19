@@ -1,7 +1,9 @@
-namespace Keyboard
+﻿namespace Keyboard
 {
     public partial class KeyboardAlphanumericPortrait : ContentView
     {
+        private bool bShiftKeyEnabled;
+
         // Declare variables for binding properties
         private string _button_0_Text = string.Empty;
         private string _button_1_Text = string.Empty;
@@ -566,6 +568,82 @@ namespace Keyboard
             Button_7_Text = ClassKeyboardMethods.cAlphaNumCharacters[7];
             Button_8_Text = ClassKeyboardMethods.cAlphaNumCharacters[8];
             Button_9_Text = ClassKeyboardMethods.cAlphaNumCharacters[9];
+
+            // Set the original keys 10-48 (characters in uppercase)
+            SetOriginalKeys();
+
+            // Stop the stopwatch
+            //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
+            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("KeyboardAlphanumericPortrait", $"Time elapsed (hh:mm:ss.xxxxxxx): {delta}", "OK");
+        }
+
+        /// <summary>
+        /// This method is called when a button is clicked, it sends a message with the key pressed to the page
+        /// Using line by line is a bit faster than using a loop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnKey_Clicked(object sender, EventArgs e)
+        {
+            string cKeyPressed = string.Empty;
+
+            if (sender is Button button)
+            {
+                cKeyPressed = button.Text;
+            }
+
+            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
+            {
+                cKeyPressed = imageButton.AutomationId;
+            }
+
+            if (cKeyPressed == "btnShift")
+            {
+                bShiftKeyEnabled = !bShiftKeyEnabled;
+
+                if (bShiftKeyEnabled)
+                {
+                    // Convert characters to lowercase
+                    ConvertKeysToLowerCase();
+                }
+                else
+                {
+                    // set the original keys (characters in uppercase)
+                    SetOriginalKeys();
+                }
+                
+                return;
+            }
+
+            // Send the message with the key pressed to the page
+            try
+            {
+                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error sending message: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Raise an event to notify the parent to hide the overlay
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnKeyboardHide_Clicked(object sender, EventArgs e)
+        {
+            if (sender is ImageButton imageButton)
+            {
+                _ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
+            }
+        }
+
+        /// <summary>
+        /// Set the original keys (characters in uppercase)
+        /// </summary>
+        private void SetOriginalKeys()
+        {
             Button_10_Text = ClassKeyboardMethods.cAlphaNumCharacters[10];
             Button_11_Text = ClassKeyboardMethods.cAlphaNumCharacters[11];
             Button_12_Text = ClassKeyboardMethods.cAlphaNumCharacters[12];
@@ -605,114 +683,52 @@ namespace Keyboard
             Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
             Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
             Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
-
-            // Stop the stopwatch
-            //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
-            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("KeyboardAlphanumericPortrait", $"Time elapsed (hh:mm:ss.xxxxxxx): {delta}", "OK");
         }
 
         /// <summary>
-        /// This method is called when a button is clicked, it sends a message with the key pressed to the page
-        /// Using line by line is a bit faster than using a loop
+        /// Convert characters keys to lowercase
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnKey_Clicked(object sender, EventArgs e)
+        private void ConvertKeysToLowerCase()
         {
-            // Start the stopwatch
-            //long startTime = Stopwatch.GetTimestamp();
-
-            string cKeyPressed = string.Empty;
-
-            if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
-            {
-                cKeyPressed = button.AutomationId switch
-                {
-                    "Key_0" => ClassKeyboardMethods.cAlphaNumCharacters[0],
-                    "Key_1" => ClassKeyboardMethods.cAlphaNumCharacters[1],
-                    "Key_2" => ClassKeyboardMethods.cAlphaNumCharacters[2],
-                    "Key_3" => ClassKeyboardMethods.cAlphaNumCharacters[3],
-                    "Key_4" => ClassKeyboardMethods.cAlphaNumCharacters[4],
-                    "Key_5" => ClassKeyboardMethods.cAlphaNumCharacters[5],
-                    "Key_6" => ClassKeyboardMethods.cAlphaNumCharacters[6],
-                    "Key_7" => ClassKeyboardMethods.cAlphaNumCharacters[7],
-                    "Key_8" => ClassKeyboardMethods.cAlphaNumCharacters[8],
-                    "Key_9" => ClassKeyboardMethods.cAlphaNumCharacters[9],
-                    "Key_10" => ClassKeyboardMethods.cAlphaNumCharacters[10],
-                    "Key_11" => ClassKeyboardMethods.cAlphaNumCharacters[11],
-                    "Key_12" => ClassKeyboardMethods.cAlphaNumCharacters[12],
-                    "Key_13" => ClassKeyboardMethods.cAlphaNumCharacters[13],
-                    "Key_14" => ClassKeyboardMethods.cAlphaNumCharacters[14],
-                    "Key_15" => ClassKeyboardMethods.cAlphaNumCharacters[15],
-                    "Key_16" => ClassKeyboardMethods.cAlphaNumCharacters[16],
-                    "Key_17" => ClassKeyboardMethods.cAlphaNumCharacters[17],
-                    "Key_18" => ClassKeyboardMethods.cAlphaNumCharacters[18],
-                    "Key_19" => ClassKeyboardMethods.cAlphaNumCharacters[19],
-                    "Key_20" => ClassKeyboardMethods.cAlphaNumCharacters[20],
-                    "Key_21" => ClassKeyboardMethods.cAlphaNumCharacters[21],
-                    "Key_22" => ClassKeyboardMethods.cAlphaNumCharacters[22],
-                    "Key_23" => ClassKeyboardMethods.cAlphaNumCharacters[23],
-                    "Key_24" => ClassKeyboardMethods.cAlphaNumCharacters[24],
-                    "Key_25" => ClassKeyboardMethods.cAlphaNumCharacters[25],
-                    "Key_26" => ClassKeyboardMethods.cAlphaNumCharacters[26],
-                    "Key_27" => ClassKeyboardMethods.cAlphaNumCharacters[27],
-                    "Key_28" => ClassKeyboardMethods.cAlphaNumCharacters[28],
-                    "Key_29" => ClassKeyboardMethods.cAlphaNumCharacters[29],
-                    "Key_30" => ClassKeyboardMethods.cAlphaNumCharacters[30],
-                    "Key_31" => ClassKeyboardMethods.cAlphaNumCharacters[31],
-                    "Key_32" => ClassKeyboardMethods.cAlphaNumCharacters[32],
-                    "Key_33" => ClassKeyboardMethods.cAlphaNumCharacters[33],
-                    "Key_34" => ClassKeyboardMethods.cAlphaNumCharacters[34],
-                    "Key_35" => ClassKeyboardMethods.cAlphaNumCharacters[35],
-                    "Key_36" => ClassKeyboardMethods.cAlphaNumCharacters[36],
-                    "Key_37" => ClassKeyboardMethods.cAlphaNumCharacters[37],
-                    "Key_38" => ClassKeyboardMethods.cAlphaNumCharacters[38],
-                    "Key_39" => ClassKeyboardMethods.cAlphaNumCharacters[39],
-                    "Key_40" => ClassKeyboardMethods.cAlphaNumCharacters[40],
-                    "Key_41" => ClassKeyboardMethods.cAlphaNumCharacters[41],
-                    "Key_42" => ClassKeyboardMethods.cAlphaNumCharacters[42],
-                    "Key_43" => ClassKeyboardMethods.cAlphaNumCharacters[43],
-                    "Key_44" => ClassKeyboardMethods.cAlphaNumCharacters[44],
-                    "Key_45" => ClassKeyboardMethods.cAlphaNumCharacters[45],
-                    "Key_46" => ClassKeyboardMethods.cAlphaNumCharacters[46],
-                    "Key_47" => ClassKeyboardMethods.cAlphaNumCharacters[47],
-                    "Key_48" => ClassKeyboardMethods.cAlphaNumCharacters[48],
-
-                    _ => button.AutomationId,
-                };
-            }
-
-            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
-            {
-                cKeyPressed = imageButton.AutomationId;
-            }
-
-            // Send the message with the key pressed to the page
-            try
-            {
-                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error sending message: {ex.Message}");
-            }
-
-            // Stop the stopwatch
-            //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
-            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("BtnKey_Clicked", $"Time elapsed (hh:mm:ss.xxxxxxx): {delta}", "OK");
-        }
-
-        /// <summary>
-        /// Raise an event to notify the parent to hide the overlay
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnKeyboardHide_Clicked(object sender, EventArgs e)
-        {
-            if (sender is ImageButton imageButton)
-            {
-                _ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
-            }
+            Button_10_Text = ClassKeyboardMethods.cAlphaNumCharacters[10].ToLower();
+            Button_11_Text = ClassKeyboardMethods.cAlphaNumCharacters[11].ToLower();
+            Button_12_Text = ClassKeyboardMethods.cAlphaNumCharacters[12].ToLower();
+            Button_13_Text = ClassKeyboardMethods.cAlphaNumCharacters[13].ToLower();
+            Button_14_Text = ClassKeyboardMethods.cAlphaNumCharacters[14].ToLower();
+            Button_15_Text = ClassKeyboardMethods.cAlphaNumCharacters[15].ToLower();
+            Button_16_Text = ClassKeyboardMethods.cAlphaNumCharacters[16].ToLower();
+            Button_17_Text = ClassKeyboardMethods.cAlphaNumCharacters[17].ToLower();
+            Button_18_Text = ClassKeyboardMethods.cAlphaNumCharacters[18].ToLower();
+            Button_19_Text = ClassKeyboardMethods.cAlphaNumCharacters[19].ToLower();
+            Button_20_Text = ClassKeyboardMethods.cAlphaNumCharacters[20].ToLower();
+            Button_21_Text = ClassKeyboardMethods.cAlphaNumCharacters[21].ToLower();
+            Button_22_Text = ClassKeyboardMethods.cAlphaNumCharacters[22].ToLower();
+            Button_23_Text = ClassKeyboardMethods.cAlphaNumCharacters[23].ToLower();
+            Button_24_Text = ClassKeyboardMethods.cAlphaNumCharacters[24].ToLower();
+            Button_25_Text = ClassKeyboardMethods.cAlphaNumCharacters[25].ToLower();
+            Button_26_Text = ClassKeyboardMethods.cAlphaNumCharacters[26].ToLower();
+            Button_27_Text = ClassKeyboardMethods.cAlphaNumCharacters[27].ToLower();
+            Button_28_Text = ClassKeyboardMethods.cAlphaNumCharacters[28].ToLower();
+            Button_29_Text = ClassKeyboardMethods.cAlphaNumCharacters[29].ToLower();
+            Button_30_Text = ClassKeyboardMethods.cAlphaNumCharacters[30].ToLower();
+            Button_31_Text = ClassKeyboardMethods.cAlphaNumCharacters[31].ToLower();
+            Button_32_Text = ClassKeyboardMethods.cAlphaNumCharacters[32].ToLower();
+            Button_33_Text = ClassKeyboardMethods.cAlphaNumCharacters[33].ToLower();
+            Button_34_Text = ClassKeyboardMethods.cAlphaNumCharacters[34].ToLower();
+            Button_35_Text = ClassKeyboardMethods.cAlphaNumCharacters[35].ToLower();
+            Button_36_Text = ClassKeyboardMethods.cAlphaNumCharacters[36].ToLower();
+            Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37].ToLower();
+            Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38].ToLower();
+            Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
+            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[40].ToLower();
+            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[41].ToLower();
+            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[42].ToLower();
+            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[43].ToLower();
+            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[44].ToLower();
+            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[45].ToLower();
+            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46].ToLower();
+            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47].ToLower();
+            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48].ToLower();
         }
     }
 }

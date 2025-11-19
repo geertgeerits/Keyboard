@@ -5,7 +5,6 @@ namespace Keyboard
         // Declare variables
         private string cEntryAutomationId = string.Empty;
         private Entry? _focusedEntry;
-        private bool bShiftKeyEnabled;
 
         public PageKeyboardMixedSample()
     	{
@@ -138,7 +137,6 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
-                bShiftKeyEnabled = false;
 
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
@@ -183,7 +181,6 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
-                bShiftKeyEnabled = false;
 
                 // Set the unformatted number in the entry field
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
@@ -240,7 +237,6 @@ namespace Keyboard
             {
                 _focusedEntry = entry;
                 cEntryAutomationId = entry.AutomationId;
-                bShiftKeyEnabled = false;
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
@@ -374,26 +370,12 @@ namespace Keyboard
                     await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                     await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
                 }
-                else if (cKey == "btnShift")
-                {
-                    bShiftKeyEnabled = !bShiftKeyEnabled;
-                }
                 else if (cKey == "btnReturn")
                 {
                     GoToNextField(focusedEntry, null);
                 }
                 else
                 {
-                    if (bShiftKeyEnabled)
-                    {
-                        // Validate input: must be exactly one character
-                        if (!string.IsNullOrEmpty(cKey) && cKey.Length == 1)
-                        {
-                            // Convert to lowercase
-                            cKey = cKey.ToLower();
-                        }
-                    }
-
                     ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
                 }
             }

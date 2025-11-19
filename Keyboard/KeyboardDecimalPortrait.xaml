@@ -144,7 +144,6 @@
         </Button>
 
         <ImageButton
-            x:Name="ImgbtnKeyboardHide"
             Style="{StaticResource KeyboardHideImageButton}"
             Grid.Column="0"
             Grid.Row="4"
