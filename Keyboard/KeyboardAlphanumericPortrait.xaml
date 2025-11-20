@@ -430,6 +430,22 @@
             Clicked="btnChangeLayout_Clicked">
         </Button>
 
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="3"
+            Grid.Row="6"
+            Text="{Binding Button_49_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="4"
+            Grid.Row="6"
+            Text="{Binding Button_50_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
         <ImageButton
             Style="{StaticResource KeyboardHideImageButton}"
             Grid.Column="5"
@@ -441,6 +457,22 @@
             MaximumWidthRequest="30"
             Clicked="OnKeyboardHide_Clicked">
         </ImageButton>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="7"
+            Grid.Row="6"
+            Text="{Binding Button_51_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
+
+        <Button
+            Style="{StaticResource KeyAlphanumericPortraitButton}"
+            Grid.Column="8"
+            Grid.Row="6"
+            Text="{Binding Button_52_Text}"
+            Clicked="BtnKey_Clicked">
+        </Button>
 
         <ImageButton  
             Style="{StaticResource KeyAlphanumericPortraitImageButton}"

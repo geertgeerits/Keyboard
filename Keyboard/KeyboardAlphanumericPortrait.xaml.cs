@@ -56,6 +56,10 @@
         private string _button_46_Text = string.Empty;
         private string _button_47_Text = string.Empty;
         private string _button_48_Text = string.Empty;
+        private string _button_49_Text = string.Empty;
+        private string _button_50_Text = string.Empty;
+        private string _button_51_Text = string.Empty;
+        private string _button_52_Text = string.Empty;
 
         // Properties for the button texts of the keyboard
         public string Button_0_Text
@@ -547,6 +551,48 @@
             }
         }
 
+        public string Button_49_Text
+        {
+            get => _button_49_Text;
+            set
+            {
+                _button_49_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_50_Text
+        {
+            get => _button_50_Text;
+            set
+            {
+                _button_50_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_51_Text
+        {
+            get => _button_51_Text;
+            set
+            {
+                _button_51_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_52_Text
+        {
+            get => _button_52_Text;
+            set
+            {
+                _button_52_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+
+
         /// <summary>
         /// Set the BindingContext
         /// </summary>
@@ -592,6 +638,10 @@
             Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
             Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
             Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
+            Button_49_Text = ClassKeyboardMethods.cAlphaNumCharacters[49];
+            Button_50_Text = ClassKeyboardMethods.cAlphaNumCharacters[50];
+            Button_51_Text = ClassKeyboardMethods.cAlphaNumCharacters[51];
+            Button_52_Text = ClassKeyboardMethods.cAlphaNumCharacters[52];
 
             //// Stop the stopwatch
             //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);

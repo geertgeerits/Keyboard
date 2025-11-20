@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.28
-   Date ........: 2025-11-19 (YYYY-MM-DD)
+   Date ........: 2025-11-20 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -28,7 +28,7 @@ namespace Keyboard
             ClassEntryMethods.InitializeNumberFormat();
 
             // Set the default alphanumeric keyboard layout
-            ClassKeyboardMethods.cCurrentKeyboardLayout = "QWERTY_US";
+            ClassKeyboardMethods.cCurrentKeyboardLayout = "ABCDEF_XX_1";
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
 
             try
