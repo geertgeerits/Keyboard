@@ -9,11 +9,11 @@
         // The key 'space' is at index 44 zero based and 45 one based
         // The maximum length of the keyboard layout strings is 53 characters
         //                                                      01234567890123456789012345678901234567890123456789012
-        private static readonly string cKeyboard_ABCDEF_XX_1 = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!%/:_-, .@#+0123";
-        private static readonly string cKeyboard_AZERTY_BE_1 = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!%/:_-, .@#+";
-        private static readonly string cKeyboard_AZERTY_BE_2 = "àâçéèëêîïôùüµÿ+×÷=%/\\<>()[]{}@#€£$ &§*_-'\":; ,?!.";
-        private static readonly string cKeyboard_QWERTY_UK_1 = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#%";
-        private static readonly string cKeyboard_QWERTY_US_1 = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM?!%/_-, .@#+    ";
+        private static readonly string cKeyboard_ABCDEF_XX_1 = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-,. ;@#€%&|*";
+        private static readonly string cKeyboard_AZERTY_BE_1 = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-,. ;@#€%&|*";
+        private static readonly string cKeyboard_AZERTY_BE_2 = "àâçéèëêîïôùüµÿ+×÷=%/\\<>()[]{}@#€£$ &§_-'\":;. ,@#?!+=*";
+        private static readonly string cKeyboard_QWERTY_UK_1 = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#£%&|*";
+        private static readonly string cKeyboard_QWERTY_US_1 = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_- ;@#$%&|*";
         private static readonly string cKeyboard_OTHER =       "1234567890+×÷=/\\<>[]!@#€%^&*()_-'\":;,?.01234 5678901Z";
 
         // Enable color change on focused Entry fields
@@ -132,10 +132,9 @@
             cAlphaNumCharacters = cLayout switch
             {
                 "OTHER" => [.. cKeyboard_OTHER.Select(static c => c.ToString())],
-                "AZERTY_BE_1" => [.. cKeyboard_AZERTY_BE_1.Select(static c => c.ToString())],
-                "AZERTY_BE_2" => [.. cKeyboard_AZERTY_BE_2.Select(static c => c.ToString())],
-                "QWERTY_UK_1" => [.. cKeyboard_QWERTY_UK_1.Select(static c => c.ToString())],
-                "QWERTY_US_1" => [.. cKeyboard_QWERTY_US_1.Select(static c => c.ToString())],
+                "AZERTY_BE" => [.. cKeyboard_AZERTY_BE_1.Select(static c => c.ToString())],
+                "QWERTY_UK" => [.. cKeyboard_QWERTY_UK_1.Select(static c => c.ToString())],
+                "QWERTY_US" => [.. cKeyboard_QWERTY_US_1.Select(static c => c.ToString())],
                 _ => [.. cKeyboard_ABCDEF_XX_1.Select(static c => c.ToString())],
             };
 

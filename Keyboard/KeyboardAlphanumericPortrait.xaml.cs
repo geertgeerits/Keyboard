@@ -700,11 +700,11 @@
         }
 
         /// <summary>
-        /// btnChangeLayout_Clicked event handler to toggle the keyboard layout state
+        /// BtnChangeLayout_Clicked event handler to toggle the keyboard layout state
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnChangeLayout_Clicked(object sender, EventArgs e)
+        private void BtnChangeLayout_Clicked(object sender, EventArgs e)
         {
             bChangeLayoutEnabled = !bChangeLayoutEnabled;
 

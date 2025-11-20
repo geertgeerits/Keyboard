@@ -28,7 +28,7 @@ namespace Keyboard
             ClassEntryMethods.InitializeNumberFormat();
 
             // Set the default alphanumeric keyboard layout
-            ClassKeyboardMethods.cCurrentKeyboardLayout = "ABCDEF_XX_1";
+            ClassKeyboardMethods.cCurrentKeyboardLayout = "AZERTY_BE";
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
 
             try

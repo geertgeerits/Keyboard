@@ -427,7 +427,7 @@
             Grid.Row="6"
             FontSize="12"
             Text="!#1"
-            Clicked="btnChangeLayout_Clicked">
+            Clicked="BtnChangeLayout_Clicked">
         </Button>
 
         <Button
