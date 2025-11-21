@@ -5,6 +5,7 @@
         // Declare variables for shift key and layout change state
         private bool bShiftKeyEnabled;
         private bool bChangeLayoutEnabled;
+        private bool bCharactersPopupEnabled;
 
         // Declare variables for binding properties
         private string _buttonChar_0_Text = string.Empty;
@@ -876,7 +877,9 @@
                 ButtonChar_15_Text = string.Empty;
                 ButtonChar_16_Text = string.Empty;
                 ButtonChar_17_Text = string.Empty;
-
+                
+                bCharactersPopupEnabled = false;
+                
                 // Set popup characters based on the key pressed
                 switch (button.Text)
                 {
@@ -1154,10 +1157,11 @@
                         // No popup for other keys
                         return;
                 }
-            }
 
-            // Show the popup
-            grdCharactersPopup.IsVisible = true;
+                // Show the popup
+                grdCharactersPopup.IsVisible = true;
+                bCharactersPopupEnabled = true;
+            }
         }
 
         /// <summary>
@@ -1183,6 +1187,7 @@
                 }
 
                 grdCharactersPopup.IsVisible = false;
+                bCharactersPopupEnabled = false;
             }
         }
 
@@ -1193,6 +1198,13 @@
         /// <param name="e"></param>
         private void BtnKey_Clicked(object sender, EventArgs e)
         {
+            if (bCharactersPopupEnabled)
+            {
+                return;
+            }
+
+            bCharactersPopupEnabled = false;
+
             string cKeyPressed = string.Empty;
 
             if (sender is Button button)
@@ -1285,6 +1297,7 @@
         private void OnKeyboardCharHide_Clicked(object sender, EventArgs e)
         {
             grdCharactersPopup.IsVisible = false;
+            bCharactersPopupEnabled = false;
         }
 
         /// <summary>
