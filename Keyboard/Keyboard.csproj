@@ -101,9 +101,6 @@
 	  <MauiXaml Update="KeyboardAlphanumericPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="KeyboardCharactersPopup.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="KeyboardDecimalLandscape.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

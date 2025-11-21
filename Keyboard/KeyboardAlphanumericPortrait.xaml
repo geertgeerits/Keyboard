@@ -7,6 +7,183 @@
     x:Class="Keyboard.KeyboardAlphanumericPortrait"
     x:DataType="local:KeyboardDecimalPortrait">
 
+    <StackLayout>
+        <Grid
+            x:Name="grdCharactersPopup"
+            Style="{StaticResource KeyboardGrid}"
+            ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
+            RowDefinitions="5, 30, 30, 5"
+            IsVisible="False">
+
+            <BoxView
+                Style="{StaticResource KeyboardBackgroundBoxView}"
+                Grid.ColumnSpan="12"
+                Grid.RowSpan="4"
+                BackgroundColor="Yellow">
+            </BoxView>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_0_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_1_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_2_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_3_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_4_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="6"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_5_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_6_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_7_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_8_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_9_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_10_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_11_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_12_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_13_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_14_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="6"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_15_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_16_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_17_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_18_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_19_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+        </Grid>
+    
+    
     <Grid
         Style="{StaticResource KeyboardGrid}"
         ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
@@ -511,4 +688,5 @@
         </ImageButton>
 
     </Grid>
+    </StackLayout>
 </ContentView>
