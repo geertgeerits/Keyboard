@@ -12,14 +12,15 @@
             x:Name="grdCharactersPopup"
             Style="{StaticResource KeyboardGrid}"
             ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
-            RowDefinitions="5, 30, 30, 5"
+            RowDefinitions="5, 30, 30"
             IsVisible="False">
 
             <BoxView
                 Style="{StaticResource KeyboardBackgroundBoxView}"
                 Grid.ColumnSpan="12"
                 Grid.RowSpan="4"
-                BackgroundColor="Yellow">
+                CornerRadius="8"
+                BackgroundColor="{AppThemeBinding Light={StaticResource KeyBoardBackgroundLight}, Dark={StaticResource KeyBoardBackgroundDark}}">
             </BoxView>
 
             <Button
@@ -134,9 +135,20 @@
                 Clicked="BtnCharacter_Clicked">
             </Button>
 
+            <ImageButton
+                Style="{StaticResource KeyboardHideImageButton}"
+                Grid.Column="5"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                MaximumHeightRequest="30"
+                MaximumWidthRequest="30"
+                Clicked="OnKeyboardCharHide_Clicked">
+            </ImageButton>
+
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="5"
+                Grid.Column="7"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_14_Text}"
                 Clicked="BtnCharacter_Clicked">
@@ -144,7 +156,7 @@
 
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="6"
+                Grid.Column="8"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_15_Text}"
                 Clicked="BtnCharacter_Clicked">
@@ -152,7 +164,7 @@
 
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="7"
+                Grid.Column="9"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_16_Text}"
                 Clicked="BtnCharacter_Clicked">
@@ -160,25 +172,9 @@
 
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="8"
-                Grid.Row="2"
-                Text="{Binding ButtonChar_17_Text}"
-                Clicked="BtnCharacter_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="9"
-                Grid.Row="2"
-                Text="{Binding ButtonChar_18_Text}"
-                Clicked="BtnCharacter_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
                 Grid.Column="10"
                 Grid.Row="2"
-                Text="{Binding ButtonChar_19_Text}"
+                Text="{Binding ButtonChar_17_Text}"
                 Clicked="BtnCharacter_Clicked">
             </Button>
         </Grid>
@@ -306,7 +302,13 @@
             Grid.Row="2"
             Text="{Binding Button_11_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -314,7 +316,13 @@
             Grid.Row="2"
             Text="{Binding Button_12_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -322,7 +330,13 @@
             Grid.Row="2"
             Text="{Binding Button_13_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -330,7 +344,13 @@
             Grid.Row="2"
             Text="{Binding Button_14_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -338,7 +358,13 @@
             Grid.Row="2"
             Text="{Binding Button_15_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -346,7 +372,13 @@
             Grid.Row="2"
             Text="{Binding Button_16_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
         
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -354,7 +386,13 @@
             Grid.Row="2"
             Text="{Binding Button_17_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -362,7 +400,13 @@
             Grid.Row="2"
             Text="{Binding Button_18_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -370,7 +414,13 @@
             Grid.Row="2"
             Text="{Binding Button_19_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -378,7 +428,13 @@
             Grid.Row="3"
             Text="{Binding Button_20_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -386,7 +442,13 @@
             Grid.Row="3"
             Text="{Binding Button_21_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -394,7 +456,13 @@
             Grid.Row="3"
             Text="{Binding Button_22_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -402,7 +470,13 @@
             Grid.Row="3"
             Text="{Binding Button_23_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button  
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -410,7 +484,13 @@
             Grid.Row="3"
             Text="{Binding Button_24_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -418,7 +498,13 @@
             Grid.Row="3"
             Text="{Binding Button_25_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -426,7 +512,13 @@
             Grid.Row="3"
             Text="{Binding Button_26_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -434,7 +526,13 @@
             Grid.Row="3"
             Text="{Binding Button_27_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -442,7 +540,13 @@
             Grid.Row="3"
             Text="{Binding Button_28_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -450,7 +554,13 @@
             Grid.Row="3"
             Text="{Binding Button_29_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -458,7 +568,13 @@
             Grid.Row="4"
             Text="{Binding Button_30_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -466,7 +582,13 @@
             Grid.Row="4"
             Text="{Binding Button_31_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -474,7 +596,13 @@
             Grid.Row="4"
             Text="{Binding Button_32_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -482,7 +610,13 @@
             Grid.Row="4"
             Text="{Binding Button_33_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -490,7 +624,13 @@
             Grid.Row="4"
             Text="{Binding Button_34_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -498,7 +638,13 @@
             Grid.Row="4"
             Text="{Binding Button_35_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -506,7 +652,13 @@
             Grid.Row="4"
             Text="{Binding Button_36_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -514,7 +666,13 @@
             Grid.Row="4"
             Text="{Binding Button_37_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -522,7 +680,13 @@
             Grid.Row="4"
             Text="{Binding Button_38_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
 
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -530,7 +694,13 @@
             Grid.Row="4"
             Text="{Binding Button_39_Text}"
             Clicked="BtnKey_Clicked">
-        </Button>
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
         
         <Button
             Style="{StaticResource KeyAlphanumericPortraitButton}"

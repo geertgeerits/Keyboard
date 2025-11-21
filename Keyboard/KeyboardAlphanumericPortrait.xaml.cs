@@ -25,8 +25,6 @@
         private string _buttonChar_15_Text = string.Empty;
         private string _buttonChar_16_Text = string.Empty;
         private string _buttonChar_17_Text = string.Empty;
-        private string _buttonChar_18_Text = string.Empty;
-        private string _buttonChar_19_Text = string.Empty;
 
         private string _button_0_Text = string.Empty;
         private string _button_1_Text = string.Empty;
@@ -259,26 +257,6 @@
             set
             {
                 _buttonChar_17_Text = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonChar_18_Text
-        {
-            get => _buttonChar_18_Text;
-            set
-            {
-                _buttonChar_18_Text = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public string ButtonChar_19_Text
-        {
-            get => _buttonChar_19_Text;
-            set
-            {
-                _buttonChar_19_Text = value;
                 OnPropertyChanged();
             }
         }
@@ -879,8 +857,156 @@
 
             if (sender is Button button)
             {
+                // Clear previous popup characters
+                ButtonChar_0_Text = string.Empty;
+                ButtonChar_1_Text = string.Empty;
+                ButtonChar_2_Text = string.Empty;
+                ButtonChar_3_Text = string.Empty;
+                ButtonChar_4_Text = string.Empty;
+                ButtonChar_5_Text = string.Empty;
+                ButtonChar_6_Text = string.Empty;
+                ButtonChar_7_Text = string.Empty;
+                ButtonChar_8_Text = string.Empty;
+                ButtonChar_9_Text = string.Empty;
+                ButtonChar_10_Text = string.Empty;
+                ButtonChar_11_Text = string.Empty;
+                ButtonChar_12_Text = string.Empty;
+                ButtonChar_13_Text = string.Empty;
+                ButtonChar_14_Text = string.Empty;
+                ButtonChar_15_Text = string.Empty;
+                ButtonChar_16_Text = string.Empty;
+                ButtonChar_17_Text = string.Empty;
+
+                // Set popup characters based on the key pressed
                 switch (button.Text)
                 {
+                    case "A":
+                        ButtonChar_0_Text = "Á";
+                        ButtonChar_1_Text = "À";
+                        ButtonChar_2_Text = "Â";
+                        ButtonChar_3_Text = "Ä";
+                        ButtonChar_4_Text = "Ã";
+                        ButtonChar_5_Text = "Å";
+                        break;
+                    case "B":
+                        ButtonChar_0_Text = "B́";
+                        ButtonChar_1_Text = "B̀";
+                        break;
+                    case "C":
+                        ButtonChar_0_Text = "Ć";
+                        ButtonChar_1_Text = "C̀";
+                        ButtonChar_2_Text = "Ç";
+                        break;
+                    case "D":
+                        ButtonChar_0_Text = "D́";
+                        ButtonChar_1_Text = "D̀";
+                        break;
+                    case "E":
+                        ButtonChar_0_Text = "É";
+                        ButtonChar_1_Text = "È";
+                        ButtonChar_2_Text = "Ê";
+                        ButtonChar_3_Text = "Ë";
+                        ButtonChar_4_Text = "Ē";
+                        break;
+                    case "F":
+                        ButtonChar_0_Text = "F́";
+                        ButtonChar_1_Text = "F̀";
+                        break;
+                    case "G":
+                        ButtonChar_0_Text = "Ǵ";
+                        ButtonChar_1_Text = "G̀";
+                        break;
+                    case "H":
+                        ButtonChar_0_Text = "H́";
+                        ButtonChar_1_Text = "H̀";
+                        break;
+                    case "I":
+                        ButtonChar_0_Text = "Í";
+                        ButtonChar_1_Text = "Ì";
+                        ButtonChar_2_Text = "Î";
+                        ButtonChar_3_Text = "Ï";
+                        ButtonChar_4_Text = "Ī";
+                        break;
+                    case "J":
+                        ButtonChar_0_Text = "J́";
+                        ButtonChar_1_Text = "J̀";
+                        break;
+                    case "K":
+                        ButtonChar_0_Text = "Ḱ";
+                        ButtonChar_1_Text = "K̀";
+                        break;
+                    case "L":
+                        ButtonChar_0_Text = "Ĺ";
+                        ButtonChar_1_Text = "L̀";
+                        break;
+                    case "M":
+                        ButtonChar_0_Text = "Ḿ";
+                        ButtonChar_1_Text = "M̀";
+                        break;
+                    case "N":
+                        ButtonChar_0_Text = "Ñ";
+                        ButtonChar_1_Text = "Ń";
+                        ButtonChar_2_Text = "Ǹ";
+                        ButtonChar_3_Text = "Ń";
+                        break;
+                    case "O":
+                        ButtonChar_0_Text = "Ó";
+                        ButtonChar_1_Text = "Ò";
+                        ButtonChar_2_Text = "Ô";
+                        ButtonChar_3_Text = "Ö";
+                        ButtonChar_4_Text = "Õ";
+                        ButtonChar_5_Text = "Ø";
+                        break;
+                    case "P":
+                        ButtonChar_0_Text = "Ṕ";
+                        ButtonChar_1_Text = "P̀";
+                        break;
+                    case "Q":
+                        ButtonChar_0_Text = "Q́";
+                        ButtonChar_1_Text = "Q̀";
+                        break;
+                    case "R":
+                        ButtonChar_0_Text = "Ŕ";
+                        ButtonChar_1_Text = "R̀";
+                        break;
+                    case "S":
+                        ButtonChar_0_Text = "Ś";
+                        ButtonChar_1_Text = "Š";
+                        break;
+                    case "T":
+                        ButtonChar_0_Text = "T́";
+                        ButtonChar_1_Text = "T̀";
+                        break;
+                    case "U":
+                        ButtonChar_0_Text = "Ú";
+                        ButtonChar_1_Text = "Ù";
+                        ButtonChar_2_Text = "Û";
+                        ButtonChar_3_Text = "Ü";
+                        ButtonChar_4_Text = "Ū";
+                        break;
+                    case "V":
+                        ButtonChar_0_Text = "V́";
+                        ButtonChar_1_Text = "V̀";
+                        break;
+                    case "W":
+                        ButtonChar_0_Text = "Ẃ";
+                        ButtonChar_1_Text = "Ẁ";
+                        break;
+                    case "X":
+                        ButtonChar_0_Text = "X́";
+                        ButtonChar_1_Text = "X̀";
+                        break;
+                    case "Y":
+                        ButtonChar_0_Text = "Ý";
+                        ButtonChar_1_Text = "Ỳ";
+                        ButtonChar_2_Text = "Ŷ";
+                        break;
+                    case "Z":
+                        ButtonChar_0_Text = "Ź";
+                        ButtonChar_1_Text = "Ž";
+                        ButtonChar_2_Text = "Ż";
+                        break;
+                    
                     case "a":
                         ButtonChar_0_Text = "á";
                         ButtonChar_1_Text = "à";
@@ -1030,6 +1156,7 @@
                 }
             }
 
+            // Show the popup
             grdCharactersPopup.IsVisible = true;
         }
 
@@ -1151,6 +1278,16 @@
         }
 
         /// <summary>
+        /// Handles the click event to hide the keyboard character popup.
+        /// </summary>
+        /// <param name="sender">The source of the event, typically the control that was clicked.</param>
+        /// <param name="e">An <see cref="EventArgs"/> object that contains the event data.</param>
+        private void OnKeyboardCharHide_Clicked(object sender, EventArgs e)
+        {
+            grdCharactersPopup.IsVisible = false;
+        }
+
+        /// <summary>
         /// Set the original keys, row 2-3-4 of the keyboard (characters in uppercase)
         /// </summary>
         private void SetOriginalKeys()
@@ -1223,105 +1360,5 @@
             Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38].ToLower();
             Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
         }
-
-        ///// <summary>
-        ///// Displays a popup containing keyboard characters for a brief period.
-        ///// </summary>
-        ///// <remarks>The popup cannot be dismissed by tapping outside of it and will automatically close
-        ///// after approximately two seconds. This method must be called from a context where the application's main
-        ///// window and page are available.</remarks>
-        ///// <returns>A task that represents the asynchronous operation of displaying and closing the popup.</returns>
-        //public static async Task DisplayPopup()
-        //{
-        //    double displayTimeSpan = 2.0; // seconds
-
-        //    var popup = new KeyboardCharactersPopup();
-
-        //    Application.Current!.Windows[0].Page!.ShowPopup(popup, new PopupOptions
-        //    {
-        //        CanBeDismissedByTappingOutsideOfPopup = false
-        //    });
-
-        //    await Task.Delay(TimeSpan.FromSeconds(displayTimeSpan));
-
-        //    await Application.Current!.Windows[0].Page!.ClosePopupAsync();
-
-        //    //await this.ShowPopupAsync(popup, PopupOptions.Empty, token);
-        //    //await Application.Current!.Windows[0].Page!.ShowPopupAsync(popup, PopupOptions.Empty);
-        //}
-
-        // Replace TouchBehavior_LongPressCompleted and DisplayPopup with this in the file
-
-        //private async void TouchBehavior_LongPressCompleted(object sender, CommunityToolkit.Maui.Core.LongPressCompletedEventArgs e)
-        //{
-        //    Debug.WriteLine("TouchBehavior_LongPressCompleted - Long press completed on key");
-
-        //    // Show the characters popup as a child of the keyboard overlay so the keyboard stays visible
-        //    await ShowInlineCharacterPopupAsync();
-        //}
-
-        ///// <summary>
-        ///// Shows the KeyboardCharactersPopup as a child inside the nearest Layout in the visual tree.
-        ///// Removes it after a short interval.
-        ///// </summary>
-        //private async Task ShowInlineCharacterPopupAsync()
-        //{
-        //    const double displaySeconds = 2.0;
-        //    var popupView = new KeyboardCharactersPopup();
-
-        //    // Try to find the nearest Layout parent to host the popup view.
-        //    Element? p = this;
-        //    Layout? hostLayout = null;
-        //    while (p != null)
-        //    {
-        //        p = p.Parent;
-        //        if (p is Layout layout)
-        //        {
-        //            hostLayout = layout;
-        //            break;
-        //        }
-        //    }
-
-        //    if (hostLayout == null)
-        //    {
-        //        // Fallback: try to add to main page if it's a Layout
-        //        var mainPage = Application.Current?.Windows[0].Page;
-        //        if (mainPage is VisualElement ve && ve is Layout mainLayout)
-        //            hostLayout = mainLayout;
-        //    }
-
-        //    if (hostLayout != null)
-        //    {
-        //        // Optional: adjust sizing / placement depending on your layout (AbsoluteLayout gives precise control)
-        //        // If hostLayout is AbsoluteLayout you can position the popup exactly; otherwise center it.
-        //        if (hostLayout is AbsoluteLayout absoluteHost)
-        //        {
-        //            absoluteHost.Children.Add(popupView);
-        //            // Example: center the popup; adjust bounds to suit your UI
-        //            AbsoluteLayout.SetLayoutFlags(popupView, AbsoluteLayoutFlags.PositionProportional);
-        //            AbsoluteLayout.SetLayoutBounds(popupView, new Rect(0.5, 0.25, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
-        //        }
-        //        else
-        //        {
-        //            // Add at end so it appears on top of the keyboard control
-        //            hostLayout.Children.Add(popupView);
-        //            // Optionally set alignment so it appears above keyboard area
-        //            popupView.HorizontalOptions = LayoutOptions.Center;
-        //            popupView.VerticalOptions = LayoutOptions.Start;
-        //            // adjust TranslationY or Margin if needed to move it above the pressed key
-        //        }
-
-        //        // Keep the inline popup visible for a short period, then remove it
-        //        await Task.Delay(TimeSpan.FromSeconds(displaySeconds));
-
-        //        // Remove the popup safely
-        //        if (hostLayout.Children.Contains(popupView))
-        //            hostLayout.Children.Remove(popupView);
-        //    }
-        //    else
-        //    {
-        //        Debug.WriteLine("ShowInlineCharacterPopupAsync: no suitable host layout found. Consider adding a named container in XAML.");
-        //    }
-        //}
     }
 }
