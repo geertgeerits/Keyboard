@@ -820,7 +820,7 @@
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="VisualStateManager.VisualStateGroups">
+        <!--<Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
                 <VisualStateGroup x:Name="CommonStates">
                     <VisualState x:Name="Normal">
@@ -835,7 +835,7 @@
                     </VisualState>
                 </VisualStateGroup>
             </VisualStateGroupList>
-        </Setter>
+        </Setter>-->
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyAlphanumericPortraitImageButton">

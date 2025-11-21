@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Class="Keyboard.KeyboardAlphanumericPortrait"
     x:DataType="local:KeyboardDecimalPortrait">
 
@@ -103,6 +104,23 @@
             Grid.Row="2"
             Text="{Binding Button_10_Text}"
             Clicked="BtnKey_Clicked">
+            <Button.Behaviors>
+                <toolkit:TouchBehavior
+                    LongPressDuration="500"
+                    LongPressCompleted="TouchBehavior_LongPressCompleted">
+                </toolkit:TouchBehavior>
+            </Button.Behaviors>
+            <!--<VisualStateManager.VisualStateGroups>
+                <VisualStateGroupList>
+                    <VisualStateGroup Name="CommonStates">
+                        <VisualState Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="Scale" Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </VisualStateManager.VisualStateGroups>-->
         </Button>
 
         <Button

@@ -1,8 +1,8 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
-   Version .....: 1.0.28
-   Date ........: 2025-11-20 (YYYY-MM-DD)
+   Version .....: 1.0.29
+   Date ........: 2025-11-21 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -10,7 +10,8 @@
                   Hiding the Android and iOS system keyboard happens in the 'MauiProgram.cs' file, method: Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping
                   In iOS the 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
                   It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
-   Dependencies : NuGet Package: CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
+   Dependencies : NuGet Package: CommunityToolkit.Maui Version 13.0.0 ; https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/
+                  CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
 */
 
 namespace Keyboard

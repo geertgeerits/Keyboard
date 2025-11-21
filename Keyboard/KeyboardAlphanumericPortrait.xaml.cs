@@ -1,4 +1,9 @@
-﻿namespace Keyboard
+﻿using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Extensions;
+using CommunityToolkit.Maui.Views;
+using Microsoft.Maui.Layouts;
+
+namespace Keyboard
 {
     public partial class KeyboardAlphanumericPortrait : ContentView
     {
@@ -591,8 +596,6 @@
             }
         }
 
-
-
         /// <summary>
         /// Set the BindingContext
         /// </summary>
@@ -811,6 +814,119 @@
             Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37].ToLower();
             Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38].ToLower();
             Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
+        }
+
+        ///// <summary>
+        ///// Handles the completion of a long press gesture on a key and displays the alphanumeric keyboard popup.
+        ///// </summary>
+        ///// <remarks>Opening the popup closes the keyboard overlay, so this can not be used</remarks>
+        ///// <param name="sender">The source object that raised the long press completed event.</param>
+        ///// <param name="e">The event data associated with the long press completion, containing information about the gesture.</param>
+        //private async void TouchBehavior_LongPressCompleted(object sender, CommunityToolkit.Maui.Core.LongPressCompletedEventArgs e)
+        //{
+        //    Debug.WriteLine("TouchBehavior_LongPressCompleted - Long press completed on key");
+
+        //    await KeyboardAlphanumericPortrait.DisplayPopup();
+        //}
+
+        ///// <summary>
+        ///// Displays a popup containing keyboard characters for a brief period.
+        ///// </summary>
+        ///// <remarks>The popup cannot be dismissed by tapping outside of it and will automatically close
+        ///// after approximately two seconds. This method must be called from a context where the application's main
+        ///// window and page are available.</remarks>
+        ///// <returns>A task that represents the asynchronous operation of displaying and closing the popup.</returns>
+        //public static async Task DisplayPopup()
+        //{
+        //    double displayTimeSpan = 2.0; // seconds
+
+        //    var popup = new KeyboardCharactersPopup();
+
+        //    Application.Current!.Windows[0].Page!.ShowPopup(popup, new PopupOptions
+        //    {
+        //        CanBeDismissedByTappingOutsideOfPopup = false
+        //    });
+
+        //    await Task.Delay(TimeSpan.FromSeconds(displayTimeSpan));
+
+        //    await Application.Current!.Windows[0].Page!.ClosePopupAsync();
+
+        //    //await this.ShowPopupAsync(popup, PopupOptions.Empty, token);
+        //    //await Application.Current!.Windows[0].Page!.ShowPopupAsync(popup, PopupOptions.Empty);
+        //}
+
+        // Replace TouchBehavior_LongPressCompleted and DisplayPopup with this in the file
+
+        private async void TouchBehavior_LongPressCompleted(object sender, CommunityToolkit.Maui.Core.LongPressCompletedEventArgs e)
+        {
+            Debug.WriteLine("TouchBehavior_LongPressCompleted - Long press completed on key");
+
+            // Show the characters popup as a child of the keyboard overlay so the keyboard stays visible
+            await ShowInlineCharacterPopupAsync();
+        }
+
+        /// <summary>
+        /// Shows the KeyboardCharactersPopup as a child inside the nearest Layout in the visual tree.
+        /// Removes it after a short interval.
+        /// </summary>
+        private async Task ShowInlineCharacterPopupAsync()
+        {
+            const double displaySeconds = 2.0;
+            var popupView = new KeyboardCharactersPopup();
+
+            // Try to find the nearest Layout parent to host the popup view.
+            Element? p = this;
+            Layout? hostLayout = null;
+            while (p != null)
+            {
+                p = p.Parent;
+                if (p is Layout layout)
+                {
+                    hostLayout = layout;
+                    break;
+                }
+            }
+
+            if (hostLayout == null)
+            {
+                // Fallback: try to add to main page if it's a Layout
+                var mainPage = Application.Current?.Windows[0].Page;
+                if (mainPage is VisualElement ve && ve is Layout mainLayout)
+                    hostLayout = mainLayout;
+            }
+
+            if (hostLayout != null)
+            {
+                // Optional: adjust sizing / placement depending on your layout (AbsoluteLayout gives precise control)
+                // If hostLayout is AbsoluteLayout you can position the popup exactly; otherwise center it.
+                if (hostLayout is AbsoluteLayout absoluteHost)
+                {
+                    absoluteHost.Children.Add(popupView);
+                    // Example: center the popup; adjust bounds to suit your UI
+                    AbsoluteLayout.SetLayoutFlags(popupView, AbsoluteLayoutFlags.PositionProportional);
+                    AbsoluteLayout.SetLayoutBounds(popupView, new Rect(0.5, 0.25, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+                }
+                else
+                {
+                    // Add at end so it appears on top of the keyboard control
+                    hostLayout.Children.Add(popupView);
+                    // Optionally set alignment so it appears above keyboard area
+                    popupView.HorizontalOptions = LayoutOptions.Center;
+                    popupView.VerticalOptions = LayoutOptions.Start;
+                    // adjust TranslationY or Margin if needed to move it above the pressed key
+                }
+
+                // Keep the inline popup visible for a short period, then remove it
+                await Task.Delay(TimeSpan.FromSeconds(displaySeconds));
+
+                // Remove the popup safely
+                if (hostLayout.Children.Contains(popupView))
+                    hostLayout.Children.Remove(popupView);
+            }
+            else
+            {
+                Debug.WriteLine("ShowInlineCharacterPopupAsync: no suitable host layout found. Consider adding a named container in XAML.");
+            }
         }
     }
 }
