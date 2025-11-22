@@ -820,22 +820,6 @@
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
         <Setter Property="Padding" Value="0" />
-        <!--<Setter Property="VisualStateManager.VisualStateGroups">
-            <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="1" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="Pressed">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="0.8" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateGroupList>
-        </Setter>-->
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyAlphanumericPortraitImageButton">
@@ -847,22 +831,6 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='0', iOS='0', WinUI='0,0,8,0'}" />
-        <Setter Property="VisualStateManager.VisualStateGroups">
-            <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="1" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="Pressed">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="0.8" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateGroupList>
-        </Setter>
     </Style>
 
     <Style TargetType="Button" x:Key="KeyAlphanumericLandscapeButton">
@@ -878,22 +846,6 @@
         <Setter Property="FontAutoScalingEnabled" Value="False" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
-        <Setter Property="VisualStateManager.VisualStateGroups">
-            <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="1" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="Pressed">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="0.8" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateGroupList>
-        </Setter>
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyAlphanumericLandscapeImageButton">
@@ -905,22 +857,6 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
-        <Setter Property="VisualStateManager.VisualStateGroups">
-            <VisualStateGroupList>
-                <VisualStateGroup x:Name="CommonStates">
-                    <VisualState x:Name="Normal">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="1" />
-                        </VisualState.Setters>
-                    </VisualState>
-                    <VisualState x:Name="Pressed">
-                        <VisualState.Setters>
-                            <Setter Property="Scale" Value="0.8" />
-                        </VisualState.Setters>
-                    </VisualState>
-                </VisualStateGroup>
-            </VisualStateGroupList>
-        </Setter>
     </Style>
 
 </ResourceDictionary>

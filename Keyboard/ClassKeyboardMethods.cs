@@ -15,6 +15,9 @@
         private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_- ;@#$%&|*";
         private static readonly string cKeyboard_OTHER = "1234567890Ø²³%‰+×÷=*/\\<>{}[]()|!?¿@#&^$€£¥_- '\";:,.§¨";
 
+        // Keyboard layouts for alphanumeric input
+        //public static string[] cKeyPopupChr_A = new string[8] { "Á", "À", "Â", "Ä", "Ã", "Å", "Ā", "Æ" };
+
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
 

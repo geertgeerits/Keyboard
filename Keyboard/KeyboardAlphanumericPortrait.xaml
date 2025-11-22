@@ -12,14 +12,15 @@
             x:Name="grdCharactersPopup"
             Style="{StaticResource KeyboardGrid}"
             ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
-            RowDefinitions="5, 30, 30"
+            RowDefinitions="5, 30, 30, 5"
             IsVisible="False">
 
             <BoxView
                 Style="{StaticResource KeyboardGridBoxView}"
                 Grid.ColumnSpan="12"
                 Grid.RowSpan="4"
-                CornerRadius="8">
+                CornerRadius="8"
+                BackgroundColor="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}">
             </BoxView>
 
             <Button
@@ -277,21 +278,10 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
-                <!--<VisualStateManager.VisualStateGroups>
-                    <VisualStateGroupList>
-                        <VisualStateGroup Name="CommonStates">
-                            <VisualState Name="Normal">
-                                <VisualState.Setters>
-                                    <Setter Property="Scale" Value="1" />
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateGroupList>
-                </VisualStateManager.VisualStateGroups>-->
             </Button>
 
             <Button
@@ -302,7 +292,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                     LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -316,7 +306,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -330,7 +320,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -344,7 +334,7 @@
             Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                    LongPressDuration="750"
+                    LongPressDuration="600"
                     LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -358,7 +348,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -372,7 +362,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -386,7 +376,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -400,7 +390,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -414,7 +404,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -428,7 +418,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -442,7 +432,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -456,7 +446,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -470,7 +460,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -484,7 +474,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -498,7 +488,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -512,7 +502,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -526,7 +516,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -540,7 +530,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -554,7 +544,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -568,7 +558,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -582,7 +572,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -596,7 +586,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -610,7 +600,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -624,7 +614,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -638,7 +628,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -652,7 +642,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                     LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -666,7 +656,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -680,7 +670,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
@@ -694,7 +684,7 @@
                 Clicked="BtnKey_Clicked">
                 <Button.Behaviors>
                     <toolkit:TouchBehavior
-                        LongPressDuration="750"
+                        LongPressDuration="600"
                         LongPressCompleted="TouchBehavior_LongPressCompleted">
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
