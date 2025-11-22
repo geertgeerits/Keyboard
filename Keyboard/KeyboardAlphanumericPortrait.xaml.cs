@@ -858,315 +858,17 @@
             if (sender is Button button)
             {
                 // Clear previous popup characters
-                ButtonChar_0_Text = string.Empty;
-                ButtonChar_1_Text = string.Empty;
-                ButtonChar_2_Text = string.Empty;
-                ButtonChar_3_Text = string.Empty;
-                ButtonChar_4_Text = string.Empty;
-                ButtonChar_5_Text = string.Empty;
-                ButtonChar_6_Text = string.Empty;
-                ButtonChar_7_Text = string.Empty;
-                ButtonChar_8_Text = string.Empty;
-                ButtonChar_9_Text = string.Empty;
-                ButtonChar_10_Text = string.Empty;
-                ButtonChar_11_Text = string.Empty;
-                ButtonChar_12_Text = string.Empty;
-                ButtonChar_13_Text = string.Empty;
-                ButtonChar_14_Text = string.Empty;
-                ButtonChar_15_Text = string.Empty;
-                ButtonChar_16_Text = string.Empty;
-                ButtonChar_17_Text = string.Empty;
-                
-                // Set popup characters based on the key pressed
-                switch (button.Text)
+                SetPopupCharacters(Array.Empty<string>());
+
+                // Lookup popup characters from the shared dictionary
+                if (!ClassPopupCharacters.PopupCharacters.TryGetValue(button.Text, out var popupChars))
                 {
-                    case "A":
-                        ButtonChar_0_Text = "Á";
-                        ButtonChar_1_Text = "À";
-                        ButtonChar_2_Text = "Â";
-                        ButtonChar_3_Text = "Ä";
-                        ButtonChar_4_Text = "Ã";
-                        ButtonChar_5_Text = "Å";
-                        ButtonChar_6_Text = "Ā";
-                        ButtonChar_7_Text = "Æ";
-                        break;
-                    case "B":
-                        ButtonChar_0_Text = "B́";
-                        ButtonChar_1_Text = "B̀";
-                        break;
-                    case "C":
-                        ButtonChar_0_Text = "Ć";
-                        ButtonChar_1_Text = "C̀";
-                        ButtonChar_2_Text = "Ç";
-                        break;
-                    case "D":
-                        ButtonChar_0_Text = "D́";
-                        ButtonChar_1_Text = "D̀";
-                        break;
-                    case "E":
-                        ButtonChar_0_Text = "É";
-                        ButtonChar_1_Text = "È";
-                        ButtonChar_2_Text = "Ê";
-                        ButtonChar_3_Text = "Ë";
-                        ButtonChar_4_Text = "Ē";
-                        break;
-                    case "F":
-                        ButtonChar_0_Text = "F́";
-                        ButtonChar_1_Text = "F̀";
-                        break;
-                    case "G":
-                        ButtonChar_0_Text = "Ǵ";
-                        ButtonChar_1_Text = "G̀";
-                        break;
-                    case "H":
-                        ButtonChar_0_Text = "H́";
-                        ButtonChar_1_Text = "H̀";
-                        break;
-                    case "I":
-                        ButtonChar_0_Text = "Í";
-                        ButtonChar_1_Text = "Ì";
-                        ButtonChar_2_Text = "Î";
-                        ButtonChar_3_Text = "Ï";
-                        ButtonChar_4_Text = "Ī";
-                        break;
-                    case "J":
-                        ButtonChar_0_Text = "J́";
-                        ButtonChar_1_Text = "J̀";
-                        break;
-                    case "K":
-                        ButtonChar_0_Text = "Ḱ";
-                        ButtonChar_1_Text = "K̀";
-                        break;
-                    case "L":
-                        ButtonChar_0_Text = "Ĺ";
-                        ButtonChar_1_Text = "L̀";
-                        break;
-                    case "M":
-                        ButtonChar_0_Text = "Ḿ";
-                        ButtonChar_1_Text = "M̀";
-                        break;
-                    case "N":
-                        ButtonChar_0_Text = "Ñ";
-                        ButtonChar_1_Text = "Ń";
-                        ButtonChar_2_Text = "Ǹ";
-                        ButtonChar_3_Text = "Ń";
-                        break;
-                    case "O":
-                        ButtonChar_0_Text = "Ó";
-                        ButtonChar_1_Text = "Ò";
-                        ButtonChar_2_Text = "Ô";
-                        ButtonChar_3_Text = "Ö";
-                        ButtonChar_4_Text = "Õ";
-                        ButtonChar_5_Text = "Ø";
-                        break;
-                    case "P":
-                        ButtonChar_0_Text = "Ṕ";
-                        ButtonChar_1_Text = "P̀";
-                        break;
-                    case "Q":
-                        ButtonChar_0_Text = "Q́";
-                        ButtonChar_1_Text = "Q̀";
-                        break;
-                    case "R":
-                        ButtonChar_0_Text = "Ŕ";
-                        ButtonChar_1_Text = "R̀";
-                        break;
-                    case "S":
-                        ButtonChar_0_Text = "Ś";
-                        ButtonChar_1_Text = "Š";
-                        break;
-                    case "T":
-                        ButtonChar_0_Text = "T́";
-                        ButtonChar_1_Text = "T̀";
-                        break;
-                    case "U":
-                        ButtonChar_0_Text = "Ú";
-                        ButtonChar_1_Text = "Ù";
-                        ButtonChar_2_Text = "Û";
-                        ButtonChar_3_Text = "Ü";
-                        ButtonChar_4_Text = "Ū";
-                        break;
-                    case "V":
-                        ButtonChar_0_Text = "V́";
-                        ButtonChar_1_Text = "V̀";
-                        break;
-                    case "W":
-                        ButtonChar_0_Text = "Ẃ";
-                        ButtonChar_1_Text = "Ẁ";
-                        break;
-                    case "X":
-                        ButtonChar_0_Text = "X́";
-                        ButtonChar_1_Text = "X̀";
-                        break;
-                    case "Y":
-                        ButtonChar_0_Text = "Ý";
-                        ButtonChar_1_Text = "Ỳ";
-                        ButtonChar_2_Text = "Ŷ";
-                        break;
-                    case "Z":
-                        ButtonChar_0_Text = "Ź";
-                        ButtonChar_1_Text = "Ž";
-                        ButtonChar_2_Text = "Ż";
-                        break;
-                    
-                    case "a":
-                        ButtonChar_0_Text = "á";
-                        ButtonChar_1_Text = "à";
-                        ButtonChar_2_Text = "â";
-                        ButtonChar_3_Text = "ä";
-                        ButtonChar_4_Text = "ã";
-                        ButtonChar_5_Text = "å";
-                        ButtonChar_6_Text = "ā";
-                        ButtonChar_7_Text = "ą";
-                        ButtonChar_8_Text = "ā́";
-                        ButtonChar_9_Text = "ā̀";
-                        ButtonChar_10_Text = "ª";
-                        ButtonChar_11_Text = "ạ";
-                        ButtonChar_12_Text = "ả";
-                        ButtonChar_13_Text = "ã́";
-                        ButtonChar_14_Text = "ã̀";
-                        ButtonChar_15_Text = "ɑ";
-                        ButtonChar_16_Text = "æ";
-                        break;
-                    case "b":
-                        ButtonChar_0_Text = "b́";
-                        ButtonChar_1_Text = "b̀";
-                        ButtonChar_2_Text = "β";
-                        break;
-                    case "c":
-                        ButtonChar_0_Text = "ć";
-                        ButtonChar_1_Text = "c̀";
-                        ButtonChar_2_Text = "ç";
-                        break;
-                    case "d":
-                        ButtonChar_0_Text = "d́";
-                        ButtonChar_1_Text = "d̀";
-                        ButtonChar_2_Text = "δ";
-                        break;
-                    case "e":
-                        ButtonChar_0_Text = "é";
-                        ButtonChar_1_Text = "è";
-                        ButtonChar_2_Text = "ê";
-                        ButtonChar_3_Text = "ë";
-                        ButtonChar_4_Text = "ē";
-                        break;
-                    case "f":
-                        ButtonChar_0_Text = "f́";
-                        ButtonChar_1_Text = "f̀";
-                        ButtonChar_2_Text = "ƒ";
-                        break;
-                    case "g":
-                        ButtonChar_0_Text = "ǵ";
-                        ButtonChar_1_Text = "g̀";
-                        ButtonChar_2_Text = "ğ";
-                        break;
-                    case "h":
-                        ButtonChar_0_Text = "h́";
-                        ButtonChar_1_Text = "h̀";
-                        ButtonChar_2_Text = "ħ";
-                        break;
-                    case "i":
-                        ButtonChar_0_Text = "í";
-                        ButtonChar_1_Text = "ì";
-                        ButtonChar_2_Text = "î";
-                        ButtonChar_3_Text = "ï";
-                        ButtonChar_4_Text = "ī";
-                        break;
-                    case "j":
-                        ButtonChar_0_Text = "j́";
-                        ButtonChar_1_Text = "j̀";
-                        ButtonChar_2_Text = "ĵ";
-                        break;
-                    case "k":
-                        ButtonChar_0_Text = "ḱ";
-                        ButtonChar_1_Text = "k̀";
-                        ButtonChar_2_Text = "ķ";
-                        break;
-                    case "l":
-                        ButtonChar_0_Text = "ĺ";
-                        ButtonChar_1_Text = "l̀";
-                        ButtonChar_2_Text = "ł";
-                        break;
-                    case "m":
-                        ButtonChar_0_Text = "ḿ";
-                        ButtonChar_1_Text = "m̀";
-                        ButtonChar_2_Text = "μ";
-                        break;
-                    case "n":
-                        ButtonChar_0_Text = "ñ";
-                        ButtonChar_1_Text = "ń";
-                        ButtonChar_2_Text = "ǹ";
-                        ButtonChar_3_Text = "ń";
-                        break;
-                    case "o":
-                        ButtonChar_0_Text = "ó";
-                        ButtonChar_1_Text = "ò";
-                        ButtonChar_2_Text = "ô";
-                        ButtonChar_3_Text = "ö";
-                        ButtonChar_4_Text = "õ";
-                        ButtonChar_5_Text = "ø";
-                        break;
-                    case "p":
-                        ButtonChar_0_Text = "ṕ";
-                        ButtonChar_1_Text = "p̀";
-                        ButtonChar_2_Text = "π";
-                        break;
-                    case "q":
-                        ButtonChar_0_Text = "q́";
-                        ButtonChar_1_Text = "q̀";
-                        ButtonChar_2_Text = "ɋ";
-                        break;
-                    case "r":
-                        ButtonChar_0_Text = "ŕ";
-                        ButtonChar_1_Text = "r̀";
-                        ButtonChar_2_Text = "ř";
-                        break;
-                    case "s":
-                        ButtonChar_0_Text = "ś";
-                        ButtonChar_1_Text = "š";
-                        ButtonChar_2_Text = "ß";
-                        break;
-                    case "t":
-                        ButtonChar_0_Text = "t́";
-                        ButtonChar_1_Text = "t̀";
-                        ButtonChar_2_Text = "ţ";
-                        break;
-                    case "u":
-                        ButtonChar_0_Text = "ú";
-                        ButtonChar_1_Text = "ù";
-                        ButtonChar_2_Text = "û";
-                        ButtonChar_3_Text = "ü";
-                        ButtonChar_4_Text = "ū";
-                        break;
-                    case "v":
-                        ButtonChar_0_Text = "v́";
-                        ButtonChar_1_Text = "v̀";
-                        ButtonChar_2_Text = "ν";
-                        break;
-                    case "w":
-                        ButtonChar_0_Text = "ẃ";
-                        ButtonChar_1_Text = "ẁ";
-                        ButtonChar_2_Text = "ŵ";
-                        break;
-                    case "x":
-                        ButtonChar_0_Text = "x́";
-                        ButtonChar_1_Text = "x̀";
-                        ButtonChar_2_Text = "χ";
-                        break;
-                    case "y":
-                        ButtonChar_0_Text = "ý";
-                        ButtonChar_1_Text = "ỳ";
-                        ButtonChar_2_Text = "ŷ";
-                        break;
-                    case "z":
-                        ButtonChar_0_Text = "ź";
-                        ButtonChar_1_Text = "ž";
-                        ButtonChar_2_Text = "ż";
-                        break;
-                    default:
-                        // No popup for other keys
-                        return;
+                    // No popup for other keys
+                    return;
                 }
+
+                // Set popup characters and show
+                SetPopupCharacters(popupChars);
 
                 // Show the popup
                 grdCharactersPopup.IsVisible = true;
@@ -1377,6 +1079,47 @@
             Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37].ToLower();
             Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38].ToLower();
             Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
+        }
+
+        /// <summary>
+        /// Assign popup characters from a string array to ButtonChar_X_Text properties.
+        /// Supports up to 18 popup entries (0..17). Clears all when passed an empty array.
+        /// </summary>
+        /// <param name="chars">Array of popup characters to set.</param>
+        private void SetPopupCharacters(string[] chars)
+        {
+            var setters = new Action<string>[]
+            {
+                v => ButtonChar_0_Text = v,
+                v => ButtonChar_1_Text = v,
+                v => ButtonChar_2_Text = v,
+                v => ButtonChar_3_Text = v,
+                v => ButtonChar_4_Text = v,
+                v => ButtonChar_5_Text = v,
+                v => ButtonChar_6_Text = v,
+                v => ButtonChar_7_Text = v,
+                v => ButtonChar_8_Text = v,
+                v => ButtonChar_9_Text = v,
+                v => ButtonChar_10_Text = v,
+                v => ButtonChar_11_Text = v,
+                v => ButtonChar_12_Text = v,
+                v => ButtonChar_13_Text = v,
+                v => ButtonChar_14_Text = v,
+                v => ButtonChar_15_Text = v,
+                v => ButtonChar_16_Text = v,
+                v => ButtonChar_17_Text = v,
+            };
+
+            // Clear all first
+            for (int i = 0; i < setters.Length; i++)
+                setters[i](string.Empty);
+
+            if (chars == null)
+                return;
+
+            int max = Math.Min(chars.Length, setters.Length);
+            for (int i = 0; i < max; i++)
+                setters[i](chars[i]);
         }
     }
 }
