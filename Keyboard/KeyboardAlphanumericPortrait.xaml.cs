@@ -5,7 +5,6 @@
         // Declare variables for shift key and layout change state
         private bool bShiftKeyEnabled;
         private bool bChangeLayoutEnabled;
-        private bool bCharactersPopupEnabled;
 
         // Declare variables for binding properties
         private string _buttonChar_0_Text = string.Empty;
@@ -878,8 +877,6 @@
                 ButtonChar_16_Text = string.Empty;
                 ButtonChar_17_Text = string.Empty;
                 
-                bCharactersPopupEnabled = false;
-                
                 // Set popup characters based on the key pressed
                 switch (button.Text)
                 {
@@ -890,6 +887,8 @@
                         ButtonChar_3_Text = "Ä";
                         ButtonChar_4_Text = "Ã";
                         ButtonChar_5_Text = "Å";
+                        ButtonChar_6_Text = "Ā";
+                        ButtonChar_7_Text = "Æ";
                         break;
                     case "B":
                         ButtonChar_0_Text = "B́";
@@ -1017,6 +1016,17 @@
                         ButtonChar_3_Text = "ä";
                         ButtonChar_4_Text = "ã";
                         ButtonChar_5_Text = "å";
+                        ButtonChar_6_Text = "ā";
+                        ButtonChar_7_Text = "ą";
+                        ButtonChar_8_Text = "ā́";
+                        ButtonChar_9_Text = "ā̀";
+                        ButtonChar_10_Text = "ª";
+                        ButtonChar_11_Text = "ạ";
+                        ButtonChar_12_Text = "ả";
+                        ButtonChar_13_Text = "ã́";
+                        ButtonChar_14_Text = "ã̀";
+                        ButtonChar_15_Text = "ɑ";
+                        ButtonChar_16_Text = "æ";
                         break;
                     case "b":
                         ButtonChar_0_Text = "b́";
@@ -1160,7 +1170,6 @@
 
                 // Show the popup
                 grdCharactersPopup.IsVisible = true;
-                bCharactersPopupEnabled = true;
             }
         }
 
@@ -1187,7 +1196,6 @@
                 }
 
                 grdCharactersPopup.IsVisible = false;
-                bCharactersPopupEnabled = false;
             }
         }
 
@@ -1198,12 +1206,10 @@
         /// <param name="e"></param>
         private void BtnKey_Clicked(object sender, EventArgs e)
         {
-            if (bCharactersPopupEnabled)
+            if (grdCharactersPopup.IsVisible)
             {
                 return;
             }
-
-            bCharactersPopupEnabled = false;
 
             string cKeyPressed = string.Empty;
 
@@ -1269,7 +1275,7 @@
             else
             {
                 // Change to ABC layout (special characters)
-                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
+                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
                 InitializeKeyboard();
                 btnChangeLayout.Text = "!#1";
                 btnShiftKey.IsEnabled = true;
@@ -1297,7 +1303,6 @@
         private void OnKeyboardCharHide_Clicked(object sender, EventArgs e)
         {
             grdCharactersPopup.IsVisible = false;
-            bCharactersPopupEnabled = false;
         }
 
         /// <summary>

@@ -8,7 +8,17 @@ namespace Keyboard
 
         public PageKeyboardMixedSample()
     	{
-    		InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+#if DEBUG
+                DisplayAlertAsync("InitializeComponent: MainPage", ex.Message, "OK");
+#endif
+                return;
+            }
 
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;

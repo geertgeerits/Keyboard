@@ -13,7 +13,7 @@
         private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-,. ;@#€%&|*";
         private static readonly string cKeyboard_QWERTY_UK = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#£%&|*";
         private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_- ;@#$%&|*";
-        private static readonly string cKeyboard_OTHER =     "1234567890+×÷=/\\<>[]!@#€%^&*()_-'\":;,?.01234 5678901Z";
+        private static readonly string cKeyboard_OTHER = "1234567890Ø²³%‰+×÷=*/\\<>{}[]()|!?¿@#&^$€£¥_- '\";:,.§¨";
 
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;

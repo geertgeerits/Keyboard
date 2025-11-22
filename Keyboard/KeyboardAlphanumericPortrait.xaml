@@ -16,11 +16,10 @@
             IsVisible="False">
 
             <BoxView
-                Style="{StaticResource KeyboardBackgroundBoxView}"
+                Style="{StaticResource KeyboardGridBoxView}"
                 Grid.ColumnSpan="12"
                 Grid.RowSpan="4"
-                CornerRadius="8"
-                BackgroundColor="{AppThemeBinding Light={StaticResource KeyBoardBackgroundLight}, Dark={StaticResource KeyBoardBackgroundDark}}">
+                CornerRadius="8">
             </BoxView>
 
             <Button
