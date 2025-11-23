@@ -5,6 +5,7 @@ namespace Keyboard
         // Declare variables
         private string cEntryAutomationId = string.Empty;
         private Entry? _focusedEntry;
+        private bool bRestartApplication;
 
         public PageKeyboardMixedSample()
     	{
@@ -25,7 +26,7 @@ namespace Keyboard
 
             // Initialize the keyboard layout picker
             pckKeyboardLayout.SelectedIndex = 0;
-            pckKeyboardLayout.IsVisible = false;
+            //pckKeyboardLayout.IsVisible = false;
         }
 
         /// <summary>
@@ -403,11 +404,30 @@ namespace Keyboard
             if (selectedIndex != -1)
             {
                 ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
-                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
-                //ClassKeyboardMethods.InitializeKeyboard();
-            }
 
-            Debug.WriteLine($"selectedIndex: {selectedIndex}");
+                // Save the selected keyboard layout in the application preferences
+                Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
+
+                // Restart the application
+                try
+                {
+                    if (bRestartApplication)
+                    {
+                        //Application.Current!.Windows[0].Page = new AppShell();  // Does not work
+                        DisplayAlertAsync("Keyboard layout changed", "Close the app and restart it to apply the changes.", "OK");
+                    }
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    DisplayAlertAsync("pckKeyboardLayout_SelectedIndexChanged", ex.Message, "OK");
+#endif
+                }
+
+                bRestartApplication = true;
+
+                Debug.WriteLine($"selectedIndex: {selectedIndex}");
+            }
         }
     }
 }

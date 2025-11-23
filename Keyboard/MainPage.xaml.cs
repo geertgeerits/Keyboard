@@ -27,9 +27,10 @@ namespace Keyboard
             // Initialize the number format settings based on the current culture and 
             // Must be placed on the MainPage before InitializeComponent()
             ClassEntryMethods.InitializeNumberFormat();
-
+            
             // Set the default alphanumeric keyboard layout
-            ClassKeyboardMethods.cCurrentKeyboardLayout = "AZERTY_BE";
+            ClassKeyboardMethods.cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");
+            //ClassKeyboardMethods.cCurrentKeyboardLayout = "ABCDEF_XX";
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
 
             try
