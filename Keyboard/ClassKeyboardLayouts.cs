@@ -16,9 +16,9 @@
         /// keyboard type, for example, when validating input or customizing user interfaces.</remarks>
         public static readonly Dictionary<string, string[]> KeyboardLayouts = new(StringComparer.Ordinal)
         {
+            // The number of characters must be exactly 53 per keyboard layout (0-52)
             // The key 'space' is at index 44 zero based and 45 one based
-            // The maximum length of the keyboard layout strings is 53 characters (0-52)
-            //              01234567890123456789012345678901234567890123456789012
+            //                 01234567890123456789012345678901234567890123456789012
 
             //["ABCDEF_XX"] = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-,. ;@#€%&|*",
             //["AZERTY_BE"] = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-,. ;@#€%&|*",
