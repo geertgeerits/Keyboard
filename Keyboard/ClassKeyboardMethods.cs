@@ -120,7 +120,7 @@
         public static void SelectAlphanumericKeyboardLayout(string cLayout)
         {
             // Lookup keyboard characters from the shared dictionary
-            if (!ClassKeyboardLayouts.KeyboardLayouts.TryGetValue(cLayout, out var layoutChars) || layoutChars == null)
+            if (!ClassKeyboardLayouts.KeyboardLayouts.TryGetValue(cLayout, out string[]? layoutChars))
             {
                 // No keyboard characters for other keys
                 return;
@@ -129,7 +129,7 @@
             cAlphaNumCharacters = layoutChars;
 
             // Convert to ReadOnlySpan for performance optimization
-            //ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
+            ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
         }
 
         /// <summary>

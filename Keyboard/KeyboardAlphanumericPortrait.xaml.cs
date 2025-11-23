@@ -858,10 +858,10 @@
             if (sender is Button button)
             {
                 // Clear previous popup characters
-                SetPopupCharacters(Array.Empty<string>());
+                SetPopupCharacters([]);
 
                 // Lookup popup characters from the shared dictionary
-                if (!ClassKeyboardLayouts.PopupCharacters.TryGetValue(button.Text, out var popupChars))
+                if (!ClassKeyboardLayouts.PopupCharacters.TryGetValue(button.Text, out string[]? popupChars))
                 {
                     // No popup for other keys
                     return;

@@ -22,6 +22,10 @@ namespace Keyboard
 
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+
+            // Initialize the keyboard layout picker
+            pckKeyboardLayout.SelectedIndex = 0;
+            pckKeyboardLayout.IsVisible = false;
         }
 
         /// <summary>
@@ -389,6 +393,21 @@ namespace Keyboard
                     ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
                 }
             }
+        }
+
+        private void pckKeyboardLayout_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Picker picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex != -1)
+            {
+                ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
+                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                //ClassKeyboardMethods.InitializeKeyboard();
+            }
+
+            Debug.WriteLine($"selectedIndex: {selectedIndex}");
         }
     }
 }
