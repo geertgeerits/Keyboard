@@ -405,14 +405,14 @@ namespace Keyboard
             {
                 ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
 
-                // Save the selected keyboard layout in the application preferences
-                Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
-
                 // Restart the application
                 try
                 {
                     if (bRestartApplication)
                     {
+                        // Save the selected keyboard layout in the application preferences
+                        Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
+
                         //Application.Current!.Windows[0].Page = new AppShell();  // Does not work
                         DisplayAlertAsync("Keyboard layout changed", "Close the app and restart it to apply the changes.", "OK");
                     }
