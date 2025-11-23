@@ -5,8 +5,37 @@
     /// Keys are the label/text on the key (e.g. "A" or "a").
     /// Values are arrays of characters to display in the popup in order.
     /// </summary>
-    public static class ClassPopupCharacters
+    public static class ClassKeyboardLayouts
     {
+        /// <summary>
+        /// Provides a mapping of keyboard layout identifiers to their corresponding sets of supported characters.
+        /// </summary>
+        /// <remarks>Each entry associates a layout name, such as "QWERTY_US" or "AZERTY_BE", with an
+        /// array of characters available on that keyboard layout. The dictionary uses ordinal string comparison for
+        /// layout identifiers. This collection can be used to determine which characters are accessible for a given
+        /// keyboard type, for example, when validating input or customizing user interfaces.</remarks>
+        public static readonly Dictionary<string, string[]> KeyboardLayouts = new(StringComparer.Ordinal)
+        {
+            // The key 'space' is at index 44 zero based and 45 one based
+            // The maximum length of the keyboard layout strings is 53 characters
+            //              01234567890123456789012345678901234567890123456789012
+
+            // ABCDEF_XX = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-,. ;@#€%&|*";
+            // AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-,. ;@#€%&|*";
+            // QWERTY_UK = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#£%&|*";
+            // QWERTY_US = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_- ;@#$%&|*";
+            //     OTHER = "1234567890Ø²³%‰+×÷=*/\\<>{}[]()|!?¿@#&^$€£¥_- '\";:,.§¨";
+
+            ["ABCDEF_XX"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "?", "!", "/", ":", "_", "-", ".", " ", ";", "@", "#", "€", "%", "&", "|", "*"],
+            ["AZERTY_BE"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P", "Q", "S", "D", "F", "G", "H", "J", "K", "L", "M", "W", "X", "C", "V", "B", "N", "?", "!", "/", ":", "_", "-", ",", ".", " ", ";", "@", "#", "€", "%", "&", "|", "*"],
+            ["QWERTY_UK"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", ":", "+", "Z", "X", "C", "V", "B", "N", "M", "?", "!", "/", "_", "-", ",", " ", ".", "@", "#", "£", "%", "&", "|", "*"],
+            ["QWERTY_US"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", ":", "Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "?", "!", "_", "-", " ", ";", "@", "#", "$", "%", "&", "|", "*"],
+                ["OTHER"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Ø", "²", "³", "%", "‰", "+", "×", "÷", "=", "*", "/", "\\", "<", ">", "{", "}", "[", "]", "(", ")", "|", "!", "?", "¿", "@", "#", "&", "^", "$", "€", "£", "¥", "_", "-", " ", "'", "\"", ";", ":", ",", ".", "§", "¨"],
+        };
+
+        /// <summary>
+        /// Provides a mapping of specific characters to their corresponding popup character options
+        /// </summary>
         public static readonly Dictionary<string, string[]> PopupCharacters = new(StringComparer.Ordinal)
         {
             ["A"] = ["Á", "À", "Â", "Ä", "Ã", "Å", "Ā", "Æ"],
@@ -62,6 +91,23 @@
             ["x"] = ["x́", "x̀", "χ", "ẍ", "ẋ", "x̱", "x̨"],
             ["y"] = ["ý", "ỳ", "ŷ", "ÿ", "ẏ", "y̱", "y̨"],
             ["z"] = ["ź", "ž", "ż", "z̈", "ż", "ẕ", "z̨"]
+        };
+
+        /// <summary>
+        /// Provides a mapping of number characters to their corresponding popup number options
+        /// </summary>
+        public static readonly Dictionary<string, string[]> PopupNumbers = new(StringComparer.Ordinal)
+        {
+            ["1"] = ["¹", "½", "¼", "⅓", "⅛"],
+            ["2"] = ["²", "⅔", "⅜"],
+            ["3"] = ["³", "¾", "⅝"],
+            ["4"] = ["¼", "⅖"],
+            ["5"] = ["⅕"],
+            ["6"] = ["⅙"],
+            ["7"] = ["⅐"],
+            ["8"] = ["⅛"],
+            ["9"] = ["⅑"],
+            ["0"] = ["⁰"]
         };
     }
 }

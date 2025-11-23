@@ -6,18 +6,6 @@
         public static string[] cAlphaNumCharacters = new string[52];
         public static string? cCurrentKeyboardLayout;
 
-        // The key 'space' is at index 44 zero based and 45 one based
-        // The maximum length of the keyboard layout strings is 53 characters
-        //                                                    01234567890123456789012345678901234567890123456789012
-        private static readonly string cKeyboard_ABCDEF_XX = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-,. ;@#€%&|*";
-        private static readonly string cKeyboard_AZERTY_BE = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-,. ;@#€%&|*";
-        private static readonly string cKeyboard_QWERTY_UK = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#£%&|*";
-        private static readonly string cKeyboard_QWERTY_US = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_- ;@#$%&|*";
-        private static readonly string cKeyboard_OTHER = "1234567890Ø²³%‰+×÷=*/\\<>{}[]()|!?¿@#&^$€£¥_- '\";:,.§¨";
-
-        // Keyboard layouts for alphanumeric input
-        //public static string[] cKeyPopupChr_A = new string[8] { "Á", "À", "Â", "Ä", "Ã", "Å", "Ā", "Æ" };
-
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
 
@@ -131,17 +119,17 @@
         /// layout. If an unrecognized value is provided, the default layout is used.</param>
         public static void SelectAlphanumericKeyboardLayout(string cLayout)
         {
-            cAlphaNumCharacters = cLayout switch
+            // Lookup keyboard characters from the shared dictionary
+            if (!ClassKeyboardLayouts.KeyboardLayouts.TryGetValue(cLayout, out var layoutChars) || layoutChars == null)
             {
-                "OTHER" => [.. cKeyboard_OTHER.Select(static c => c.ToString())],
-                "AZERTY_BE" => [.. cKeyboard_AZERTY_BE.Select(static c => c.ToString())],
-                "QWERTY_UK" => [.. cKeyboard_QWERTY_UK.Select(static c => c.ToString())],
-                "QWERTY_US" => [.. cKeyboard_QWERTY_US.Select(static c => c.ToString())],
-                _ => [.. cKeyboard_ABCDEF_XX.Select(static c => c.ToString())],
-            };
+                // No keyboard characters for other keys
+                return;
+            }
+
+            cAlphaNumCharacters = layoutChars;
 
             // Convert to ReadOnlySpan for performance optimization
-            ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
+            //ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
         }
 
         /// <summary>

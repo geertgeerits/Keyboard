@@ -861,7 +861,7 @@
                 SetPopupCharacters(Array.Empty<string>());
 
                 // Lookup popup characters from the shared dictionary
-                if (!ClassPopupCharacters.PopupCharacters.TryGetValue(button.Text, out var popupChars))
+                if (!ClassKeyboardLayouts.PopupCharacters.TryGetValue(button.Text, out var popupChars))
                 {
                     // No popup for other keys
                     return;
@@ -1082,10 +1082,92 @@
         }
 
         /// <summary>
-        /// Assign popup characters from a string array to ButtonChar_X_Text properties.
-        /// Supports up to 18 popup entries (0..17). Clears all when passed an empty array.
+        /// Assign keyboard characters from a string array to Button_X_Text properties
+        /// Supports up to 53 keyboard entries (0..52). Clears all when passed an empty array
         /// </summary>
-        /// <param name="chars">Array of popup characters to set.</param>
+        /// <param name="chars">Array of keyboard characters to set</param>
+        private void SetKeyboardCharacters(string[] chars)
+        {
+            var setters = new Action<string>[]
+            {
+                v => Button_0_Text = v,
+                v => Button_1_Text = v,
+                v => Button_2_Text = v,
+                v => Button_3_Text = v,
+                v => Button_4_Text = v,
+                v => Button_5_Text = v,
+                v => Button_6_Text = v,
+                v => Button_7_Text = v,
+                v => Button_8_Text = v,
+                v => Button_9_Text = v,
+                v => Button_10_Text = v,
+                v => Button_11_Text = v,
+                v => Button_12_Text = v,
+                v => Button_13_Text = v,
+                v => Button_14_Text = v,
+                v => Button_15_Text = v,
+                v => Button_16_Text = v,
+                v => Button_17_Text = v,
+                v => Button_18_Text = v,
+                v => Button_19_Text = v,
+                v => Button_20_Text = v,
+                v => Button_21_Text = v,
+                v => Button_22_Text = v,
+                v => Button_23_Text = v,
+                v => Button_24_Text = v,
+                v => Button_25_Text = v,
+                v => Button_26_Text = v,
+                v => Button_27_Text = v,
+                v => Button_28_Text = v,
+                v => Button_29_Text = v,
+                v => Button_30_Text = v,
+                v => Button_31_Text = v,
+                v => Button_32_Text = v,
+                v => Button_33_Text = v,
+                v => Button_34_Text = v,
+                v => Button_35_Text = v,
+                v => Button_36_Text = v,
+                v => Button_37_Text = v,
+                v => Button_38_Text = v,
+                v => Button_39_Text = v,
+                v => Button_40_Text = v,
+                v => Button_41_Text = v,
+                v => Button_42_Text = v,
+                v => Button_43_Text = v,
+                v => Button_44_Text = v,
+                v => Button_45_Text = v,
+                v => Button_46_Text = v,
+                v => Button_47_Text = v,
+                v => Button_48_Text = v,
+                v => Button_49_Text = v,
+                v => Button_50_Text = v,
+                v => Button_51_Text = v,
+                v => Button_52_Text = v,
+            };
+
+            // Clear all first
+            for (int i = 0; i < setters.Length; i++)
+            {
+                setters[i](string.Empty);
+            }
+
+            if (chars == null)
+            {
+                return;
+            }
+
+            int max = Math.Min(chars.Length, setters.Length);
+            for (int i = 0; i < max; i++)
+            {
+                setters[i](chars[i]);
+            }
+        }
+
+        /// <summary>
+        /// Assign popup characters from a string array to ButtonChar_X_Text properties
+        /// Supports up to 18 popup entries (0..17). Clears all when passed an empty array
+        /// </summary>
+        /// <param name="chars">Array of popup characters to set</param>
         private void SetPopupCharacters(string[] chars)
         {
             var setters = new Action<string>[]
@@ -1112,14 +1194,20 @@
 
             // Clear all first
             for (int i = 0; i < setters.Length; i++)
+            {
                 setters[i](string.Empty);
+            }
 
             if (chars == null)
+            {
                 return;
+            }
 
             int max = Math.Min(chars.Length, setters.Length);
             for (int i = 0; i < max; i++)
+            {
                 setters[i](chars[i]);
+            }
         }
     }
 }
