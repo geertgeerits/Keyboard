@@ -23,8 +23,7 @@ namespace Keyboard
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
             // Initialize the keyboard layout picker
-            pckKeyboardLayout.SelectedIndex = 0;
-            //pckKeyboardLayout.IsVisible = false;
+            pckKeyboardLayout.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3); ;
         }
 
         /// <summary>
@@ -409,6 +408,7 @@ namespace Keyboard
                     if (bRestartApplication)
                     {
                         // Save the selected keyboard layout in the application preferences
+                        Preferences.Default.Set("SettingKeyboardLayoutSelectedIndex", selectedIndex);
                         Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
 
                         //Application.Current!.Windows[0].Page = new AppShell();  // Does not work
