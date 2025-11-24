@@ -1213,35 +1213,37 @@ namespace Keyboard
             }
         }
 
-        private void Button_Pressed(object sender, EventArgs e)
+        /// <summary>
+        /// Handle button pressed event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnKey_Pressed(object sender, EventArgs e)
         {
             // Start the stopwatch
             startTime = Stopwatch.GetTimestamp();
-
-            //Application.Current!.Windows[0].Page.DisplayAlertAsync("Button_Pressed", "Start Long Press Detected", "OK");
         }
 
-        private void Button_Released(object sender, EventArgs e)
+        /// <summary>
+        /// Handle button released event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnKey_Released(object sender, EventArgs e)
         {
-            // Get elapsed TimeSpan since Button_Pressed recorded the timestamp
+            // Get elapsed TimeSpan since BtnKey_Pressed recorded the timestamp in milliseconds
             TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
+            long elapsedMilliseconds = (long)delta.TotalMilliseconds;
 
-            // Milliseconds as a double (includes fractional milliseconds)
-            double elapsedMilliseconds = delta.TotalMilliseconds;
-
-            // If you need an integer millisecond value:
-            long elapsedMsInt = (long)elapsedMilliseconds;
-
-            // Show elapsed milliseconds (formatted to 3 decimal places)
-            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("InitializeKeyboard", $"Time elapsed: {elapsedMilliseconds:F3} ms", "OK");
-
-            // Detect long press (700 ms threshold)
-            if (delta >= TimeSpan.FromMilliseconds(700))
+            // Detect short press
+            if (elapsedMilliseconds < 600)
             {
-                // Preserve existing behavior
+                BtnKey_Clicked(sender, e);
+            }
+            // Detect long press (600 ms threshold)
+            else
+            {
                 TouchBehavior_LongPressCompleted(sender, null);
-
-                //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("Button_Released", "End Long Press Detected", "OK");
             }
         }
     }
