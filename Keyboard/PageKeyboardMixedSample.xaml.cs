@@ -411,6 +411,10 @@ namespace Keyboard
                         Preferences.Default.Set("SettingKeyboardLayoutSelectedIndex", selectedIndex);
                         Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
 
+                        // Give it some time to save the settings
+                        Task.Delay(300).Wait();
+
+                        // Restart the application
                         //Application.Current!.Windows[0].Page = new AppShell();  // Does not work
                         DisplayAlertAsync("Keyboard layout changed", "Close the app and restart it to apply the changes.", "OK");
                     }

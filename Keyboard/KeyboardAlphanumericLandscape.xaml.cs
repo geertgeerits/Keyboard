@@ -2,7 +2,31 @@ namespace Keyboard
 {
     public partial class KeyboardAlphanumericLandscape : ContentView
     {
+        // Declare variables for shift key and layout change state
+        private bool bShiftKeyEnabled;
+        private bool bChangeLayoutEnabled;
+        private long startTime;
+
         // Declare variables for binding properties
+        private string _buttonChar_0_Text = string.Empty;
+        private string _buttonChar_1_Text = string.Empty;
+        private string _buttonChar_2_Text = string.Empty;
+        private string _buttonChar_3_Text = string.Empty;
+        private string _buttonChar_4_Text = string.Empty;
+        private string _buttonChar_5_Text = string.Empty;
+        private string _buttonChar_6_Text = string.Empty;
+        private string _buttonChar_7_Text = string.Empty;
+        private string _buttonChar_8_Text = string.Empty;
+        private string _buttonChar_9_Text = string.Empty;
+        private string _buttonChar_10_Text = string.Empty;
+        private string _buttonChar_11_Text = string.Empty;
+        private string _buttonChar_12_Text = string.Empty;
+        private string _buttonChar_13_Text = string.Empty;
+        private string _buttonChar_14_Text = string.Empty;
+        private string _buttonChar_15_Text = string.Empty;
+        private string _buttonChar_16_Text = string.Empty;
+        private string _buttonChar_17_Text = string.Empty;
+
         private string _button_0_Text = string.Empty;
         private string _button_1_Text = string.Empty;
         private string _button_2_Text = string.Empty;
@@ -52,8 +76,192 @@ namespace Keyboard
         private string _button_46_Text = string.Empty;
         private string _button_47_Text = string.Empty;
         private string _button_48_Text = string.Empty;
+        private string _button_49_Text = string.Empty;
+        private string _button_50_Text = string.Empty;
+        private string _button_51_Text = string.Empty;
+        private string _button_52_Text = string.Empty;
 
         // Properties for the button texts of the keyboard
+        public string ButtonChar_0_Text
+        {
+            get => _buttonChar_0_Text;
+            set
+            {
+                _buttonChar_0_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_1_Text
+        {
+            get => _buttonChar_1_Text;
+            set
+            {
+                _buttonChar_1_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_2_Text
+        {
+            get => _buttonChar_2_Text;
+            set
+            {
+                _buttonChar_2_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_3_Text
+        {
+            get => _buttonChar_3_Text;
+            set
+            {
+                _buttonChar_3_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_4_Text
+        {
+            get => _buttonChar_4_Text;
+            set
+            {
+                _buttonChar_4_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_5_Text
+        {
+            get => _buttonChar_5_Text;
+            set
+            {
+                _buttonChar_5_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_6_Text
+        {
+            get => _buttonChar_6_Text;
+            set
+            {
+                _buttonChar_6_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_7_Text
+        {
+            get => _buttonChar_7_Text;
+            set
+            {
+                _buttonChar_7_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_8_Text
+        {
+            get => _buttonChar_8_Text;
+            set
+            {
+                _buttonChar_8_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_9_Text
+        {
+            get => _buttonChar_9_Text;
+            set
+            {
+                _buttonChar_9_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_10_Text
+        {
+            get => _buttonChar_10_Text;
+            set
+            {
+                _buttonChar_10_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_11_Text
+        {
+            get => _buttonChar_11_Text;
+            set
+            {
+                _buttonChar_11_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_12_Text
+        {
+            get => _buttonChar_12_Text;
+            set
+            {
+                _buttonChar_12_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_13_Text
+        {
+            get => _buttonChar_13_Text;
+            set
+            {
+                _buttonChar_13_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_14_Text
+        {
+            get => _buttonChar_14_Text;
+            set
+            {
+                _buttonChar_14_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_15_Text
+        {
+            get => _buttonChar_15_Text;
+            set
+            {
+                _buttonChar_15_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_16_Text
+        {
+            get => _buttonChar_16_Text;
+            set
+            {
+                _buttonChar_16_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string ButtonChar_17_Text
+        {
+            get => _buttonChar_17_Text;
+            set
+            {
+                _buttonChar_17_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
         public string Button_0_Text
         {
             get => _button_0_Text;
@@ -543,8 +751,48 @@ namespace Keyboard
             }
         }
 
+        public string Button_49_Text
+        {
+            get => _button_49_Text;
+            set
+            {
+                _button_49_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_50_Text
+        {
+            get => _button_50_Text;
+            set
+            {
+                _button_50_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_51_Text
+        {
+            get => _button_51_Text;
+            set
+            {
+                _button_51_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Button_52_Text
+        {
+            get => _button_52_Text;
+            set
+            {
+                _button_52_Text = value;
+                OnPropertyChanged();
+            }
+        }
+
         /// <summary>
-        /// Set the BindingContext - Using line by line is a bit faster than using a loop
+        /// Set the BindingContext
         /// </summary>
         public KeyboardAlphanumericLandscape()
         {
@@ -552,6 +800,18 @@ namespace Keyboard
 
             // Set the BindingContext to this (the current page)
             BindingContext = this;
+
+            InitializeKeyboard();
+        }
+
+        /// <summary>
+        /// Initializes the keyboard by assigning character values to each button
+        /// Using line by line is a bit faster than using a loop
+        /// </summary>
+        private void InitializeKeyboard()
+        {
+            // Start the stopwatch
+            //long startTime = Stopwatch.GetTimestamp();
 
             Button_0_Text = ClassKeyboardMethods.cAlphaNumCharacters[0];
             Button_1_Text = ClassKeyboardMethods.cAlphaNumCharacters[1];
@@ -563,6 +823,198 @@ namespace Keyboard
             Button_7_Text = ClassKeyboardMethods.cAlphaNumCharacters[7];
             Button_8_Text = ClassKeyboardMethods.cAlphaNumCharacters[8];
             Button_9_Text = ClassKeyboardMethods.cAlphaNumCharacters[9];
+
+            // Set the original keys 10-39, row 2-3-4 of the keyboard (characters in uppercase)
+            SetOriginalKeys();
+
+            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[40];
+            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[41];
+            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[42];
+            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[43];
+            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[44];
+            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[45];
+            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
+            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
+            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
+            Button_49_Text = ClassKeyboardMethods.cAlphaNumCharacters[49];
+            Button_50_Text = ClassKeyboardMethods.cAlphaNumCharacters[50];
+            Button_51_Text = ClassKeyboardMethods.cAlphaNumCharacters[51];
+            Button_52_Text = ClassKeyboardMethods.cAlphaNumCharacters[52];
+
+            //// Stop the stopwatch
+            //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
+            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("InitializeKeyboard", $"Time elapsed (hh:mm:ss.xxxxxxx): {delta}", "OK");
+        }
+
+        /// <summary>
+        /// Handles the completion of a long press gesture on a key and displays the alphanumeric keyboard popup.
+        /// </summary>
+        /// <remarks>Opening the popup closes the keyboard overlay, so this can not be used</remarks>
+        /// <param name="sender">The source object that raised the long press completed event.</param>
+        /// <param name="e">The event data associated with the long press completion, containing information about the gesture.</param>
+        private async void TouchBehavior_LongPressCompleted(object sender, CommunityToolkit.Maui.Core.LongPressCompletedEventArgs e)
+        {
+            Debug.WriteLine("TouchBehavior_LongPressCompleted - Long press completed on key");
+
+            if (sender is Button button)
+            {
+                // Clear previous popup characters
+                SetPopupCharacters([]);
+
+                // Lookup popup characters from the shared dictionary
+                if (!ClassKeyboardLayouts.PopupCharacters.TryGetValue(button.Text, out string[]? popupChars))
+                {
+                    // No popup for other keys
+                    return;
+                }
+
+                // Set popup characters and show
+                SetPopupCharacters(popupChars);
+
+                // Show the popup
+                grdCharactersPopup.IsVisible = true;
+            }
+        }
+
+        /// <summary>
+        /// Handles the click event for a character button and sends the button's text as a message to the page.
+        /// </summary>
+        /// <remarks>This method uses <see cref="WeakReferenceMessenger"/> to broadcast the button's text.
+        /// Only events triggered by a <see cref="Button"/> are processed; other sender types are ignored.</remarks>
+        /// <param name="sender">The source of the event, expected to be a <see cref="Button"/> representing the character button that was
+        /// clicked.</param>
+        /// <param name="e">An <see cref="EventArgs"/> instance containing the event data.</param>
+        private void BtnCharacter_Clicked(object sender, EventArgs e)
+        {
+            if (sender is Button button)
+            {
+                // Send the message with the key pressed to the page
+                try
+                {
+                    WeakReferenceMessenger.Default.Send(new StringMessage(button.Text));
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error sending message: {ex.Message}");
+                }
+
+                grdCharactersPopup.IsVisible = false;
+            }
+        }
+
+        /// <summary>
+        /// This method is called when a button is clicked, it sends a message with the key pressed to the page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnKey_Clicked(object sender, EventArgs e)
+        {
+            if (grdCharactersPopup.IsVisible)
+            {
+                return;
+            }
+
+            string cKeyPressed = string.Empty;
+
+            if (sender is Button button)
+            {
+                cKeyPressed = button.Text;
+            }
+
+            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
+            {
+                cKeyPressed = imageButton.AutomationId;
+            }
+
+            // Send the message with the key pressed to the page
+            try
+            {
+                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error sending message: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// BtnShift_Clicked event handler to toggle the shift key state
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnShiftKey_Clicked(object sender, EventArgs e)
+        {
+            bShiftKeyEnabled = !bShiftKeyEnabled;
+
+            if (bShiftKeyEnabled)
+            {
+                // Convert characters to lowercase
+                ConvertKeysToLowerCase();
+            }
+            else
+            {
+                // set the original keys (characters in uppercase)
+                SetOriginalKeys();
+            }
+        }
+
+        /// <summary>
+        /// BtnChangeLayout_Clicked event handler to toggle the keyboard layout state
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnChangeLayout_Clicked(object sender, EventArgs e)
+        {
+            bChangeLayoutEnabled = !bChangeLayoutEnabled;
+
+            if (bChangeLayoutEnabled)
+            {
+                // Select the !#1 layout (special characters)
+                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout("OTHER");
+                InitializeKeyboard();
+                btnChangeLayout.Text = "ABC";
+                btnShiftKey.IsEnabled = false;
+            }
+            else
+            {
+                // Select the ABC layout (characters in uppercase)
+                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                InitializeKeyboard();
+                btnChangeLayout.Text = "!#1";
+                btnShiftKey.IsEnabled = true;
+            }
+
+            bShiftKeyEnabled = false;
+        }
+
+        /// <summary>
+        /// Raise an event to notify the parent to hide the overlay
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnKeyboardHide_Clicked(object sender, EventArgs e)
+        {
+            if (sender is ImageButton imageButton)
+            {
+                _ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
+            }
+        }
+
+        /// <summary>
+        /// Handles the click event to hide the keyboard character popup.
+        /// </summary>
+        /// <param name="sender">The source of the event, typically the control that was clicked.</param>
+        /// <param name="e">An <see cref="EventArgs"/> object that contains the event data.</param>
+        private void OnKeyboardCharHide_Clicked(object sender, EventArgs e)
+        {
+            grdCharactersPopup.IsVisible = false;
+        }
+
+        /// <summary>
+        /// Set the original keys, row 2-3-4 of the keyboard (characters in uppercase)
+        /// </summary>
+        private void SetOriginalKeys()
+        {
             Button_10_Text = ClassKeyboardMethods.cAlphaNumCharacters[10];
             Button_11_Text = ClassKeyboardMethods.cAlphaNumCharacters[11];
             Button_12_Text = ClassKeyboardMethods.cAlphaNumCharacters[12];
@@ -593,111 +1045,203 @@ namespace Keyboard
             Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37];
             Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38];
             Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39];
-            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[40];
-            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[41];
-            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[42];
-            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[43];
-            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[44];
-            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[45];
-            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
-            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
-            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
         }
 
         /// <summary>
-        /// This method is called when a button is clicked, it sends a message with the key pressed to the page
-        /// Using line by line is a bit faster than using a loop
+        /// Convert characters keys to lowercase, row 2-3-4 of the keyboard
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnKey_Clicked(object sender, EventArgs e)
+        private void ConvertKeysToLowerCase()
         {
-            string cKeyPressed = string.Empty;
+            Button_10_Text = ClassKeyboardMethods.cAlphaNumCharacters[10].ToLower();
+            Button_11_Text = ClassKeyboardMethods.cAlphaNumCharacters[11].ToLower();
+            Button_12_Text = ClassKeyboardMethods.cAlphaNumCharacters[12].ToLower();
+            Button_13_Text = ClassKeyboardMethods.cAlphaNumCharacters[13].ToLower();
+            Button_14_Text = ClassKeyboardMethods.cAlphaNumCharacters[14].ToLower();
+            Button_15_Text = ClassKeyboardMethods.cAlphaNumCharacters[15].ToLower();
+            Button_16_Text = ClassKeyboardMethods.cAlphaNumCharacters[16].ToLower();
+            Button_17_Text = ClassKeyboardMethods.cAlphaNumCharacters[17].ToLower();
+            Button_18_Text = ClassKeyboardMethods.cAlphaNumCharacters[18].ToLower();
+            Button_19_Text = ClassKeyboardMethods.cAlphaNumCharacters[19].ToLower();
+            Button_20_Text = ClassKeyboardMethods.cAlphaNumCharacters[20].ToLower();
+            Button_21_Text = ClassKeyboardMethods.cAlphaNumCharacters[21].ToLower();
+            Button_22_Text = ClassKeyboardMethods.cAlphaNumCharacters[22].ToLower();
+            Button_23_Text = ClassKeyboardMethods.cAlphaNumCharacters[23].ToLower();
+            Button_24_Text = ClassKeyboardMethods.cAlphaNumCharacters[24].ToLower();
+            Button_25_Text = ClassKeyboardMethods.cAlphaNumCharacters[25].ToLower();
+            Button_26_Text = ClassKeyboardMethods.cAlphaNumCharacters[26].ToLower();
+            Button_27_Text = ClassKeyboardMethods.cAlphaNumCharacters[27].ToLower();
+            Button_28_Text = ClassKeyboardMethods.cAlphaNumCharacters[28].ToLower();
+            Button_29_Text = ClassKeyboardMethods.cAlphaNumCharacters[29].ToLower();
+            Button_30_Text = ClassKeyboardMethods.cAlphaNumCharacters[30].ToLower();
+            Button_31_Text = ClassKeyboardMethods.cAlphaNumCharacters[31].ToLower();
+            Button_32_Text = ClassKeyboardMethods.cAlphaNumCharacters[32].ToLower();
+            Button_33_Text = ClassKeyboardMethods.cAlphaNumCharacters[33].ToLower();
+            Button_34_Text = ClassKeyboardMethods.cAlphaNumCharacters[34].ToLower();
+            Button_35_Text = ClassKeyboardMethods.cAlphaNumCharacters[35].ToLower();
+            Button_36_Text = ClassKeyboardMethods.cAlphaNumCharacters[36].ToLower();
+            Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37].ToLower();
+            Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38].ToLower();
+            Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
+        }
 
-            if (sender is Button button && !string.IsNullOrEmpty(button.AutomationId))
+        /// <summary>
+        /// Assign keyboard characters from a string array to Button_X_Text properties
+        /// Supports up to 53 keyboard entries (0..52). Clears all when passed an empty array
+        /// </summary>
+        /// <param name="chars">Array of keyboard characters to set</param>
+        private void SetKeyboardCharacters(string[] chars)
+        {
+            var setters = new Action<string>[]
             {
-                cKeyPressed = button.AutomationId switch
-                {
-                    "Key_0" => ClassKeyboardMethods.cAlphaNumCharacters[0],
-                    "Key_1" => ClassKeyboardMethods.cAlphaNumCharacters[1],
-                    "Key_2" => ClassKeyboardMethods.cAlphaNumCharacters[2],
-                    "Key_3" => ClassKeyboardMethods.cAlphaNumCharacters[3],
-                    "Key_4" => ClassKeyboardMethods.cAlphaNumCharacters[4],
-                    "Key_5" => ClassKeyboardMethods.cAlphaNumCharacters[5],
-                    "Key_6" => ClassKeyboardMethods.cAlphaNumCharacters[6],
-                    "Key_7" => ClassKeyboardMethods.cAlphaNumCharacters[7],
-                    "Key_8" => ClassKeyboardMethods.cAlphaNumCharacters[8],
-                    "Key_9" => ClassKeyboardMethods.cAlphaNumCharacters[9],
-                    "Key_10" => ClassKeyboardMethods.cAlphaNumCharacters[10],
-                    "Key_11" => ClassKeyboardMethods.cAlphaNumCharacters[11],
-                    "Key_12" => ClassKeyboardMethods.cAlphaNumCharacters[12],
-                    "Key_13" => ClassKeyboardMethods.cAlphaNumCharacters[13],
-                    "Key_14" => ClassKeyboardMethods.cAlphaNumCharacters[14],
-                    "Key_15" => ClassKeyboardMethods.cAlphaNumCharacters[15],
-                    "Key_16" => ClassKeyboardMethods.cAlphaNumCharacters[16],
-                    "Key_17" => ClassKeyboardMethods.cAlphaNumCharacters[17],
-                    "Key_18" => ClassKeyboardMethods.cAlphaNumCharacters[18],
-                    "Key_19" => ClassKeyboardMethods.cAlphaNumCharacters[19],
-                    "Key_20" => ClassKeyboardMethods.cAlphaNumCharacters[20],
-                    "Key_21" => ClassKeyboardMethods.cAlphaNumCharacters[21],
-                    "Key_22" => ClassKeyboardMethods.cAlphaNumCharacters[22],
-                    "Key_23" => ClassKeyboardMethods.cAlphaNumCharacters[23],
-                    "Key_24" => ClassKeyboardMethods.cAlphaNumCharacters[24],
-                    "Key_25" => ClassKeyboardMethods.cAlphaNumCharacters[25],
-                    "Key_26" => ClassKeyboardMethods.cAlphaNumCharacters[26],
-                    "Key_27" => ClassKeyboardMethods.cAlphaNumCharacters[27],
-                    "Key_28" => ClassKeyboardMethods.cAlphaNumCharacters[28],
-                    "Key_29" => ClassKeyboardMethods.cAlphaNumCharacters[29],
-                    "Key_30" => ClassKeyboardMethods.cAlphaNumCharacters[30],
-                    "Key_31" => ClassKeyboardMethods.cAlphaNumCharacters[31],
-                    "Key_32" => ClassKeyboardMethods.cAlphaNumCharacters[32],
-                    "Key_33" => ClassKeyboardMethods.cAlphaNumCharacters[33],
-                    "Key_34" => ClassKeyboardMethods.cAlphaNumCharacters[34],
-                    "Key_35" => ClassKeyboardMethods.cAlphaNumCharacters[35],
-                    "Key_36" => ClassKeyboardMethods.cAlphaNumCharacters[36],
-                    "Key_37" => ClassKeyboardMethods.cAlphaNumCharacters[37],
-                    "Key_38" => ClassKeyboardMethods.cAlphaNumCharacters[38],
-                    "Key_39" => ClassKeyboardMethods.cAlphaNumCharacters[39],
-                    "Key_40" => ClassKeyboardMethods.cAlphaNumCharacters[40],
-                    "Key_41" => ClassKeyboardMethods.cAlphaNumCharacters[41],
-                    "Key_42" => ClassKeyboardMethods.cAlphaNumCharacters[42],
-                    "Key_43" => ClassKeyboardMethods.cAlphaNumCharacters[43],
-                    "Key_44" => ClassKeyboardMethods.cAlphaNumCharacters[44],
-                    "Key_45" => ClassKeyboardMethods.cAlphaNumCharacters[45],
-                    "Key_46" => ClassKeyboardMethods.cAlphaNumCharacters[46],
-                    "Key_47" => ClassKeyboardMethods.cAlphaNumCharacters[47],
-                    "Key_48" => ClassKeyboardMethods.cAlphaNumCharacters[48],
+                v => Button_0_Text = v,
+                v => Button_1_Text = v,
+                v => Button_2_Text = v,
+                v => Button_3_Text = v,
+                v => Button_4_Text = v,
+                v => Button_5_Text = v,
+                v => Button_6_Text = v,
+                v => Button_7_Text = v,
+                v => Button_8_Text = v,
+                v => Button_9_Text = v,
+                v => Button_10_Text = v,
+                v => Button_11_Text = v,
+                v => Button_12_Text = v,
+                v => Button_13_Text = v,
+                v => Button_14_Text = v,
+                v => Button_15_Text = v,
+                v => Button_16_Text = v,
+                v => Button_17_Text = v,
+                v => Button_18_Text = v,
+                v => Button_19_Text = v,
+                v => Button_20_Text = v,
+                v => Button_21_Text = v,
+                v => Button_22_Text = v,
+                v => Button_23_Text = v,
+                v => Button_24_Text = v,
+                v => Button_25_Text = v,
+                v => Button_26_Text = v,
+                v => Button_27_Text = v,
+                v => Button_28_Text = v,
+                v => Button_29_Text = v,
+                v => Button_30_Text = v,
+                v => Button_31_Text = v,
+                v => Button_32_Text = v,
+                v => Button_33_Text = v,
+                v => Button_34_Text = v,
+                v => Button_35_Text = v,
+                v => Button_36_Text = v,
+                v => Button_37_Text = v,
+                v => Button_38_Text = v,
+                v => Button_39_Text = v,
+                v => Button_40_Text = v,
+                v => Button_41_Text = v,
+                v => Button_42_Text = v,
+                v => Button_43_Text = v,
+                v => Button_44_Text = v,
+                v => Button_45_Text = v,
+                v => Button_46_Text = v,
+                v => Button_47_Text = v,
+                v => Button_48_Text = v,
+                v => Button_49_Text = v,
+                v => Button_50_Text = v,
+                v => Button_51_Text = v,
+                v => Button_52_Text = v,
+            };
 
-                    _ => button.AutomationId,
-                };
+            // Clear all first
+            for (int i = 0; i < setters.Length; i++)
+            {
+                setters[i](string.Empty);
             }
 
-            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
+            if (chars == null)
             {
-                cKeyPressed = imageButton.AutomationId;
+                return;
             }
 
-            // Send the message with the key pressed to the page
-            try
+            int max = Math.Min(chars.Length, setters.Length);
+            for (int i = 0; i < max; i++)
             {
-                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error sending message: {ex.Message}");
+                setters[i](chars[i]);
             }
         }
 
         /// <summary>
-        /// Raise an event to notify the parent to hide the overlay
+        /// Assign popup characters from a string array to ButtonChar_X_Text properties
+        /// Supports up to 18 popup entries (0..17). Clears all when passed an empty array
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void OnKeyboardHide_Clicked(object sender, EventArgs e)
+        /// <param name="chars">Array of popup characters to set</param>
+        private void SetPopupCharacters(string[] chars)
         {
-            if (sender is ImageButton imageButton)
+            Action<string>[] setters =
             {
-                _ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
+                v => ButtonChar_0_Text = v,
+                v => ButtonChar_1_Text = v,
+                v => ButtonChar_2_Text = v,
+                v => ButtonChar_3_Text = v,
+                v => ButtonChar_4_Text = v,
+                v => ButtonChar_5_Text = v,
+                v => ButtonChar_6_Text = v,
+                v => ButtonChar_7_Text = v,
+                v => ButtonChar_8_Text = v,
+                v => ButtonChar_9_Text = v,
+                v => ButtonChar_10_Text = v,
+                v => ButtonChar_11_Text = v,
+                v => ButtonChar_12_Text = v,
+                v => ButtonChar_13_Text = v,
+                v => ButtonChar_14_Text = v,
+                v => ButtonChar_15_Text = v,
+                v => ButtonChar_16_Text = v,
+                v => ButtonChar_17_Text = v,
+            };
+
+            // Clear all first
+            for (int i = 0; i < setters.Length; i++)
+            {
+                setters[i](string.Empty);
+            }
+
+            if (chars == null)
+            {
+                return;
+            }
+
+            int max = Math.Min(chars.Length, setters.Length);
+            for (int i = 0; i < max; i++)
+            {
+                setters[i](chars[i]);
+            }
+        }
+
+        private void Button_Pressed(object sender, EventArgs e)
+        {
+            // Start the stopwatch
+            startTime = Stopwatch.GetTimestamp();
+
+            //Application.Current!.Windows[0].Page.DisplayAlertAsync("Button_Pressed", "Start Long Press Detected", "OK");
+        }
+
+        private void Button_Released(object sender, EventArgs e)
+        {
+            // Get elapsed TimeSpan since Button_Pressed recorded the timestamp
+            TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
+
+            // Milliseconds as a double (includes fractional milliseconds)
+            double elapsedMilliseconds = delta.TotalMilliseconds;
+
+            // If you need an integer millisecond value:
+            long elapsedMsInt = (long)elapsedMilliseconds;
+
+            // Show elapsed milliseconds (formatted to 3 decimal places)
+            //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("InitializeKeyboard", $"Time elapsed: {elapsedMilliseconds:F3} ms", "OK");
+
+            // Detect long press (700 ms threshold)
+            if (delta >= TimeSpan.FromMilliseconds(700))
+            {
+                // Preserve existing behavior
+                TouchBehavior_LongPressCompleted(sender, null);
+
+                //_ = Application.Current!.Windows[0].Page!.DisplayAlertAsync("Button_Released", "End Long Press Detected", "OK");
             }
         }
     }
