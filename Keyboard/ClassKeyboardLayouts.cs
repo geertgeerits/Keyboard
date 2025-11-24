@@ -1,9 +1,9 @@
 ﻿namespace Keyboard
 {
     /// <summary>
-    /// Shared popup characters dictionary that can be reused by other pages/components.
-    /// Keys are the label/text on the key (e.g. "A" or "a").
-    /// Values are arrays of characters to display in the popup in order.
+    /// Shared characters dictionary that can be reused by other pages/components
+    /// Keys are the text on the key (e.g. "A" or "a")
+    /// Values are arrays of characters to display in the buttons in order
     /// </summary>
     public static class ClassKeyboardLayouts
     {

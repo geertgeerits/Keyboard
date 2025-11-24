@@ -968,7 +968,7 @@
 
             if (bChangeLayoutEnabled)
             {
-                // Change to !#1 layout (characters in uppercase)
+                // Select the !#1 layout (special characters)
                 ClassKeyboardMethods.SelectAlphanumericKeyboardLayout("OTHER");
                 InitializeKeyboard();
                 btnChangeLayout.Text = "ABC";
@@ -976,12 +976,14 @@
             }
             else
             {
-                // Change to ABC layout (special characters)
+                // Select the ABC layout (characters in uppercase)
                 ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
                 InitializeKeyboard();
                 btnChangeLayout.Text = "!#1";
                 btnShiftKey.IsEnabled = true;
             }
+
+            bShiftKeyEnabled = false;
         }
 
         /// <summary>
@@ -1170,7 +1172,7 @@
         /// <param name="chars">Array of popup characters to set</param>
         private void SetPopupCharacters(string[] chars)
         {
-            var setters = new Action<string>[]
+            Action<string>[] setters =
             {
                 v => ButtonChar_0_Text = v,
                 v => ButtonChar_1_Text = v,

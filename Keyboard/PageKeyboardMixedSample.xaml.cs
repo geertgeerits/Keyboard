@@ -15,9 +15,7 @@ namespace Keyboard
             }
             catch (Exception ex)
             {
-#if DEBUG
-                DisplayAlertAsync("InitializeComponent: MainPage", ex.Message, "OK");
-#endif
+                DisplayAlertAsync("InitializeComponent: PageKeyboardMixedSample", ex.Message, "OK");
                 return;
             }
 
