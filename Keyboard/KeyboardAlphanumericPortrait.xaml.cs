@@ -988,6 +988,46 @@
             {
                 Debug.WriteLine($"Error sending message: {ex.Message}");
             }
+
+            //// !!!BUG!!! On iOS, after a long press, the button text color remains changed
+
+            // Set the original keys (characters in uppercase)
+            //SetOriginalKeys();
+
+            //if (sender is Button button && DeviceInfo.Platform == DevicePlatform.iOS)
+            //{
+            //    string theme = ClassKeyboardMethods.GetTheme();
+            //    switch (theme)
+            //    {
+            //        case "Dark":
+            //            if (Application.Current?.Resources != null && Application.Current.Resources.TryGetValue("KeyBoardKeyTextDark", out var darkColor) && darkColor is Color darkColorValue)
+            //            {
+            //                button.TextColor = darkColorValue;
+            //            }
+            //            break;
+            //        default:
+            //            if (Application.Current?.Resources != null && Application.Current.Resources.TryGetValue("KeyBoardKeyTextLight", out var lightColor) && lightColor is Color lightColorValue)
+            //            {
+            //                button.TextColor = lightColorValue;
+            //            }
+            //            break;
+            //    }
+            //}
+
+            // Set the original keys (characters in uppercase)
+            //if (sender is Button button2 && DeviceInfo.Platform == DevicePlatform.iOS)
+            //{
+            //    if (bShiftKeyEnabled)
+            //    {
+            //        // Convert characters to lowercase
+            //        ConvertKeysToLowerCase();
+            //    }
+            //    else
+            //    {
+            //        // Set the original keys (characters in uppercase)
+            //        SetOriginalKeys();
+            //    }
+            //}
         }
 
         /// <summary>
