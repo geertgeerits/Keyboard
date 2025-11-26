@@ -321,14 +321,17 @@ namespace Keyboard
         /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs? e)
         {
-            // Format the number
+#if WINDOWS
+            // Format the number for decimal number entries for the Windows platform
+            // The first time a decimal entry field get unfocused the Unfocused event is not triggered on Windows
             if (sender is Entry entry)
             {
-#if WINDOWS
-                ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
-#endif
+                if (sender == entTest1 || sender == entTest2 || sender == entTest6)
+                {
+                    ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
+                }
             }
-
+#endif
             if (sender == entTest1)
             {
                 _ = entTest2.Focus();

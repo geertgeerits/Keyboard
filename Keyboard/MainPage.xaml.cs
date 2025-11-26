@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.30
-   Date ........: 2025-11-25 (YYYY-MM-DD)
+   Date ........: 2025-11-26 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -218,14 +218,14 @@ namespace Keyboard
         /// <param name="e"></param>
         private void GoToNextField(object sender, EventArgs? e)
         {
-            // Format the number
+#if WINDOWS
+            // Format the number for decimal number entries for the Windows platform
+            // The first time a decimal entry field get unfocused the Unfocused event is not triggered on Windows
             if (sender is Entry entry)
             {
-#if WINDOWS
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
-#endif
             }
-
+#endif
             if (sender == entTest1)
             {
                 _ = entTest2.Focus();
