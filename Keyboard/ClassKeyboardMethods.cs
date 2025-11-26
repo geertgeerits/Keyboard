@@ -126,8 +126,10 @@
                 return;
             }
 
-            cAlphaNumCharacters = layoutChars;
+            Debug.WriteLine($"Selected keyboard layout: {cLayout}\nArray length: {layoutChars.Length}");
 
+            cAlphaNumCharacters = layoutChars;
+            
             // Convert to ReadOnlySpan for performance optimization
             ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
         }

@@ -557,7 +557,6 @@
     </Style>
 
     <Style TargetType="Entry" x:Key="TextEntry">
-        <Setter Property="HorizontalTextAlignment" Value="End"/>
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource EntryBackgroundUnfocusedLight}, Dark={DynamicResource EntryBackgroundUnfocusedDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource EntryTextUnfocusedLight}, Dark={DynamicResource EntryTextUnfocusedDark}}" />
         <Setter Property="FontFamily" Value="OpenSansRegular" />

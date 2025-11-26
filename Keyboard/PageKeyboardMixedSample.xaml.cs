@@ -15,7 +15,8 @@ namespace Keyboard
             }
             catch (Exception ex)
             {
-                DisplayAlertAsync("InitializeComponent: PageKeyboardMixedSample", ex.Message, "OK");
+                _ = DisplayAlertAsync("InitializeComponent: PageKeyboardMixedSample", $"{ex.Message}\nPossible cause: the number of the keyboard characters are not exactly 53 per keyboard layout (0-52)!", "OK");
+                
                 return;
             }
 
