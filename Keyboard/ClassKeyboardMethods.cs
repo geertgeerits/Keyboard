@@ -168,19 +168,19 @@
                         focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, cKey);
                         break;
                 }
-#if WINDOWS                
-                // Restore focus so the Entry keeps the caret on Windows - MAUI issue - Does not works as expected
-                // Use the UI thread to ensure the native focus/caret is updated.
-                MainThread.BeginInvokeOnMainThread(() =>
-                {
-                    //focusedEntry.Focus();
-                    //Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
-                    focusedEntry.SelectionLength = 0;
-                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
-                    // Force a small update to help WinUI render the caret
-                    focusedEntry.CursorPosition = focusedEntry.CursorPosition;
-                });
-#endif
+//#if WINDOWS                
+//                // Restore focus so the Entry keeps the caret on Windows - MAUI issue - Does not shows the cursor !
+//                // Use the UI thread to ensure the native focus/caret is updated.
+//                MainThread.BeginInvokeOnMainThread(() =>
+//                {
+//                    //focusedEntry.Focus();
+//                    //Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
+//                    focusedEntry.SelectionLength = 0;
+//                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
+//                    // Force a small update to help WinUI render the caret
+//                    focusedEntry.CursorPosition = focusedEntry.CursorPosition;
+//                });
+//#endif
             }
         }
 

@@ -48,6 +48,8 @@
         /// </summary>
         public static readonly Dictionary<string, string[]> PopupCharacters = new(StringComparer.Ordinal)
         {
+            // The number of characters is limited to 18 per popup (0-17)
+
             ["1"] = ["¹"],
             ["2"] = ["²", "½"],
             ["3"] = ["³", "⅓", "⅔"],
