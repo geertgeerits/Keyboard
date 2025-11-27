@@ -16,15 +16,25 @@
         /// keyboard type, for example, when validating input or customizing user interfaces.</remarks>
         public static readonly Dictionary<string, string[]> KeyboardLayouts = new(StringComparer.Ordinal)
         {
-            // The number of characters must be exactly 53 per keyboard layout (0-52)
-            // The key 'space' is at index 44 zero based and 45 one based
-            //                 01234567890123456789012345678901234567890123456789012
+            /* C# uses the backslash (\) as an escape character inside string literals:
 
+            Escape Sequence	 Meaning
+            ---------------  -----------------
+            \\	             Backslash
+            \"	             Double quote
+            \'	             Single quote
+            \uXXXX	         Unicode character
+            \xXX	         Hexadecimal character
+
+            The number of characters must be exactly 53 per keyboard layout (0-52)
+            Special characters like \" counts as one character
+            The key 'space' is at index 44 zero based, at 45 one based
+                               01234567890123456789012345678901234567890123456789012 */
             //["ABCDEF_XX"] = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-,. ;@#€%&|*",
             //["AZERTY_BE"] = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-,. ;@#€%&|*",
             //["QWERTY_UK"] = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_-, .@#£%&|*",
             //["QWERTY_US"] = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_- ;@#$%&|*",
-            //["OTHER"] = "1234567890|%‰+×÷=*/\\<>{}[]()!?¡¿§@#&$€£¥_-'\" ;:,.°~^¨"
+            //["OTHER"] = "1234567890|%‰+×÷=*/\\<>{}[]()!?¡¿§@#&$€£¥_-'\" ;:,.°~^¨"     (two special characters: \\ and \")
 
             ["ABCDEF_XX"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "?", "!", "/", ":", "_", "-", ",", ".", " ", ";", "@", "#", "€", "%", "&", "|", "*"],
             ["AZERTY_BE"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P", "Q", "S", "D", "F", "G", "H", "J", "K", "L", "M", "W", "X", "C", "V", "B", "N", "?", "!", "/", ":", "_", "-", ",", ".", " ", ";", "@", "#", "€", "%", "&", "|", "*"],

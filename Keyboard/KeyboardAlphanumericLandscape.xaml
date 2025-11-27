@@ -24,7 +24,7 @@
             </BoxView>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="1"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_0_Text}"
@@ -32,7 +32,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="2"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_1_Text}"
@@ -40,7 +40,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="3"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_2_Text}"
@@ -48,7 +48,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="4"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_3_Text}"
@@ -56,7 +56,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="5"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_4_Text}"
@@ -64,7 +64,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="6"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_5_Text}"
@@ -72,7 +72,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="7"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_6_Text}"
@@ -80,7 +80,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="8"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_7_Text}"
@@ -88,7 +88,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="9"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_8_Text}"
@@ -96,7 +96,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="10"
                 Grid.Row="1"
                 Text="{Binding ButtonChar_9_Text}"
@@ -104,7 +104,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="1"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_10_Text}"
@@ -112,7 +112,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="2"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_11_Text}"
@@ -120,7 +120,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="3"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_12_Text}"
@@ -128,7 +128,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="4"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_13_Text}"
@@ -147,7 +147,7 @@
             </ImageButton>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="7"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_14_Text}"
@@ -155,7 +155,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="8"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_15_Text}"
@@ -163,7 +163,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="9"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_16_Text}"
@@ -171,7 +171,7 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="10"
                 Grid.Row="2"
                 Text="{Binding ButtonChar_17_Text}"
@@ -181,18 +181,178 @@
 
         <Grid
             Style="{StaticResource KeyboardGrid}"
-            ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
-            RowDefinitions="5, 30, 30, 30, 30, 30, 30, 5">
+            ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
+            RowDefinitions="5, 30, 30, 30, 5">
 
             <BoxView
                 Style="{StaticResource KeyboardGridBoxView}"
-                Grid.ColumnSpan="12"
-                Grid.RowSpan="7">
+                Grid.ColumnSpan="23"
+                Grid.RowSpan="5">
             </BoxView>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="1"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="1"  
+                Grid.Row="1"
+                Text="{Binding Button_10_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="2"  
+                Grid.Row="1"
+                Text="{Binding Button_11_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="3"
+                Grid.Row="1"
+                Text="{Binding Button_12_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="4"  
+                Grid.Row="1"
+                Text="{Binding Button_13_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="5"  
+                Grid.Row="1"
+                Text="{Binding Button_14_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="6"  
+                Grid.Row="1"
+                Text="{Binding Button_15_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="7"  
+                Grid.Row="1"
+                Text="{Binding Button_16_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="8"  
+                Grid.Row="1"
+                Text="{Binding Button_17_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="9"  
+                Grid.Row="1"
+                Text="{Binding Button_18_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="10"  
+                Grid.Row="1"
+                Text="{Binding Button_19_Text}"
+                Clicked="BtnKey_Clicked"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+                <Button.Behaviors>
+                    <toolkit:TouchBehavior
+                        LongPressDuration="600"
+                        LongPressCompleted="Key_LongPressCompleted">
+                    </toolkit:TouchBehavior>
+                </Button.Behaviors>
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="12"
                 Grid.Row="1"
                 Text="{Binding Button_0_Text}"
                 Clicked="BtnKey_Clicked"
@@ -207,8 +367,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="2"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="13"  
                 Grid.Row="1"
                 Text="{Binding Button_1_Text}"
                 Clicked="BtnKey_Clicked"
@@ -223,8 +383,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="3"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="14"  
                 Grid.Row="1"
                 Text="{Binding Button_2_Text}"
                 Clicked="BtnKey_Clicked"
@@ -239,8 +399,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="4"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="15"
                 Grid.Row="1"
                 Text="{Binding Button_3_Text}"
                 Clicked="BtnKey_Clicked"
@@ -255,8 +415,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="5"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="16"  
                 Grid.Row="1"
                 Text="{Binding Button_4_Text}"
                 Clicked="BtnKey_Clicked"
@@ -271,8 +431,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="6"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="17"  
                 Grid.Row="1"
                 Text="{Binding Button_5_Text}"
                 Clicked="BtnKey_Clicked"
@@ -287,8 +447,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="7"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="18"  
                 Grid.Row="1"
                 Text="{Binding Button_6_Text}"
                 Clicked="BtnKey_Clicked"
@@ -303,8 +463,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="8"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="19"  
                 Grid.Row="1"
                 Text="{Binding Button_7_Text}"
                 Clicked="BtnKey_Clicked"
@@ -319,8 +479,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="9"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="20"  
                 Grid.Row="1"
                 Text="{Binding Button_8_Text}"
                 Clicked="BtnKey_Clicked"
@@ -335,8 +495,8 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="10"  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="21"  
                 Grid.Row="1"
                 Text="{Binding Button_9_Text}"
                 Clicked="BtnKey_Clicked"
@@ -349,171 +509,11 @@
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
             </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+            
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="1"  
                 Grid.Row="2"
-                Text="{Binding Button_10_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="2"  
-                Grid.Row="2"
-                Text="{Binding Button_11_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="3"
-                Grid.Row="2"
-                Text="{Binding Button_12_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="4"  
-                Grid.Row="2"
-                Text="{Binding Button_13_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="5"  
-                Grid.Row="2"
-                Text="{Binding Button_14_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="6"  
-                Grid.Row="2"
-                Text="{Binding Button_15_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="7"  
-                Grid.Row="2"
-                Text="{Binding Button_16_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="8"  
-                Grid.Row="2"
-                Text="{Binding Button_17_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="9"  
-                Grid.Row="2"
-                Text="{Binding Button_18_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="10"  
-                Grid.Row="2"
-                Text="{Binding Button_19_Text}"
-                Clicked="BtnKey_Clicked"
-                Pressed="BtnKey_Pressed"
-                Released="BtnKey_Released">
-                <Button.Behaviors>
-                    <toolkit:TouchBehavior
-                        LongPressDuration="600"
-                        LongPressCompleted="Key_LongPressCompleted">
-                    </toolkit:TouchBehavior>
-                </Button.Behaviors>
-            </Button>
-
-            <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="1"  
-                Grid.Row="3"
                 Text="{Binding Button_20_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -527,9 +527,9 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="2"  
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_21_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -543,9 +543,9 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="3"  
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_22_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -559,9 +559,9 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="4"  
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_23_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -575,9 +575,9 @@
             </Button>
 
             <Button  
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="5"  
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_24_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -591,9 +591,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="6"
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_25_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -607,9 +607,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="7"
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_26_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -623,9 +623,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="8"
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_27_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -639,9 +639,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="9"
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_28_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -655,9 +655,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="10"
-                Grid.Row="3"
+                Grid.Row="2"
                 Text="{Binding Button_29_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -671,9 +671,83 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="12"
+                Grid.Row="2"
+                Text="{Binding Button_40_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="13"
+                Grid.Row="2"
+                Text="{Binding Button_41_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="14"
+                Grid.Row="2"
+                Text="{Binding Button_42_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="15"
+                Grid.Row="2"
+                Text="{Binding Button_43_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="16"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                MaximumWidthRequest="64"
+                Text="{Binding Button_44_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="18"
+                Grid.Row="2"
+                Text="{Binding Button_45_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="19"
+                Grid.Row="2"
+                Text="{Binding Button_46_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="20"
+                Grid.Row="2"
+                Text="{Binding Button_47_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="21"
+                Grid.Row="2"
+                Text="{Binding Button_48_Text}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+            
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="1"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_30_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -687,9 +761,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="2"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_31_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -703,9 +777,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="3"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_32_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -719,9 +793,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="4"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_33_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -735,9 +809,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="5"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_34_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -751,9 +825,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="6"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_35_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -767,9 +841,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="7"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_36_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -783,9 +857,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="8"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_37_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -799,9 +873,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="9"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_38_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -815,9 +889,9 @@
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="10"
-                Grid.Row="4"
+                Grid.Row="3"
                 Text="{Binding Button_39_Text}"
                 Clicked="BtnKey_Clicked"
                 Pressed="BtnKey_Pressed"
@@ -829,120 +903,46 @@
                     </toolkit:TouchBehavior>
                 </Button.Behaviors>
             </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="1"
-                Grid.Row="5"
-                Text="{Binding Button_40_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="2"
-                Grid.Row="5"
-                Text="{Binding Button_41_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="3"
-                Grid.Row="5"
-                Text="{Binding Button_42_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="4"
-                Grid.Row="5"
-                Text="{Binding Button_43_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="5"
-                Grid.Row="5"
-                Grid.ColumnSpan="2"
-                MaximumWidthRequest="64"
-                Text="{Binding Button_44_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="7"
-                Grid.Row="5"
-                Text="{Binding Button_45_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="8"
-                Grid.Row="5"
-                Text="{Binding Button_46_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="9"
-                Grid.Row="5"
-                Text="{Binding Button_47_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="10"
-                Grid.Row="5"
-                Text="{Binding Button_48_Text}"
-                Clicked="BtnKey_Clicked">
-            </Button>
-
+            
             <ImageButton
                 x:Name="btnShiftKey"
-                Style="{StaticResource KeyAlphanumericPortraitImageButton}"
-                Grid.Column="1"  
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
+                Grid.Column="12"  
+                Grid.Row="3"
                 Source="{AppThemeBinding Light=keyboard_arrow_top_32p_black.png, Dark=keyboard_arrow_top_32p_white.png}"
                 Clicked="BtnShiftKey_Clicked">
             </ImageButton>
 
             <Button
                 x:Name="btnChangeLayout"
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="2"  
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="13"  
+                Grid.Row="3"
                 FontSize="12"
                 Text="!#1"
                 Clicked="BtnChangeLayout_Clicked">
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="3"
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="14"
+                Grid.Row="3"
                 Text="{Binding Button_49_Text}"
                 Clicked="BtnKey_Clicked">
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="4"
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="15"
+                Grid.Row="3"
                 Text="{Binding Button_50_Text}"
                 Clicked="BtnKey_Clicked">
             </Button>
 
             <ImageButton
                 Style="{StaticResource KeyboardHideImageButton}"
-                Grid.Column="5"
-                Grid.Row="6"
+                Grid.Column="16"
+                Grid.Row="3"
                 Grid.ColumnSpan="2"
                 AutomationId="btnKeyboardHide"
                 HorizontalOptions="Center"
@@ -952,34 +952,34 @@
             </ImageButton>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="7"
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="18"
+                Grid.Row="3"
                 Text="{Binding Button_51_Text}"
                 Clicked="BtnKey_Clicked">
             </Button>
 
             <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="8"
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="19"
+                Grid.Row="3"
                 Text="{Binding Button_52_Text}"
                 Clicked="BtnKey_Clicked">
             </Button>
 
             <ImageButton  
-                Style="{StaticResource KeyAlphanumericPortraitImageButton}"
-                Grid.Column="9"  
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
+                Grid.Column="20"  
+                Grid.Row="3"
                 AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Clicked="BtnKey_Clicked">
             </ImageButton>
 
             <ImageButton  
-                Style="{StaticResource KeyAlphanumericPortraitImageButton}"
-                Grid.Column="10"  
-                Grid.Row="6"
+                Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
+                Grid.Column="21"
+                Grid.Row="3"
                 AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Clicked="BtnKey_Clicked">
