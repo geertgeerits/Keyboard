@@ -801,10 +801,29 @@ namespace Keyboard
         {
             InitializeComponent();
 
+            UpdateOrientation(DeviceDisplay.MainDisplayInfo.Orientation);
+
+            DeviceDisplay.MainDisplayInfoChanged += (s, e) =>
+            {
+                UpdateOrientation(e.DisplayInfo.Orientation);
+            };
+
             // Set the BindingContext to this (the current page)
             BindingContext = this;
 
             InitializeKeyboard();
+        }
+
+        /// <summary>
+        /// Update the visual state based on the device orientation
+        /// </summary>
+        /// <param name="orientation"></param>
+        private void UpdateOrientation(DisplayOrientation orientation)
+        {
+            if (orientation == DisplayOrientation.Landscape)
+                VisualStateManager.GoToState(this, "Landscape");
+            else
+                VisualStateManager.GoToState(this, "Portrait");
         }
 
         /// <summary>

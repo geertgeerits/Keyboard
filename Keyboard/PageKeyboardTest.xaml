@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:Keyboard"
-             x:Class="Keyboard.PageKeyboardTest"
-             SafeAreaEdges="All"
-             Loaded="OnPageLoaded"
-             Shell.BackgroundColor="{AppThemeBinding Light=Orange, Dark=DarkOrange}">
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Keyboard"
+    x:Class="Keyboard.PageKeyboardTest"
+    SafeAreaEdges="All"
+    Loaded="OnPageLoaded"
+    Shell.BackgroundColor="{AppThemeBinding Light=Orange, Dark=DarkOrange}">
 
     <Shell.TitleView>
         <Grid

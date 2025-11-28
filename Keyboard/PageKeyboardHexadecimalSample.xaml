@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
     x:Class="Keyboard.PageKeyboardHexadecimalSample"
+    SafeAreaEdges="All"
     Loaded="OnPageLoaded"
     Shell.BackgroundColor="{AppThemeBinding Light=LightBlue, Dark=Blue}">
 
@@ -41,7 +42,6 @@
                 ColumnSpacing="2"  
                 RowSpacing="10"  
                 Margin="5">
-
 
                 <Border  
                     Style="{StaticResource EntryBorder}"
@@ -164,10 +164,14 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <local:KeyboardHexadecimalPortrait
-                x:Name="RootKeyboardHexadecimalPortrait"                
-                HeightRequest="250">
-            </local:KeyboardHexadecimalPortrait>
+             <!--FIX: Wrap KeyboardHexadecimal in a layout container (e.g., Grid) so ContentView.Content receives a valid type--> 
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardHexadecimal
+                        x:Name="RootKeyboardHexadecimalPortrait"
+                        HeightRequest="250" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
         <ContentView
@@ -176,11 +180,14 @@
             AbsoluteLayout.LayoutBounds="0,1,1,110"
             IsVisible="False">
 
-            <local:KeyboardHexadecimalLandscape
-                x:Name="RootKeyboardHexadecimalLandscape"                
-                HeightRequest="110">
-            </local:KeyboardHexadecimalLandscape>
-        </ContentView>        
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardHexadecimal
+                        x:Name="RootKeyboardHexadecimalLandscape"
+                        HeightRequest="110" />
+                </Grid>
+            </ContentView.Content>
+        </ContentView>
 
     </AbsoluteLayout>
 </ContentPage>

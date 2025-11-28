@@ -273,10 +273,10 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <local:KeyboardHexadecimalPortrait
+            <local:KeyboardHexadecimal
                 x:Name="RootKeyboardHexadecimalPortrait"                
                 HeightRequest="250">
-            </local:KeyboardHexadecimalPortrait>
+            </local:KeyboardHexadecimal>
         </ContentView>
 
         <ContentView
@@ -285,10 +285,10 @@
             AbsoluteLayout.LayoutBounds="0,1,1,110"
             IsVisible="False">
 
-            <local:KeyboardHexadecimalLandscape
+            <local:KeyboardHexadecimal
                 x:Name="RootKeyboardHexadecimalLandscape"                
                 HeightRequest="110">
-            </local:KeyboardHexadecimalLandscape>
+            </local:KeyboardHexadecimal>
         </ContentView>
 
     </AbsoluteLayout>

@@ -76,6 +76,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="KeyboardAlphanumeric.xaml.cs" />
+	  <Compile Remove="KeyboardHexadecimalLandscape.xaml.cs" />
+	  <Compile Remove="KeyboardHexadecimalPortrait.xaml.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Remove="KeyboardAlphanumeric.xaml" />
+	  <MauiXaml Remove="KeyboardHexadecimalLandscape.xaml" />
+	  <MauiXaml Remove="KeyboardHexadecimalPortrait.xaml" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="13.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.11" />
@@ -110,10 +122,7 @@
 	  <MauiXaml Update="KeyboardDecimalPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="KeyboardHexadecimalLandscape.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="KeyboardHexadecimalPortrait.xaml">
+	  <MauiXaml Update="KeyboardHexadecimal.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PageKeyboardMixedSample.xaml">
