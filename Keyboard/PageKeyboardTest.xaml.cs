@@ -1,67 +1,22 @@
-﻿/* Program .....: Keyboard.sln
-   Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
-   Copyright ...: (C) 2025-2026
-   Version .....: 1.0.31
-   Date ........: 2025-11-28 (YYYY-MM-DD)
-   Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
-   Description .: Custom keyboard for decimal and hexadecimal entry fields
-   Note:........: This app is a sample, experimental and still in development.
-                  It is a custom keyboard for numeric and hex values that uses a ContentView as overlay page.
-                  Hiding the Android and iOS system keyboard happens in the 'MauiProgram.cs' file, method: Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping
-                  In iOS the 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
-                  It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
-   Dependencies : NuGet Package: CommunityToolkit.Maui Version 13.0.0 ; https://learn.microsoft.com/en-us/dotnet/communitytoolkit/maui/
-                  CommunityToolkit.Mvvm version 8.4.0 ; https://github.com/CommunityToolkit/dotnet
-*/
-
 namespace Keyboard
 {
-    public partial class MainPage : ContentPage
+    public partial class PageKeyboardTest : ContentPage
     {
         // Declare variables
-        private string cEntryAutomationId = string.Empty;   // Used to store the AutomationId of the focused entry field
-        private Entry? _focusedEntry;                       // Used to store the currently focused entry field
+        private string cEntryAutomationId = string.Empty;
+        private Entry? _focusedEntry;
 
-        public MainPage()
-        {
-            // Initialize the number format settings based on the current culture and 
-            // Must be placed on the MainPage before InitializeComponent()
-            ClassEntryMethods.InitializeNumberFormat();
+        public PageKeyboardTest()
+    	{
+    		InitializeComponent();
 
-            try
-            {
-                InitializeComponent();
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error initializing MainPage: {ex.Message}\n{ex.StackTrace}");
-            }
-
-            // Set the default alphanumeric keyboard layout
-            ClassKeyboardMethods.cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");
-            //ClassKeyboardMethods.cCurrentKeyboardLayout = "ABCDEF_XX";
-            ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
+            // Subscribe to orientation changes
+            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
             // Set the placeholder text for the entry fields if the Placeholder property is empty or null and
             // the ValidationTriggerActionDecimal MinValue and MaxValue are set
             ClassEntryMethods.SetNumberEntryProperties(entTest1);
             ClassEntryMethods.SetNumberEntryProperties(entTest4);
-
-            // Select all the text in the entry field - works for all pages in the app
-            ClassEntryMethods.ModifyEntrySelectAllText();
-
-            // Set the theme
-            ClassKeyboardMethods.SetTheme();
-
-            // Respond to theme changes
-            Application.Current?.RequestedThemeChanged += static (s, a) =>
-            {
-                // Set the entry text color to a different color for a negative and a positive number
-                ClassEntryMethods.SetNumberColor();
-            };
-
-            // Reads and logs the current device display information
-            //ClassKeyboardMethods.ReadDeviceDisplay();
         }
 
         /// <summary>
@@ -146,10 +101,10 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the focus event for the decimal numeric entry field, performing actions
+        /// Handles the focus event for an entry field, performing actions
         /// </summary>
-        /// <param name="sender">The entry field that triggered the focus event.</param>
-        /// <param name="e">The event data associated with the focus event.</param>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void DecimalNumberEntryFocused(object sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
@@ -172,7 +127,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Entry unfocused event: format the text value for a decimal numeric entry field with the number separator
+        /// Entry unfocused event: format the text value for a numeric entry field with the number separator
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -199,7 +154,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Check if the value is numeric and clear result fields if the text have changed
+        /// Check if the value is decimal
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -212,7 +167,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Go to the next field when the next or return key have been pressed 
+        /// Go to the next field when the return key have been pressed 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -226,6 +181,7 @@ namespace Keyboard
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
             }
 #endif
+            // Go to the next field
             if (sender == entTest1)
             {
                 _ = entTest2.Focus();
@@ -280,43 +236,5 @@ namespace Keyboard
                 }
             }
         }
-
-        /// <summary>
-        /// Open the page with the decimal keyboard when the button is clicked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void BtnDecimal_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new PageKeyboardMixedSample());
-        }
-
-        /// <summary>
-        /// Open the page with the hexadecimal keyboard when the button is clicked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
-        }
-
-        /// <summary>
-        /// Open the test page with the decimal keyboard when the button is clicked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void BtnTest_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new PageKeyboardTest());
-        }
-    }
-
-    /// <summary>
-    /// This class is used to send a message with a string value when a key is pressed on the keyboard - only used in MainPage.xaml.cs
-    /// </summary>
-    /// <param name="value"></param>
-    public class StringMessage(string value) : ValueChangedMessage<string>(value)
-    {
     }
 }

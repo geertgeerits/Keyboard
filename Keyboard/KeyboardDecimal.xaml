@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Keyboard"
+    x:Class="Keyboard.KeyboardDecimal"
+    x:DataType="local:KeyboardDecimal">
+    
+    <Grid>
+        <!-- Portrait Layout -->
+        <Grid
+            x:Name="PortraitLayout"
+            Style="{StaticResource KeyboardGrid}"
+            IsVisible="True"
+            ColumnDefinitions="50, 54, 54, 54, 54, 50"
+            RowDefinitions="5, 54, 54, 54, 54, 5">
+
+            <BoxView
+                Style="{StaticResource KeyboardGridBoxView}"
+                Grid.ColumnSpan="6"
+                Grid.RowSpan="6">
+            </BoxView>
+
+            <Button
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="1"
+                AutomationId="btnOne"
+                Text="{Binding ButtonOneText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="1"
+                AutomationId="btnTwo"
+                Text="{Binding ButtonTwoText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="3"  
+                Grid.Row="1"
+                AutomationId="btnThree"
+                Text="{Binding ButtonThreeText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <ImageButton  
+                Style="{StaticResource KeyDecimalPortraitImageButton}"
+                Grid.Column="4"  
+                Grid.Row="1"
+                AutomationId="btnBackspace"
+                Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
+                Clicked="BtnKey_Clicked">
+            </ImageButton>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="1"  
+                Grid.Row="2"
+                AutomationId="btnFour"
+                Text="{Binding ButtonFourText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="2"
+                AutomationId="btnFive"
+                Text="{Binding ButtonFiveText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="3"  
+                Grid.Row="2"
+                AutomationId="btnSix"
+                Text="{Binding ButtonSixText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <ImageButton  
+                Style="{StaticResource KeyDecimalPortraitImageButton}"
+                Grid.Column="4"  
+                Grid.Row="2"
+                AutomationId="btnReturn"
+                Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
+                Clicked="BtnKey_Clicked">
+            </ImageButton>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="1"  
+                Grid.Row="3"
+                AutomationId="btnSeven"
+                Text="{Binding ButtonSevenText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="3"
+                AutomationId="btnEight"
+                Text="{Binding ButtonEightText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="3"  
+                Grid.Row="3"
+                AutomationId="btnNine"
+                Text="{Binding ButtonNineText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="4"  
+                Grid.Row="3"
+                AutomationId="btnMinus"
+                Text="{Binding ButtonMinusText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="4"
+                AutomationId="btnZero"
+                Text="{Binding ButtonZeroText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyDecimalPortraitButton}"
+                Grid.Column="4"  
+                Grid.Row="4"
+                AutomationId="btnDecimalPoint"
+                Text="{Binding ButtonDecimalPointText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <ImageButton
+                Style="{StaticResource KeyboardHideImageButton}"
+                Grid.Column="0"
+                Grid.Row="4"
+                AutomationId="btnKeyboardHide"
+                Clicked="OnKeyboardHide_Clicked">
+            </ImageButton>
+        </Grid>
+
+        <!-- Landscape Layout -->
+        <Grid
+            x:Name="LandscapeLayout"
+            Style="{StaticResource KeyboardGrid}"
+            IsVisible="False"
+            ColumnDefinitions="40, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 10"
+            RowDefinitions="5, 55, 5">
+
+            <BoxView
+                Style="{StaticResource KeyboardGridBoxView}"
+                Grid.ColumnSpan="16"
+                Grid.RowSpan="3">
+            </BoxView>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="1"  
+                Grid.Row="1"
+                AutomationId="btnOne"
+                Text="{Binding ButtonOneText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="2"  
+                Grid.Row="1"
+                AutomationId="btnTwo"
+                Text="{Binding ButtonTwoText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="3"  
+                Grid.Row="1"
+                AutomationId="btnThree"
+                Text="{Binding ButtonThreeText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="4"  
+                Grid.Row="1"
+                AutomationId="btnFour"
+                Text="{Binding ButtonFourText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="5"  
+                Grid.Row="1"
+                AutomationId="btnFive"
+                Text="{Binding ButtonFiveText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="6"  
+                Grid.Row="1"
+                AutomationId="btnSix"
+                Text="{Binding ButtonSixText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="7"  
+                Grid.Row="1"
+                AutomationId="btnSeven"
+                Text="{Binding ButtonSevenText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="8"  
+                Grid.Row="1"
+                AutomationId="btnEight"
+                Text="{Binding ButtonEightText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="9"  
+                Grid.Row="1"
+                AutomationId="btnNine"
+                Text="{Binding ButtonNineText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="10"  
+                Grid.Row="1"
+                AutomationId="btnZero"
+                Text="{Binding ButtonZeroText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="11"  
+                Grid.Row="1"
+                AutomationId="btnDecimalPoint"
+                Text="{Binding ButtonDecimalPointText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyNumericLandscape1RowButton}"
+                Grid.Column="12"  
+                Grid.Row="1"
+                AutomationId="btnMinus"
+                Text="{Binding ButtonMinusText}"
+                Clicked="BtnKey_Clicked">
+            </Button>
+
+            <ImageButton  
+                Style="{StaticResource KeyNumericLandscape1RowImageButton}"
+                Grid.Column="13"  
+                Grid.Row="1"
+                AutomationId="btnBackspace"
+                Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
+                Clicked="BtnKey_Clicked">
+            </ImageButton>
+
+            <ImageButton  
+                Style="{StaticResource KeyNumericLandscape1RowImageButton}"
+                Grid.Column="14"  
+                Grid.Row="1"
+                AutomationId="btnReturn"
+                Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
+                Clicked="BtnKey_Clicked">
+            </ImageButton>
+
+            <ImageButton
+                Style="{StaticResource KeyboardHideImageButton}"
+                Grid.Column="0"
+                Grid.Row="1"
+                AutomationId="btnKeyboardHide"
+                Clicked="OnKeyboardHide_Clicked">
+            </ImageButton>
+        </Grid>
+
+    </Grid>
+
+    <!-- Visual States -->
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="OrientationStates">
+            <VisualState x:Name="Portrait">
+                <VisualState.Setters>
+                    <Setter Property="IsVisible" Value="True" TargetName="PortraitLayout" />
+                    <Setter Property="IsVisible" Value="False" TargetName="LandscapeLayout" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="Landscape">
+                <VisualState.Setters>
+                    <Setter Property="IsVisible" Value="False" TargetName="PortraitLayout" />
+                    <Setter Property="IsVisible" Value="True" TargetName="LandscapeLayout" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
+</ContentView>

@@ -1,20 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
-    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:Keyboard"
-    x:Class="Keyboard.MainPage"
-    SafeAreaEdges="All"
-    Loaded="OnPageLoaded"
-    Shell.BackgroundColor="{AppThemeBinding Light=Orange, Dark=DarkOrange}">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Keyboard"
+             x:Class="Keyboard.PageKeyboardTest"
+             SafeAreaEdges="All"
+             Loaded="OnPageLoaded"
+             Shell.BackgroundColor="{AppThemeBinding Light=Orange, Dark=DarkOrange}">
 
     <Shell.TitleView>
         <Grid
             x:Name="grdTitleView"
-            ColumnDefinitions="*, 70, 70, 70"
-            RowDefinitions="Auto"
+            ColumnDefinitions="*"
+            RowDefinitions="*"
             Padding="0">
-            
+
             <Label
                 Grid.Column="0"
                 Grid.Row="0"
@@ -23,66 +22,8 @@
                 FontSize="16"  
                 FontAttributes="Bold"  
                 TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                Text="Keyboard">
+                Text="Keyboard test">
             </Label>
-
-            <Border
-                Style="{StaticResource TitleViewButtonBorder}"
-                Grid.Column="1"
-                Grid.Row="0"
-                Stroke="DarkGray">
-
-                <Button
-                    HeightRequest="40"
-                    WidthRequest="70"
-                    Margin="{x:OnPlatform Default='0', WinUI='0,0,0,40'}"
-                    BackgroundColor="Transparent"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    Text="Mix"
-                    Clicked="BtnDecimal_Clicked">
-                </Button>
-            </Border>
-
-            <Border
-                Style="{StaticResource TitleViewButtonBorder}"
-                Grid.Column="2"
-                Grid.Row="0"
-                Stroke="DarkGray">
-
-                <Button
-                    HeightRequest="40"
-                    WidthRequest="70"
-                    Margin="{x:OnPlatform Default='0', WinUI='0,0,0,40'}"
-                    BackgroundColor="Transparent"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    Text="Hex"
-                    Clicked="BtnHexadecimal_Clicked">
-                </Button>
-            </Border>
-
-            <Border
-                Style="{StaticResource TitleViewButtonBorder}"
-                Grid.Column="3"
-                Grid.Row="0"
-                Stroke="DarkGray">
-
-                <Button
-                    HeightRequest="40"
-                    WidthRequest="70"
-                    Margin="{x:OnPlatform Default='0', WinUI='0,0,0,40'}"
-                    BackgroundColor="Transparent"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    Text="Test"
-                    Clicked="BtnTest_Clicked">
-                </Button>
-            </Border>
-
         </Grid>
     </Shell.TitleView>
 
@@ -109,7 +50,7 @@
                     Grid.Row="0"
                     Text="Test 1">
                 </Label>
-                
+
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     Grid.Column="1"
@@ -281,10 +222,14 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <local:KeyboardDecimalPortrait
-                x:Name="RootKeyboardDecimalPortrait"
-                HeightRequest="250">
-            </local:KeyboardDecimalPortrait>
+            <!-- FIX: Wrap KeyboardDecimal in a layout container (e.g., Grid) so ContentView.Content receives a valid type -->
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardDecimal
+                        x:Name="RootKeyboardDecimalPortrait"
+                        HeightRequest="250" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
         <ContentView
@@ -292,12 +237,14 @@
             Style="{StaticResource BottomSheetKeyboard}"
             AbsoluteLayout.LayoutBounds="0,1,1,65"
             IsVisible="False">
-            
-            <local:KeyboardDecimalLandscape
-                x:Name="RootKeyboardDecimalLandscape"
-                HeightRequest="65">
-            </local:KeyboardDecimalLandscape>
-        </ContentView>
 
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardDecimal
+                        x:Name="RootKeyboardDecimalLandscape"
+                        HeightRequest="65" />
+                </Grid>
+            </ContentView.Content>
+        </ContentView>
     </AbsoluteLayout>
 </ContentPage>
