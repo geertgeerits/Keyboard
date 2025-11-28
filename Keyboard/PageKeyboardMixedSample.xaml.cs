@@ -420,8 +420,10 @@ namespace Keyboard
                         Task.Delay(300).Wait();
 
                         // Restart the application
-                        //Application.Current!.Windows[0].Page = new AppShell();  // Does not work
-                        DisplayAlertAsync("Keyboard layout changed", "Close the app and restart it to apply the changes.", "OK");
+                        Application.Current!.Windows[0].Page = new AppShell();
+                        //Application.Current!.Windows[0].Page = new NavigationPage(new MainPage());
+
+                        Application.Current!.Windows[0].Page?.DisplayAlertAsync("Keyboard layout changed", "The app had to be restarted for the change to take effect.", "OK");
                     }
                 }
                 catch (Exception ex)
