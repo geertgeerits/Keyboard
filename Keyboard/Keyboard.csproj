@@ -76,13 +76,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="KeyboardAlphanumeric.xaml.cs" />
+	  <Compile Remove="KeyboardAlphanumericLandscape.xaml.cs" />
+	  <Compile Remove="KeyboardAlphanumericPortrait.xaml.cs" />
+	  <Compile Remove="KeyboardDecimalLandscape.xaml.cs" />
+	  <Compile Remove="KeyboardDecimalPortrait.xaml.cs" />
 	  <Compile Remove="KeyboardHexadecimalLandscape.xaml.cs" />
 	  <Compile Remove="KeyboardHexadecimalPortrait.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Remove="KeyboardAlphanumeric.xaml" />
+	  <MauiXaml Remove="KeyboardAlphanumericLandscape.xaml" />
+	  <MauiXaml Remove="KeyboardAlphanumericPortrait.xaml" />
+	  <MauiXaml Remove="KeyboardDecimalLandscape.xaml" />
+	  <MauiXaml Remove="KeyboardDecimalPortrait.xaml" />
 	  <MauiXaml Remove="KeyboardHexadecimalLandscape.xaml" />
 	  <MauiXaml Remove="KeyboardHexadecimalPortrait.xaml" />
 	</ItemGroup>
@@ -95,9 +101,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="KeyboardDecimalPortrait.xaml.cs">
-	    <DependentUpon>KeyboardDecimalPortrait.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="PageKeyboardMixedSample.xaml.cs">
 	    <DependentUpon>PageKeyboardMixedSample.xaml</DependentUpon>
 	  </Compile>
@@ -107,19 +110,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="KeyboardAlphanumericLandscape.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="KeyboardAlphanumericPortrait.xaml">
+	  <MauiXaml Update="KeyboardAlphanumeric.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="KeyboardDecimal.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="KeyboardDecimalLandscape.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="KeyboardDecimalPortrait.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="KeyboardHexadecimal.xaml">

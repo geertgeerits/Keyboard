@@ -281,10 +281,41 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <local:KeyboardDecimalPortrait
+            <!-- FIX: Wrap KeyboardDecimal in a layout container (e.g., Grid) so ContentView.Content receives a valid type -->
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardDecimal
+                        x:Name="RootKeyboardDecimalPortrait"
+                        HeightRequest="250" />
+                </Grid>
+            </ContentView.Content>
+        </ContentView>
+
+        <ContentView
+            x:Name="CustomKeyboardDecimalLandscape"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,65"
+            IsVisible="False">
+
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardDecimal
+                        x:Name="RootKeyboardDecimalLandscape"
+                        HeightRequest="65" />
+                </Grid>
+            </ContentView.Content>
+        </ContentView>
+
+        <!--<ContentView
+            x:Name="CustomKeyboardDecimalPortrait"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,250"
+            IsVisible="False">
+
+            <local:KeyboardDecimal
                 x:Name="RootKeyboardDecimalPortrait"
                 HeightRequest="250">
-            </local:KeyboardDecimalPortrait>
+            </local:KeyboardDecimal>
         </ContentView>
 
         <ContentView
@@ -293,11 +324,11 @@
             AbsoluteLayout.LayoutBounds="0,1,1,65"
             IsVisible="False">
             
-            <local:KeyboardDecimalLandscape
+            <local:KeyboardDecimal
                 x:Name="RootKeyboardDecimalLandscape"
                 HeightRequest="65">
-            </local:KeyboardDecimalLandscape>
-        </ContentView>
+            </local:KeyboardDecimal>
+        </ContentView>-->
 
     </AbsoluteLayout>
 </ContentPage>

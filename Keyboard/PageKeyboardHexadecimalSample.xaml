@@ -164,7 +164,6 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-             <!--FIX: Wrap KeyboardHexadecimal in a layout container (e.g., Grid) so ContentView.Content receives a valid type--> 
             <ContentView.Content>
                 <Grid>
                     <local:KeyboardHexadecimal

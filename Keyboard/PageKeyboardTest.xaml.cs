@@ -11,7 +11,7 @@ namespace Keyboard
     		InitializeComponent();
 
             // Subscribe to orientation changes
-            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
+            //DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
             // Set the placeholder text for the entry fields if the Placeholder property is empty or null and
             // the ValidationTriggerActionDecimal MinValue and MaxValue are set
@@ -38,7 +38,7 @@ namespace Keyboard
             });
 
             // Show the bottom sheet when the page is appearing
-            _ = ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+            //_ = ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Keyboard
             _ = ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
             // Unsubscribe to orientation changes - if you don't do this, this event will be called if you are on another page
-            DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
+            //DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
 
             // Unregister the message receiver to avoid memory leaks - if you don't do this, this receiver will be called if you are on another page
             WeakReferenceMessenger.Default.Unregister<StringMessage>(this);

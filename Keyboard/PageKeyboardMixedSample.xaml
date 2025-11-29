@@ -225,10 +225,13 @@
             AbsoluteLayout.LayoutBounds="0,1,1,215"
             IsVisible="False">
 
-            <local:KeyboardAlphanumericPortrait
-                x:Name="RootKeyboardAlphanumericPortrait"
-                HeightRequest="215">
-            </local:KeyboardAlphanumericPortrait>
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardAlphanumeric
+                        x:Name="RootKeyboardAlphanumericPortrait"
+                        HeightRequest="215" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
         <ContentView
@@ -237,10 +240,13 @@
             AbsoluteLayout.LayoutBounds="0,1,1,116"
             IsVisible="False">
 
-            <local:KeyboardAlphanumericLandscape
-                x:Name="RootKeyboardAlphanumericLandscape"
-                HeightRequest="116">
-            </local:KeyboardAlphanumericLandscape>
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardAlphanumeric
+                        x:Name="RootKeyboardAlphanumericLandscape"
+                        HeightRequest="116" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
         <ContentView
@@ -249,10 +255,13 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <local:KeyboardDecimalPortrait
-                x:Name="RootKeyboardDecimalPortrait"
-                HeightRequest="250">
-            </local:KeyboardDecimalPortrait>
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardDecimal
+                        x:Name="RootKeyboardDecimalPortrait"
+                        HeightRequest="250" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
         <ContentView
@@ -261,10 +270,13 @@
             AbsoluteLayout.LayoutBounds="0,1,1,66"
             IsVisible="False">
 
-            <local:KeyboardDecimalLandscape
-                x:Name="RootKeyboardDecimalLandscape"
-                HeightRequest="66">
-            </local:KeyboardDecimalLandscape>
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardDecimal
+                        x:Name="RootKeyboardDecimalLandscape"
+                        HeightRequest="66" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
         <ContentView
@@ -273,10 +285,13 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <local:KeyboardHexadecimal
-                x:Name="RootKeyboardHexadecimalPortrait"                
-                HeightRequest="250">
-            </local:KeyboardHexadecimal>
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardHexadecimal
+                        x:Name="RootKeyboardHexadecimalPortrait"
+                        HeightRequest="250" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
         <ContentView
@@ -285,10 +300,13 @@
             AbsoluteLayout.LayoutBounds="0,1,1,110"
             IsVisible="False">
 
-            <local:KeyboardHexadecimal
-                x:Name="RootKeyboardHexadecimalLandscape"                
-                HeightRequest="110">
-            </local:KeyboardHexadecimal>
+            <ContentView.Content>
+                <Grid>
+                    <local:KeyboardHexadecimal
+                        x:Name="RootKeyboardHexadecimalLandscape"
+                        HeightRequest="110" />
+                </Grid>
+            </ContentView.Content>
         </ContentView>
 
     </AbsoluteLayout>
