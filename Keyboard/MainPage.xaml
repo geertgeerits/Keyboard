@@ -11,7 +11,7 @@
     <Shell.TitleView>
         <Grid
             x:Name="grdTitleView"
-            ColumnDefinitions="*, 70, 70, 70"
+            ColumnDefinitions="*, 70, 70"
             RowDefinitions="Auto"
             Padding="0">
             
@@ -63,26 +63,6 @@
                     Clicked="BtnHexadecimal_Clicked">
                 </Button>
             </Border>
-
-            <Border
-                Style="{StaticResource TitleViewButtonBorder}"
-                Grid.Column="3"
-                Grid.Row="0"
-                Stroke="DarkGray">
-
-                <Button
-                    HeightRequest="40"
-                    WidthRequest="70"
-                    Margin="{x:OnPlatform Default='0', WinUI='0,0,0,40'}"
-                    BackgroundColor="Transparent"
-                    TextColor="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}"
-                    FontSize="16"
-                    FontAttributes="Bold"
-                    Text="Test"
-                    Clicked="BtnTest_Clicked">
-                </Button>
-            </Border>
-
         </Grid>
     </Shell.TitleView>
 

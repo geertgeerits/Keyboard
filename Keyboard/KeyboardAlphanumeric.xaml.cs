@@ -802,6 +802,7 @@ namespace Keyboard
     	{
     		InitializeComponent();
 
+            // Handle device orientation changes
             UpdateOrientation(DeviceDisplay.MainDisplayInfo.Orientation);
 
             DeviceDisplay.MainDisplayInfoChanged += (s, e) =>
@@ -822,9 +823,13 @@ namespace Keyboard
         private void UpdateOrientation(DisplayOrientation orientation)
         {
             if (orientation == DisplayOrientation.Landscape)
+            {
                 VisualStateManager.GoToState(this, "Landscape");
+            }
             else
+            {
                 VisualStateManager.GoToState(this, "Portrait");
+            }
         }
 
         /// <summary>

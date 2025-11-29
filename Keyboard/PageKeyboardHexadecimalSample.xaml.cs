@@ -9,9 +9,6 @@ namespace Keyboard
         public PageKeyboardHexadecimalSample()
     	{
     		InitializeComponent();
-
-            // Subscribe to orientation changes
-            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
         }
 
         /// <summary>

@@ -21,9 +21,6 @@ namespace Keyboard
                 return;
             }
 
-            // Subscribe to orientation changes
-            DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
-
             // Initialize the keyboard layout picker
             pckKeyboardLayout.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3); ;
         }

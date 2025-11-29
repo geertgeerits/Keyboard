@@ -37,13 +37,6 @@ namespace Keyboard
                 Debug.WriteLine($"Error initializing MainPage: {ex.Message}\n{ex.StackTrace}");
             }
 
-            UpdateOrientation(DeviceDisplay.MainDisplayInfo.Orientation);
-
-            DeviceDisplay.MainDisplayInfoChanged += (s, e) =>
-            {
-                UpdateOrientation(e.DisplayInfo.Orientation);
-            };
-
             // Set the default alphanumeric keyboard layout
             ClassKeyboardMethods.cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");
             //ClassKeyboardMethods.cCurrentKeyboardLayout = "ABCDEF_XX";
@@ -69,14 +62,6 @@ namespace Keyboard
 
             // Reads and logs the current device display information
             //ClassKeyboardMethods.ReadDeviceDisplay();
-        }
-
-        private void UpdateOrientation(DisplayOrientation orientation)
-        {
-            if (orientation == DisplayOrientation.Landscape)
-                VisualStateManager.GoToState(this, "Landscape");
-            else
-                VisualStateManager.GoToState(this, "Portrait");
         }
 
         /// <summary>
@@ -314,16 +299,6 @@ namespace Keyboard
         private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
-        }
-
-        /// <summary>
-        /// Open the test page with the decimal keyboard when the button is clicked
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private async void BtnTest_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new PageKeyboardTest());
         }
     }
 
