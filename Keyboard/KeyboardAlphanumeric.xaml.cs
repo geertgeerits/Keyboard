@@ -1143,16 +1143,20 @@ namespace Keyboard
                 // Select the !#1 layout (special characters)
                 ClassKeyboardMethods.SelectAlphanumericKeyboardLayout("OTHER");
                 InitializeKeyboard();
-                btnChangeLayout.Text = "ABC";
-                btnShiftKey.IsEnabled = false;
+                btnChangeLayoutPortrait.Text = "ABC";
+                btnChangeLayoutLandscape.Text = "ABC";
+                btnShiftKeyPortrait.IsEnabled = false;
+                btnShiftKeyLandscape.IsEnabled = false;
             }
             else
             {
                 // Select the ABC layout (characters in uppercase)
                 ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
                 InitializeKeyboard();
-                btnChangeLayout.Text = "!#1";
-                btnShiftKey.IsEnabled = true;
+                btnChangeLayoutPortrait.Text = "!#1";
+                btnChangeLayoutLandscape.Text = "!#1";
+                btnShiftKeyPortrait.IsEnabled = true;
+                btnShiftKeyLandscape.IsEnabled = true;
             }
 
             bShiftKeyEnabled = false;
@@ -1345,7 +1349,7 @@ namespace Keyboard
         private void SetPopupCharacters(string[] chars)
         {
             Action<string>[] setters =
-            {
+            [
                 v => ButtonChar_0_Text = v,
                 v => ButtonChar_1_Text = v,
                 v => ButtonChar_2_Text = v,
@@ -1364,7 +1368,7 @@ namespace Keyboard
                 v => ButtonChar_15_Text = v,
                 v => ButtonChar_16_Text = v,
                 v => ButtonChar_17_Text = v,
-            };
+            ];
 
             // Clear all first
             for (int i = 0; i < setters.Length; i++)

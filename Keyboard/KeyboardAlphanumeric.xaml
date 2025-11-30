@@ -8,7 +8,7 @@
     x:DataType="local:KeyboardAlphanumeric">
     
     <StackLayout>
-        <!-- Characters Popup: Portrait and Landscape layout -->
+        <!-- Popup characters: Portrait and Landscape layout -->
         <Grid
             x:Name="grdCharactersPopup"
             Style="{StaticResource KeyboardGrid}"
@@ -180,11 +180,11 @@
             </Button>
         </Grid>
 
-        <!-- Portrait Layout -->
+        <!-- Keyboard: Portrait layout -->
         <Grid
             x:Name="PortraitLayout"
             Style="{StaticResource KeyboardGrid}"
-            IsVisible="True"
+            IsVisible="False"
             ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
             RowDefinitions="5, 30, 30, 30, 30, 30, 30, 5">
 
@@ -909,7 +909,7 @@
             </Button>
 
             <ImageButton
-                x:Name="btnShiftKey"
+                x:Name="btnShiftKeyPortrait"
                 Style="{StaticResource KeyAlphanumericPortraitImageButton}"
                 Grid.Column="1"  
                 Grid.Row="6"
@@ -918,7 +918,7 @@
             </ImageButton>
 
             <Button
-                x:Name="btnChangeLayout"
+                x:Name="btnChangeLayoutPortrait"
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
                 Grid.Column="2"  
                 Grid.Row="6"
@@ -990,7 +990,7 @@
             </ImageButton>
         </Grid>
 
-        <!-- Landscape Layout -->
+        <!-- Keyboard: Landscape layout -->
         <Grid
             x:Name="LandscapeLayout"
             Style="{StaticResource KeyboardGrid}"
@@ -1807,8 +1807,8 @@
         <VisualStateGroup x:Name="OrientationStates">
             <VisualState x:Name="Portrait">
                 <VisualState.Setters>
-                    <Setter Property="IsVisible" Value="True" TargetName="PortraitLayout" />
                     <Setter Property="IsVisible" Value="False" TargetName="LandscapeLayout" />
+                    <Setter Property="IsVisible" Value="True" TargetName="PortraitLayout" />
                 </VisualState.Setters>
             </VisualState>
             <VisualState x:Name="Landscape">

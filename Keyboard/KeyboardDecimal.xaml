@@ -11,7 +11,7 @@
         <Grid
             x:Name="PortraitLayout"
             Style="{StaticResource KeyboardGrid}"
-            IsVisible="True"
+            IsVisible="False"
             ColumnDefinitions="50, 54, 54, 54, 54, 50"
             RowDefinitions="5, 54, 54, 54, 54, 5">
 
@@ -312,8 +312,8 @@
         <VisualStateGroup x:Name="OrientationStates">
             <VisualState x:Name="Portrait">
                 <VisualState.Setters>
-                    <Setter Property="IsVisible" Value="True" TargetName="PortraitLayout" />
                     <Setter Property="IsVisible" Value="False" TargetName="LandscapeLayout" />
+                    <Setter Property="IsVisible" Value="True" TargetName="PortraitLayout" />
                 </VisualState.Setters>
             </VisualState>
             <VisualState x:Name="Landscape">

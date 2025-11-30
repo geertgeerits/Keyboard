@@ -70,7 +70,8 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            _ = entTest1.Focus();
+            _ = pckKeyboardLayout.Focus();
+            //_ = entTest1.Focus();
         }
 
         /// <summary>

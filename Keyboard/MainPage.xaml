@@ -261,7 +261,31 @@
             AbsoluteLayout.LayoutBounds="0,1,1,250"
             IsVisible="False">
 
-            <!-- FIX: Wrap KeyboardDecimal in a layout container (e.g., Grid) so ContentView.Content receives a valid type -->
+            <local:KeyboardDecimal
+                x:Name="RootKeyboardDecimalPortrait"
+                HeightRequest="250">
+            </local:KeyboardDecimal>
+        </ContentView>
+
+        <ContentView
+            x:Name="CustomKeyboardDecimalLandscape"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,66"
+            IsVisible="False">
+            
+            <local:KeyboardDecimal
+                x:Name="RootKeyboardDecimalLandscape"
+                HeightRequest="66">
+            </local:KeyboardDecimal>
+        </ContentView>
+
+        <!--<ContentView
+            x:Name="CustomKeyboardDecimalPortrait"
+            Style="{StaticResource BottomSheetKeyboard}"
+            AbsoluteLayout.LayoutBounds="0,1,1,250"
+            IsVisible="False">
+            
+            --><!--Wrap KeyboardDecimal in a layout container (e.g., Grid) so ContentView.Content receives a valid type--><!--
             <ContentView.Content>
                 <Grid>
                     <local:KeyboardDecimal
@@ -274,40 +298,16 @@
         <ContentView
             x:Name="CustomKeyboardDecimalLandscape"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,65"
+            AbsoluteLayout.LayoutBounds="0,1,1,66"
             IsVisible="False">
 
             <ContentView.Content>
                 <Grid>
                     <local:KeyboardDecimal
                         x:Name="RootKeyboardDecimalLandscape"
-                        HeightRequest="65" />
+                        HeightRequest="66" />
                 </Grid>
             </ContentView.Content>
-        </ContentView>
-
-        <!--<ContentView
-            x:Name="CustomKeyboardDecimalPortrait"
-            Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,250"
-            IsVisible="False">
-
-            <local:KeyboardDecimal
-                x:Name="RootKeyboardDecimalPortrait"
-                HeightRequest="250">
-            </local:KeyboardDecimal>
-        </ContentView>
-
-        <ContentView
-            x:Name="CustomKeyboardDecimalLandscape"
-            Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,65"
-            IsVisible="False">
-            
-            <local:KeyboardDecimal
-                x:Name="RootKeyboardDecimalLandscape"
-                HeightRequest="65">
-            </local:KeyboardDecimal>
         </ContentView>-->
 
     </AbsoluteLayout>
