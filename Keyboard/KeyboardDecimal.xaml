@@ -7,7 +7,7 @@
     x:DataType="local:KeyboardDecimal">
     
     <Grid>
-        <!-- Portrait Layout -->
+        <!-- Keyboard Portrait layout -->
         <Grid
             x:Name="PortraitLayout"
             Style="{StaticResource KeyboardGrid}"
@@ -156,7 +156,7 @@
             </ImageButton>
         </Grid>
 
-        <!-- Landscape Layout -->
+        <!-- Keyboard Landscape layout -->
         <Grid
             x:Name="LandscapeLayout"
             Style="{StaticResource KeyboardGrid}"
