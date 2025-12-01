@@ -21,6 +21,28 @@ namespace Keyboard
                 return;
             }
 
+            // Attach ICommand to receive key presses from the decimal keyboard control
+            RootKeyboardDecimalPortrait.KeyPressedCommand = new Command<string>(async key =>
+            {
+                // Reuse existing handler that expects the key id or character
+                await BtnKeyboardClicked(key);
+            });
+            RootKeyboardDecimalLandscape.KeyPressedCommand = new Command<string>(async key =>
+            {
+                await BtnKeyboardClicked(key);
+            });
+
+            // Attach ICommand to receive key presses from the hexadecimal keyboard control
+            RootKeyboardHexadecimalPortrait.KeyPressedCommand = new Command<string>(async key =>
+            {
+                // Reuse existing handler that expects the key id or character
+                await BtnKeyboardClicked(key);
+            });
+            RootKeyboardHexadecimalLandscape.KeyPressedCommand = new Command<string>(async key =>
+            {
+                await BtnKeyboardClicked(key);
+            });
+
             // Initialize the keyboard layout picker
             pckKeyboardLayout.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3); ;
         }

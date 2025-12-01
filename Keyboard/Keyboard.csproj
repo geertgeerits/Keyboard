@@ -82,6 +82,7 @@
 	  <Compile Remove="KeyboardDecimalPortrait.xaml.cs" />
 	  <Compile Remove="KeyboardHexadecimalLandscape.xaml.cs" />
 	  <Compile Remove="KeyboardHexadecimalPortrait.xaml.cs" />
+	  <Compile Remove="KeyboardViewModel.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView
+    x:Name="root"
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
@@ -23,56 +24,62 @@
 
             <Button
                 Style="{StaticResource KeyDecimalPortraitButton}"
-                Grid.Column="1"
+                Grid.Column="1"  
                 Grid.Row="1"
                 AutomationId="btnOne"
                 Text="{Binding ButtonOneText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyDecimalPortraitButton}"
                 Grid.Column="2"  
                 Grid.Row="1"
                 AutomationId="btnTwo"
                 Text="{Binding ButtonTwoText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyDecimalPortraitButton}"
                 Grid.Column="3"  
                 Grid.Row="1"
                 AutomationId="btnThree"
                 Text="{Binding ButtonThreeText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
-            <ImageButton  
+            <ImageButton
                 Style="{StaticResource KeyDecimalPortraitImageButton}"
                 Grid.Column="4"  
                 Grid.Row="1"
                 AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnBackspace">
             </ImageButton>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyDecimalPortraitButton}"
                 Grid.Column="1"  
                 Grid.Row="2"
                 AutomationId="btnFour"
                 Text="{Binding ButtonFourText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyDecimalPortraitButton}"
                 Grid.Column="2"  
                 Grid.Row="2"
                 AutomationId="btnFive"
                 Text="{Binding ButtonFiveText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -81,7 +88,8 @@
                 Grid.Row="2"
                 AutomationId="btnSix"
                 Text="{Binding ButtonSixText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <ImageButton  
@@ -90,7 +98,8 @@
                 Grid.Row="2"
                 AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnReturn">
             </ImageButton>
 
             <Button  
@@ -99,7 +108,8 @@
                 Grid.Row="3"
                 AutomationId="btnSeven"
                 Text="{Binding ButtonSevenText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -108,7 +118,8 @@
                 Grid.Row="3"
                 AutomationId="btnEight"
                 Text="{Binding ButtonEightText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -117,7 +128,8 @@
                 Grid.Row="3"
                 AutomationId="btnNine"
                 Text="{Binding ButtonNineText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -126,7 +138,8 @@
                 Grid.Row="3"
                 AutomationId="btnMinus"
                 Text="{Binding ButtonMinusText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnMinus">
             </Button>
 
             <Button  
@@ -135,7 +148,8 @@
                 Grid.Row="4"
                 AutomationId="btnZero"
                 Text="{Binding ButtonZeroText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -144,7 +158,8 @@
                 Grid.Row="4"
                 AutomationId="btnDecimalPoint"
                 Text="{Binding ButtonDecimalPointText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <ImageButton
@@ -152,7 +167,8 @@
                 Grid.Column="0"
                 Grid.Row="4"
                 AutomationId="btnKeyboardHide"
-                Clicked="OnKeyboardHide_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnKeyboardHide">
             </ImageButton>
         </Grid>
 
@@ -170,22 +186,24 @@
                 Grid.RowSpan="3">
             </BoxView>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyNumericLandscape1RowButton}"
                 Grid.Column="1"  
                 Grid.Row="1"
                 AutomationId="btnOne"
                 Text="{Binding ButtonOneText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyNumericLandscape1RowButton}"
                 Grid.Column="2"  
                 Grid.Row="1"
                 AutomationId="btnTwo"
                 Text="{Binding ButtonTwoText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -194,7 +212,8 @@
                 Grid.Row="1"
                 AutomationId="btnThree"
                 Text="{Binding ButtonThreeText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -203,7 +222,8 @@
                 Grid.Row="1"
                 AutomationId="btnFour"
                 Text="{Binding ButtonFourText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -212,7 +232,8 @@
                 Grid.Row="1"
                 AutomationId="btnFive"
                 Text="{Binding ButtonFiveText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -221,7 +242,8 @@
                 Grid.Row="1"
                 AutomationId="btnSix"
                 Text="{Binding ButtonSixText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -230,16 +252,18 @@
                 Grid.Row="1"
                 AutomationId="btnSeven"
                 Text="{Binding ButtonSevenText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyNumericLandscape1RowButton}"
                 Grid.Column="8"  
                 Grid.Row="1"
                 AutomationId="btnEight"
                 Text="{Binding ButtonEightText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -248,7 +272,8 @@
                 Grid.Row="1"
                 AutomationId="btnNine"
                 Text="{Binding ButtonNineText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -257,7 +282,8 @@
                 Grid.Row="1"
                 AutomationId="btnZero"
                 Text="{Binding ButtonZeroText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button  
@@ -266,25 +292,28 @@
                 Grid.Row="1"
                 AutomationId="btnDecimalPoint"
                 Text="{Binding ButtonDecimalPointText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
-            <Button  
+            <Button
                 Style="{StaticResource KeyNumericLandscape1RowButton}"
                 Grid.Column="12"  
                 Grid.Row="1"
                 AutomationId="btnMinus"
                 Text="{Binding ButtonMinusText}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnMinus">
             </Button>
 
-            <ImageButton  
+            <ImageButton
                 Style="{StaticResource KeyNumericLandscape1RowImageButton}"
                 Grid.Column="13"  
                 Grid.Row="1"
                 AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnBackspace">
             </ImageButton>
 
             <ImageButton  
@@ -293,7 +322,8 @@
                 Grid.Row="1"
                 AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnReturn">
             </ImageButton>
 
             <ImageButton
@@ -301,7 +331,8 @@
                 Grid.Column="0"
                 Grid.Row="1"
                 AutomationId="btnKeyboardHide"
-                Clicked="OnKeyboardHide_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnKeyboardHide">
             </ImageButton>
         </Grid>
 

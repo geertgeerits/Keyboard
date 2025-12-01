@@ -1,8 +1,8 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
-   Version .....: 1.0.31
-   Date ........: 2025-11-30 (YYYY-MM-DD)
+   Version .....: 1.0.32
+   Date ........: 2025-12-01 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -36,6 +36,17 @@ namespace Keyboard
             {
                 Debug.WriteLine($"Error initializing MainPage: {ex.Message}\n{ex.StackTrace}");
             }
+
+            // Attach ICommand to receive key presses from the decimal keyboard control
+            RootKeyboardDecimalPortrait.KeyPressedCommand = new Command<string>(async key =>
+            {
+                // Reuse existing handler that expects the key id or character
+                await BtnKeyboardClicked(key);
+            });
+            RootKeyboardDecimalLandscape.KeyPressedCommand = new Command<string>(async key =>
+            {
+                await BtnKeyboardClicked(key);
+            });
 
             // Set the default alphanumeric keyboard layout
             ClassKeyboardMethods.cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");

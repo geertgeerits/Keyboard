@@ -9,6 +9,17 @@ namespace Keyboard
         public PageKeyboardHexadecimalSample()
     	{
     		InitializeComponent();
+
+            // Attach ICommand to receive key presses from the hexadecimal keyboard control
+            RootKeyboardHexadecimalPortrait.KeyPressedCommand = new Command<string>(async key =>
+            {
+                // Reuse existing handler that expects the key id or character
+                await BtnKeyboardClicked(key);
+            });
+            RootKeyboardHexadecimalLandscape.KeyPressedCommand = new Command<string>(async key =>
+            {
+                await BtnKeyboardClicked(key);
+            });
         }
 
         /// <summary>
