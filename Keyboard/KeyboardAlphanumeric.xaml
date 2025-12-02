@@ -974,8 +974,7 @@
                 Grid.Row="6"
                 FontSize="12"
                 Text="!#1"
-                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
-                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+                Clicked="BtnChangeLayout_Clicked">
             </Button>
 
             <Button

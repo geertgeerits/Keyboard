@@ -1014,16 +1014,21 @@ namespace Keyboard
             {
                 cKeyPressed = button.Text;
             }
-
-            if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
+            else if (sender is ImageButton imageButton && !string.IsNullOrEmpty(imageButton.AutomationId))
             {
                 cKeyPressed = imageButton.AutomationId;
+            }
+
+            if (string.IsNullOrEmpty(cKeyPressed))
+            {
+                return;
             }
 
             // Send the message with the key pressed to the page
             try
             {
-                WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
+                //WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
+                KeyPressedCommand?.Execute(cKeyPressed);
             }
             catch (Exception ex)
             {
@@ -1073,7 +1078,8 @@ namespace Keyboard
                 // Send the message with the key pressed to the page
                 try
                 {
-                    WeakReferenceMessenger.Default.Send(new StringMessage(button.Text));
+                    //WeakReferenceMessenger.Default.Send(new StringMessage(button.Text));
+                    KeyPressedCommand?.Execute(button.Text);
                 }
                 catch (Exception ex)
                 {
@@ -1147,7 +1153,15 @@ namespace Keyboard
         {
             if (sender is ImageButton imageButton)
             {
-                _ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
+                try
+                {
+                    //_ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
+                    KeyPressedCommand?.Execute(imageButton.AutomationId);
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"Error executing KeyPressedCommand: {ex.Message}");
+                }
             }
         }
 
