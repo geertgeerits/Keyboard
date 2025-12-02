@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView
+    x:Name="root"
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Keyboard"
@@ -199,7 +200,8 @@
                 Grid.Column="1"
                 Grid.Row="1"
                 Text="{Binding Button_0_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -215,7 +217,8 @@
                 Grid.Column="2"  
                 Grid.Row="1"
                 Text="{Binding Button_1_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -231,7 +234,8 @@
                 Grid.Column="3"  
                 Grid.Row="1"
                 Text="{Binding Button_2_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -247,7 +251,8 @@
                 Grid.Column="4"
                 Grid.Row="1"
                 Text="{Binding Button_3_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -263,7 +268,8 @@
                 Grid.Column="5"  
                 Grid.Row="1"
                 Text="{Binding Button_4_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -279,7 +285,8 @@
                 Grid.Column="6"  
                 Grid.Row="1"
                 Text="{Binding Button_5_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -295,7 +302,8 @@
                 Grid.Column="7"  
                 Grid.Row="1"
                 Text="{Binding Button_6_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -311,7 +319,8 @@
                 Grid.Column="8"  
                 Grid.Row="1"
                 Text="{Binding Button_7_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -327,7 +336,8 @@
                 Grid.Column="9"  
                 Grid.Row="1"
                 Text="{Binding Button_8_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -343,7 +353,8 @@
                 Grid.Column="10"  
                 Grid.Row="1"
                 Text="{Binding Button_9_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -359,7 +370,8 @@
                 Grid.Column="1"  
                 Grid.Row="2"
                 Text="{Binding Button_10_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -375,7 +387,8 @@
                 Grid.Column="2"  
                 Grid.Row="2"
                 Text="{Binding Button_11_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -391,7 +404,8 @@
                 Grid.Column="3"
                 Grid.Row="2"
                 Text="{Binding Button_12_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -407,7 +421,8 @@
                 Grid.Column="4"  
                 Grid.Row="2"
                 Text="{Binding Button_13_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -423,7 +438,8 @@
                 Grid.Column="5"  
                 Grid.Row="2"
                 Text="{Binding Button_14_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -439,7 +455,8 @@
                 Grid.Column="6"  
                 Grid.Row="2"
                 Text="{Binding Button_15_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -455,7 +472,8 @@
                 Grid.Column="7"  
                 Grid.Row="2"
                 Text="{Binding Button_16_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -471,7 +489,8 @@
                 Grid.Column="8"  
                 Grid.Row="2"
                 Text="{Binding Button_17_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -487,7 +506,8 @@
                 Grid.Column="9"  
                 Grid.Row="2"
                 Text="{Binding Button_18_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -503,7 +523,8 @@
                 Grid.Column="10"  
                 Grid.Row="2"
                 Text="{Binding Button_19_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -519,7 +540,8 @@
                 Grid.Column="1"  
                 Grid.Row="3"
                 Text="{Binding Button_20_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -535,7 +557,8 @@
                 Grid.Column="2"  
                 Grid.Row="3"
                 Text="{Binding Button_21_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -551,7 +574,8 @@
                 Grid.Column="3"  
                 Grid.Row="3"
                 Text="{Binding Button_22_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -567,7 +591,8 @@
                 Grid.Column="4"  
                 Grid.Row="3"
                 Text="{Binding Button_23_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -583,7 +608,8 @@
                 Grid.Column="5"  
                 Grid.Row="3"
                 Text="{Binding Button_24_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -599,7 +625,8 @@
                 Grid.Column="6"
                 Grid.Row="3"
                 Text="{Binding Button_25_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -615,7 +642,8 @@
                 Grid.Column="7"
                 Grid.Row="3"
                 Text="{Binding Button_26_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -631,7 +659,8 @@
                 Grid.Column="8"
                 Grid.Row="3"
                 Text="{Binding Button_27_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -647,7 +676,8 @@
                 Grid.Column="9"
                 Grid.Row="3"
                 Text="{Binding Button_28_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -663,7 +693,8 @@
                 Grid.Column="10"
                 Grid.Row="3"
                 Text="{Binding Button_29_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -679,7 +710,8 @@
                 Grid.Column="1"
                 Grid.Row="4"
                 Text="{Binding Button_30_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -695,7 +727,8 @@
                 Grid.Column="2"
                 Grid.Row="4"
                 Text="{Binding Button_31_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -711,7 +744,8 @@
                 Grid.Column="3"
                 Grid.Row="4"
                 Text="{Binding Button_32_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -727,7 +761,8 @@
                 Grid.Column="4"
                 Grid.Row="4"
                 Text="{Binding Button_33_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -743,7 +778,8 @@
                 Grid.Column="5"
                 Grid.Row="4"
                 Text="{Binding Button_34_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -759,7 +795,8 @@
                 Grid.Column="6"
                 Grid.Row="4"
                 Text="{Binding Button_35_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -775,7 +812,8 @@
                 Grid.Column="7"
                 Grid.Row="4"
                 Text="{Binding Button_36_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -791,7 +829,8 @@
                 Grid.Column="8"
                 Grid.Row="4"
                 Text="{Binding Button_37_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -807,7 +846,8 @@
                 Grid.Column="9"
                 Grid.Row="4"
                 Text="{Binding Button_38_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -823,7 +863,8 @@
                 Grid.Column="10"
                 Grid.Row="4"
                 Text="{Binding Button_39_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -839,7 +880,8 @@
                 Grid.Column="1"
                 Grid.Row="5"
                 Text="{Binding Button_40_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -847,7 +889,8 @@
                 Grid.Column="2"
                 Grid.Row="5"
                 Text="{Binding Button_41_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -855,7 +898,8 @@
                 Grid.Column="3"
                 Grid.Row="5"
                 Text="{Binding Button_42_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -863,7 +907,8 @@
                 Grid.Column="4"
                 Grid.Row="5"
                 Text="{Binding Button_43_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -873,7 +918,8 @@
                 Grid.ColumnSpan="2"
                 MaximumWidthRequest="64"
                 Text="{Binding Button_44_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -881,7 +927,8 @@
                 Grid.Column="7"
                 Grid.Row="5"
                 Text="{Binding Button_45_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -889,7 +936,8 @@
                 Grid.Column="8"
                 Grid.Row="5"
                 Text="{Binding Button_46_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -897,7 +945,8 @@
                 Grid.Column="9"
                 Grid.Row="5"
                 Text="{Binding Button_47_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -905,7 +954,8 @@
                 Grid.Column="10"
                 Grid.Row="5"
                 Text="{Binding Button_48_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <ImageButton
@@ -924,7 +974,8 @@
                 Grid.Row="6"
                 FontSize="12"
                 Text="!#1"
-                Clicked="BtnChangeLayout_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -932,7 +983,8 @@
                 Grid.Column="3"
                 Grid.Row="6"
                 Text="{Binding Button_49_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -940,7 +992,8 @@
                 Grid.Column="4"
                 Grid.Row="6"
                 Text="{Binding Button_50_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <ImageButton
@@ -952,7 +1005,8 @@
                 HorizontalOptions="Center"
                 MaximumHeightRequest="30"
                 MaximumWidthRequest="30"
-                Clicked="OnKeyboardHide_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnKeyboardHide">
             </ImageButton>
 
             <Button
@@ -960,7 +1014,8 @@
                 Grid.Column="7"
                 Grid.Row="6"
                 Text="{Binding Button_51_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -968,7 +1023,8 @@
                 Grid.Column="8"
                 Grid.Row="6"
                 Text="{Binding Button_52_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <ImageButton  
@@ -977,7 +1033,8 @@
                 Grid.Row="6"
                 AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnBackspace">
             </ImageButton>
 
             <ImageButton  
@@ -986,7 +1043,8 @@
                 Grid.Row="6"
                 AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnReturn">
             </ImageButton>
         </Grid>
 
@@ -1009,7 +1067,8 @@
                 Grid.Column="1"  
                 Grid.Row="1"
                 Text="{Binding Button_10_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1025,7 +1084,8 @@
                 Grid.Column="2"  
                 Grid.Row="1"
                 Text="{Binding Button_11_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1041,7 +1101,8 @@
                 Grid.Column="3"
                 Grid.Row="1"
                 Text="{Binding Button_12_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1057,7 +1118,8 @@
                 Grid.Column="4"  
                 Grid.Row="1"
                 Text="{Binding Button_13_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1073,7 +1135,8 @@
                 Grid.Column="5"  
                 Grid.Row="1"
                 Text="{Binding Button_14_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1089,7 +1152,8 @@
                 Grid.Column="6"  
                 Grid.Row="1"
                 Text="{Binding Button_15_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1105,7 +1169,8 @@
                 Grid.Column="7"  
                 Grid.Row="1"
                 Text="{Binding Button_16_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1121,7 +1186,8 @@
                 Grid.Column="8"  
                 Grid.Row="1"
                 Text="{Binding Button_17_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1137,7 +1203,8 @@
                 Grid.Column="9"  
                 Grid.Row="1"
                 Text="{Binding Button_18_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1153,7 +1220,8 @@
                 Grid.Column="10"  
                 Grid.Row="1"
                 Text="{Binding Button_19_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1169,7 +1237,8 @@
                 Grid.Column="12"
                 Grid.Row="1"
                 Text="{Binding Button_0_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1185,7 +1254,8 @@
                 Grid.Column="13"  
                 Grid.Row="1"
                 Text="{Binding Button_1_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1201,7 +1271,8 @@
                 Grid.Column="14"  
                 Grid.Row="1"
                 Text="{Binding Button_2_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1217,7 +1288,8 @@
                 Grid.Column="15"
                 Grid.Row="1"
                 Text="{Binding Button_3_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1233,7 +1305,8 @@
                 Grid.Column="16"  
                 Grid.Row="1"
                 Text="{Binding Button_4_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1249,7 +1322,8 @@
                 Grid.Column="17"  
                 Grid.Row="1"
                 Text="{Binding Button_5_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1265,7 +1339,8 @@
                 Grid.Column="18"  
                 Grid.Row="1"
                 Text="{Binding Button_6_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1281,7 +1356,8 @@
                 Grid.Column="19"  
                 Grid.Row="1"
                 Text="{Binding Button_7_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1297,7 +1373,8 @@
                 Grid.Column="20"  
                 Grid.Row="1"
                 Text="{Binding Button_8_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1313,7 +1390,8 @@
                 Grid.Column="21"  
                 Grid.Row="1"
                 Text="{Binding Button_9_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1329,7 +1407,8 @@
                 Grid.Column="1"  
                 Grid.Row="2"
                 Text="{Binding Button_20_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1345,7 +1424,8 @@
                 Grid.Column="2"  
                 Grid.Row="2"
                 Text="{Binding Button_21_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1361,7 +1441,8 @@
                 Grid.Column="3"  
                 Grid.Row="2"
                 Text="{Binding Button_22_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1377,7 +1458,8 @@
                 Grid.Column="4"  
                 Grid.Row="2"
                 Text="{Binding Button_23_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1393,7 +1475,8 @@
                 Grid.Column="5"  
                 Grid.Row="2"
                 Text="{Binding Button_24_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1409,7 +1492,8 @@
                 Grid.Column="6"
                 Grid.Row="2"
                 Text="{Binding Button_25_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1425,7 +1509,8 @@
                 Grid.Column="7"
                 Grid.Row="2"
                 Text="{Binding Button_26_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1441,7 +1526,8 @@
                 Grid.Column="8"
                 Grid.Row="2"
                 Text="{Binding Button_27_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1457,7 +1543,8 @@
                 Grid.Column="9"
                 Grid.Row="2"
                 Text="{Binding Button_28_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1473,7 +1560,8 @@
                 Grid.Column="10"
                 Grid.Row="2"
                 Text="{Binding Button_29_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1489,7 +1577,8 @@
                 Grid.Column="12"
                 Grid.Row="2"
                 Text="{Binding Button_40_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1497,7 +1586,8 @@
                 Grid.Column="13"
                 Grid.Row="2"
                 Text="{Binding Button_41_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1505,7 +1595,8 @@
                 Grid.Column="14"
                 Grid.Row="2"
                 Text="{Binding Button_42_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1513,7 +1604,8 @@
                 Grid.Column="15"
                 Grid.Row="2"
                 Text="{Binding Button_43_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1523,7 +1615,8 @@
                 Grid.ColumnSpan="2"
                 MaximumWidthRequest="64"
                 Text="{Binding Button_44_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1531,7 +1624,8 @@
                 Grid.Column="18"
                 Grid.Row="2"
                 Text="{Binding Button_45_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1539,7 +1633,8 @@
                 Grid.Column="19"
                 Grid.Row="2"
                 Text="{Binding Button_46_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1547,7 +1642,8 @@
                 Grid.Column="20"
                 Grid.Row="2"
                 Text="{Binding Button_47_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1555,7 +1651,8 @@
                 Grid.Column="21"
                 Grid.Row="2"
                 Text="{Binding Button_48_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1563,7 +1660,8 @@
                 Grid.Column="1"
                 Grid.Row="3"
                 Text="{Binding Button_30_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1579,7 +1677,8 @@
                 Grid.Column="2"
                 Grid.Row="3"
                 Text="{Binding Button_31_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1595,7 +1694,8 @@
                 Grid.Column="3"
                 Grid.Row="3"
                 Text="{Binding Button_32_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1611,7 +1711,8 @@
                 Grid.Column="4"
                 Grid.Row="3"
                 Text="{Binding Button_33_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1627,7 +1728,8 @@
                 Grid.Column="5"
                 Grid.Row="3"
                 Text="{Binding Button_34_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1643,7 +1745,8 @@
                 Grid.Column="6"
                 Grid.Row="3"
                 Text="{Binding Button_35_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1659,7 +1762,8 @@
                 Grid.Column="7"
                 Grid.Row="3"
                 Text="{Binding Button_36_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1675,7 +1779,8 @@
                 Grid.Column="8"
                 Grid.Row="3"
                 Text="{Binding Button_37_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1691,7 +1796,8 @@
                 Grid.Column="9"
                 Grid.Row="3"
                 Text="{Binding Button_38_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1707,7 +1813,8 @@
                 Grid.Column="10"
                 Grid.Row="3"
                 Text="{Binding Button_39_Text}"
-                Clicked="BtnKey_Clicked"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
                 Released="BtnKey_Released">
                 <Button.Behaviors>
@@ -1742,7 +1849,8 @@
                 Grid.Column="14"
                 Grid.Row="3"
                 Text="{Binding Button_49_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1750,7 +1858,8 @@
                 Grid.Column="15"
                 Grid.Row="3"
                 Text="{Binding Button_50_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <ImageButton
@@ -1762,7 +1871,8 @@
                 HorizontalOptions="Center"
                 MaximumHeightRequest="30"
                 MaximumWidthRequest="30"
-                Clicked="OnKeyboardHide_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnKeyboardHide">
             </ImageButton>
 
             <Button
@@ -1770,7 +1880,8 @@
                 Grid.Column="18"
                 Grid.Row="3"
                 Text="{Binding Button_51_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <Button
@@ -1778,7 +1889,8 @@
                 Grid.Column="19"
                 Grid.Row="3"
                 Text="{Binding Button_52_Text}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
 
             <ImageButton  
@@ -1787,7 +1899,8 @@
                 Grid.Row="3"
                 AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnBackspace">
             </ImageButton>
 
             <ImageButton  
@@ -1796,7 +1909,8 @@
                 Grid.Row="3"
                 AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
-                Clicked="BtnKey_Clicked">
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnReturn">
             </ImageButton>
         </Grid>
 

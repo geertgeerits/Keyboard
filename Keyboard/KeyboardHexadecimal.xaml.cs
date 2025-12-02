@@ -46,27 +46,27 @@ namespace Keyboard
         }
 
         // Backwards-compatible: keep Click handler if you still want to support the messenger
-        private void BtnKey_Clicked(object sender, EventArgs e)
-        {
-            // Optional: map and raise via command to unify behavior
-            if (sender is Button btn && KeyPressedCommand?.CanExecute(btn.Text) == true)
-            {
-                KeyPressedCommand.Execute(btn.Text);
-            }
-            else if (sender is ImageButton ib && KeyPressedCommand?.CanExecute(ib.AutomationId) == true)
-            {
-                KeyPressedCommand.Execute(ib.AutomationId);
-            }
-            else
-            {
-                // Fallback to messenger for existing code paths
-                string id = (sender as VisualElement)?.AutomationId ?? string.Empty;
-                if (!string.IsNullOrEmpty(id))
-                {
-                    WeakReferenceMessenger.Default.Send(new StringMessage(id));
-                }
-            }
-        }
+        //private void BtnKey_Clicked(object sender, EventArgs e)
+        //{
+        //    // Optional: map and raise via command to unify behavior
+        //    if (sender is Button btn && KeyPressedCommand?.CanExecute(btn.Text) == true)
+        //    {
+        //        KeyPressedCommand.Execute(btn.Text);
+        //    }
+        //    else if (sender is ImageButton ib && KeyPressedCommand?.CanExecute(ib.AutomationId) == true)
+        //    {
+        //        KeyPressedCommand.Execute(ib.AutomationId);
+        //    }
+        //    else
+        //    {
+        //        // Fallback to messenger for existing code paths
+        //        string id = (sender as VisualElement)?.AutomationId ?? string.Empty;
+        //        if (!string.IsNullOrEmpty(id))
+        //        {
+        //            WeakReferenceMessenger.Default.Send(new StringMessage(id));
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// This method is called when a button is clicked, it sends a message with the key pressed to the page

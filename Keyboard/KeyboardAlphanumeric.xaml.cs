@@ -4,6 +4,20 @@ namespace Keyboard
 {
     public partial class KeyboardAlphanumeric : ContentView
     {
+        // Expose a bindable ICommand so pages can handle key presses via binding
+        public static readonly BindableProperty KeyPressedCommandProperty =
+            BindableProperty.Create(
+                nameof(KeyPressedCommand),
+                typeof(ICommand),
+                typeof(KeyboardAlphanumeric),
+                default(ICommand));
+
+        public ICommand? KeyPressedCommand
+        {
+            get => (ICommand?)GetValue(KeyPressedCommandProperty);
+            set => SetValue(KeyPressedCommandProperty, value);
+        }
+
         // Declare variables for shift key and layout change state
         private bool bShiftKeyEnabled;
         private bool bChangeLayoutEnabled;

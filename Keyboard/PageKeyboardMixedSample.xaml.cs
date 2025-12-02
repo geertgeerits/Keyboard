@@ -21,6 +21,17 @@ namespace Keyboard
                 return;
             }
 
+            // Attach ICommand to receive key presses from the alphanumeric keyboard control
+            RootKeyboardAlphanumericPortrait.KeyPressedCommand = new Command<string>(async key =>
+            {
+                // Reuse existing handler that expects the key id or character
+                await BtnKeyboardClicked(key);
+            });
+            RootKeyboardAlphanumericLandscape.KeyPressedCommand = new Command<string>(async key =>
+            {
+                await BtnKeyboardClicked(key);
+            });
+
             // Attach ICommand to receive key presses from the decimal keyboard control
             RootKeyboardDecimalPortrait.KeyPressedCommand = new Command<string>(async key =>
             {
