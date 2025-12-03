@@ -26,7 +26,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="1"  
                 Grid.Row="1"
-                AutomationId="btnZero"
                 Text="0"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="0">
@@ -36,7 +35,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="2"  
                 Grid.Row="1"
-                AutomationId="btnOne"
                 Text="1"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="1">
@@ -46,7 +44,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="3"  
                 Grid.Row="1"
-                AutomationId="btnTwo"
                 Text="2"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="2">
@@ -56,7 +53,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="4"  
                 Grid.Row="1"
-                AutomationId="btnThree"
                 Text="3"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="3">
@@ -66,7 +62,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="5"  
                 Grid.Row="1"
-                AutomationId="btnFour"
                 Text="4"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="4">
@@ -76,7 +71,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="1"  
                 Grid.Row="2"
-                AutomationId="btnFive"
                 Text="5"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="5">
@@ -86,7 +80,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="2"  
                 Grid.Row="2"
-                AutomationId="btnSix"
                 Text="6"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="6">
@@ -96,7 +89,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="3"  
                 Grid.Row="2"
-                AutomationId="btnSeven"
                 Text="7"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="7">
@@ -106,7 +98,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="4"  
                 Grid.Row="2"
-                AutomationId="btnEight"
                 Text="8"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="8">
@@ -116,7 +107,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="5"  
                 Grid.Row="2"
-                AutomationId="btnNine"
                 Text="9"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="9">
@@ -126,7 +116,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="1"  
                 Grid.Row="3"
-                AutomationId="btnA"
                 Text="A"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="A">
@@ -136,7 +125,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="2"  
                 Grid.Row="3"
-                AutomationId="btnB"
                 Text="B"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="B">
@@ -146,7 +134,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="3"  
                 Grid.Row="3"
-                AutomationId="btnC"
                 Text="C"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="C">
@@ -156,7 +143,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="4"  
                 Grid.Row="3"
-                AutomationId="btnD"
                 Text="D"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="D">
@@ -166,7 +152,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="5"  
                 Grid.Row="3"
-                AutomationId="btnE"
                 Text="E"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="E">
@@ -176,7 +161,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitButton}"
                 Grid.Column="1"  
                 Grid.Row="4"
-                AutomationId="btnF"
                 Text="F"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="F">
@@ -186,7 +170,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitImageButton}"
                 Grid.Column="4"  
                 Grid.Row="4"
-                AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnBackspace">
@@ -196,7 +179,6 @@
                 Style="{StaticResource KeyHexadecimalPortraitImageButton}"
                 Grid.Column="5"  
                 Grid.Row="4"
-                AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnReturn">
@@ -206,7 +188,6 @@
                 Style="{StaticResource KeyboardHideImageButton}"
                 Grid.Column="0"
                 Grid.Row="4"
-                AutomationId="btnKeyboardHide"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnKeyboardHide">
             </ImageButton>
@@ -230,7 +211,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="1"  
                 Grid.Row="1"
-                AutomationId="btnZero"
                 Text="0"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="0">
@@ -240,7 +220,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="2"  
                 Grid.Row="1"
-                AutomationId="btnOne"
                 Text="1"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="1">
@@ -250,7 +229,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="3"  
                 Grid.Row="1"
-                AutomationId="btnTwo"
                 Text="2"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="2">
@@ -260,7 +238,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="4"  
                 Grid.Row="1"
-                AutomationId="btnThree"
                 Text="3"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="3">
@@ -270,7 +247,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="5"  
                 Grid.Row="1"
-                AutomationId="btnFour"
                 Text="4"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="4">
@@ -280,7 +256,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="6"  
                 Grid.Row="1"
-                AutomationId="btnFive"
                 Text="5"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="5">
@@ -290,7 +265,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="7"  
                 Grid.Row="1"
-                AutomationId="btnSix"
                 Text="6"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="6">
@@ -300,7 +274,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="8"  
                 Grid.Row="1"
-                AutomationId="btnSeven"
                 Text="7"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="7">
@@ -310,7 +283,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="9"  
                 Grid.Row="1"
-                AutomationId="btnEight"
                 Text="8"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="8">
@@ -320,7 +292,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="10"  
                 Grid.Row="1"
-                AutomationId="btnNine"
                 Text="9"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="9">
@@ -330,7 +301,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="1"  
                 Grid.Row="2"
-                AutomationId="btnA"
                 Text="A"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="A">
@@ -340,7 +310,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="2"  
                 Grid.Row="2"
-                AutomationId="btnB"
                 Text="B"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="B">
@@ -350,7 +319,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="3"  
                 Grid.Row="2"
-                AutomationId="btnC"
                 Text="C"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="C">
@@ -360,7 +328,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="4"  
                 Grid.Row="2"
-                AutomationId="btnD"
                 Text="D"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="D">
@@ -370,7 +337,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="5"  
                 Grid.Row="2"
-                AutomationId="btnE"
                 Text="E"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="E">
@@ -380,7 +346,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsButton}"
                 Grid.Column="6"  
                 Grid.Row="2"
-                AutomationId="btnF"
                 Text="F"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="F">
@@ -390,7 +355,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsImageButton}"
                 Grid.Column="9"  
                 Grid.Row="2"
-                AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnBackspace">
@@ -400,7 +364,6 @@
                 Style="{StaticResource KeyNumericLandscape2RowsImageButton}"
                 Grid.Column="10"  
                 Grid.Row="2"
-                AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnReturn">
@@ -410,7 +373,6 @@
                 Style="{StaticResource KeyboardHideImageButton}"
                 Grid.Column="0"
                 Grid.Row="2"
-                AutomationId="btnKeyboardHide"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnKeyboardHide">
             </ImageButton>

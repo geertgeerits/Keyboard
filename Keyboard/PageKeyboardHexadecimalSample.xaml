@@ -51,7 +51,6 @@
                     <Entry
                         x:Name="entTest1"
                         Style="{StaticResource NumericEntry}"
-                        AutomationId="entTest1-Percentage"
                         Placeholder="0 - FF"
                         MaxLength="2"
                         Completed="GoToNextField"
@@ -77,7 +76,6 @@
                     <Entry
                         x:Name="entTest2"
                         Style="{StaticResource NumericEntry}"
-                        AutomationId="entTest2"
                         Placeholder="0 - FFFF"
                         MaxLength="4"
                         Completed="GoToNextField"
@@ -103,7 +101,6 @@
                     <Entry  
                         x:Name="entTest3"
                         Style="{StaticResource NumericEntry}"
-                        AutomationId="entTest3"
                         Placeholder="0 - FFFFFF"
                         MaxLength="6"
                         Completed="GoToNextField"
@@ -129,7 +126,6 @@
                     <Entry  
                         x:Name="entTest4"
                         Style="{StaticResource NumericEntry}"
-                        AutomationId="entTest4"
                         Placeholder="0 - FFFFFFFF"
                         MaxLength="12"
                         Completed="GoToNextField"

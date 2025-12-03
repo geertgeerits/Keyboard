@@ -497,7 +497,6 @@
 
     <Style TargetType="ImageButton" x:Key="KeyboardHideImageButton">
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="AutomationId" Value="btnKeyboardHide" />
         <Setter Property="HorizontalOptions" Value="Start" />
         <Setter Property="VerticalOptions" Value="Center" />
         <Setter Property="HeightRequest" Value="38" />

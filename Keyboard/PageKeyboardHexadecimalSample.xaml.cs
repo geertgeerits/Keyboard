@@ -3,7 +3,6 @@ namespace Keyboard
     public partial class PageKeyboardHexadecimalSample : ContentPage
     {
         // Declare variables
-        private string cEntryAutomationId = string.Empty;
         private Entry? _focusedEntry;
 
         public PageKeyboardHexadecimalSample()
@@ -102,7 +101,6 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
@@ -132,7 +130,6 @@ namespace Keyboard
                 }
 #endif
                 _focusedEntry = null;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Restore the color of the entry field
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
@@ -184,16 +181,7 @@ namespace Keyboard
         /// <param name="cKey"></param>
         private async Task BtnKeyboardClicked(string cKey)
         {
-            Entry? focusedEntry = cEntryAutomationId switch
-            {
-                "entTest1-Percentage" => entTest1,
-                "entTest2" => entTest2,
-                "entTest3" => entTest3,
-                "entTest4" => entTest4,
-                _ => null
-            };
-
-            if (focusedEntry != null)
+            if (_focusedEntry != null)
             {
                 if (cKey == "btnKeyboardHide")
                 {
@@ -201,11 +189,11 @@ namespace Keyboard
                 }
                 else if (cKey == "btnReturn")
                 {
-                    GoToNextField(focusedEntry, null);
+                    GoToNextField(_focusedEntry, null);
                 }
                 else
                 {
-                    ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
+                    ClassKeyboardMethods.KeyboardKeyClicked(_focusedEntry, cKey);
                 }
             }
         }

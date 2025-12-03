@@ -3,7 +3,6 @@ namespace Keyboard
     public partial class PageKeyboardMixedSample : ContentPage
     {
         // Declare variables
-        private string cEntryAutomationId = string.Empty;
         private Entry? _focusedEntry;
         private bool bRestartApplication;
 
@@ -170,7 +169,6 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Hide/Show the custom keyboard bottom sheet when the entry field is focused
                 await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
@@ -200,7 +198,6 @@ namespace Keyboard
                 }
 #endif
                 _focusedEntry = null;
-                cEntryAutomationId = entry.AutomationId;
             }
         }
 
@@ -214,7 +211,6 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Set the unformatted number in the entry field
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
@@ -250,7 +246,6 @@ namespace Keyboard
                 }
 #endif
                 _focusedEntry = null;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Set the formatted number in the entry field
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
@@ -270,7 +265,6 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Set the color of the entry field
                 ClassKeyboardMethods.SetEntryColorFocused(entry);
@@ -303,7 +297,6 @@ namespace Keyboard
                 }
 #endif
                 _focusedEntry = null;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Restore the color of the entry field and format the number
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
@@ -386,20 +379,9 @@ namespace Keyboard
         /// <param name="cKey"></param>
         private async Task BtnKeyboardClicked(string cKey)
         {
-            Debug.WriteLine($"BtnKeyboardClicked: {cKey}, Focused Entry AutomationId: {cEntryAutomationId}");
+            Debug.WriteLine($"BtnKeyboardClicked: {cKey}");
 
-            Entry? focusedEntry = cEntryAutomationId switch
-            {
-                "entTest1-Percentage" => entTest1,
-                "entTest2" => entTest2,
-                "entTest3" => entTest3,
-                "entTest4" => entTest4,
-                "entTest5" => entTest5,
-                "entTest6" => entTest6,
-                _ => null
-            };
-
-            if (focusedEntry != null)
+            if (_focusedEntry != null)
             {
                 if (cKey == "btnKeyboardHide")
                 {
@@ -409,11 +391,11 @@ namespace Keyboard
                 }
                 else if (cKey == "btnReturn")
                 {
-                    GoToNextField(focusedEntry, null);
+                    GoToNextField(_focusedEntry, null);
                 }
                 else
                 {
-                    ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
+                    ClassKeyboardMethods.KeyboardKeyClicked(_focusedEntry, cKey);
                 }
             }
         }

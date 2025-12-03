@@ -18,7 +18,6 @@ namespace Keyboard
     public partial class MainPage : ContentPage
     {
         // Declare variables
-        private string cEntryAutomationId = string.Empty;   // Used to store the AutomationId of the focused entry field
         private Entry? _focusedEntry;                       // Used to store the currently focused entry field
 
         public MainPage()
@@ -154,7 +153,6 @@ namespace Keyboard
             if (sender is Entry entry)
             {
                 _focusedEntry = entry;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Set the unformatted number in the entry field
                 await ClassEntryMethods.FormatDecimalNumberEntryFocused(entry);
@@ -187,7 +185,6 @@ namespace Keyboard
                 }
 #endif
                 _focusedEntry = null;
-                cEntryAutomationId = entry.AutomationId;
 
                 // Set the formatted number in the entry field
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
@@ -253,17 +250,7 @@ namespace Keyboard
         /// <param name="cKey"></param>
         private async Task BtnKeyboardClicked(string cKey)
         {
-            Entry? focusedEntry = cEntryAutomationId switch
-            {
-                "entTest1-Percentage" => entTest1,
-                "entTest2" => entTest2,
-                "entTest3" => entTest3,
-                "entTest4" => entTest4,
-                "entTest5" => entTest5,
-                _ => null
-            };
-
-            if (focusedEntry != null)
+            if (_focusedEntry != null)
             {
                 if (cKey == "btnKeyboardHide")
                 {
@@ -271,11 +258,11 @@ namespace Keyboard
                 }
                 else if (cKey == "btnReturn")
                 {
-                    GoToNextField(focusedEntry, null);
+                    GoToNextField(_focusedEntry, null);
                 }
                 else
                 {
-                    ClassKeyboardMethods.KeyboardKeyClicked(focusedEntry, cKey);
+                    ClassKeyboardMethods.KeyboardKeyClicked(_focusedEntry, cKey);
                 }
             }
         }
@@ -300,12 +287,4 @@ namespace Keyboard
             await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
         }
     }
-
-    /// <summary>
-    /// This class is used to send a message with a string value when a key is pressed on the keyboard - only used in MainPage.xaml.cs
-    /// </summary>
-    /// <param name="value"></param>
-    //public class StringMessage(string value) : ValueChangedMessage<string>(value)
-    //{
-    //}
 }

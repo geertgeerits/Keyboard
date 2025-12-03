@@ -759,7 +759,6 @@
                 Grid.Column="5"
                 Grid.Row="6"
                 Grid.ColumnSpan="2"
-                AutomationId="btnKeyboardHide"
                 HorizontalOptions="Center"
                 MaximumHeightRequest="30"
                 MaximumWidthRequest="30"
@@ -789,7 +788,6 @@
                 Style="{StaticResource KeyAlphanumericPortraitImageButton}"
                 Grid.Column="9"  
                 Grid.Row="6"
-                AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnBackspace">
@@ -799,7 +797,6 @@
                 Style="{StaticResource KeyAlphanumericPortraitImageButton}"
                 Grid.Column="10"  
                 Grid.Row="6"
-                AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnReturn">
@@ -1385,7 +1382,6 @@
                 Grid.Column="16"
                 Grid.Row="3"
                 Grid.ColumnSpan="2"
-                AutomationId="btnKeyboardHide"
                 HorizontalOptions="Center"
                 MaximumHeightRequest="30"
                 MaximumWidthRequest="30"
@@ -1415,7 +1411,6 @@
                 Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
                 Grid.Column="20"  
                 Grid.Row="3"
-                AutomationId="btnBackspace"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnBackspace">
@@ -1425,7 +1420,6 @@
                 Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
                 Grid.Column="21"
                 Grid.Row="3"
-                AutomationId="btnReturn"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnReturn">
