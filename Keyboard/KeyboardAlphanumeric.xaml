@@ -21,7 +21,7 @@
                 Style="{StaticResource KeyboardGridBoxView}"
                 Grid.ColumnSpan="12"
                 Grid.RowSpan="4"
-                CornerRadius="7"
+                CornerRadius="8"
                 BackgroundColor="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}">
             </BoxView>
 
