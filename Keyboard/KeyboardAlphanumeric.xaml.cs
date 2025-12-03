@@ -1,5 +1,3 @@
-// !!!BUG!!! On iOS, after a long press, the button text color remains changed
-
 namespace Keyboard
 {
     public partial class KeyboardAlphanumeric : ContentView
