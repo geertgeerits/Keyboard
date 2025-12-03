@@ -21,7 +21,7 @@ namespace Keyboard
         // Declare variables for shift key and layout change state
         private bool bShiftKeyEnabled;
         private bool bChangeLayoutEnabled;
-        private bool bLongPressDetectedWinUI;
+        private bool bLongPressDetected;
 
         // Declare variables for binding properties
         private string _buttonChar_0_Text = string.Empty;
@@ -807,8 +807,8 @@ namespace Keyboard
             }
         }
 
-        // Cancellation token source for WinUI long-press detection
-        private CancellationTokenSource? _winUILongPressCts;
+        // Cancellation token source for long-press detection
+        private CancellationTokenSource? _cancelLongPressCts;
 
         /// <summary>
         /// Set the BindingContext
@@ -891,102 +891,96 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handle button pressed event on WinUI platform (called first)
+        /// Handle button pressed event (called first)
         /// Starts a task that triggers Key_LongPressCompleted if the button remains pressed > 600ms.
         /// </summary>
         private void BtnKey_Pressed(object sender, EventArgs e)
         {
             Debug.WriteLine("BtnKey_Pressed called");
 
-            //if (DeviceInfo.Platform == DevicePlatform.WinUI)
-            //{
-                // Cancel any previous pending long-press detection
+            // Cancel any previous pending long-press detection
+            try
+            {
+                _cancelLongPressCts?.Cancel();
+                _cancelLongPressCts?.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error cancelling previous CTS: {ex.Message}");
+            }
+
+            _cancelLongPressCts = new CancellationTokenSource();
+            CancellationToken token = _cancelLongPressCts.Token;
+
+            // Fire-and-forget long-press detection task
+            _ = Task.Run(async () =>
+            {
                 try
                 {
-                    _winUILongPressCts?.Cancel();
-                    _winUILongPressCts?.Dispose();
+                    await Task.Delay(600, token).ConfigureAwait(false);
+
+                    if (token.IsCancellationRequested)
+                    {
+                        return;
+                    }
+
+                    // Mark long-press detected and invoke long-press handler on UI thread
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        try
+                        {
+                            bLongPressDetected = true;
+                            Key_LongPressCompleted(sender, e);
+                        }
+                        catch (Exception innerEx)
+                        {
+                            Debug.WriteLine($"Error in Key_LongPressCompleted invocation: {innerEx.Message}");
+                        }
+                    });
+                }
+                catch (TaskCanceledException)
+                {
+                    // Expected when token is cancelled
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine($"Error cancelling previous CTS: {ex.Message}");
+                    Debug.WriteLine($"Long press detection error: {ex.Message}");
                 }
+            }, token);
 
-                _winUILongPressCts = new CancellationTokenSource();
-                CancellationToken token = _winUILongPressCts.Token;
+            Debug.WriteLine("Long-press detection started");
 
-                // Fire-and-forget long-press detection task
-                _ = Task.Run(async () =>
-                {
-                    try
-                    {
-                        await Task.Delay(600, token).ConfigureAwait(false);
-
-                        if (token.IsCancellationRequested)
-                        {
-                            return;
-                        }
-
-                        // Mark long-press detected and invoke long-press handler on UI thread
-                        MainThread.BeginInvokeOnMainThread(() =>
-                        {
-                            try
-                            {
-                                bLongPressDetectedWinUI = true;
-                                Key_LongPressCompleted(sender, e);
-                            }
-                            catch (Exception innerEx)
-                            {
-                                Debug.WriteLine($"Error in Key_LongPressCompleted invocation: {innerEx.Message}");
-                            }
-                        });
-                    }
-                    catch (TaskCanceledException)
-                    {
-                        // Expected when token is cancelled
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine($"Long press detection error: {ex.Message}");
-                    }
-                }, token);
-
-                Debug.WriteLine("WinUI long-press detection started");
-            //}
-
-            bLongPressDetectedWinUI = false;
+            bLongPressDetected = false;
         }
 
         /// <summary>
-        /// Handle button released event on WinUI platform (called third)
+        /// Handle button released event (called third)
         /// Cancels pending long-press detection and resets state if needed.
         /// </summary>
         private void BtnKey_Released(object sender, EventArgs e)
         {
-            // Only care about WinUI long-press cancellation here
-            //if (DeviceInfo.Platform == DevicePlatform.WinUI)
-            //{
-                try
-                {
-                    _winUILongPressCts?.Cancel();
-                    _winUILongPressCts?.Dispose();
-                    _winUILongPressCts = null;
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"Error cancelling CTS on release: {ex.Message}");
-                }
+            // Only care about long-press cancellation here
+            try
+            {
+                _cancelLongPressCts?.Cancel();
+                _cancelLongPressCts?.Dispose();
+                _cancelLongPressCts = null;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error cancelling CTS on release: {ex.Message}");
+            }
 
-                // If a long-press was detected we suppress the normal click (BtnKey_Clicked checks the flag).
-                // Reset the flag shortly after so subsequent presses work normally.
-                if (bLongPressDetectedWinUI)
+            // If a long-press was detected we suppress the normal click (BtnKey_Clicked checks the flag).
+            // Reset the flag shortly after so subsequent presses work normally.
+            if (bLongPressDetected)
+            {
+                _ = Task.Run(async () =>
                 {
-                    _ = Task.Run(async () =>
-                    {
-                        await Task.Delay(50).ConfigureAwait(false);
-                        MainThread.BeginInvokeOnMainThread(() => bLongPressDetectedWinUI = false);
-                    });
-                }
-            //}
+                    await Task.Delay(50).ConfigureAwait(false);
+                    MainThread.BeginInvokeOnMainThread(() => bLongPressDetected = false);
+                });
+            }
         }
 
         /// <summary>
@@ -997,8 +991,7 @@ namespace Keyboard
         private void BtnKey_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine("BtnKey_Clicked called");
-            //if (DeviceInfo.Platform == DevicePlatform.WinUI && bLongPressDetectedWinUI)
-            if (bLongPressDetectedWinUI)
+            if (bLongPressDetected)
             {
                 return;
             }
@@ -1027,7 +1020,6 @@ namespace Keyboard
             // Send the message with the key pressed to the page
             try
             {
-                //WeakReferenceMessenger.Default.Send(new StringMessage(cKeyPressed));
                 KeyPressedCommand?.Execute(cKeyPressed);
             }
             catch (Exception ex)
@@ -1066,7 +1058,7 @@ namespace Keyboard
         /// <summary>
         /// Handles the click event for a character button and sends the button's text as a message to the page.
         /// </summary>
-        /// <remarks>This method uses <see cref="WeakReferenceMessenger"/> to broadcast the button's text.
+        /// <remarks>This method uses binding to broadcast the button's text.
         /// Only events triggered by a <see cref="Button"/> are processed; other sender types are ignored.</remarks>
         /// <param name="sender">The source of the event, expected to be a <see cref="Button"/> representing the character button that was
         /// clicked.</param>
@@ -1078,7 +1070,6 @@ namespace Keyboard
                 // Send the message with the key pressed to the page
                 try
                 {
-                    //WeakReferenceMessenger.Default.Send(new StringMessage(button.Text));
                     KeyPressedCommand?.Execute(button.Text);
                 }
                 catch (Exception ex)
@@ -1155,7 +1146,6 @@ namespace Keyboard
             {
                 try
                 {
-                    //_ = WeakReferenceMessenger.Default.Send(new StringMessage(imageButton.AutomationId));
                     KeyPressedCommand?.Execute(imageButton.AutomationId);
                 }
                 catch (Exception ex)
