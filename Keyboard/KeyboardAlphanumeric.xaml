@@ -1,0 +1,1456 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Name="root"
+    xmlns="http://schemas.microsoft.com/dotnet/maui/global"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Keyboard"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Class="Keyboard.KeyboardAlphanumeric"
+    x:DataType="local:KeyboardAlphanumeric">
+    
+    <StackLayout>
+        <!-- Popup characters: Portrait and Landscape layout -->
+        <Grid
+            x:Name="grdCharactersPopup"
+            Style="{StaticResource KeyboardGrid}"
+            ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
+            RowDefinitions="5, 30, 30, 5"
+            IsVisible="False">
+
+            <BoxView
+                Style="{StaticResource KeyboardGridBoxView}"
+                Grid.ColumnSpan="12"
+                Grid.RowSpan="4"
+                CornerRadius="8"
+                BackgroundColor="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}">
+            </BoxView>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_0_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_1_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_2_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_3_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_4_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="6"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_5_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_6_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_7_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_8_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"
+                Grid.Row="1"
+                Text="{Binding ButtonChar_9_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_10_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_11_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_12_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_13_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <ImageButton
+                Style="{StaticResource KeyboardHideImageButton}"
+                Grid.Column="5"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="Center"
+                MaximumHeightRequest="30"
+                MaximumWidthRequest="30"
+                Clicked="OnKeyboardCharHide_Clicked">
+            </ImageButton>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_14_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_15_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_16_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"
+                Grid.Row="2"
+                Text="{Binding ButtonChar_17_Text}"
+                Clicked="BtnCharacter_Clicked">
+            </Button>
+        </Grid>
+
+        <!-- Keyboard: Portrait layout -->
+        <Grid
+            x:Name="PortraitLayout"
+            Style="{StaticResource KeyboardGrid}"
+            IsVisible="False"
+            ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
+            RowDefinitions="5, 30, 30, 30, 30, 30, 30, 5">
+
+            <BoxView
+                Style="{StaticResource KeyboardGridBoxView}"
+                Grid.ColumnSpan="12"
+                Grid.RowSpan="8">
+            </BoxView>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="1"
+                Text="{Binding Button_0_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="1"
+                Text="{Binding Button_1_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"  
+                Grid.Row="1"
+                Text="{Binding Button_2_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="1"
+                Text="{Binding Button_3_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"  
+                Grid.Row="1"
+                Text="{Binding Button_4_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="6"  
+                Grid.Row="1"
+                Text="{Binding Button_5_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"  
+                Grid.Row="1"
+                Text="{Binding Button_6_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"  
+                Grid.Row="1"
+                Text="{Binding Button_7_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"  
+                Grid.Row="1"
+                Text="{Binding Button_8_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"  
+                Grid.Row="1"
+                Text="{Binding Button_9_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"  
+                Grid.Row="2"
+                Text="{Binding Button_10_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="2"
+                Text="{Binding Button_11_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="2"
+                Text="{Binding Button_12_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"  
+                Grid.Row="2"
+                Text="{Binding Button_13_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"  
+                Grid.Row="2"
+                Text="{Binding Button_14_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="6"  
+                Grid.Row="2"
+                Text="{Binding Button_15_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"  
+                Grid.Row="2"
+                Text="{Binding Button_16_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"  
+                Grid.Row="2"
+                Text="{Binding Button_17_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"  
+                Grid.Row="2"
+                Text="{Binding Button_18_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"  
+                Grid.Row="2"
+                Text="{Binding Button_19_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"  
+                Grid.Row="3"
+                Text="{Binding Button_20_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="3"
+                Text="{Binding Button_21_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"  
+                Grid.Row="3"
+                Text="{Binding Button_22_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"  
+                Grid.Row="3"
+                Text="{Binding Button_23_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"  
+                Grid.Row="3"
+                Text="{Binding Button_24_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="6"
+                Grid.Row="3"
+                Text="{Binding Button_25_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="3"
+                Text="{Binding Button_26_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="3"
+                Text="{Binding Button_27_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"
+                Grid.Row="3"
+                Text="{Binding Button_28_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"
+                Grid.Row="3"
+                Text="{Binding Button_29_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="4"
+                Text="{Binding Button_30_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"
+                Grid.Row="4"
+                Text="{Binding Button_31_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="4"
+                Text="{Binding Button_32_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="4"
+                Text="{Binding Button_33_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"
+                Grid.Row="4"
+                Text="{Binding Button_34_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="6"
+                Grid.Row="4"
+                Text="{Binding Button_35_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="4"
+                Text="{Binding Button_36_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="4"
+                Text="{Binding Button_37_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"
+                Grid.Row="4"
+                Text="{Binding Button_38_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"
+                Grid.Row="4"
+                Text="{Binding Button_39_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="1"
+                Grid.Row="5"
+                Text="{Binding Button_40_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"
+                Grid.Row="5"
+                Text="{Binding Button_41_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="5"
+                Text="{Binding Button_42_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="5"
+                Text="{Binding Button_43_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="5"
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                MaximumWidthRequest="64"
+                Text="{Binding Button_44_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="5"
+                Text="{Binding Button_45_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="5"
+                Text="{Binding Button_46_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="9"
+                Grid.Row="5"
+                Text="{Binding Button_47_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="10"
+                Grid.Row="5"
+                Text="{Binding Button_48_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <ImageButton
+                x:Name="btnShiftKeyPortrait"
+                Style="{StaticResource KeyAlphanumericPortraitImageButton}"
+                Grid.Column="1"  
+                Grid.Row="6"
+                Source="{AppThemeBinding Light=keyboard_arrow_top_32p_black.png, Dark=keyboard_arrow_top_32p_white.png}"
+                Clicked="BtnShiftKey_Clicked">
+            </ImageButton>
+
+            <Button
+                x:Name="btnChangeLayoutPortrait"
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="2"  
+                Grid.Row="6"
+                FontSize="12"
+                Text="!#1"
+                Clicked="BtnChangeLayout_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="3"
+                Grid.Row="6"
+                Text="{Binding Button_49_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="4"
+                Grid.Row="6"
+                Text="{Binding Button_50_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <ImageButton
+                Style="{StaticResource KeyboardHideImageButton}"
+                Grid.Column="5"
+                Grid.Row="6"
+                Grid.ColumnSpan="2"
+                AutomationId="btnKeyboardHide"
+                HorizontalOptions="Center"
+                MaximumHeightRequest="30"
+                MaximumWidthRequest="30"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnKeyboardHide">
+            </ImageButton>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="7"
+                Grid.Row="6"
+                Text="{Binding Button_51_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericPortraitButton}"
+                Grid.Column="8"
+                Grid.Row="6"
+                Text="{Binding Button_52_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <ImageButton  
+                Style="{StaticResource KeyAlphanumericPortraitImageButton}"
+                Grid.Column="9"  
+                Grid.Row="6"
+                AutomationId="btnBackspace"
+                Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnBackspace">
+            </ImageButton>
+
+            <ImageButton  
+                Style="{StaticResource KeyAlphanumericPortraitImageButton}"
+                Grid.Column="10"  
+                Grid.Row="6"
+                AutomationId="btnReturn"
+                Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnReturn">
+            </ImageButton>
+        </Grid>
+
+        <!-- Keyboard: Landscape layout -->
+        <Grid
+            x:Name="LandscapeLayout"
+            Style="{StaticResource KeyboardGrid}"
+            IsVisible="False"
+            ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
+            RowDefinitions="5, 30, 30, 30, 5">
+
+            <BoxView
+                Style="{StaticResource KeyboardGridBoxView}"
+                Grid.ColumnSpan="23"
+                Grid.RowSpan="5">
+            </BoxView>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="1"  
+                Grid.Row="1"
+                Text="{Binding Button_10_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="2"  
+                Grid.Row="1"
+                Text="{Binding Button_11_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="3"
+                Grid.Row="1"
+                Text="{Binding Button_12_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="4"  
+                Grid.Row="1"
+                Text="{Binding Button_13_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="5"  
+                Grid.Row="1"
+                Text="{Binding Button_14_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="6"  
+                Grid.Row="1"
+                Text="{Binding Button_15_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="7"  
+                Grid.Row="1"
+                Text="{Binding Button_16_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="8"  
+                Grid.Row="1"
+                Text="{Binding Button_17_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="9"  
+                Grid.Row="1"
+                Text="{Binding Button_18_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="10"  
+                Grid.Row="1"
+                Text="{Binding Button_19_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="12"
+                Grid.Row="1"
+                Text="{Binding Button_0_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="13"  
+                Grid.Row="1"
+                Text="{Binding Button_1_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="14"  
+                Grid.Row="1"
+                Text="{Binding Button_2_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="15"
+                Grid.Row="1"
+                Text="{Binding Button_3_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="16"  
+                Grid.Row="1"
+                Text="{Binding Button_4_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="17"  
+                Grid.Row="1"
+                Text="{Binding Button_5_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="18"  
+                Grid.Row="1"
+                Text="{Binding Button_6_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="19"  
+                Grid.Row="1"
+                Text="{Binding Button_7_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="20"  
+                Grid.Row="1"
+                Text="{Binding Button_8_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="21"  
+                Grid.Row="1"
+                Text="{Binding Button_9_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="1"  
+                Grid.Row="2"
+                Text="{Binding Button_20_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="2"  
+                Grid.Row="2"
+                Text="{Binding Button_21_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="3"  
+                Grid.Row="2"
+                Text="{Binding Button_22_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="4"  
+                Grid.Row="2"
+                Text="{Binding Button_23_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button  
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="5"  
+                Grid.Row="2"
+                Text="{Binding Button_24_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="6"
+                Grid.Row="2"
+                Text="{Binding Button_25_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="7"
+                Grid.Row="2"
+                Text="{Binding Button_26_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="8"
+                Grid.Row="2"
+                Text="{Binding Button_27_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="9"
+                Grid.Row="2"
+                Text="{Binding Button_28_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="10"
+                Grid.Row="2"
+                Text="{Binding Button_29_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="12"
+                Grid.Row="2"
+                Text="{Binding Button_40_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="13"
+                Grid.Row="2"
+                Text="{Binding Button_41_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="14"
+                Grid.Row="2"
+                Text="{Binding Button_42_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="15"
+                Grid.Row="2"
+                Text="{Binding Button_43_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="16"
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                MaximumWidthRequest="64"
+                Text="{Binding Button_44_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="18"
+                Grid.Row="2"
+                Text="{Binding Button_45_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="19"
+                Grid.Row="2"
+                Text="{Binding Button_46_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="20"
+                Grid.Row="2"
+                Text="{Binding Button_47_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="21"
+                Grid.Row="2"
+                Text="{Binding Button_48_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="1"
+                Grid.Row="3"
+                Text="{Binding Button_30_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="2"
+                Grid.Row="3"
+                Text="{Binding Button_31_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="3"
+                Grid.Row="3"
+                Text="{Binding Button_32_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="4"
+                Grid.Row="3"
+                Text="{Binding Button_33_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="5"
+                Grid.Row="3"
+                Text="{Binding Button_34_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="6"
+                Grid.Row="3"
+                Text="{Binding Button_35_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="7"
+                Grid.Row="3"
+                Text="{Binding Button_36_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="8"
+                Grid.Row="3"
+                Text="{Binding Button_37_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="9"
+                Grid.Row="3"
+                Text="{Binding Button_38_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="10"
+                Grid.Row="3"
+                Text="{Binding Button_39_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}"
+                Pressed="BtnKey_Pressed"
+                Released="BtnKey_Released">
+            </Button>
+
+            <ImageButton
+                x:Name="btnShiftKeyLandscape"
+                Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
+                Grid.Column="12"  
+                Grid.Row="3"
+                Source="{AppThemeBinding Light=keyboard_arrow_top_32p_black.png, Dark=keyboard_arrow_top_32p_white.png}"
+                Clicked="BtnShiftKey_Clicked">
+            </ImageButton>
+
+            <Button
+                x:Name="btnChangeLayoutLandscape"
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="13"  
+                Grid.Row="3"
+                FontSize="12"
+                Text="!#1"
+                Clicked="BtnChangeLayout_Clicked">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="14"
+                Grid.Row="3"
+                Text="{Binding Button_49_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="15"
+                Grid.Row="3"
+                Text="{Binding Button_50_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <ImageButton
+                Style="{StaticResource KeyboardHideImageButton}"
+                Grid.Column="16"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                AutomationId="btnKeyboardHide"
+                HorizontalOptions="Center"
+                MaximumHeightRequest="30"
+                MaximumWidthRequest="30"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnKeyboardHide">
+            </ImageButton>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="18"
+                Grid.Row="3"
+                Text="{Binding Button_51_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <Button
+                Style="{StaticResource KeyAlphanumericLandscapeButton}"
+                Grid.Column="19"
+                Grid.Row="3"
+                Text="{Binding Button_52_Text}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
+            </Button>
+
+            <ImageButton  
+                Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
+                Grid.Column="20"  
+                Grid.Row="3"
+                AutomationId="btnBackspace"
+                Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnBackspace">
+            </ImageButton>
+
+            <ImageButton  
+                Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
+                Grid.Column="21"
+                Grid.Row="3"
+                AutomationId="btnReturn"
+                Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
+                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
+                CommandParameter="btnReturn">
+            </ImageButton>
+        </Grid>
+
+    </StackLayout>
+
+    <!-- Visual States -->
+    <VisualStateManager.VisualStateGroups>
+        <VisualStateGroup x:Name="OrientationStates">
+            <VisualState x:Name="Portrait">
+                <VisualState.Setters>
+                    <Setter Property="IsVisible" Value="False" TargetName="LandscapeLayout" />
+                    <Setter Property="IsVisible" Value="True" TargetName="PortraitLayout" />
+                </VisualState.Setters>
+            </VisualState>
+            <VisualState x:Name="Landscape">
+                <VisualState.Setters>
+                    <Setter Property="IsVisible" Value="False" TargetName="PortraitLayout" />
+                    <Setter Property="IsVisible" Value="True" TargetName="LandscapeLayout" />
+                </VisualState.Setters>
+            </VisualState>
+        </VisualStateGroup>
+    </VisualStateManager.VisualStateGroups>
+
+</ContentView>
