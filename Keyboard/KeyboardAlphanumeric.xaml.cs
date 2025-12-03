@@ -898,8 +898,8 @@ namespace Keyboard
         {
             Debug.WriteLine("BtnKey_Pressed called");
 
-            if (DeviceInfo.Platform == DevicePlatform.WinUI)
-            {
+            //if (DeviceInfo.Platform == DevicePlatform.WinUI)
+            //{
                 // Cancel any previous pending long-press detection
                 try
                 {
@@ -951,7 +951,7 @@ namespace Keyboard
                 }, token);
 
                 Debug.WriteLine("WinUI long-press detection started");
-            }
+            //}
 
             bLongPressDetectedWinUI = false;
         }
@@ -963,8 +963,8 @@ namespace Keyboard
         private void BtnKey_Released(object sender, EventArgs e)
         {
             // Only care about WinUI long-press cancellation here
-            if (DeviceInfo.Platform == DevicePlatform.WinUI)
-            {
+            //if (DeviceInfo.Platform == DevicePlatform.WinUI)
+            //{
                 try
                 {
                     _winUILongPressCts?.Cancel();
@@ -986,7 +986,7 @@ namespace Keyboard
                         MainThread.BeginInvokeOnMainThread(() => bLongPressDetectedWinUI = false);
                     });
                 }
-            }
+            //}
         }
 
         /// <summary>
@@ -997,8 +997,8 @@ namespace Keyboard
         private void BtnKey_Clicked(object sender, EventArgs e)
         {
             Debug.WriteLine("BtnKey_Clicked called");
-
-            if (DeviceInfo.Platform == DevicePlatform.WinUI && bLongPressDetectedWinUI)
+            //if (DeviceInfo.Platform == DevicePlatform.WinUI && bLongPressDetectedWinUI)
+            if (bLongPressDetectedWinUI)
             {
                 return;
             }

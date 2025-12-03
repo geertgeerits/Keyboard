@@ -69,12 +69,12 @@ namespace Keyboard
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
             // Register to receive messages of type StringMessage from the keyboard bottom sheet
-            WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
-            {
-                // Display the received message in the UI, this method is called when a message is received
-                _ = BtnKeyboardClicked(message.Value);
-                Debug.WriteLine($"Received message: {message.Value}");
-            });
+            //WeakReferenceMessenger.Default.Register<StringMessage>(this, (recipient, message) =>
+            //{
+            //    // Display the received message in the UI, this method is called when a message is received
+            //    _ = BtnKeyboardClicked(message.Value);
+            //    Debug.WriteLine($"Received message: {message.Value}");
+            //});
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Keyboard
             DeviceDisplay.MainDisplayInfoChanged -= OnMainDisplayInfoChanged;
 
             // Unregister the message receiver to avoid memory leaks - if you don't do this, this receiver will be called if you are on another page
-            WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
+            //WeakReferenceMessenger.Default.Unregister<StringMessage>(this);
         }
 
         /// <summary>
