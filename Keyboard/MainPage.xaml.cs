@@ -14,8 +14,9 @@
    License .....: MIT
 */
 
+//using System.Text;
 #if IOS
-using Microsoft.Maui.Platform;
+//using Microsoft.Maui.Platform;
 #endif
 
 namespace Keyboard
@@ -73,6 +74,14 @@ namespace Keyboard
                 // Set the entry text color to a different color for a negative and a positive number
                 ClassEntryMethods.SetNumberColor();
             };
+
+            // Debugging Unicode characters and UTF-8 encoding (for testing purposes)
+            // C̨ is a composed sequence, not a single precomposed character.
+            // It consists of the base character 'C' (U+0043) followed by the combining cedilla '̨' (U+0328).
+            //var s = "C̨";
+            //Debug.WriteLine(string.Join(" ", s.Select(c => $"U+{((int)c):X4}")));          // U+0043 U+0328
+            //Debug.WriteLine(string.Join(" ", Encoding.UTF8.GetBytes(s).Select(b => b.ToString("X2")))); // 43 CC A8
+            //Debug.WriteLine("The length of the string is: " + s.Length.ToString());          // 2
 
             // Reads and logs the current device display information
             //ClassKeyboardMethods.ReadDeviceDisplay();

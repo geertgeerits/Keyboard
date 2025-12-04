@@ -533,7 +533,6 @@
         </Setter>
     </Style>
 
-    <!--The properties 'Keyboard', 'ReturnType' and 'Completed' are necessary when using the system keyboard instead of the custom keyboard-->
     <Style TargetType="Entry" x:Key="TextEntry">
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={DynamicResource EntryBackgroundUnfocusedLight}, Dark={DynamicResource EntryBackgroundUnfocusedDark}}" />
         <Setter Property="TextColor" Value="{AppThemeBinding Light={DynamicResource EntryTextUnfocusedLight}, Dark={DynamicResource EntryTextUnfocusedDark}}" />
@@ -596,7 +595,7 @@
         </Setter>
     </Style>
 
-    <!--!!!BUG!!! HeightRequest and WidthRequest does not work-->
+    <!--!!!BUG!!! HeightRequest and WidthRequest do not work-->
     <Style TargetType="Button" x:Key="KeyAlphanumericPortraitButton">
         <Setter Property="MaximumHeightRequest" Value="30" />
         <Setter Property="MaximumWidthRequest" Value="30" />

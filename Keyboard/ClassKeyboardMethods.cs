@@ -185,7 +185,7 @@
         }
 
         /// <summary>
-        /// Inserts a character at the current cursor position in the Entry field.
+        /// Inserts a character (also the composed characters like C̨ ) at the current cursor position in the Entry field.
         /// </summary>
         /// <param name="entry"></param>
         /// <param name="cCharacter"></param>
@@ -211,13 +211,15 @@
             entry.Text = newText;
 
             // Move the cursor to the position after the inserted character
-            entry.CursorPosition = cursorPosition + 1;
+            // The character length can be more than one for special characters
+            // cCharacter is a composed sequence like C̨  - not a single precomposed character
+            entry.CursorPosition = cursorPosition + cCharacter.Length;
 
             return newText;
         }
 
         /// <summary>
-        /// Deletes the character before the current cursor position in the Entry field.
+        /// Deletes the character (also the composed characters like C̨ ) before the current cursor position in the Entry field
         /// </summary>
         /// <param name="entry"></param>
         /// <returns></returns>
@@ -228,30 +230,66 @@
                 return string.Empty;
             }
 
-            // Get the current text in the Entry
             string currentText = entry.Text ?? string.Empty;
 
-            // Ensure there is a character to delete and the cursor is not at the start
-            if (entry.CursorPosition > 0 && currentText.Length > 0)
+            // Nothing to delete
+            if (string.IsNullOrEmpty(currentText) || entry.CursorPosition <= 0)
             {
-                // Ensure CursorPosition is valid
-                int cursorPosition = entry.CursorPosition >= 0 && entry.CursorPosition <= currentText.Length
-                    ? entry.CursorPosition
-                    : currentText.Length;
-
-                // Remove the character before the cursor position
-                string newText = currentText.Remove(cursorPosition - 1, 1);
-
-                // Update the Entry's text
-                entry.Text = newText;
-
-                // Move the cursor to the position before the deleted character
-                entry.CursorPosition = cursorPosition - 1;
-
-                return newText;
+                return currentText;
             }
 
-            return currentText;
+            int cursorPosition = entry.CursorPosition;
+
+            // Get the indexes of each text element (grapheme cluster) start in the string
+            int[] textElementStarts = System.Globalization.StringInfo.ParseCombiningCharacters(currentText);
+            if (textElementStarts == null || textElementStarts.Length == 0)
+            {
+                return currentText;
+            }
+
+            // Find the index of the text element that contains (or is immediately before) the cursor
+            int elementIndex = Array.BinarySearch(textElementStarts, cursorPosition);
+
+            if (elementIndex >= 0)
+            {
+                // Cursor is exactly at the start of an element -> remove the previous element (if any)
+                elementIndex--;
+            }
+            else
+            {
+                // If not an exact match, BinarySearch returns the bitwise complement of the next element index.
+                // ~result gives the index of the first element start greater than cursorPosition.
+                // We want the element start immediately before the cursor, so subtract 1.
+                elementIndex = ~elementIndex - 1;
+            }
+
+            // If there's no previous element to delete, return current text
+            if (elementIndex < 0)
+            {
+                return currentText;
+            }
+
+            int removeStart = textElementStarts[elementIndex];
+
+            // Determine length of this text element
+            int removeLength;
+            if (elementIndex + 1 < textElementStarts.Length)
+            {
+                removeLength = textElementStarts[elementIndex + 1] - removeStart;
+            }
+            else
+            {
+                removeLength = currentText.Length - removeStart;
+            }
+
+            // Remove the whole grapheme cluster
+            string newText = currentText.Remove(removeStart, removeLength);
+
+            // Update the Entry content and cursor position
+            entry.Text = newText;
+            entry.CursorPosition = removeStart;
+
+            return newText;
         }
 
         /// <summary>
