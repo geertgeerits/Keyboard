@@ -63,7 +63,10 @@ namespace Keyboard
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+#if IOS
+            // Disable automatic scroll adjustment for this page
+            //KeyboardAutoManagerScroll.Disconnect();
+#endif
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
         }
@@ -74,7 +77,10 @@ namespace Keyboard
         protected async override void OnDisappearing()
         {
             base.OnDisappearing();
-
+#if IOS
+            // Re-enable if needed when leaving the page
+            //KeyboardAutoManagerScroll.Connect();
+#endif
             // Hide the bottom sheet when the page is disappearing
             await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
             await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
@@ -119,16 +125,23 @@ namespace Keyboard
         /// <param name="args"></param>
         private async void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
         {
+            if (sender is Entry entry)
+            {
+                _focusedEntry = entry;
+
+                // Show the custom keyboard for this entry immediately (Windows often doesn't fire Focused reliably).
+                await ShowKeyboard(entry);
+#if IOS
+                // On iOS ensure the control actually gets native focus (this will trigger Focused event there).
+                entry.Focus();
+#endif
+                return;
+            }
+
+            // Fallback: if we already know the focused entry, show its keyboard.
             if (_focusedEntry is not null)
             {
                 await ShowKeyboard(_focusedEntry);
-            }
-
-            if (sender is Entry entry)
-            {
-#if IOS
-                entry.Focus();              // This will trigger the Focused event
-#endif
             }
         }
 
@@ -139,23 +152,29 @@ namespace Keyboard
         /// <returns></returns>
         private async Task ShowKeyboard(Entry entry)
         {
-            if (entry is not null)
+            if (entry is null)
             {
-                switch (entry.AutomationId)
-                {
-                    case "entTest3":
-                    case "entTest4":
-                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
-                        break;
-                    case "entTest1-Percentage":
-                    case "entTest2":
-                    case "entTest6":
-                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
-                        break;
-                    case "entTest5":
-                        await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
-                        break;
-                }
+                return;
+            }
+
+            // Keyboard.Text = Microsoft.Maui.TextKeyboard = Alphanumeric
+            // Keyboard.Numeric = Microsoft.Maui.NumericKeyboard = Decimal
+            // Keyboard.Default = Microsoft.Maui.Keyboard = Hexadecimal
+            Debug.WriteLine($"ShowKeyboard: {entry.Keyboard}");
+            
+            string cKeyboardType = entry.Keyboard?.ToString() ?? string.Empty;
+
+            switch (cKeyboardType)
+            {
+                case "Microsoft.Maui.TextKeyboard":
+                    await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
+                    break;
+                case "Microsoft.Maui.NumericKeyboard":
+                    await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                    break;
+                default:
+                    await ClassKeyboardMethods.ShowBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+                    break;
             }
         }
 
@@ -197,7 +216,6 @@ namespace Keyboard
                     return;
                 }
 #endif
-                _focusedEntry = null;
             }
         }
 
@@ -245,8 +263,6 @@ namespace Keyboard
                     return;
                 }
 #endif
-                _focusedEntry = null;
-
                 // Set the formatted number in the entry field
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
 
@@ -296,8 +312,6 @@ namespace Keyboard
                     return;
                 }
 #endif
-                _focusedEntry = null;
-
                 // Restore the color of the entry field and format the number
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }

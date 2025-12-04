@@ -129,8 +129,6 @@ namespace Keyboard
                     return;
                 }
 #endif
-                _focusedEntry = null;
-
                 // Restore the color of the entry field
                 ClassKeyboardMethods.SetEntryColorUnfocused(entry);
             }

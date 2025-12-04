@@ -1,8 +1,8 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
-   Version .....: 1.0.32
-   Date ........: 2025-12-03 (YYYY-MM-DD)
+   Version .....: 1.0.33
+   Date ........: 2025-12-04 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -184,8 +184,6 @@ namespace Keyboard
                     return;
                 }
 #endif
-                _focusedEntry = null;
-
                 // Set the formatted number in the entry field
                 ClassEntryMethods.FormatDecimalNumberEntryUnfocused(entry);
 
