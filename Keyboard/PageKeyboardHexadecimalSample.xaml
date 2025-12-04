@@ -154,38 +154,6 @@
             </Grid>
         </ScrollView>
 
-        <!--<ContentView
-            x:Name="CustomKeyboardHexadecimalPortrait"
-            Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,250"
-            IsVisible="False">
-
-            <ContentView.Content>
-                <Grid>
-                    <local:KeyboardHexadecimal
-                        x:Name="RootKeyboardHexadecimalPortrait"
-                        HeightRequest="250">
-                    </local:KeyboardHexadecimal>
-                </Grid>
-            </ContentView.Content>
-        </ContentView>
-
-        <ContentView
-            x:Name="CustomKeyboardHexadecimalLandscape"
-            Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,110"
-            IsVisible="False">
-            
-            <ContentView.Content>
-                <Grid>
-                    <local:KeyboardHexadecimal
-                        x:Name="RootKeyboardHexadecimalLandscape"
-                        HeightRequest="110">
-                    </local:KeyboardHexadecimal>
-                </Grid>
-            </ContentView.Content>
-        </ContentView>-->
-
         <ContentView
             x:Name="CustomKeyboardHexadecimalPortrait"
             Style="{StaticResource BottomSheetKeyboard}"

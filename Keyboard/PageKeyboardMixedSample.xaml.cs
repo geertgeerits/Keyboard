@@ -63,10 +63,7 @@ namespace Keyboard
         protected override void OnAppearing()
         {
             base.OnAppearing();
-#if IOS
-            // Disable automatic scroll adjustment for this page
-            //KeyboardAutoManagerScroll.Disconnect();
-#endif
+
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
         }
@@ -77,10 +74,7 @@ namespace Keyboard
         protected async override void OnDisappearing()
         {
             base.OnDisappearing();
-#if IOS
-            // Re-enable if needed when leaving the page
-            //KeyboardAutoManagerScroll.Connect();
-#endif
+
             // Hide the bottom sheet when the page is disappearing
             await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardAlphanumericPortrait, CustomKeyboardAlphanumericLandscape);
             await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
@@ -318,7 +312,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Check if the value is decimal numeric and clear result fields if the text have changed
+        /// Check if the value is decimal numeric
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -331,7 +325,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Check if the value is hexadecimal numeric and clear result fields if the text have changed
+        /// Check if the value is hexadecimal numeric
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

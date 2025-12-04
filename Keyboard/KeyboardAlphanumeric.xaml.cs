@@ -1170,11 +1170,11 @@ namespace Keyboard
             Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
         }
 
-        /// <summary>
-        /// Assign keyboard characters from a string array to Button_X_Text properties
-        /// Supports up to 53 keyboard entries (0..52). Clears all when passed an empty array
-        /// </summary>
-        /// <param name="chars">Array of keyboard characters to set</param>
+        ///// <summary>
+        ///// Assign keyboard characters from a string array to Button_X_Text properties
+        ///// Supports up to 53 keyboard entries (0..52). Clears all when passed an empty array
+        ///// </summary>
+        ///// <param name="chars">Array of keyboard characters to set</param>
         //private void SetKeyboardCharacters(string[] chars)
         //{
         //    var setters = new Action<string>[]

@@ -98,7 +98,7 @@
                     <Entry  
                         x:Name="entTest1"
                         Style="{StaticResource DecimalEntry}"
-                        AutomationId="entTest1-Percentage"
+                        AutomationId="Percentage"
                         MaxLength="6"
                         Completed="GoToNextField"
                         TextChanged="DecimalNumberEntryTextChanged"
@@ -129,7 +129,6 @@
                     <Entry
                         x:Name="entTest2"
                         Style="{StaticResource DecimalEntry}"
-                        AutomationId="entTest2"
                         Placeholder="0 - 999999999999"
                         MaxLength="20"
                         Completed="GoToNextField"
@@ -161,7 +160,6 @@
                     <Entry  
                         x:Name="entTest3"
                         Style="{StaticResource DecimalEntry}"
-                        AutomationId="entTest3"
                         Placeholder="-999999999999.9999 - 999999999999.9999"
                         MaxLength="22"
                         Completed="GoToNextField"
@@ -193,7 +191,6 @@
                     <Entry  
                         x:Name="entTest4"
                         Style="{StaticResource DecimalEntry}"
-                        AutomationId="entTest4"
                         MaxLength="20"
                         Completed="GoToNextField"
                         TextChanged="DecimalNumberEntryTextChanged"
@@ -226,7 +223,6 @@
                     <Entry  
                         x:Name="entTest5"
                         Style="{StaticResource DecimalEntry}"
-                        AutomationId="entTest5"
                         Placeholder="-999999999999.99 - 999999999999.99"
                         MaxLength="20"
                         Completed="GoToNextField"
@@ -278,37 +274,6 @@
                 HeightRequest="66">
             </local:KeyboardDecimal>
         </ContentView>
-
-        <!--<ContentView
-            x:Name="CustomKeyboardDecimalPortrait"
-            Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,250"
-            IsVisible="False">
-            
-            --><!--Wrap KeyboardDecimal in a layout container (e.g., Grid) so ContentView.Content receives a valid type--><!--
-            <ContentView.Content>
-                <Grid>
-                    <local:KeyboardDecimal
-                        x:Name="RootKeyboardDecimalPortrait"
-                        HeightRequest="250" />
-                </Grid>
-            </ContentView.Content>
-        </ContentView>
-
-        <ContentView
-            x:Name="CustomKeyboardDecimalLandscape"
-            Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="0,1,1,66"
-            IsVisible="False">
-
-            <ContentView.Content>
-                <Grid>
-                    <local:KeyboardDecimal
-                        x:Name="RootKeyboardDecimalLandscape"
-                        HeightRequest="66" />
-                </Grid>
-            </ContentView.Content>
-        </ContentView>-->
 
     </AbsoluteLayout>
 </ContentPage>

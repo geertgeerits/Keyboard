@@ -10,8 +10,13 @@
                   Hiding the Android and iOS system keyboard happens in the 'MauiProgram.cs' file, method: Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping
                   In iOS the 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, true)' does not work like in Android.
                   It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical.
-   Dependencies : 
+   Dependencies : None
+   License .....: MIT
 */
+
+#if IOS
+using Microsoft.Maui.Platform;
+#endif
 
 namespace Keyboard
 {
@@ -79,7 +84,10 @@ namespace Keyboard
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
+#if IOS
+            // Disable automatic scroll adjustment for this page
+            //KeyboardAutoManagerScroll.Disconnect();
+#endif
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
@@ -93,7 +101,10 @@ namespace Keyboard
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-
+#if IOS
+            // Re-enable if needed when leaving the page
+            //KeyboardAutoManagerScroll.Connect();
+#endif
             // Hide the bottom sheet when the page is disappearing
             _ = ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 
@@ -252,7 +263,7 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    await ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
+                    await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
                 }
                 else if (cKey == "btnReturn")
                 {

@@ -183,7 +183,7 @@ namespace Keyboard
             {
                 if (cKey == "btnKeyboardHide")
                 {
-                    await ClassKeyboardMethods.ChangeKeyboardOrientation(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
+                    await ClassKeyboardMethods.HideBottomSheet(CustomKeyboardHexadecimalPortrait, CustomKeyboardHexadecimalLandscape);
                 }
                 else if (cKey == "btnReturn")
                 {
