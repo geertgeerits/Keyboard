@@ -1151,7 +1151,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="12"
                 Grid.Row="2"
-                Text="{Binding Button_40_Text}"
+                Text="{Binding Button_39_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1160,7 +1160,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="13"
                 Grid.Row="2"
-                Text="{Binding Button_41_Text}"
+                Text="{Binding Button_40_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1169,7 +1169,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="14"
                 Grid.Row="2"
-                Text="{Binding Button_42_Text}"
+                Text="{Binding Button_41_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1178,7 +1178,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="15"
                 Grid.Row="2"
-                Text="{Binding Button_44_Text}"
+                Text="{Binding Button_42_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1198,7 +1198,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="18"
                 Grid.Row="2"
-                Text="{Binding Button_45_Text}"
+                Text="{Binding Button_44_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1207,7 +1207,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="19"
                 Grid.Row="2"
-                Text="{Binding Button_46_Text}"
+                Text="{Binding Button_45_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1216,7 +1216,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="20"
                 Grid.Row="2"
-                Text="{Binding Button_47_Text}"
+                Text="{Binding Button_46_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1225,7 +1225,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="21"
                 Grid.Row="2"
-                Text="{Binding Button_48_Text}"
+                Text="{Binding Button_47_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1352,7 +1352,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="13"
                 Grid.Row="3"
-                Text="{Binding Button_39_Text}"
+                Text="{Binding Button_48_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
