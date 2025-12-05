@@ -7,7 +7,14 @@ namespace Keyboard
 
         public PageKeyboardHexadecimalSample()
     	{
-    		InitializeComponent();
+            try
+            {
+                InitializeComponent();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error initializing PageKeyboardHexadecimalSample: {ex.Message}\n{ex.StackTrace}");
+            }
 
             // Attach ICommand to receive key presses from the hexadecimal keyboard control
             RootKeyboardHexadecimalPortrait.KeyPressedCommand = new Command<string>(async key =>

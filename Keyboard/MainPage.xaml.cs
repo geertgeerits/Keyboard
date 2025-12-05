@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.33
-   Date ........: 2025-12-04 (YYYY-MM-DD)
+   Date ........: 2025-12-05 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -15,9 +15,9 @@
 */
 
 //using System.Text;
-#if IOS
+//#if IOS
 //using Microsoft.Maui.Platform;
-#endif
+//#endif
 
 namespace Keyboard
 {
@@ -93,10 +93,10 @@ namespace Keyboard
         protected override void OnAppearing()
         {
             base.OnAppearing();
-#if IOS
-            // Disable automatic scroll adjustment for this page
-            //KeyboardAutoManagerScroll.Disconnect();
-#endif
+//#if IOS
+//            // Disable automatic scroll adjustment for this page
+//            KeyboardAutoManagerScroll.Disconnect();
+//#endif
             // Subscribe to orientation changes
             DeviceDisplay.MainDisplayInfoChanged += OnMainDisplayInfoChanged;
 
@@ -110,10 +110,10 @@ namespace Keyboard
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-#if IOS
-            // Re-enable if needed when leaving the page
-            //KeyboardAutoManagerScroll.Connect();
-#endif
+//#if IOS
+//            // Re-enable if needed when leaving the page
+//            KeyboardAutoManagerScroll.Connect();
+//#endif
             // Hide the bottom sheet when the page is disappearing
             _ = ClassKeyboardMethods.HideBottomSheet(CustomKeyboardDecimalPortrait, CustomKeyboardDecimalLandscape);
 

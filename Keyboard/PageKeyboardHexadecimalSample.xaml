@@ -50,7 +50,7 @@
 
                     <Entry
                         x:Name="entTest1"
-                        Style="{StaticResource NumericEntry}"
+                        Style="{StaticResource HexadecimalEntry}"
                         Placeholder="0 - FF"
                         MaxLength="2"
                         Completed="GoToNextField"
@@ -75,7 +75,7 @@
 
                     <Entry
                         x:Name="entTest2"
-                        Style="{StaticResource NumericEntry}"
+                        Style="{StaticResource HexadecimalEntry}"
                         Placeholder="0 - FFFF"
                         MaxLength="4"
                         Completed="GoToNextField"
@@ -100,7 +100,7 @@
 
                     <Entry  
                         x:Name="entTest3"
-                        Style="{StaticResource NumericEntry}"
+                        Style="{StaticResource HexadecimalEntry}"
                         Placeholder="0 - FFFFFF"
                         MaxLength="6"
                         Completed="GoToNextField"
@@ -125,7 +125,7 @@
 
                     <Entry  
                         x:Name="entTest4"
-                        Style="{StaticResource NumericEntry}"
+                        Style="{StaticResource HexadecimalEntry}"
                         Placeholder="0 - FFFFFFFF"
                         MaxLength="12"
                         Completed="GoToNextField"
