@@ -844,6 +844,8 @@ namespace Keyboard
             {
                 VisualStateManager.GoToState(this, "Portrait");
             }
+
+            RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
         }
 
         /// <summary>
@@ -1300,6 +1302,70 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
+        {
+            pckSelectKeyboardPortrait.IsVisible = true;
+            pckSelectKeyboardLandscape.IsVisible = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Picker picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+            bool bChangeKeyboardLayout = true;
+            if (selectedIndex != -1)
+            {
+                ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
+
+                // Change the keyboard layout
+                try
+                {
+                    if (bChangeKeyboardLayout)
+                    {
+                        // Save the selected keyboard layout in the application preferences
+                        Preferences.Default.Set("SettingKeyboardLayoutSelectedIndex", selectedIndex);
+                        Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
+
+                        // Give it some time to save the settings
+                        Task.Delay(300).Wait();
+
+                        // Reload the keyboard layout and refresh the layout
+                        // safe UI-thread refresh of this instance
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                        });
+
+                        //RootKeyboardAlphanumericPortrait?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                        //RootKeyboardAlphanumericLandscape?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+
+                        ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                    }
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    Debug.WriteLine($"Error changing keyboard layout: {ex.Message}");
+#endif
+                }
+
+                bChangeKeyboardLayout = true;
+
+                Debug.WriteLine($"selectedIndex: {selectedIndex}");
+            }
+
+        }
+
+        /// <summary>
         /// Refreshes the keyboard control to use the specified layout, updating button states and labels to match the
         /// new configuration.
         /// </summary>
@@ -1336,27 +1402,6 @@ namespace Keyboard
             {
                 // ignore if those controls are not present in a particular template/visual state
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
-        {
-            //pckSelectKeyboardPortrait.IsVisible = true;
-            //pckSelectKeyboardLandscape.IsVisible = true;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void pckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

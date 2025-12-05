@@ -2,7 +2,7 @@
 <ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/maui/global"  
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
-    xmlns:local="clr-namespace:Keyboard"  
+    xmlns:local="clr-namespace:Keyboard"
     x:Class="Keyboard.PageKeyboardMixedSample"  
     Loaded="OnPageLoaded"
     Shell.BackgroundColor="{AppThemeBinding Light=LightGreen, Dark=Green}">

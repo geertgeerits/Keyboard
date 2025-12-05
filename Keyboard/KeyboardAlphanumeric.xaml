@@ -727,16 +727,16 @@
                 Clicked="BtnChangeLayout_Clicked">
             </Button>
 
-            <!--<ImageButton
+            <ImageButton
                 x:Name="btnSelectKeyboardPortrait"
                 Style="{StaticResource KeyAlphanumericPortraitImageButton}"
                 Grid.Column="2"  
                 Grid.Row="6"
                 Source="{AppThemeBinding Light=keyboard_32p_black.png, Dark=keyboard_32p_white.png}"
                 Clicked="BtnSelectKeyboard_Clicked">
-            </ImageButton>-->
+            </ImageButton>
 
-            <!--<Picker
+            <Picker
                 x:Name="pckSelectKeyboardPortrait"
                 Grid.Column="2"  
                 Grid.Row="6"
@@ -753,13 +753,14 @@
                         <x:String>QWERTY_US</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
-            </Picker>-->
+            </Picker>
 
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
                 Grid.Column="2"
                 Grid.Row="6"
                 Text="{Binding Button_48_Text}"
+                IsVisible="False"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1376,16 +1377,16 @@
                 Clicked="BtnChangeLayout_Clicked">
             </Button>
 
-            <!--<ImageButton
+            <ImageButton
                 x:Name="btnSelectKeyboardLandscape"
                 Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
                 Grid.Column="13"  
                 Grid.Row="3"
                 Source="{AppThemeBinding Light=keyboard_32p_black.png, Dark=keyboard_32p_white.png}"
                 Clicked="BtnSelectKeyboard_Clicked">
-            </ImageButton>-->
+            </ImageButton>
 
-            <!--<Picker
+            <Picker
                 x:Name="pckSelectKeyboardLandscape"
                 Grid.Column="13"  
                 Grid.Row="3"
@@ -1402,13 +1403,14 @@
                         <x:String>QWERTY_US</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
-            </Picker>-->
+            </Picker>
 
             <Button
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="13"
                 Grid.Row="3"
                 Text="{Binding Button_48_Text}"
+                IsVisible="False"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"

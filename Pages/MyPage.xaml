@@ -1,0 +1,2 @@
+<local:KeyboardAlphanumeric x:Name="RootKeyboardAlphanumericPortrait" />
+<local:KeyboardAlphanumeric x:Name="RootKeyboardAlphanumericLandscape" />
