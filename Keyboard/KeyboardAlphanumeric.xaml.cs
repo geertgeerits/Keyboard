@@ -814,7 +814,7 @@ namespace Keyboard
 
         public KeyboardAlphanumeric()
     	{
-    		InitializeComponent();
+            InitializeComponent();
 
             // Handle device orientation changes
             UpdateOrientation(DeviceDisplay.MainDisplayInfo.Orientation);
@@ -1296,6 +1296,45 @@ namespace Keyboard
             for (int i = 0; i < max; i++)
             {
                 setters[i](chars[i]);
+            }
+        }
+
+        /// <summary>
+        /// Refreshes the keyboard control to use the specified layout, updating button states and labels to match the
+        /// new configuration.
+        /// </summary>
+        /// <remarks>This method resets the shift and change-layout button states to their default values
+        /// after applying the new layout. If certain controls are not present in the current visual template, their
+        /// states are not updated.</remarks>
+        /// <param name="layout">The name of the keyboard layout to apply. If null or empty, the layout is not changed.</param>
+        public void RefreshLayout(string layout)
+        {
+            if (string.IsNullOrEmpty(layout))
+            {
+                return;
+            }
+
+            // Update shared layout array
+            ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(layout);
+
+            // Re-initialize this control's buttons from the new layout
+            InitializeKeyboard();
+
+            // Reset shift/change-layout state to a sane default
+            bShiftKeyEnabled = false;
+            bChangeLayoutEnabled = false;
+
+            // Restore change-layout and shift button states/texts (match existing behavior)
+            try
+            {
+                btnChangeLayoutPortrait.Text = "!#1";
+                btnChangeLayoutLandscape.Text = "!#1";
+                btnShiftKeyPortrait.IsEnabled = true;
+                btnShiftKeyLandscape.IsEnabled = true;
+            }
+            catch
+            {
+                // ignore if those controls are not present in a particular template/visual state
             }
         }
     }

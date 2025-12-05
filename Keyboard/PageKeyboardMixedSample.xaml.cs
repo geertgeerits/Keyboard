@@ -4,7 +4,7 @@ namespace Keyboard
     {
         // Declare variables
         private Entry? _focusedEntry;
-        private bool bRestartApplication;
+        private bool bChangeKeyboardLayout;
 
         public PageKeyboardMixedSample()
     	{
@@ -54,7 +54,7 @@ namespace Keyboard
             });
 
             // Initialize the keyboard layout picker
-            pckKeyboardLayout.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3); ;
+            pckKeyboardLayout.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
         }
 
         /// <summary>
@@ -417,10 +417,10 @@ namespace Keyboard
             {
                 ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
 
-                // Restart the application
+                // Change the keyboard layout
                 try
                 {
-                    if (bRestartApplication)
+                    if (bChangeKeyboardLayout)
                     {
                         // Save the selected keyboard layout in the application preferences
                         Preferences.Default.Set("SettingKeyboardLayoutSelectedIndex", selectedIndex);
@@ -429,11 +429,11 @@ namespace Keyboard
                         // Give it some time to save the settings
                         Task.Delay(300).Wait();
 
-                        // Restart the application
-                        Application.Current!.Windows[0].Page = new AppShell();
-                        //Application.Current!.Windows[0].Page = new NavigationPage(new MainPage());
+                        // Reload the keyboard layout and refresh the layout
+                        RootKeyboardAlphanumericPortrait?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                        RootKeyboardAlphanumericLandscape?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
 
-                        Application.Current!.Windows[0].Page?.DisplayAlertAsync("Keyboard layout changed", "The app had to be restarted for the change to take effect.", "OK");
+                        ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
                     }
                 }
                 catch (Exception ex)
@@ -443,7 +443,7 @@ namespace Keyboard
 #endif
                 }
 
-                bRestartApplication = true;
+                bChangeKeyboardLayout = true;
 
                 Debug.WriteLine($"selectedIndex: {selectedIndex}");
             }

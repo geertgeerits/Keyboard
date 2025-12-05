@@ -529,7 +529,7 @@
                 Style="{StaticResource KeyAlphanumericPortraitImageButton}"
                 Grid.Column="1"  
                 Grid.Row="4"
-                Source="{AppThemeBinding Light=keyboard_arrow_top_32p_black.png, Dark=keyboard_arrow_top_32p_white.png}"
+                Source="{AppThemeBinding Light=keyboard_arrow_top_32p_blue_dark.png, Dark=keyboard_arrow_top_32p_blue_light.png}"
                 Clicked="BtnShiftKey_Clicked">
             </ImageButton>
 
@@ -726,6 +726,15 @@
                 Text="!#1"
                 Clicked="BtnChangeLayout_Clicked">
             </Button>
+
+            <!--<ImageButton
+                x:Name="btnKeyboardLayoutPortrait"
+                Style="{StaticResource KeyAlphanumericPortraitImageButton}"
+                Grid.Column="2"  
+                Grid.Row="6"
+                Source="{AppThemeBinding Light=keyboard_32p_black.png, Dark=keyboard_32p_white.png}"
+                Clicked="BtnShiftKey_Clicked">
+            </ImageButton>-->
 
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -1235,7 +1244,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
                 Grid.Column="1"  
                 Grid.Row="3"
-                Source="{AppThemeBinding Light=keyboard_arrow_top_32p_black.png, Dark=keyboard_arrow_top_32p_white.png}"
+                Source="{AppThemeBinding Light=keyboard_arrow_top_32p_blue_dark.png, Dark=keyboard_arrow_top_32p_blue_light.png}"
                 Clicked="BtnShiftKey_Clicked">
             </ImageButton>
 
