@@ -1337,5 +1337,26 @@ namespace Keyboard
                 // ignore if those controls are not present in a particular template/visual state
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
+        {
+            //pckSelectKeyboardPortrait.IsVisible = true;
+            //pckSelectKeyboardLandscape.IsVisible = true;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

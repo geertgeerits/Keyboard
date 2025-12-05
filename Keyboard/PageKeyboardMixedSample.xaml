@@ -48,11 +48,11 @@
                     Grid.Column="0">
 
                     <Picker
-                        x:Name="pckKeyboardLayout"
+                        x:Name="pckSelectKeyboard"
                         VerticalOptions="Center"
                         MinimumWidthRequest="160"
                         VerticalTextAlignment="Center"
-                        SelectedIndexChanged="pckKeyboardLayout_SelectedIndexChanged">
+                        SelectedIndexChanged="pckSelectKeyboard_SelectedIndexChanged">
                         <Picker.ItemsSource>
                             <x:Array Type="{x:Type x:String}">
                                 <x:String>ABCDEF_XX</x:String>

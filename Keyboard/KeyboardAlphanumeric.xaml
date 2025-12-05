@@ -728,13 +728,32 @@
             </Button>
 
             <!--<ImageButton
-                x:Name="btnKeyboardLayoutPortrait"
+                x:Name="btnSelectKeyboardPortrait"
                 Style="{StaticResource KeyAlphanumericPortraitImageButton}"
                 Grid.Column="2"  
                 Grid.Row="6"
                 Source="{AppThemeBinding Light=keyboard_32p_black.png, Dark=keyboard_32p_white.png}"
-                Clicked="BtnShiftKey_Clicked">
+                Clicked="BtnSelectKeyboard_Clicked">
             </ImageButton>-->
+
+            <!--<Picker
+                x:Name="pckSelectKeyboardPortrait"
+                Grid.Column="2"  
+                Grid.Row="6"
+                VerticalOptions="Center"
+                MinimumWidthRequest="160"
+                VerticalTextAlignment="Center"
+                IsVisible="False"
+                SelectedIndexChanged="pckSelectKeyboard_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>ABCDEF_XX</x:String>
+                        <x:String>AZERTY_BE</x:String>
+                        <x:String>QWERTY_UK</x:String>
+                        <x:String>QWERTY_US</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>-->
 
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
@@ -1356,6 +1375,34 @@
                 Text="!#1"
                 Clicked="BtnChangeLayout_Clicked">
             </Button>
+
+            <!--<ImageButton
+                x:Name="btnSelectKeyboardLandscape"
+                Style="{StaticResource KeyAlphanumericLandscapeImageButton}"
+                Grid.Column="13"  
+                Grid.Row="3"
+                Source="{AppThemeBinding Light=keyboard_32p_black.png, Dark=keyboard_32p_white.png}"
+                Clicked="BtnSelectKeyboard_Clicked">
+            </ImageButton>-->
+
+            <!--<Picker
+                x:Name="pckSelectKeyboardLandscape"
+                Grid.Column="13"  
+                Grid.Row="3"
+                VerticalOptions="Center"
+                MinimumWidthRequest="160"
+                VerticalTextAlignment="Center"
+                IsVisible="False"
+                SelectedIndexChanged="pckSelectKeyboard_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>ABCDEF_XX</x:String>
+                        <x:String>AZERTY_BE</x:String>
+                        <x:String>QWERTY_UK</x:String>
+                        <x:String>QWERTY_US</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>-->
 
             <Button
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"

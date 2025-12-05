@@ -54,7 +54,7 @@ namespace Keyboard
             });
 
             // Initialize the keyboard layout picker
-            pckKeyboardLayout.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
+            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            _ = pckKeyboardLayout.Focus();
+            _ = pckSelectKeyboard.Focus();
             //_ = entTest1.Focus();
         }
 
@@ -408,7 +408,7 @@ namespace Keyboard
             }
         }
 
-        private void pckKeyboardLayout_SelectedIndexChanged(object sender, EventArgs e)
+        private void pckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
