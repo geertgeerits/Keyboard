@@ -93,7 +93,6 @@ namespace Keyboard
         private string _button_49_Text = string.Empty;
         private string _button_50_Text = string.Empty;
         private string _button_51_Text = string.Empty;
-        private string _button_52_Text = string.Empty;
 
         // Properties for the button texts of the keyboard
         public string ButtonChar_0_Text
@@ -795,16 +794,6 @@ namespace Keyboard
             }
         }
 
-        public string Button_52_Text
-        {
-            get => _button_52_Text;
-            set
-            {
-                _button_52_Text = value;
-                OnPropertyChanged();
-            }
-        }
-
         // Cancellation token source for long-press detection
         private CancellationTokenSource? _cancelLongPressCts;
 
@@ -883,7 +872,6 @@ namespace Keyboard
             Button_49_Text = ClassKeyboardMethods.cAlphaNumCharacters[49];
             Button_50_Text = ClassKeyboardMethods.cAlphaNumCharacters[50];
             Button_51_Text = ClassKeyboardMethods.cAlphaNumCharacters[51];
-            Button_52_Text = ClassKeyboardMethods.cAlphaNumCharacters[52];
 
             //// Stop the stopwatch
             //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
@@ -1174,7 +1162,7 @@ namespace Keyboard
 
         ///// <summary>
         ///// Assign keyboard characters from a string array to Button_X_Text properties
-        ///// Supports up to 53 keyboard entries (0..52). Clears all when passed an empty array
+        ///// Supports up to 52 keyboard entries (0..51). Clears all when passed an empty array
         ///// </summary>
         ///// <param name="chars">Array of keyboard characters to set</param>
         //private void SetKeyboardCharacters(string[] chars)
@@ -1233,7 +1221,6 @@ namespace Keyboard
         //        v => Button_49_Text = v,
         //        v => Button_50_Text = v,
         //        v => Button_51_Text = v,
-        //        v => Button_52_Text = v,
         //    };
 
         //    // Clear all first
@@ -1302,16 +1289,13 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// 
+        /// Shows the keyboard layout selection grid
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
         {
-            pckSelectKeyboardPortrait.IsVisible = true;
-            pckSelectKeyboardLandscape.IsVisible = true;
-
-            PckSelectKeyboard_SelectedIndexChanged(sender, e);
+            grdSelectKeyboard.IsVisible = true;
         }
 
         /// <summary>
@@ -1347,9 +1331,6 @@ namespace Keyboard
                             RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
                         });
 
-                        //RootKeyboardAlphanumericPortrait?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
-                        //RootKeyboardAlphanumericLandscape?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
-
                         ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
                     }
                 }
@@ -1364,7 +1345,6 @@ namespace Keyboard
 
                 Debug.WriteLine($"selectedIndex: {selectedIndex}");
             }
-
         }
 
         /// <summary>
@@ -1404,6 +1384,9 @@ namespace Keyboard
             {
                 // ignore if those controls are not present in a particular template/visual state
             }
+
+            // Hide the select keyboard grid
+            grdSelectKeyboard.IsVisible = false;
         }
     }
 }

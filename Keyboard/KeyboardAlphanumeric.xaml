@@ -8,6 +8,41 @@
     x:DataType="local:KeyboardAlphanumeric">
     
     <StackLayout>
+        <Grid
+            x:Name="grdSelectKeyboard"
+            Style="{StaticResource KeyboardGrid}"
+            ColumnDefinitions="5, *, 5"
+            RowDefinitions="5, *, 5"
+            IsVisible="False">
+
+            <BoxView
+                Style="{StaticResource KeyboardGridBoxView}"
+                Grid.ColumnSpan="3"
+                Grid.RowSpan="3"
+                CornerRadius="8"
+                BackgroundColor="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}">
+            </BoxView>
+
+            <Picker
+                x:Name="pckSelectKeyboard"
+                Grid.Column="1"
+                Grid.Row="1"
+                VerticalOptions="Center"
+                VerticalTextAlignment="Center"
+                HeightRequest="80"
+                WidthRequest="200"
+                SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>ABCDEF_XX</x:String>
+                        <x:String>AZERTY_BE</x:String>
+                        <x:String>QWERTY_UK</x:String>
+                        <x:String>QWERTY_US</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+        </Grid>
+        
         <!-- Popup characters: Portrait and Landscape layout -->
         <Grid
             x:Name="grdCharactersPopup"
@@ -736,40 +771,11 @@
                 Clicked="BtnSelectKeyboard_Clicked">
             </ImageButton>
 
-            <Picker
-                x:Name="pckSelectKeyboardPortrait"
-                Grid.Column="2"  
-                Grid.Row="6"
-                VerticalOptions="Center"
-                MinimumWidthRequest="160"
-                VerticalTextAlignment="Center"
-                IsVisible="False"
-                SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>ABCDEF_XX</x:String>
-                        <x:String>AZERTY_BE</x:String>
-                        <x:String>QWERTY_UK</x:String>
-                        <x:String>QWERTY_US</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericPortraitButton}"
-                Grid.Column="2"
-                Grid.Row="6"
-                Text="{Binding Button_48_Text}"
-                IsVisible="False"
-                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
-                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
-            </Button>
-
             <Button
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
                 Grid.Column="3"
                 Grid.Row="6"
-                Text="{Binding Button_49_Text}"
+                Text="{Binding Button_48_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -778,7 +784,7 @@
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
                 Grid.Column="4"
                 Grid.Row="6"
-                Text="{Binding Button_50_Text}"
+                Text="{Binding Button_49_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -799,7 +805,7 @@
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
                 Grid.Column="7"
                 Grid.Row="6"
-                Text="{Binding Button_51_Text}"
+                Text="{Binding Button_50_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -808,7 +814,7 @@
                 Style="{StaticResource KeyAlphanumericPortraitButton}"
                 Grid.Column="8"
                 Grid.Row="6"
-                Text="{Binding Button_52_Text}"
+                Text="{Binding Button_51_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1386,31 +1392,11 @@
                 Clicked="BtnSelectKeyboard_Clicked">
             </ImageButton>
 
-            <Picker
-                x:Name="pckSelectKeyboardLandscape"
-                Grid.Column="13"  
-                Grid.Row="3"
-                VerticalOptions="Center"
-                MinimumWidthRequest="160"
-                VerticalTextAlignment="Center"
-                IsVisible="False"
-                SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>ABCDEF_XX</x:String>
-                        <x:String>AZERTY_BE</x:String>
-                        <x:String>QWERTY_UK</x:String>
-                        <x:String>QWERTY_US</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
-
             <Button
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
-                Grid.Column="13"
+                Grid.Column="14"
                 Grid.Row="3"
                 Text="{Binding Button_48_Text}"
-                IsVisible="False"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}"
                 Pressed="BtnKey_Pressed"
@@ -1419,18 +1405,9 @@
 
             <Button
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
-                Grid.Column="14"
-                Grid.Row="3"
-                Text="{Binding Button_49_Text}"
-                Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
-                CommandParameter="{Binding Text, Source={RelativeSource Self}}">
-            </Button>
-
-            <Button
-                Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="15"
                 Grid.Row="3"
-                Text="{Binding Button_50_Text}"
+                Text="{Binding Button_49_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1451,7 +1428,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="18"
                 Grid.Row="3"
-                Text="{Binding Button_51_Text}"
+                Text="{Binding Button_50_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
@@ -1460,7 +1437,7 @@
                 Style="{StaticResource KeyAlphanumericLandscapeButton}"
                 Grid.Column="19"
                 Grid.Row="3"
-                Text="{Binding Button_52_Text}"
+                Text="{Binding Button_51_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
             </Button>
