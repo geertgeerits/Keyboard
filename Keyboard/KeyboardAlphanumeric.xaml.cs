@@ -1310,6 +1310,8 @@ namespace Keyboard
         {
             pckSelectKeyboardPortrait.IsVisible = true;
             pckSelectKeyboardLandscape.IsVisible = true;
+
+            PckSelectKeyboard_SelectedIndexChanged(sender, e);
         }
 
         /// <summary>
@@ -1317,7 +1319,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
+        private void PckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
         {
             Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;

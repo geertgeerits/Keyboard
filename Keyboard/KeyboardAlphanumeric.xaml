@@ -744,7 +744,7 @@
                 MinimumWidthRequest="160"
                 VerticalTextAlignment="Center"
                 IsVisible="False"
-                SelectedIndexChanged="pckSelectKeyboard_SelectedIndexChanged">
+                SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>ABCDEF_XX</x:String>
@@ -1394,7 +1394,7 @@
                 MinimumWidthRequest="160"
                 VerticalTextAlignment="Center"
                 IsVisible="False"
-                SelectedIndexChanged="pckSelectKeyboard_SelectedIndexChanged">
+                SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>ABCDEF_XX</x:String>
