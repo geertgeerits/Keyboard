@@ -816,7 +816,7 @@ namespace Keyboard
             // Set the BindingContext to this (the current page)
             BindingContext = this;
 
-            // Initialize the keyboard layout picker
+            // Initialize the keyboard layout picker (3 = QWERTY_US)
             pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
             InitializeKeyboard();
         }
@@ -1371,9 +1371,12 @@ namespace Keyboard
             // Update shared layout array
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(layout);
 
+            // Initialize the keyboard layout picker (3 = QWERTY_US)
+            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
+
             // Re-initialize this control's buttons from the new layout
             InitializeKeyboard();
-
+            
             // Reset shift/change-layout state to a sane default
             bShiftKeyEnabled = false;
             bChangeLayoutEnabled = false;
@@ -1397,8 +1400,12 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void pckSelectKeyboard_Unfocused(object sender, FocusEventArgs e)
+        private void PckSelectKeyboard_Unfocused(object sender, FocusEventArgs e)
         {
+#if WINDOWS
+            return;
+#endif
+            // Hide the keyboard layout selection grid when no new selection is made or the cancel button is pressed
             grdSelectKeyboard.IsVisible = false;
         }
     }

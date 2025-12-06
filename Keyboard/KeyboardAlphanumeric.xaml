@@ -30,12 +30,13 @@
 
                 <Picker
                     x:Name="pckSelectKeyboard"
+                    MinimumHeightRequest="50"
                     MinimumWidthRequest="150"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
                     BackgroundColor="{AppThemeBinding Light={DynamicResource EntryBackgroundUnfocusedLight}, Dark={DynamicResource EntryBackgroundUnfocusedDark}}"
                     TextColor="{AppThemeBinding Light={DynamicResource EntryTextUnfocusedLight}, Dark={DynamicResource EntryTextUnfocusedDark}}"
-                    Unfocused="pckSelectKeyboard_Unfocused"
+                    Unfocused="PckSelectKeyboard_Unfocused"
                     SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
