@@ -23,24 +23,30 @@
                 BackgroundColor="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}">
             </BoxView>
 
-            <Picker
-                x:Name="pckSelectKeyboard"
-                Grid.Column="1"
+            <Border
+                Style="{StaticResource EntryBorder}"
                 Grid.Row="1"
-                VerticalOptions="Center"
-                VerticalTextAlignment="Center"
-                HeightRequest="80"
-                WidthRequest="200"
-                SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>ABCDEF_XX</x:String>
-                        <x:String>AZERTY_BE</x:String>
-                        <x:String>QWERTY_UK</x:String>
-                        <x:String>QWERTY_US</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+                Grid.Column="1">
+
+                <Picker
+                    x:Name="pckSelectKeyboard"
+                    MinimumWidthRequest="150"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    BackgroundColor="{AppThemeBinding Light={DynamicResource EntryBackgroundUnfocusedLight}, Dark={DynamicResource EntryBackgroundUnfocusedDark}}"
+                    TextColor="{AppThemeBinding Light={DynamicResource EntryTextUnfocusedLight}, Dark={DynamicResource EntryTextUnfocusedDark}}"
+                    Unfocused="pckSelectKeyboard_Unfocused"
+                    SelectedIndexChanged="PckSelectKeyboard_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>ABCDEF_XX</x:String>
+                            <x:String>AZERTY_BE</x:String>
+                            <x:String>QWERTY_UK</x:String>
+                            <x:String>QWERTY_US</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Border>
         </Grid>
         
         <!-- Popup characters: Portrait and Landscape layout -->

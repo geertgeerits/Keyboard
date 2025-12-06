@@ -42,28 +42,6 @@
                 RowSpacing="10"  
                 Margin="10">
 
-                <Border
-                    Style="{StaticResource EntryBorder}"
-                    Grid.Row="0"
-                    Grid.Column="0">
-
-                    <Picker
-                        x:Name="pckSelectKeyboard"
-                        VerticalOptions="Center"
-                        MinimumWidthRequest="160"
-                        VerticalTextAlignment="Center"
-                        SelectedIndexChanged="pckSelectKeyboard_SelectedIndexChanged">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>ABCDEF_XX</x:String>
-                                <x:String>AZERTY_BE</x:String>
-                                <x:String>QWERTY_UK</x:String>
-                                <x:String>QWERTY_US</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-                </Border>
-
                 <Border  
                     Style="{StaticResource EntryBorder}"
                     Grid.Column="0"

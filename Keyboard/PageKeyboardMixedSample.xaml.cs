@@ -4,7 +4,6 @@ namespace Keyboard
     {
         // Declare variables
         private Entry? _focusedEntry;
-        private bool bChangeKeyboardLayout;
 
         public PageKeyboardMixedSample()
     	{
@@ -52,9 +51,6 @@ namespace Keyboard
             {
                 await BtnKeyboardClicked(key);
             });
-
-            // Initialize the keyboard layout picker
-            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
         }
 
         /// <summary>
@@ -91,7 +87,6 @@ namespace Keyboard
         /// <param name="e"></param>
         private void OnPageLoaded(object sender, EventArgs e)
         {
-            _ = pckSelectKeyboard.Focus();
             //_ = entTest1.Focus();
         }
 
@@ -405,47 +400,6 @@ namespace Keyboard
                 {
                     ClassKeyboardMethods.KeyboardKeyClicked(_focusedEntry, cKey);
                 }
-            }
-        }
-
-        private void pckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Picker picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-
-            if (selectedIndex != -1)
-            {
-                ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
-
-                // Change the keyboard layout
-                try
-                {
-                    if (bChangeKeyboardLayout)
-                    {
-                        // Save the selected keyboard layout in the application preferences
-                        Preferences.Default.Set("SettingKeyboardLayoutSelectedIndex", selectedIndex);
-                        Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
-
-                        // Give it some time to save the settings
-                        Task.Delay(300).Wait();
-
-                        // Reload the keyboard layout and refresh the layout
-                        RootKeyboardAlphanumericPortrait?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
-                        RootKeyboardAlphanumericLandscape?.RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
-
-                        ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
-                    }
-                }
-                catch (Exception ex)
-                {
-#if DEBUG
-                    DisplayAlertAsync("pckKeyboardLayout_SelectedIndexChanged", ex.Message, "OK");
-#endif
-                }
-
-                bChangeKeyboardLayout = true;
-
-                Debug.WriteLine($"selectedIndex: {selectedIndex}");
             }
         }
     }

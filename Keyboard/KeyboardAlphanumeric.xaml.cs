@@ -816,6 +816,8 @@ namespace Keyboard
             // Set the BindingContext to this (the current page)
             BindingContext = this;
 
+            // Initialize the keyboard layout picker
+            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
             InitializeKeyboard();
         }
 
@@ -1296,6 +1298,7 @@ namespace Keyboard
         private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
         {
             grdSelectKeyboard.IsVisible = true;
+            grdSelectKeyboard.Focus();
         }
 
         /// <summary>
@@ -1308,6 +1311,7 @@ namespace Keyboard
             Picker picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
             bool bChangeKeyboardLayout = true;
+
             if (selectedIndex != -1)
             {
                 ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
@@ -1345,6 +1349,8 @@ namespace Keyboard
 
                 Debug.WriteLine($"selectedIndex: {selectedIndex}");
             }
+
+            grdSelectKeyboard.IsVisible = false;
         }
 
         /// <summary>
@@ -1384,8 +1390,15 @@ namespace Keyboard
             {
                 // ignore if those controls are not present in a particular template/visual state
             }
+        }
 
-            // Hide the select keyboard grid
+        /// <summary>
+        /// Hides the keyboard layout selection grid when it loses focus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void pckSelectKeyboard_Unfocused(object sender, FocusEventArgs e)
+        {
             grdSelectKeyboard.IsVisible = false;
         }
     }
