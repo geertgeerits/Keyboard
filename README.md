@@ -1,4 +1,4 @@
-Custom keyboard for decimal and hexadecimal entry fields
+Custom keyboards for alphanumeric, decimal and hexadecimal entry fields
 
 This app is a sample, experimental and still in development.
 It is a custom keyboard that uses a ContentView as overlay page.
