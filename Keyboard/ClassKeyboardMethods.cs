@@ -128,8 +128,8 @@
 
             cAlphaNumCharacters = layoutChars;
 
-            // Convert array to ReadOnlySpan array for performance optimization
-            ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
+            // Convert array to ReadOnlySpan array for performance optimization (no difference here)
+            // ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
 
             Debug.WriteLine($"Selected keyboard layout: {cLayout}\nArray length: {cAlphaNumCharacters.Length}");
         }
