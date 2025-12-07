@@ -50,8 +50,14 @@
                         <x:Array Type="{x:Type x:String}">
                             <x:String>ABCDEF_XX</x:String>
                             <x:String>AZERTY_BE</x:String>
+                            <x:String>AZERTY_FR</x:String>
+                            <x:String>QWERTY_BR</x:String>
+                            <x:String>QWERTY_ES</x:String>
+                            <x:String>QWERTY_NL</x:String>
+                            <x:String>QWERTY_PT</x:String>
                             <x:String>QWERTY_UK</x:String>
                             <x:String>QWERTY_US</x:String>
+                            <x:String>QWERTZ_DE</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
