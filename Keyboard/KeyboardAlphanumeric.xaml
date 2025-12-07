@@ -11,18 +11,26 @@
         <Grid
             x:Name="grdSelectKeyboard"
             Style="{StaticResource KeyboardGrid}"
-            ColumnDefinitions="5, *, 5"
-            RowDefinitions="5, *, 5"
+            ColumnDefinitions="40, *, 5"
+            RowDefinitions="5, Auto, 5"
             IsVisible="False">
 
             <BoxView
-                Style="{StaticResource KeyboardGridBoxView}"
+                Style="{StaticResource KeyboardPopupGridBoxView}"
                 Grid.ColumnSpan="3"
-                Grid.RowSpan="3"
-                CornerRadius="8"
-                BackgroundColor="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}">
+                Grid.RowSpan="3">
             </BoxView>
 
+            <ImageButton
+                Style="{StaticResource KeyboardHideImageButton}"
+                Grid.Column="0"
+                Grid.Row="1"
+                HorizontalOptions="Center"
+                MaximumHeightRequest="30"
+                MaximumWidthRequest="30"
+                Clicked="OnSelectKeyboardHide_Clicked">
+            </ImageButton>
+            
             <Border
                 Style="{StaticResource EntryBorder}"
                 Grid.Row="1"
@@ -30,7 +38,7 @@
 
                 <Picker
                     x:Name="pckSelectKeyboard"
-                    MinimumHeightRequest="50"
+                    MinimumHeightRequest="30"
                     MinimumWidthRequest="150"
                     HorizontalTextAlignment="Center"
                     VerticalTextAlignment="Center"
@@ -59,11 +67,9 @@
             IsVisible="False">
 
             <BoxView
-                Style="{StaticResource KeyboardGridBoxView}"
+                Style="{StaticResource KeyboardPopupGridBoxView}"
                 Grid.ColumnSpan="12"
-                Grid.RowSpan="4"
-                CornerRadius="8"
-                BackgroundColor="{AppThemeBinding Light={StaticResource EntryBorderLight}, Dark={StaticResource EntryBorderDark}}">
+                Grid.RowSpan="4">
             </BoxView>
 
             <Button

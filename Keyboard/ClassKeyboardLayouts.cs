@@ -1,4 +1,41 @@
-﻿namespace Keyboard
+﻿/*  Alphanumeric Keyboard Layouts
+
+Portrait:                       Col 1-10        Landscape:                      Col 1-10                          Col 12-21
+         _________________________________               ____________________________________________________________________
+Row 1   | Chr 0-9                         |     Row 1   | Chr 10-19                       || Chr 0-9                         |
+        |                                 |             |                                 ||                                 |
+        |_________________________________|             |_________________________________||_________________________________|
+Row 2   | Chr 10-19                       |     Row 2   | Chr 20-29                       || Chr 39-47                       |
+        |                                 |             |                                 ||            Space 43             |    
+        |_________________________________|             |_________________________________||_________________________________|
+Row 3   | Chr 20-29                       |     Row 3   | Chr 30-38                       || Chr 48-51                       |
+        |                                 |             |^                                ||!#1 Kb        Close          x ->|
+        |_________________________________|             |_________________________________||_________________________________|
+Row 4   | Chr 30-38                       |
+        |^                                |
+        |_________________________________|
+Row 5   | Chr 39-47                       |
+        |            Space 43             |
+        |_________________________________|
+Row 6   | Chr 48-51                       |
+        |!#1 Kb        Close          x ->|
+        |_________________________________|
+
+C# uses the backslash (\) as an escape character inside string literals:
+
+Escape Sequence	 Meaning
+---------------  -----------------
+\\	             Backslash
+\"	             Double quote
+\'	             Single quote
+\uXXXX	         Unicode character
+\xXX	         Hexadecimal character
+
+The number of characters must be exactly 52 per keyboard layout (0-51)
+Special characters like \" counts as one character
+The key 'space' is at index 43 zero based, at 44 one based */
+
+namespace Keyboard
 {
     /// <summary>
     /// Shared characters dictionary that can be reused by other pages/components
@@ -7,8 +44,25 @@
     /// </summary>
     public static class ClassKeyboardLayouts
     {
+        ///// <summary>
+        ///// Provides a mapping of keyboard layout identifiers to their corresponding sets of supported characters
+        ///// </summary>
+        ///// <remarks>Each entry associates a layout name, such as "QWERTY_US" or "AZERTY_BE", with an
+        ///// string of characters available on that keyboard layout. The dictionary uses ordinal string comparison for
+        ///// layout identifiers. This collection can be used to determine which characters are accessible for a given
+        ///// keyboard type, for example, when validating input or customizing user interfaces.</remarks>
+        //public static readonly Dictionary<string, string> KeyboardLayouts2 = new(StringComparer.Ordinal)
+        //{
+        //    //              01234567890123456789012345678901234567890123456789012
+        //    ["ABCDEF_XX"] = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-, .;@#€%&*",
+        //    ["AZERTY_BE"] = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-, .;@#€%&*",
+        //    ["QWERTY_UK"] = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_- ,.@#£%&*",
+        //    ["QWERTY_US"] = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_ -;@#$%&*",
+        //    ["OTHER"] = "1234567890|%‰+×÷=*/\\<>{}[]()!?¡¿@#&$€£¥_-'\" ;:,.§°~^"     // (two special characters: \\ and \")
+        //};
+
         /// <summary>
-        /// Provides a mapping of keyboard layout identifiers to their corresponding sets of supported characters.
+        /// Provides a mapping of keyboard layout identifiers to their corresponding sets of supported characters
         /// </summary>
         /// <remarks>Each entry associates a layout name, such as "QWERTY_US" or "AZERTY_BE", with an
         /// array of characters available on that keyboard layout. The dictionary uses ordinal string comparison for
@@ -16,60 +70,6 @@
         /// keyboard type, for example, when validating input or customizing user interfaces.</remarks>
         public static readonly Dictionary<string, string[]> KeyboardLayouts = new(StringComparer.Ordinal)
         {
-            /* 
-            Portrait:                       Col 1-10
-                     _________________________________
-            Row 1   | Chr 0-9                         |
-                    |                                 |
-                    |_________________________________|
-            Row 2   | Chr 10-19                       |
-                    |                                 |    
-                    |_________________________________|
-            Row 3   | Chr 20-29                       |
-                    |                                 |
-                    |_________________________________|
-            Row 4   | Chr 30-38                       |
-                    |^                                |
-                    |_________________________________|
-            Row 5   | Chr 39-47                       |
-                    |            Space 43             |
-                    |_________________________________|
-            Row 6   | Chr 48-51                       |
-                    |!#1 Kb        Close          x ->|
-                    |_________________________________|
-
-            Landscape:                      Col 1-10                          Col 12-21
-                     ____________________________________________________________________
-            Row 1   | Chr 10-19                       || Chr 0-9                         |
-                    |                                 ||                                 |
-                    |_________________________________||_________________________________|
-            Row 2   | Chr 20-29                       || Chr 39-47                       |
-                    |                                 ||            Space 43             |
-                    |_________________________________||_________________________________|
-            Row 3   | Chr 30-38                       || Chr 48-51                       |
-                    |^                                ||!#1 Kb        Close          x ->|
-                    |_________________________________||_________________________________|
-            
-            C# uses the backslash (\) as an escape character inside string literals:
-
-            Escape Sequence	 Meaning
-            ---------------  -----------------
-            \\	             Backslash
-            \"	             Double quote
-            \'	             Single quote
-            \uXXXX	         Unicode character
-            \xXX	         Hexadecimal character
-
-            The number of characters must be exactly 52 per keyboard layout (0-51)
-            Special characters like \" counts as one character
-            The key 'space' is at index 43 zero based, at 44 one based
-                               01234567890123456789012345678901234567890123456789012 */
-            //["ABCDEF_XX"] = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-, .;@#€%&*",
-            //["AZERTY_BE"] = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-, .;@#€%&*",
-            //["QWERTY_UK"] = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_- ,.@#£%&*",
-            //["QWERTY_US"] = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_ -;@#$%&*",
-            //["OTHER"] =     "1234567890|%‰+ ×÷=*/\\<>{ }[]()!?¡¿@#&$€£¥_-'\" ; :,.§°~^"     (two special characters: \\ and \")
-
             ["ABCDEF_XX"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "?", "!", "/", ":", "_", "-", ",", " ", ".", ";", "@", "#", "€", "%", "&", "*"],
             ["AZERTY_BE"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P", "Q", "S", "D", "F", "G", "H", "J", "K", "L", "M", "W", "X", "C", "V", "B", "N", "?", "!", "/", ":", "_", "-", ",", " ", ".", ";", "@", "#", "€", "%", "&", "*"],
             ["QWERTY_UK"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P", "A", "S", "D", "F", "G", "H", "J", "K", "L", ":", "+", "Z", "X", "C", "V", "B", "N", "M", "?", "!", "/", "_", "-", " ", ",", ".", "@", "#", "£", "%", "&", "*"],

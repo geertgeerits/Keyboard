@@ -836,6 +836,10 @@ namespace Keyboard
                 VisualStateManager.GoToState(this, "Portrait");
             }
 
+            grdSelectKeyboard.IsVisible = false;
+            grdCharactersPopup.IsVisible = false;
+
+            // Refresh the keyboard layout to adjust to the new orientation
             RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
         }
 
@@ -1079,10 +1083,20 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Handles the click event to hide the keyboard character popup.
+        /// Handles the Clicked event for the keyboard selection hide button
         /// </summary>
-        /// <param name="sender">The source of the event, typically the control that was clicked.</param>
-        /// <param name="e">An <see cref="EventArgs"/> object that contains the event data.</param>
+        /// <param name="sender">The source of the event, typically the button that was clicked</param>
+        /// <param name="e">An EventArgs instance containing event data</param>
+        private void OnSelectKeyboardHide_Clicked(object sender, EventArgs e)
+        {
+            grdSelectKeyboard.IsVisible = false;
+        }
+
+        /// <summary>
+        /// Handles the click event to hide the keyboard character popup
+        /// </summary>
+        /// <param name="sender">The source of the event, typically the control that was clicked</param>
+        /// <param name="e">An <see cref="EventArgs"/> object that contains the event data</param>
         private void OnKeyboardCharHide_Clicked(object sender, EventArgs e)
         {
             grdCharactersPopup.IsVisible = false;

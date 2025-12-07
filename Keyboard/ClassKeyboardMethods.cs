@@ -110,7 +110,7 @@
         }
 
         /// <summary>
-        /// Selects the active alphanumeric keyboard layout based on the specified layout identifier.
+        /// Selects the active alphanumeric keyboard layout based on the specified layout identifier
         /// </summary>
         /// <remarks>Use this method to change the set of alphanumeric characters available for input
         /// according to the desired keyboard layout. Only supported layouts can be selected; unsupported values will
@@ -126,13 +126,62 @@
                 return;
             }
 
-            Debug.WriteLine($"Selected keyboard layout: {cLayout}\nArray length: {layoutChars.Length}");
-
             cAlphaNumCharacters = layoutChars;
-            
-            // Convert to ReadOnlySpan for performance optimization
+
+            // Convert array to ReadOnlySpan array for performance optimization
             ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
+
+            Debug.WriteLine($"Selected keyboard layout: {cLayout}\nArray length: {cAlphaNumCharacters.Length}");
         }
+
+        ///// <summary>
+        ///// Selects the alphanumeric keyboard layout corresponding to the specified layout name
+        ///// </summary>
+        ///// <remarks>If the specified layout name does not exist in the shared dictionary, no changes are
+        ///// made to the current keyboard layout. This method updates the set of alphanumeric characters used for
+        ///// keyboard input based on the selected layout.</remarks>
+        ///// <param name="cLayout">The name of the keyboard layout to select. Must correspond to a key in the shared keyboard layouts
+        ///// dictionary.</param>
+        //public static void SelectAlphanumericKeyboardLayout2(string cLayout)
+        //{
+        //    // Lookup keyboard characters from the shared dictionary
+        //    if (!ClassKeyboardLayouts.KeyboardLayouts2.TryGetValue(cLayout, out string? layoutChars))
+        //    {
+        //        // No keyboard characters for other keys
+        //        return;
+        //    }
+
+        //    // Convert string to array
+        //    cAlphaNumCharacters = ToStringArrayByGrapheme(layoutChars);
+
+        //    // Convert array to ReadOnlySpan array for performance optimization
+        //    //ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
+
+        //    Debug.WriteLine($"Selected keyboard layout: {cLayout}\nArray length: {cAlphaNumCharacters.Length}");
+        //}
+
+        ///// <summary>
+        ///// Convert a string into a string[] where each element is one grapheme cluster (user-perceived character).
+        ///// This preserves composed characters like "C̨" as a single element.
+        ///// </summary>
+        //public static string[] ToStringArrayByGrapheme(this string? input)
+        //{
+        //    if (string.IsNullOrEmpty(input))
+        //    {
+        //        return Array.Empty<string>();
+        //    }
+
+        //    int[] starts = StringInfo.ParseCombiningCharacters(input);
+        //    string[] result = new string[starts.Length];
+        //    for (int i = 0; i < starts.Length; i++)
+        //    {
+        //        int start = starts[i];
+        //        int length = (i + 1 < starts.Length) ? starts[i + 1] - start : input.Length - start;
+        //        result[i] = input.Substring(start, length);
+        //    }
+
+        //    return result;
+        //}
 
         /// <summary>
         /// Handles the click event for the keyboard buttons

@@ -491,8 +491,15 @@
     <Style TargetType="BoxView" x:Key="KeyboardGridBoxView">
         <Setter Property="Grid.Row" Value="0" />
         <Setter Property="Grid.Column" Value="0" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardBackgroundLight}, Dark={StaticResource KeyBoardBackgroundDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardBackgroundLight}, Dark={StaticResource KeyboardBackgroundDark}}" />
         <Setter Property="CornerRadius" Value="8,8,0,0" />
+    </Style>
+
+    <Style TargetType="BoxView" x:Key="KeyboardPopupGridBoxView">
+        <Setter Property="Grid.Row" Value="0" />
+        <Setter Property="Grid.Column" Value="0" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardPopupBackgroundLight}, Dark={StaticResource KeyboardPopupBackgroundDark}}" />
+        <Setter Property="CornerRadius" Value="8" />
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyboardHideImageButton">
@@ -601,9 +608,9 @@
         <Setter Property="MaximumWidthRequest" Value="30" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyTextLight}, Dark={StaticResource KeyboardKeyTextDark}}" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
@@ -615,8 +622,8 @@
         <Setter Property="MaximumWidthRequest" Value="30" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='4', iOS='4', WinUI='0,0,12,10'}" />
     </Style>
@@ -626,9 +633,9 @@
         <Setter Property="MaximumWidthRequest" Value="30" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyTextLight}, Dark={StaticResource KeyboardKeyTextDark}}" />
         <Setter Property="FontSize" Value="16" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
@@ -640,8 +647,8 @@
         <Setter Property="MaximumWidthRequest" Value="30" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='4', iOS='4', WinUI='0,0,12,10'}" />
     </Style>
@@ -651,9 +658,9 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyTextLight}, Dark={StaticResource KeyboardKeyTextDark}}" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
@@ -681,8 +688,8 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -708,9 +715,9 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyTextLight}, Dark={StaticResource KeyboardKeyTextDark}}" />
         <Setter Property="FontSize" Value="20" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
@@ -738,8 +745,8 @@
         <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='12', iOS='12', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -765,9 +772,9 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyTextLight}, Dark={StaticResource KeyboardKeyTextDark}}" />
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
@@ -796,8 +803,8 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
@@ -823,9 +830,9 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyTextLight}, Dark={StaticResource KeyBoardKeyTextDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyTextLight}, Dark={StaticResource KeyboardKeyTextDark}}" />
         <Setter Property="FontSize" Value="18" />
         <Setter Property="FontAttributes" Value="Bold" />
         <Setter Property="FontAutoScalingEnabled" Value="False" />
@@ -854,8 +861,8 @@
         <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
-        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBorderLight}, Dark={StaticResource KeyBoardKeyBorderDark}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyBoardKeyBackgroundLight}, Dark={StaticResource KeyBoardKeyBackgroundDark}}" />
+        <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBackgroundLight}, Dark={StaticResource KeyboardKeyBackgroundDark}}" />
         <Setter Property="Aspect" Value="AspectFit" />
         <Setter Property="Padding" Value="{x:OnPlatform Default='0', Android='8', iOS='8', WinUI='0,0,8,0'}" />
         <Setter Property="VisualStateManager.VisualStateGroups">
