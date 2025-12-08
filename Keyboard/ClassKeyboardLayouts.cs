@@ -44,23 +44,6 @@ namespace Keyboard
     /// </summary>
     public static class ClassKeyboardLayouts
     {
-        ///// <summary>
-        ///// Provides a mapping of keyboard layout identifiers to their corresponding sets of supported characters
-        ///// </summary>
-        ///// <remarks>Each entry associates a layout name, such as "QWERTY_US" or "AZERTY_BE", with an
-        ///// string of characters available on that keyboard layout. The dictionary uses ordinal string comparison for
-        ///// layout identifiers. This collection can be used to determine which characters are accessible for a given
-        ///// keyboard type, for example, when validating input or customizing user interfaces.</remarks>
-        //public static readonly Dictionary<string, string> KeyboardLayouts2 = new(StringComparer.Ordinal)
-        //{
-        //    //              01234567890123456789012345678901234567890123456789012
-        //    ["ABCDEF_XX"] = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ?!/:_-, .;@#€%&*",
-        //    ["AZERTY_BE"] = "1234567890AZERTYUIOPQSDFGHJKLMWXCVBN?!/:_-, .;@#€%&*",
-        //    ["QWERTY_UK"] = "1234567890QWERTYUIOPASDFGHJKL:+ZXCVBNM?!/_- ,.@#£%&*",
-        //    ["QWERTY_US"] = "1234567890QWERTYUIOPASDFGHJKL:ZXCVBNM,./?!_ -;@#$%&*",
-        //    ["OTHER"] = "1234567890|%‰+×÷=*/\\<>{}[]()!?¡¿@#&$€£¥_-'\" ;:,.§°~^"     // (two special characters: \\ and \")
-        //};
-
         /// <summary>
         /// Provides a mapping of keyboard layout identifiers to their corresponding sets of supported characters
         /// </summary>
@@ -68,8 +51,9 @@ namespace Keyboard
         /// array of characters available on that keyboard layout. The dictionary uses ordinal string comparison for
         /// layout identifiers. This collection can be used to determine which characters are accessible for a given
         /// keyboard type, for example, when validating input or customizing user interfaces.</remarks>
-        public static readonly Dictionary<string, string[]> KeyboardLayouts = new(StringComparer.Ordinal)
+        public static readonly Dictionary<string, string[]> KeyboardAlphanumericLayouts = new(StringComparer.Ordinal)
         {
+            // Key/Item:      0    1    2    3    4    5    6    7    8    9   10   11   12   13   14   15   16   17   18   19   20   21   22   23   24   25   26   27   28   29   30   31   32   33   34   35   36   37   38   39   40   41   42   43   44   45   46   47   48   49   50   51
             ["ABCDEF_XX"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "?", "!", "/", ":", "_", "-", ",", " ", ".", ";", "@", "#", "€", "%", "&", "*"],
             ["AZERTY_BE"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P", "Q", "S", "D", "F", "G", "H", "J", "K", "L", "M", "W", "X", "C", "V", "B", "N", "?", "!", "/", ":", "_", "-", ",", " ", ".", ";", "@", "#", "€", "%", "&", "*"],
             ["AZERTY_FR"] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "A", "Z", "E", "R", "T", "Y", "U", "I", "O", "P", "Q", "S", "D", "F", "G", "H", "J", "K", "L", "M", "W", "X", "C", "V", "B", "N", "?", "!", "/", ":", "_", "-", ",", " ", ".", ";", "@", "#", "€", "%", "&", "*"],
@@ -84,9 +68,30 @@ namespace Keyboard
         };
 
         /// <summary>
+        /// Put the keyboard types/layouts in a List string to be used in the picker 'pckSelectKeyboard'
+        /// </summary>
+        /// <returns></returns>
+        public static List<string> GetKeyboardAlphanumericTypes()
+        {
+            return
+            [
+                "ABCDEF_XX",
+                "AZERTY_BE",
+                "AZERTY_FR",
+                "QWERTY_BR",
+                "QWERTY_ES",
+                "QWERTY_NL",
+                "QWERTY_PT",
+                "QWERTY_UK",
+                "QWERTY_US",
+                "QWERTZ_DE"
+            ];
+        }
+
+        /// <summary>
         /// Provides a mapping of specific characters to their corresponding popup character options
         /// </summary>
-        public static readonly Dictionary<string, string[]> PopupCharacters = new(StringComparer.Ordinal)
+        public static readonly Dictionary<string, string[]> KeyboardAlphanumericPopup = new(StringComparer.Ordinal)
         {
             // The number of characters is limited to 18 per popup (0-17)
 

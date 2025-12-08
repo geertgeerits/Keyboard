@@ -816,8 +816,9 @@ namespace Keyboard
             // Set the BindingContext to this (the current page)
             BindingContext = this;
 
-            // Initialize the keyboard layout picker (3 = QWERTY_US)
-            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
+            // Initialize the keyboard alphanumeric type/layout picker (8 = QWERTY_US)
+            pckSelectKeyboard.ItemsSource = ClassKeyboardLayouts.GetKeyboardAlphanumericTypes();
+            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 8);
             InitializeKeyboard();
         }
 
@@ -985,17 +986,17 @@ namespace Keyboard
             if (sender is Button button)
             {
                 // Clear previous popup characters
-                SetPopupCharacters([]);
+                SetKeyboardAlphanumericPopup([]);
 
                 // Lookup popup characters from the shared dictionary
-                if (!ClassKeyboardLayouts.PopupCharacters.TryGetValue(button.Text, out string[]? popupChars))
+                if (!ClassKeyboardLayouts.KeyboardAlphanumericPopup.TryGetValue(button.Text, out string[]? popupChars))
                 {
                     // No popup for other keys
                     return;
                 }
 
                 // Set popup characters and show
-                SetPopupCharacters(popupChars);
+                SetKeyboardAlphanumericPopup(popupChars);
 
                 // Show the popup
                 grdCharactersPopup.IsVisible = true;
@@ -1262,7 +1263,7 @@ namespace Keyboard
         /// Supports up to 18 popup entries (0..17). Clears all when passed an empty array
         /// </summary>
         /// <param name="chars">Array of popup characters to set</param>
-        private void SetPopupCharacters(string[] chars)
+        private void SetKeyboardAlphanumericPopup(string[] chars)
         {
             Action<string>[] setters =
             [
