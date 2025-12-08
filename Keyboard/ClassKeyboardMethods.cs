@@ -3,7 +3,7 @@
     internal static class ClassKeyboardMethods
     {
         // Keyboard layouts for alphanumeric input
-        public static string[] cAlphaNumCharacters = new string[52];
+        public static string[] cAlphaNumCharacters = new string[51];
         public static string? cCurrentKeyboardLayout;
 
         // Enable color change on focused Entry fields
@@ -12,6 +12,36 @@
         // Default theme for the application (Light, Dark, System)
         private static readonly string cTheme = "System";
 
+        /// <summary>
+        /// Disables the system keyboard for all Entry controls in the application by updating the platform-specific
+        /// handler mapping.
+        /// </summary>
+        /// <remarks>This method modifies the default behavior of Entry controls so that the system
+        /// keyboard does not appear when an Entry receives focus. The change applies globally and affects all Entry
+        /// instances created after this method is called. To restore the default keyboard behavior, the handler mapping
+        /// must be reset or the application restarted.
+        /// Put this before the InitializeComponent() on the MainPage: ClassKeyboardMethods.DisableSystemKeyboard();</remarks>
+        /* If you need the system software keyboard (works for Android and Windows, not for iOS) for some entry controls
+           put these in the 'Focused event' of the entry control:
+           'ClassKeyboardMethods.HideBottomSheet(...)' and 'entry.ShowSoftInputAsync(...)'.
+           In the 'Unfocused event' of the entry control call 'entry.HideSoftInputAsync(...)' and ClassKeyboardMethods.ShowBottomSheet().
+           Re-enabling the system keyboard for all entry controls: set ShowSoftInputOnFocus to true on Android and reset the InputView to null on iOS.
+           However, it is not recommended to turn the system keyboard back on after disabling it, as this may not produce the desired result.
+           It is better not to mix custom and system keyboards in the same application.
+        */
+        public static void DisableSystemKeyboard()
+        {
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoKeyboardEntry", static (handler, entry) =>
+            {
+#if ANDROID
+                handler.PlatformView.ShowSoftInputOnFocus = false;
+#elif IOS
+                handler.PlatformView.InputView = [];                // Hide keyboard
+                handler.PlatformView.InputAccessoryView = null;     // Hide accessory bar ('Done' key)
+#endif
+            });
+        }
+        
         /// <summary>
         /// Set the theme
         /// </summary>
@@ -377,7 +407,7 @@
         /// <param name="bottomSheetLandscape"></param>
         public static async Task ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
-            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
+            if (bottomSheetPortrait == null || bottomSheetLandscape == null || ClassEntryMethods.cKeyboard != "Custom")
             {
                 return;
             }

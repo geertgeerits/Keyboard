@@ -24,10 +24,16 @@ namespace Keyboard
     public partial class MainPage : ContentPage
     {
         // Declare variables
-        private Entry? _focusedEntry;                       // Used to store the currently focused entry field
+        private Entry? _focusedEntry;   // Used to store the currently focused entry field
 
         public MainPage()
         {
+            // Disable the system keyboard for all entry controls in the application
+            if (ClassEntryMethods.cKeyboard == "Custom")
+            {
+                ClassKeyboardMethods.DisableSystemKeyboard();
+            }
+
             // Initialize the number format settings based on the current culture and 
             // Must be placed on the MainPage before InitializeComponent()
             ClassEntryMethods.InitializeNumberFormat();
@@ -54,6 +60,7 @@ namespace Keyboard
 
             // Set the default alphanumeric keyboard layout
             ClassKeyboardMethods.cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");
+            _ = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 8);
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
 
             // Set the placeholder text for the entry fields if the Placeholder property is empty or null and

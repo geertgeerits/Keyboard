@@ -68,7 +68,7 @@ namespace Keyboard
         };
 
         /// <summary>
-        /// Put the keyboard types/layouts in a List string to be used in the picker 'pckSelectKeyboard'
+        /// Put the keyboard types/layouts in a List string to be used in the picker 'pckSelectKeyboard.ItemsSource'
         /// </summary>
         /// <returns></returns>
         public static List<string> GetKeyboardAlphanumericTypes()
