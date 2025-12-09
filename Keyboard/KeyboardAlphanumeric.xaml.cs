@@ -1,3 +1,4 @@
+
 namespace Keyboard
 {
     public partial class KeyboardAlphanumeric : ContentView
@@ -816,9 +817,10 @@ namespace Keyboard
             // Set the BindingContext to this (the current page)
             BindingContext = this;
 
-            // Initialize the keyboard alphanumeric type/layout picker (8 = QWERTY_US)
+            // Initialize the keyboard alphanumeric type/layout picker
             pckSelectKeyboard.ItemsSource = ClassKeyboardLayouts.GetKeyboardAlphanumericTypes();
-            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 8);
+            pckSelectKeyboard.SelectedIndex = SearchKeyboardLayoutInList(Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US"));
+            Debug.WriteLine($"Initial keyboard layout index: {pckSelectKeyboard.SelectedIndex}");
             InitializeKeyboard();
         }
 
@@ -1328,6 +1330,16 @@ namespace Keyboard
         }
 
         /// <summary>
+        /// Searches for the index in the list with keyboard layouts
+        /// 
+        private static int SearchKeyboardLayoutInList(string layout)
+        {
+            List<string> layouts = ClassKeyboardLayouts.GetKeyboardAlphanumericTypes();
+
+            return layouts.FindIndex(layout.StartsWith);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="sender"></param>
@@ -1348,7 +1360,6 @@ namespace Keyboard
                     if (bChangeKeyboardLayout)
                     {
                         // Save the selected keyboard layout in the application preferences
-                        Preferences.Default.Set("SettingKeyboardLayoutSelectedIndex", selectedIndex);
                         Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
 
                         // Give it some time to save the settings
@@ -1397,8 +1408,8 @@ namespace Keyboard
             // Update shared layout array
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(layout);
 
-            // Initialize the keyboard layout picker (8 = QWERTY_US)
-            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 8);
+            // Initialize the keyboard layout picker
+            pckSelectKeyboard.SelectedIndex = SearchKeyboardLayoutInList(Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US"));
 
             // Re-initialize this control's buttons from the new layout
             InitializeKeyboard();

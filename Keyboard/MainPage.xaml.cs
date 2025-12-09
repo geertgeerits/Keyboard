@@ -60,7 +60,6 @@ namespace Keyboard
 
             // Set the default alphanumeric keyboard layout
             ClassKeyboardMethods.cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");
-            _ = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 8);
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
 
             // Set the placeholder text for the entry fields if the Placeholder property is empty or null and
