@@ -3,7 +3,7 @@
     internal static class ClassEntryMethods
     {
         // Global variables
-        public static string cKeyboard = "Custom";
+        public static bool bKeyboardCustom = true;
         public static string cNumDecimalDigits = "";
         public static string cPercDecimalDigits = "";
         public static string cRoundNumber = "";
@@ -232,7 +232,7 @@
         public static async Task FormatDecimalNumberEntryFocused(Entry entry)
         {
             // Show the keyboard if it is not already shown and no custom keyboard is used
-            if (!entry.IsSoftInputShowing() && cKeyboard != "Custom")
+            if (!entry.IsSoftInputShowing() && !bKeyboardCustom)
             {
                 await entry.ShowSoftInputAsync(System.Threading.CancellationToken.None);
             }
@@ -257,7 +257,7 @@
                 else
                 {
                     /* If the number of decimal places for percentages differs from that of regular numbers, make sure the `AutomationId`
-                       is set for any "percentage" entry field. The `AutomationId` must include the word "Percentage" — for example:  
+                       is set for any 'percentage' entry field. The `AutomationId` must include the word "Percentage" — for example:  
                        AutomationId="Percentage"` or `AutomationId="xxx-Percentage"`.  
                        Alternatively, ensure the validation trigger is configured appropriately for each entry field. Example:  
                        <local:Validation TriggerAction="Decimal" MinValue="-999999.999" MaxValue="999999.999" MaxDecimalPlaces="3"/>

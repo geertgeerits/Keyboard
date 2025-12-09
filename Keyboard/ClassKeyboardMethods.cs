@@ -407,7 +407,7 @@
         /// <param name="bottomSheetLandscape"></param>
         public static async Task ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
-            if (bottomSheetPortrait == null || bottomSheetLandscape == null || ClassEntryMethods.cKeyboard != "Custom")
+            if (bottomSheetPortrait == null || bottomSheetLandscape == null || !ClassEntryMethods.bKeyboardCustom)
             {
                 return;
             }
@@ -473,7 +473,7 @@
         /// <param name="bottomSheetLandscape"></param>
         public static async Task HideBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
-            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
+            if (bottomSheetPortrait == null || bottomSheetLandscape == null || !ClassEntryMethods.bKeyboardCustom)
             {
                 return;
             }

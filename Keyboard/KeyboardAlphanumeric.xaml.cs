@@ -999,6 +999,7 @@ namespace Keyboard
                 SetKeyboardAlphanumericPopup(popupChars);
 
                 // Show the popup
+                grdSelectKeyboard.IsVisible = false;
                 grdCharactersPopup.IsVisible = true;
             }
         }
@@ -1312,6 +1313,7 @@ namespace Keyboard
         /// <param name="e"></param>
         private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
         {
+            grdCharactersPopup.IsVisible = false;
             grdSelectKeyboard.IsVisible = true;
             grdSelectKeyboard.Focus();
         }
@@ -1386,8 +1388,8 @@ namespace Keyboard
             // Update shared layout array
             ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(layout);
 
-            // Initialize the keyboard layout picker (3 = QWERTY_US)
-            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 3);
+            // Initialize the keyboard layout picker (8 = QWERTY_US)
+            pckSelectKeyboard.SelectedIndex = Preferences.Default.Get("SettingKeyboardLayoutSelectedIndex", 8);
 
             // Re-initialize this control's buttons from the new layout
             InitializeKeyboard();

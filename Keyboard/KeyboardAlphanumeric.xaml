@@ -18,7 +18,8 @@
             <BoxView
                 Style="{StaticResource KeyboardPopupGridBoxView}"
                 Grid.ColumnSpan="3"
-                Grid.RowSpan="3">
+                Grid.RowSpan="3"
+                CornerRadius="{x:OnPlatform Default='8', iOS='3'}">
             </BoxView>
 
             <ImageButton
