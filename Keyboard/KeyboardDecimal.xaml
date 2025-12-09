@@ -53,6 +53,7 @@
                 Style="{StaticResource KeyDecimalPortraitImageButton}"
                 Grid.Column="4"  
                 Grid.Row="1"
+                BackgroundColor="{AppThemeBinding Light={StaticResource KeyboardFunctionKeyBackgroundLight}, Dark={StaticResource KeyboardFunctionKeyBackgroundDark}}"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnBackspace">
@@ -89,6 +90,7 @@
                 Style="{StaticResource KeyDecimalPortraitImageButton}"
                 Grid.Column="4"  
                 Grid.Row="2"
+                BackgroundColor="{AppThemeBinding Light={StaticResource KeyboardFunctionKeyBackgroundLight}, Dark={StaticResource KeyboardFunctionKeyBackgroundDark}}"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnReturn">
@@ -283,6 +285,7 @@
                 Style="{StaticResource KeyNumericLandscape1RowImageButton}"
                 Grid.Column="13"  
                 Grid.Row="1"
+                BackgroundColor="{AppThemeBinding Light={StaticResource KeyboardFunctionKeyBackgroundLight}, Dark={StaticResource KeyboardFunctionKeyBackgroundDark}}"
                 Source="{AppThemeBinding Light=backspace_32p_black.png, Dark=backspace_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnBackspace">
@@ -292,6 +295,7 @@
                 Style="{StaticResource KeyNumericLandscape1RowImageButton}"
                 Grid.Column="14"  
                 Grid.Row="1"
+                BackgroundColor="{AppThemeBinding Light={StaticResource KeyboardFunctionKeyBackgroundLight}, Dark={StaticResource KeyboardFunctionKeyBackgroundDark}}"
                 Source="{AppThemeBinding Light=keyboard_tab_32p_black.png, Dark=keyboard_tab_32p_white.png}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="btnReturn">

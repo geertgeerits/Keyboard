@@ -34,10 +34,15 @@
     <Color x:Key="KeyboardBackgroundDark">#6E6E6E</Color>
     <Color x:Key="KeyboardKeyBackgroundLight">#F9F9F9</Color>
     <Color x:Key="KeyboardKeyBackgroundDark">#404040</Color>
+    <Color x:Key="KeyboardFunctionKeyBackgroundLight">#F1F1F1</Color>
+    <Color x:Key="KeyboardFunctionKeyBackgroundDark">#545454</Color>
+
     <Color x:Key="KeyboardKeyTextLight">Black</Color>
     <Color x:Key="KeyboardKeyTextDark">White</Color>
+    
     <Color x:Key="KeyboardKeyBorderLight">#404040</Color>
     <Color x:Key="KeyboardKeyBorderDark">#F9F9F9</Color>
+    
     <Color x:Key="KeyboardPopupBackgroundLight">LightGray</Color>
     <Color x:Key="KeyboardPopupBackgroundDark">Gray</Color>
 
