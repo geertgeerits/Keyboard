@@ -10,7 +10,7 @@
     <Grid>
         <!-- Keyboard Portrait layout -->
         <Grid
-            x:Name="PortraitLayout"
+            x:Name="grdPortraitLayout"
             Style="{StaticResource KeyboardGrid}"
             IsVisible="False"
             ColumnDefinitions="40, 54, 54, 54, 54, 54, 40"
@@ -195,7 +195,7 @@
 
         <!-- Keyboard Landscape layout -->
         <Grid
-            x:Name="LandscapeLayout"
+            x:Name="grdLandscapeLayout"
             Style="{StaticResource KeyboardGrid}"
             IsVisible="False"
             ColumnDefinitions="50, 44, 44, 44, 44, 44, 44, 44, 44, 44, 44, 50"
@@ -385,14 +385,14 @@
         <VisualStateGroup x:Name="OrientationStates">
             <VisualState x:Name="Portrait">
                 <VisualState.Setters>
-                    <Setter Property="IsVisible" Value="False" TargetName="LandscapeLayout" />
-                    <Setter Property="IsVisible" Value="True" TargetName="PortraitLayout" />
+                    <Setter Property="IsVisible" Value="False" TargetName="grdLandscapeLayout" />
+                    <Setter Property="IsVisible" Value="True" TargetName="grdPortraitLayout" />
                 </VisualState.Setters>
             </VisualState>
             <VisualState x:Name="Landscape">
                 <VisualState.Setters>
-                    <Setter Property="IsVisible" Value="False" TargetName="PortraitLayout" />
-                    <Setter Property="IsVisible" Value="True" TargetName="LandscapeLayout" />
+                    <Setter Property="IsVisible" Value="False" TargetName="grdPortraitLayout" />
+                    <Setter Property="IsVisible" Value="True" TargetName="grdLandscapeLayout" />
                 </VisualState.Setters>
             </VisualState>
         </VisualStateGroup>

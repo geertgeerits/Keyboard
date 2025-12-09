@@ -998,7 +998,11 @@ namespace Keyboard
                 // Set popup characters and show
                 SetKeyboardAlphanumericPopup(popupChars);
 
-                // Show the popup
+                // Disable the keyboard grid while the popup is visible
+                //grdPortraitLayout.IsEnabled = false;
+                //grdLandscapeLayout.IsEnabled = false;
+
+                // Show the popup grid
                 grdSelectKeyboard.IsVisible = false;
                 grdCharactersPopup.IsVisible = true;
             }
@@ -1313,6 +1317,11 @@ namespace Keyboard
         /// <param name="e"></param>
         private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
         {
+            // Disable the keyboard grid while the popup is visible
+            //grdPortraitLayout.IsEnabled = false;
+            //grdLandscapeLayout.IsEnabled = false;
+
+            // Show the keyboard layout selection grid
             grdCharactersPopup.IsVisible = false;
             grdSelectKeyboard.IsVisible = true;
             grdSelectKeyboard.Focus();
