@@ -4,21 +4,21 @@
     {
         // Global variables
         public static bool bKeyboardCustom = true;
-        public static string cNumDecimalDigits = "";
-        public static string cPercDecimalDigits = "";
-        public static string cRoundNumber = "";
+        public static string cNumDecimalDigits = string.Empty;
+        public static string cPercDecimalDigits = string.Empty;
+        public static string cRoundNumber = string.Empty;
         public static bool bColorNumber = true;
         public static bool bShowFormattedNumber;
-        public static string cNumGroupSeparator = "";
-        public static string cNumDecimalSeparator = "";
-        public static string cNumNegativeSign = "";
-        public static string cNumNativeDigits = "";
+        public static string cNumGroupSeparator = string.Empty;
+        public static string cNumDecimalSeparator = string.Empty;
+        public static string cNumNegativeSign = string.Empty;
+        public static string cNumNativeDigits = string.Empty;
 
         // Local variables
-        private static string cDecimalCharacters = "";
+        private static string cDecimalCharacters = string.Empty;
         private static readonly string cHexadecimalCharacters = "0123456789ABCDEFabcdef";
-        private static string cColorNegNumber = "";
-        private static string cColorPosNumber = "";
+        private static string cColorNegNumber = string.Empty;
+        private static string cColorPosNumber = string.Empty;
 
         /// <summary>
         /// Initialize the number format settings based on the current culture

@@ -419,10 +419,33 @@
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, false)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
             // Put a comment before one of the methods that you not want to use
-            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
-
+            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
+            return;
             // For iOS, we need to calculate the position of the Entry within the ScrollView
-            await CalculateScrollEntryToPosition1(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+            //await CalculateScrollEntryToPosition1(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+
+            //double nCenter = GetDisplayHeight() / 2; //- nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+            double nCenter = scrollView.Height / 2; //- nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+            double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
+            Point entryPosition = GetEntryScreenPosition(entry);
+
+            if (entryPosition.Y >= nCenter)
+            {
+                // If the entry position is larger than the center position, scroll it to the center
+                await scrollView.ScrollToAsync(0, entryPosition.Y - (nCenter - entry.Height / 2), false);
+                Debug.WriteLine($"Scrolling to center position: {entryPosition.Y - (nCenter - entry.Height / 2)}");
+            }
+            else if (entryPosition.Y < nTitleViewHeight + 10)
+            {
+                // If the entry position is less than the title view height, scroll it to the top
+                await scrollView.ScrollToAsync(entry, ScrollToPosition.Start, false);
+                Debug.WriteLine($"Scrolling to top position: {entryPosition.Y}");
+            }
+            else
+            {
+                //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
+            }
+
 #endif
         }
 
