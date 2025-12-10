@@ -1,4 +1,3 @@
-
 namespace Keyboard
 {
     public partial class KeyboardAlphanumeric : ContentView
@@ -798,6 +797,10 @@ namespace Keyboard
         // Cancellation token source for long-press detection
         private CancellationTokenSource? _cancelLongPressCts;
 
+        // Keyboard layouts for alphanumeric input
+        private static string[] cAlphaNumCharacters = new string[51];
+        private static string cCurrentKeyboardLayout = string.Empty;
+
         /// <summary>
         /// Set the BindingContext
         /// </summary>
@@ -818,8 +821,9 @@ namespace Keyboard
             BindingContext = this;
 
             // Initialize the keyboard alphanumeric type/layout picker
+            cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");
             pckSelectKeyboard.ItemsSource = ClassKeyboardLayouts.GetKeyboardAlphanumericTypes();
-            pckSelectKeyboard.SelectedIndex = SearchKeyboardLayoutInList(Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US"));
+            pckSelectKeyboard.SelectedIndex = SearchKeyboardLayoutInList(cCurrentKeyboardLayout);
             Debug.WriteLine($"Initial keyboard layout index: {pckSelectKeyboard.SelectedIndex}");
             InitializeKeyboard();
         }
@@ -843,7 +847,7 @@ namespace Keyboard
             grdCharactersPopup.IsVisible = false;
 
             // Refresh the keyboard layout to adjust to the new orientation
-            RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+            RefreshLayout(cCurrentKeyboardLayout!);
         }
 
         /// <summary>
@@ -855,32 +859,32 @@ namespace Keyboard
             // Start the stopwatch
             //long startTime = Stopwatch.GetTimestamp();
 
-            Button_0_Text = ClassKeyboardMethods.cAlphaNumCharacters[0];
-            Button_1_Text = ClassKeyboardMethods.cAlphaNumCharacters[1];
-            Button_2_Text = ClassKeyboardMethods.cAlphaNumCharacters[2];
-            Button_3_Text = ClassKeyboardMethods.cAlphaNumCharacters[3];
-            Button_4_Text = ClassKeyboardMethods.cAlphaNumCharacters[4];
-            Button_5_Text = ClassKeyboardMethods.cAlphaNumCharacters[5];
-            Button_6_Text = ClassKeyboardMethods.cAlphaNumCharacters[6];
-            Button_7_Text = ClassKeyboardMethods.cAlphaNumCharacters[7];
-            Button_8_Text = ClassKeyboardMethods.cAlphaNumCharacters[8];
-            Button_9_Text = ClassKeyboardMethods.cAlphaNumCharacters[9];
+            Button_0_Text = cAlphaNumCharacters[0];
+            Button_1_Text = cAlphaNumCharacters[1];
+            Button_2_Text = cAlphaNumCharacters[2];
+            Button_3_Text = cAlphaNumCharacters[3];
+            Button_4_Text = cAlphaNumCharacters[4];
+            Button_5_Text = cAlphaNumCharacters[5];
+            Button_6_Text = cAlphaNumCharacters[6];
+            Button_7_Text = cAlphaNumCharacters[7];
+            Button_8_Text = cAlphaNumCharacters[8];
+            Button_9_Text = cAlphaNumCharacters[9];
 
             // Set the original keys 10-39, row 2-3-4 of the keyboard (characters in uppercase)
             SetOriginalKeys();
 
-            Button_40_Text = ClassKeyboardMethods.cAlphaNumCharacters[40];
-            Button_41_Text = ClassKeyboardMethods.cAlphaNumCharacters[41];
-            Button_42_Text = ClassKeyboardMethods.cAlphaNumCharacters[42];
-            Button_43_Text = ClassKeyboardMethods.cAlphaNumCharacters[43];
-            Button_44_Text = ClassKeyboardMethods.cAlphaNumCharacters[44];
-            Button_45_Text = ClassKeyboardMethods.cAlphaNumCharacters[45];
-            Button_46_Text = ClassKeyboardMethods.cAlphaNumCharacters[46];
-            Button_47_Text = ClassKeyboardMethods.cAlphaNumCharacters[47];
-            Button_48_Text = ClassKeyboardMethods.cAlphaNumCharacters[48];
-            Button_49_Text = ClassKeyboardMethods.cAlphaNumCharacters[49];
-            Button_50_Text = ClassKeyboardMethods.cAlphaNumCharacters[50];
-            Button_51_Text = ClassKeyboardMethods.cAlphaNumCharacters[51];
+            Button_40_Text = cAlphaNumCharacters[40];
+            Button_41_Text = cAlphaNumCharacters[41];
+            Button_42_Text = cAlphaNumCharacters[42];
+            Button_43_Text = cAlphaNumCharacters[43];
+            Button_44_Text = cAlphaNumCharacters[44];
+            Button_45_Text = cAlphaNumCharacters[45];
+            Button_46_Text = cAlphaNumCharacters[46];
+            Button_47_Text = cAlphaNumCharacters[47];
+            Button_48_Text = cAlphaNumCharacters[48];
+            Button_49_Text = cAlphaNumCharacters[49];
+            Button_50_Text = cAlphaNumCharacters[50];
+            Button_51_Text = cAlphaNumCharacters[51];
 
             //// Stop the stopwatch
             //TimeSpan delta = Stopwatch.GetElapsedTime(startTime);
@@ -1069,7 +1073,7 @@ namespace Keyboard
             if (bChangeLayoutEnabled)
             {
                 // Select the !#1 layout (special characters)
-                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout("OTHER");
+                SelectAlphanumericKeyboardLayout("OTHER");
                 InitializeKeyboard();
                 btnChangeLayoutPortrait.Text = "ABC";
                 btnChangeLayoutLandscape.Text = "ABC";
@@ -1079,7 +1083,7 @@ namespace Keyboard
             else
             {
                 // Select the ABC layout (characters in uppercase)
-                ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                SelectAlphanumericKeyboardLayout(cCurrentKeyboardLayout!);
                 InitializeKeyboard();
                 btnChangeLayoutPortrait.Text = "!#1";
                 btnChangeLayoutLandscape.Text = "!#1";
@@ -1088,6 +1092,31 @@ namespace Keyboard
             }
 
             bShiftKeyEnabled = false;
+        }
+
+        /// <summary>
+        /// Selects the active alphanumeric keyboard layout based on the specified layout identifier
+        /// </summary>
+        /// <remarks>Use this method to change the set of alphanumeric characters available for input
+        /// according to the desired keyboard layout. Only supported layouts can be selected; unsupported values will
+        /// result in the default layout being applied.</remarks>
+        /// <param name="cLayout">The identifier of the keyboard layout to activate. For example, "AZERTY_BE" selects the Belgian AZERTY
+        /// layout. If an unrecognized value is provided, the default layout is used.</param>
+        public static void SelectAlphanumericKeyboardLayout(string cLayout)
+        {
+            // Lookup keyboard characters from the shared dictionary
+            if (!ClassKeyboardLayouts.KeyboardAlphanumericLayouts.TryGetValue(cLayout, out string[]? layoutChars))
+            {
+                // No keyboard characters for other keys
+                return;
+            }
+
+            cAlphaNumCharacters = layoutChars;
+
+            // Convert array to ReadOnlySpan array for performance optimization (no difference here)
+            // ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
+
+            Debug.WriteLine($"Selected keyboard layout: {cLayout}\nArray length: {cAlphaNumCharacters.Length}");
         }
 
         /// <summary>
@@ -1115,36 +1144,36 @@ namespace Keyboard
         /// </summary>
         private void SetOriginalKeys()
         {
-            Button_10_Text = ClassKeyboardMethods.cAlphaNumCharacters[10];
-            Button_11_Text = ClassKeyboardMethods.cAlphaNumCharacters[11];
-            Button_12_Text = ClassKeyboardMethods.cAlphaNumCharacters[12];
-            Button_13_Text = ClassKeyboardMethods.cAlphaNumCharacters[13];
-            Button_14_Text = ClassKeyboardMethods.cAlphaNumCharacters[14];
-            Button_15_Text = ClassKeyboardMethods.cAlphaNumCharacters[15];
-            Button_16_Text = ClassKeyboardMethods.cAlphaNumCharacters[16];
-            Button_17_Text = ClassKeyboardMethods.cAlphaNumCharacters[17];
-            Button_18_Text = ClassKeyboardMethods.cAlphaNumCharacters[18];
-            Button_19_Text = ClassKeyboardMethods.cAlphaNumCharacters[19];
-            Button_20_Text = ClassKeyboardMethods.cAlphaNumCharacters[20];
-            Button_21_Text = ClassKeyboardMethods.cAlphaNumCharacters[21];
-            Button_22_Text = ClassKeyboardMethods.cAlphaNumCharacters[22];
-            Button_23_Text = ClassKeyboardMethods.cAlphaNumCharacters[23];
-            Button_24_Text = ClassKeyboardMethods.cAlphaNumCharacters[24];
-            Button_25_Text = ClassKeyboardMethods.cAlphaNumCharacters[25];
-            Button_26_Text = ClassKeyboardMethods.cAlphaNumCharacters[26];
-            Button_27_Text = ClassKeyboardMethods.cAlphaNumCharacters[27];
-            Button_28_Text = ClassKeyboardMethods.cAlphaNumCharacters[28];
-            Button_29_Text = ClassKeyboardMethods.cAlphaNumCharacters[29];
-            Button_30_Text = ClassKeyboardMethods.cAlphaNumCharacters[30];
-            Button_31_Text = ClassKeyboardMethods.cAlphaNumCharacters[31];
-            Button_32_Text = ClassKeyboardMethods.cAlphaNumCharacters[32];
-            Button_33_Text = ClassKeyboardMethods.cAlphaNumCharacters[33];
-            Button_34_Text = ClassKeyboardMethods.cAlphaNumCharacters[34];
-            Button_35_Text = ClassKeyboardMethods.cAlphaNumCharacters[35];
-            Button_36_Text = ClassKeyboardMethods.cAlphaNumCharacters[36];
-            Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37];
-            Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38];
-            Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39];
+            Button_10_Text = cAlphaNumCharacters[10];
+            Button_11_Text = cAlphaNumCharacters[11];
+            Button_12_Text = cAlphaNumCharacters[12];
+            Button_13_Text = cAlphaNumCharacters[13];
+            Button_14_Text = cAlphaNumCharacters[14];
+            Button_15_Text = cAlphaNumCharacters[15];
+            Button_16_Text = cAlphaNumCharacters[16];
+            Button_17_Text = cAlphaNumCharacters[17];
+            Button_18_Text = cAlphaNumCharacters[18];
+            Button_19_Text = cAlphaNumCharacters[19];
+            Button_20_Text = cAlphaNumCharacters[20];
+            Button_21_Text = cAlphaNumCharacters[21];
+            Button_22_Text = cAlphaNumCharacters[22];
+            Button_23_Text = cAlphaNumCharacters[23];
+            Button_24_Text = cAlphaNumCharacters[24];
+            Button_25_Text = cAlphaNumCharacters[25];
+            Button_26_Text = cAlphaNumCharacters[26];
+            Button_27_Text = cAlphaNumCharacters[27];
+            Button_28_Text = cAlphaNumCharacters[28];
+            Button_29_Text = cAlphaNumCharacters[29];
+            Button_30_Text = cAlphaNumCharacters[30];
+            Button_31_Text = cAlphaNumCharacters[31];
+            Button_32_Text = cAlphaNumCharacters[32];
+            Button_33_Text = cAlphaNumCharacters[33];
+            Button_34_Text = cAlphaNumCharacters[34];
+            Button_35_Text = cAlphaNumCharacters[35];
+            Button_36_Text = cAlphaNumCharacters[36];
+            Button_37_Text = cAlphaNumCharacters[37];
+            Button_38_Text = cAlphaNumCharacters[38];
+            Button_39_Text = cAlphaNumCharacters[39];
         }
 
         /// <summary>
@@ -1152,36 +1181,36 @@ namespace Keyboard
         /// </summary>
         private void ConvertKeysToLowerCase()
         {
-            Button_10_Text = ClassKeyboardMethods.cAlphaNumCharacters[10].ToLower();
-            Button_11_Text = ClassKeyboardMethods.cAlphaNumCharacters[11].ToLower();
-            Button_12_Text = ClassKeyboardMethods.cAlphaNumCharacters[12].ToLower();
-            Button_13_Text = ClassKeyboardMethods.cAlphaNumCharacters[13].ToLower();
-            Button_14_Text = ClassKeyboardMethods.cAlphaNumCharacters[14].ToLower();
-            Button_15_Text = ClassKeyboardMethods.cAlphaNumCharacters[15].ToLower();
-            Button_16_Text = ClassKeyboardMethods.cAlphaNumCharacters[16].ToLower();
-            Button_17_Text = ClassKeyboardMethods.cAlphaNumCharacters[17].ToLower();
-            Button_18_Text = ClassKeyboardMethods.cAlphaNumCharacters[18].ToLower();
-            Button_19_Text = ClassKeyboardMethods.cAlphaNumCharacters[19].ToLower();
-            Button_20_Text = ClassKeyboardMethods.cAlphaNumCharacters[20].ToLower();
-            Button_21_Text = ClassKeyboardMethods.cAlphaNumCharacters[21].ToLower();
-            Button_22_Text = ClassKeyboardMethods.cAlphaNumCharacters[22].ToLower();
-            Button_23_Text = ClassKeyboardMethods.cAlphaNumCharacters[23].ToLower();
-            Button_24_Text = ClassKeyboardMethods.cAlphaNumCharacters[24].ToLower();
-            Button_25_Text = ClassKeyboardMethods.cAlphaNumCharacters[25].ToLower();
-            Button_26_Text = ClassKeyboardMethods.cAlphaNumCharacters[26].ToLower();
-            Button_27_Text = ClassKeyboardMethods.cAlphaNumCharacters[27].ToLower();
-            Button_28_Text = ClassKeyboardMethods.cAlphaNumCharacters[28].ToLower();
-            Button_29_Text = ClassKeyboardMethods.cAlphaNumCharacters[29].ToLower();
-            Button_30_Text = ClassKeyboardMethods.cAlphaNumCharacters[30].ToLower();
-            Button_31_Text = ClassKeyboardMethods.cAlphaNumCharacters[31].ToLower();
-            Button_32_Text = ClassKeyboardMethods.cAlphaNumCharacters[32].ToLower();
-            Button_33_Text = ClassKeyboardMethods.cAlphaNumCharacters[33].ToLower();
-            Button_34_Text = ClassKeyboardMethods.cAlphaNumCharacters[34].ToLower();
-            Button_35_Text = ClassKeyboardMethods.cAlphaNumCharacters[35].ToLower();
-            Button_36_Text = ClassKeyboardMethods.cAlphaNumCharacters[36].ToLower();
-            Button_37_Text = ClassKeyboardMethods.cAlphaNumCharacters[37].ToLower();
-            Button_38_Text = ClassKeyboardMethods.cAlphaNumCharacters[38].ToLower();
-            Button_39_Text = ClassKeyboardMethods.cAlphaNumCharacters[39].ToLower();
+            Button_10_Text = cAlphaNumCharacters[10].ToLower();
+            Button_11_Text = cAlphaNumCharacters[11].ToLower();
+            Button_12_Text = cAlphaNumCharacters[12].ToLower();
+            Button_13_Text = cAlphaNumCharacters[13].ToLower();
+            Button_14_Text = cAlphaNumCharacters[14].ToLower();
+            Button_15_Text = cAlphaNumCharacters[15].ToLower();
+            Button_16_Text = cAlphaNumCharacters[16].ToLower();
+            Button_17_Text = cAlphaNumCharacters[17].ToLower();
+            Button_18_Text = cAlphaNumCharacters[18].ToLower();
+            Button_19_Text = cAlphaNumCharacters[19].ToLower();
+            Button_20_Text = cAlphaNumCharacters[20].ToLower();
+            Button_21_Text = cAlphaNumCharacters[21].ToLower();
+            Button_22_Text = cAlphaNumCharacters[22].ToLower();
+            Button_23_Text = cAlphaNumCharacters[23].ToLower();
+            Button_24_Text = cAlphaNumCharacters[24].ToLower();
+            Button_25_Text = cAlphaNumCharacters[25].ToLower();
+            Button_26_Text = cAlphaNumCharacters[26].ToLower();
+            Button_27_Text = cAlphaNumCharacters[27].ToLower();
+            Button_28_Text = cAlphaNumCharacters[28].ToLower();
+            Button_29_Text = cAlphaNumCharacters[29].ToLower();
+            Button_30_Text = cAlphaNumCharacters[30].ToLower();
+            Button_31_Text = cAlphaNumCharacters[31].ToLower();
+            Button_32_Text = cAlphaNumCharacters[32].ToLower();
+            Button_33_Text = cAlphaNumCharacters[33].ToLower();
+            Button_34_Text = cAlphaNumCharacters[34].ToLower();
+            Button_35_Text = cAlphaNumCharacters[35].ToLower();
+            Button_36_Text = cAlphaNumCharacters[36].ToLower();
+            Button_37_Text = cAlphaNumCharacters[37].ToLower();
+            Button_38_Text = cAlphaNumCharacters[38].ToLower();
+            Button_39_Text = cAlphaNumCharacters[39].ToLower();
         }
 
         ///// <summary>
@@ -1340,7 +1369,7 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// 
+        /// Picker event: handles the selection of a keyboard layout from the picker
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -1352,7 +1381,8 @@ namespace Keyboard
 
             if (selectedIndex != -1)
             {
-                ClassKeyboardMethods.cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string;
+                // Get the selected keyboard layout
+                cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string ?? string.Empty;
 
                 // Change the keyboard layout
                 try
@@ -1360,7 +1390,7 @@ namespace Keyboard
                     if (bChangeKeyboardLayout)
                     {
                         // Save the selected keyboard layout in the application preferences
-                        Preferences.Default.Set("SettingKeyboardLayout", ClassKeyboardMethods.cCurrentKeyboardLayout);
+                        Preferences.Default.Set("SettingKeyboardLayout", cCurrentKeyboardLayout);
 
                         // Give it some time to save the settings
                         Task.Delay(300).Wait();
@@ -1369,10 +1399,10 @@ namespace Keyboard
                         // safe UI-thread refresh of this instance
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            RefreshLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                            RefreshLayout(cCurrentKeyboardLayout!);
                         });
 
-                        ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout!);
+                        SelectAlphanumericKeyboardLayout(cCurrentKeyboardLayout!);
                     }
                 }
                 catch (Exception ex)
@@ -1406,10 +1436,10 @@ namespace Keyboard
             }
 
             // Update shared layout array
-            ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(layout);
+            SelectAlphanumericKeyboardLayout(layout);
 
             // Initialize the keyboard layout picker
-            pckSelectKeyboard.SelectedIndex = SearchKeyboardLayoutInList(Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US"));
+            pckSelectKeyboard.SelectedIndex = SearchKeyboardLayoutInList(layout);
 
             // Re-initialize this control's buttons from the new layout
             InitializeKeyboard();

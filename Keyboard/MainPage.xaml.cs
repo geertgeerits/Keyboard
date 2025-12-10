@@ -2,7 +2,7 @@
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
    Version .....: 1.0.33
-   Date ........: 2025-12-09 (YYYY-MM-DD)
+   Date ........: 2025-12-10 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -57,10 +57,6 @@ namespace Keyboard
             {
                 await BtnKeyboardClicked(key);
             });
-
-            // Set the default alphanumeric keyboard layout
-            ClassKeyboardMethods.cCurrentKeyboardLayout = Preferences.Default.Get("SettingKeyboardLayout", "QWERTY_US");
-            ClassKeyboardMethods.SelectAlphanumericKeyboardLayout(ClassKeyboardMethods.cCurrentKeyboardLayout);
 
             // Set the placeholder text for the entry fields if the Placeholder property is empty or null and
             // the ValidationTriggerActionDecimal MinValue and MaxValue are set

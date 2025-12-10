@@ -2,10 +2,6 @@
 {
     internal static class ClassKeyboardMethods
     {
-        // Keyboard layouts for alphanumeric input
-        public static string[] cAlphaNumCharacters = new string[51];
-        public static string? cCurrentKeyboardLayout;
-
         // Enable color change on focused Entry fields
         private static readonly bool bEnableColorOnFocused = true;
 
@@ -140,31 +136,6 @@
         }
 
         /// <summary>
-        /// Selects the active alphanumeric keyboard layout based on the specified layout identifier
-        /// </summary>
-        /// <remarks>Use this method to change the set of alphanumeric characters available for input
-        /// according to the desired keyboard layout. Only supported layouts can be selected; unsupported values will
-        /// result in the default layout being applied.</remarks>
-        /// <param name="cLayout">The identifier of the keyboard layout to activate. For example, "AZERTY_BE" selects the Belgian AZERTY
-        /// layout. If an unrecognized value is provided, the default layout is used.</param>
-        public static void SelectAlphanumericKeyboardLayout(string cLayout)
-        {
-            // Lookup keyboard characters from the shared dictionary
-            if (!ClassKeyboardLayouts.KeyboardAlphanumericLayouts.TryGetValue(cLayout, out string[]? layoutChars))
-            {
-                // No keyboard characters for other keys
-                return;
-            }
-
-            cAlphaNumCharacters = layoutChars;
-
-            // Convert array to ReadOnlySpan array for performance optimization (no difference here)
-            // ReadOnlySpan<string> cAlphaNumCharacter = cAlphaNumCharacters;
-
-            Debug.WriteLine($"Selected keyboard layout: {cLayout}\nArray length: {cAlphaNumCharacters.Length}");
-        }
-
-        /// <summary>
         /// Handles the click event for the keyboard buttons
         /// </summary>
         /// <param name="focusedEntry"></param>
@@ -199,12 +170,12 @@
                         break;
                 }
 //#if WINDOWS                
-//                // Restore focus so the Entry keeps the caret on Windows - MAUI issue - Does not shows the cursor !
+//                // Restore focus so the Entry keeps the caret on Windows - MAUI issue - Does not show the cursor !
 //                // Use the UI thread to ensure the native focus/caret is updated.
 //                MainThread.BeginInvokeOnMainThread(() =>
 //                {
-//                    //focusedEntry.Focus();
-//                    //Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
+//                    focusedEntry.Focus();
+//                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
 //                    focusedEntry.SelectionLength = 0;
 //                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
 //                    // Force a small update to help WinUI render the caret
@@ -244,7 +215,6 @@
             // The character length can be more than one for special characters
             // cCharacter is a composed sequence like C̨  - not a single precomposed character
             entry.CursorPosition = cursorPosition + cCharacter.Length;
-
             return newText;
         }
 
