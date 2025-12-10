@@ -1359,16 +1359,6 @@ namespace Keyboard
         }
 
         /// <summary>
-        /// Searches for the index in the list with keyboard layouts
-        /// 
-        private static int SearchKeyboardLayoutInList(string layout)
-        {
-            List<string> layouts = ClassKeyboardLayouts.GetKeyboardAlphanumericTypes();
-
-            return layouts.FindIndex(layout.StartsWith);
-        }
-
-        /// <summary>
         /// Picker event: handles the selection of a keyboard layout from the picker
         /// </summary>
         /// <param name="sender"></param>
@@ -1460,6 +1450,16 @@ namespace Keyboard
             {
                 // ignore if those controls are not present in a particular template/visual state
             }
+        }
+
+        /// <summary>
+        /// Searches for the index in the list with keyboard layouts
+        /// </summary>
+        /// <param name="cLayout"></param>
+        private static int SearchKeyboardLayoutInList(string cLayout)
+        {
+            List<string> layouts = ClassKeyboardLayouts.GetKeyboardAlphanumericTypes();
+            return layouts.FindIndex(cLayout.Equals);
         }
 
         /// <summary>

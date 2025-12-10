@@ -9,13 +9,11 @@
         private static readonly string cTheme = "System";
 
         /// <summary>
-        /// Disables the system keyboard for all Entry controls in the application by updating the platform-specific
-        /// handler mapping.
+        /// Disables the system keyboard for all Entry controls in the application by updating the platform-specific handler mapping
         /// </summary>
-        /// <remarks>This method modifies the default behavior of Entry controls so that the system
-        /// keyboard does not appear when an Entry receives focus. The change applies globally and affects all Entry
-        /// instances created after this method is called. To restore the default keyboard behavior, the handler mapping
-        /// must be reset or the application restarted.
+        /// <remarks>This method modifies the default behavior of Entry controls so that the system keyboard does not appear
+        /// when an Entry receives focus. The change applies globally and affects all Entry instances created after this method
+        /// is called. To restore the default keyboard behavior, the handler mapping must be reset or the application restarted.
         /// Put this before the InitializeComponent() on the MainPage: ClassKeyboardMethods.DisableSystemKeyboard();</remarks>
         /* If you need the system software keyboard (works for Android and Windows, not for iOS) for some entry controls
            put these in the 'Focused event' of the entry control:
@@ -169,19 +167,19 @@
                         focusedEntry.Text = InsertCharacterInEntryField(focusedEntry, cKey);
                         break;
                 }
-//#if WINDOWS                
-//                // Restore focus so the Entry keeps the caret on Windows - MAUI issue - Does not show the cursor !
-//                // Use the UI thread to ensure the native focus/caret is updated.
-//                MainThread.BeginInvokeOnMainThread(() =>
-//                {
-//                    focusedEntry.Focus();
-//                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
-//                    focusedEntry.SelectionLength = 0;
-//                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
-//                    // Force a small update to help WinUI render the caret
-//                    focusedEntry.CursorPosition = focusedEntry.CursorPosition;
-//                });
-//#endif
+                //#if WINDOWS                
+                //                // Restore focus so the Entry keeps the caret on Windows - MAUI issue - Not a perfect solution
+                //                // Use the UI thread to ensure the native focus/caret is updated.
+                //                MainThread.BeginInvokeOnMainThread(() =>
+                //                {
+                //                    focusedEntry.Focus();
+                //                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
+                //                    focusedEntry.SelectionLength = 0;
+                //                    Task.Delay(50).Wait();  // Small delay to ensure focus is set before updating selection
+                //                    // Force a small update to help WinUI render the caret
+                //                    focusedEntry.CursorPosition = focusedEntry.CursorPosition;
+                //                });
+                //#endif
             }
         }
 
@@ -293,89 +291,18 @@
         }
 
         /// <summary>
-        /// Change the numeric keyboard based on the current device orientation and theme
-        /// </summary>
-        /// <param name="bottomSheetPortrait"></param>
-        /// <param name="bottomSheetLandscape"></param>
-        public static async Task ChangeKeyboardOrientation(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
-        {
-            if (bottomSheetPortrait == null || bottomSheetLandscape == null)
-            {
-                return;
-            }
-
-            // Get the current device orientation
-            string cOrientation = GetDeviceOrientation();
-
-            // Hide or show the keyboard
-            /* Animates an elements TranslationX and TranslationY properties from their current values to the new values. This ensures that the input layout is in the same position as the visual layout.
-               public static System.Threading.Tasks.Task<bool> TranslateToAsync(this Microsoft.Maui.Controls.VisualElement view, double x, double y, uint length = 250, Microsoft.Maui.Easing? easing = default);
-               Parameters:
-               view, VisualElement, the view on which this method operates
-               x, Double, the x component of the final translation vector
-               y, Double, the y component of the final translation vector
-               length, UInt32, the time, in milliseconds, over which to animate the transition, the default is 250
-               easing, Easing, the easing function to use for the animation
-             */
-            switch (cOrientation)
-            {
-                case "Landscape":
-                    {
-                        if (bottomSheetLandscape.IsVisible)
-                        {
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                // Move off-screen then hide so next show is consistent
-                                //await bottomSheetLandscape.TranslateToAsync(x: 0, y: 250, length: 10, Easing.Linear);    // Slide down
-                                bottomSheetLandscape.TranslationY = 250;
-                                bottomSheetLandscape.IsVisible = false;
-                            });
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                // Ensure off-screen position for hide state, then show at 0 when visible
-                                //await bottomSheetLandscape.TranslateToAsync(0, 0, length: 10, Easing.Linear);   // Slide up
-                                bottomSheetLandscape.TranslationY = 0;
-                                bottomSheetLandscape.IsVisible = true;
-                            });
-                        }
-                        break;
-                    }
-                default:
-                    {
-                        if (bottomSheetPortrait.IsVisible)
-                        {
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                // Move off-screen then hide so next show is consistent
-                                //await bottomSheetPortrait.TranslateToAsync(0, 250, length: 10, Easing.Linear);   // Slide down
-                                bottomSheetPortrait.TranslationY = 250;
-                                bottomSheetPortrait.IsVisible = false;
-                            });
-                        }
-                        else
-                        {
-                            MainThread.BeginInvokeOnMainThread(() =>
-                            {
-                                // Ensure off-screen position for hide state, then show at 0 when visible
-                                //await bottomSheetPortrait.TranslateToAsync(0, 0, length: 10, Easing.Linear);    // Slide up
-                                bottomSheetPortrait.TranslationY = 0;
-                                bottomSheetPortrait.IsVisible = true;
-                            });
-                        }
-                        break;
-                    }
-            }
-        }
-
-        /// <summary>
         /// Show the bottom sheet depending on the device orientation
         /// </summary>
         /// <param name="bottomSheetPortrait"></param>
         /// <param name="bottomSheetLandscape"></param>
-        public static async Task ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
+        /* Animates an elements TranslationX and TranslationY properties from their current values to the new values. This ensures that the input layout is in the same position as the visual layout.
+           public static System.Threading.Tasks.Task<bool> TranslateToAsync(this Microsoft.Maui.Controls.VisualElement view, double x, double y, uint length = 250, Microsoft.Maui.Easing? easing = default);
+           Parameters: view, VisualElement, the view on which this method operates
+                       x, Double, the x component of the final translation vector
+                       y, Double, the y component of the final translation vector
+                       length, UInt32, the time, in milliseconds, over which to animate the transition, the default is 250
+                       easing, Easing, the easing function to use for the animation */
+         public static async Task ShowBottomSheet(ContentView bottomSheetPortrait, ContentView bottomSheetLandscape)
         {
             if (bottomSheetPortrait == null || bottomSheetLandscape == null || !ClassEntryMethods.bKeyboardCustom)
             {
