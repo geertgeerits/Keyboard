@@ -402,8 +402,10 @@
         /// </summary>
         /// <param name="scrollView"></param>
         /// <param name="entry"></param>
+        /// <param name="cTitleViewName"></param>
         /// <param name="nKeyboardHeightPortrait"></param>
         /// <param name="nKeyboardHeightLandscape"></param>
+        /// <returns></returns>
         public static async Task ScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
             // Ensure the scrollView and entry are not null before attempting to scroll
@@ -414,38 +416,13 @@
 
 #if ANDROID || WINDOWS
             await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
-            //await CalculateScrollEntryToPosition2(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #else
             // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, false)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
             // Put a comment before one of the methods that you not want to use
-            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
-            return;
             // For iOS, we need to calculate the position of the Entry within the ScrollView
-            //await CalculateScrollEntryToPosition1(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
-
-            //double nCenter = GetDisplayHeight() / 2; //- nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
-            double nCenter = scrollView.Height / 2; //- nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
-            double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
-            Point entryPosition = GetEntryScreenPosition(entry);
-
-            if (entryPosition.Y >= nCenter)
-            {
-                // If the entry position is larger than the center position, scroll it to the center
-                await scrollView.ScrollToAsync(0, entryPosition.Y - (nCenter - entry.Height / 2), false);
-                Debug.WriteLine($"Scrolling to center position: {entryPosition.Y - (nCenter - entry.Height / 2)}");
-            }
-            else if (entryPosition.Y < nTitleViewHeight + 10)
-            {
-                // If the entry position is less than the title view height, scroll it to the top
-                await scrollView.ScrollToAsync(entry, ScrollToPosition.Start, false);
-                Debug.WriteLine($"Scrolling to top position: {entryPosition.Y}");
-            }
-            else
-            {
-                //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
-            }
-
+            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
+            await CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #endif
         }
 
@@ -458,170 +435,200 @@
         /// <param name="nKeyboardHeightPortrait"></param>
         /// <param name="nKeyboardHeightLandscape"></param>
         /// <returns></returns>
-        private static async Task CalculateScrollEntryToPosition1(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        private static async Task CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
-            Debug.WriteLine($"scrollView.Height: {scrollView.Height}");
-            Debug.WriteLine($"scrollView.ContentSize: {scrollView.ContentSize}");
-            Debug.WriteLine($"scrollView.ScrollX/ScrollY: {scrollView.ScrollX} / {scrollView.ScrollY}");
-            Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
-
-            // Get the current device orientation
-            string cOrientation = GetDeviceOrientation();
-            double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
-            Debug.WriteLine($"App Orientation: {cOrientation}, nKeyboardHeight {nKeyboardHeight}");
-
-            // Get the window height for Windows WinUI
-            double nDisplayHeight;
-            if (DeviceInfo.Platform == DevicePlatform.WinUI)
-            {
-                nDisplayHeight = GetWindowHeight();
-                Debug.WriteLine($"Window Height: {nDisplayHeight}");
-            }
-            // Get the display height for Android and iOS
-            else
-            {
-                nDisplayHeight = GetDisplayHeight();
-                Debug.WriteLine($"Display Height: {nDisplayHeight}");
-            }
+            // Get the display height
+            double nDisplayCenter = GetDisplayHeight() / 2;
+            Debug.WriteLine($"Display Center: {nDisplayCenter}");
 
             // Get the position of the Entry within the ScrollView
             Point entryPosition = GetEntryScreenPosition(entry);
             Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
 
-            // Get the height of the TitleView
-            double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
-            Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
-
-            // Adjust the Padding value for each platform in portrait and landscape mode
-            double nPadding = 0;
-            if (DeviceInfo.Platform == DevicePlatform.Android)
+            // Scroll only vertically, keep X at 0
+            if (entryPosition.Y > nDisplayCenter)
             {
-                nPadding = cOrientation == "Landscape" ? 40 : 0;
+                await scrollView.ScrollToAsync(0, entryPosition.Y - nDisplayCenter + 20, false);
             }
-            else if (DeviceInfo.Platform == DevicePlatform.iOS)
+            else
             {
-                nPadding = cOrientation == "Landscape" ? 0 : 0;
-            }
-            else if (DeviceInfo.Platform == DevicePlatform.WinUI)
-            {
-                nPadding = cOrientation == "Landscape" ? 100 : 0;
-            }
-            Debug.WriteLine($"Padding Value: {nPadding}");
-
-            // Calculate the height of the ScrollView, excluding the keyboard, entry, title and any additional padding
-            double nVisibleHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
-            //double nVisibleHeight = scrollView.Height - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
-            Debug.WriteLine($"Visible Height: {nVisibleHeight}");
-
-            if (entryPosition.Y >= nVisibleHeight)
-            {
-                // If the entry is below the visible area, scroll it into view
-                await scrollView.ScrollToAsync(0, entryPosition.Y, false);
-                //await scrollView.ScrollToAsync(0, nVisibleHeight, false);
-                Debug.WriteLine($"Scrolling to position: {entryPosition.Y}");
-            }
-            else if (entryPosition.Y < nVisibleHeight)
-            {
-                // If the entry is above the visible area, scroll it to the top
                 await scrollView.ScrollToAsync(0, 0, false);
-                Debug.WriteLine("Scrolling to position: 0");
-            }
-            else
-            {
-                // If the entry is within the visible area, no scrolling is needed
-                Debug.WriteLine("No scrolling needed, entry is already in view.");
             }
         }
 
-        /// <summary>
-        /// Calculates the position of the specified 'Entry' within the 'ScrollView' based on the current device orientation and keyboard height
-        /// </summary>
-        /// <param name="scrollView"></param>
-        /// <param name="entry"></param>
-        /// <param name="cTitleViewName"></param>
-        /// <param name="nKeyboardHeightPortrait"></param>
-        /// <param name="nKeyboardHeightLandscape"></param>
-        /// <returns></returns>
-        private static async Task CalculateScrollEntryToPosition2(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
-        {
-            if (scrollView == null || entry == null)
-            {
-                return;
-            }
+        ///// <summary>
+        ///// Calculates the position of the specified 'Entry' within the 'ScrollView' based on the current device orientation and keyboard height
+        ///// </summary>
+        ///// <param name="scrollView"></param>
+        ///// <param name="entry"></param>
+        ///// <param name="cTitleViewName"></param>
+        ///// <param name="nKeyboardHeightPortrait"></param>
+        ///// <param name="nKeyboardHeightLandscape"></param>
+        ///// <returns></returns>
+        //private static async Task CalculateScrollEntryToPosition1(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        //{
+        //    Debug.WriteLine($"scrollView.Height: {scrollView.Height}");
+        //    Debug.WriteLine($"scrollView.ContentSize: {scrollView.ContentSize}");
+        //    Debug.WriteLine($"scrollView.ScrollX/ScrollY: {scrollView.ScrollX} / {scrollView.ScrollY}");
+        //    Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
 
-            // Small margin so the entry isn't flush against the keyboard/title
-            const double margin = 12.0;
+        //    // Get the current device orientation
+        //    string cOrientation = GetDeviceOrientation();
+        //    double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
+        //    Debug.WriteLine($"App Orientation: {cOrientation}, nKeyboardHeight {nKeyboardHeight}");
 
-            // Ensure layout has been measured (avoid zero heights)
-            await Task.Yield();
+        //    // Get the window height for Windows WinUI
+        //    double nDisplayHeight;
+        //    if (DeviceInfo.Platform == DevicePlatform.WinUI)
+        //    {
+        //        nDisplayHeight = GetWindowHeight();
+        //        Debug.WriteLine($"Window Height: {nDisplayHeight}");
+        //    }
+        //    // Get the display height for Android and iOS
+        //    else
+        //    {
+        //        nDisplayHeight = GetDisplayHeight();
+        //        Debug.WriteLine($"Display Height: {nDisplayHeight}");
+        //    }
 
-            // Orientation & keyboard height
-            string cOrientation = GetDeviceOrientation();
-            double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
+        //    // Get the position of the Entry within the ScrollView
+        //    Point entryPosition = GetEntryScreenPosition(entry);
+        //    Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
 
-            // Display / window height
-            double nDisplayHeight = DeviceInfo.Platform == DevicePlatform.WinUI ? GetWindowHeight() : GetDisplayHeight();
+        //    // Get the height of the TitleView
+        //    double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
+        //    Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
 
-            // Title view height and per-platform padding
-            double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
-            double nPadding = 0;
-            if (DeviceInfo.Platform == DevicePlatform.Android)
-            {
-                nPadding = cOrientation == "Landscape" ? -180 : 90;
-            }
-            else if (DeviceInfo.Platform == DevicePlatform.iOS)
-            {
-                nPadding = cOrientation == "Landscape" ? 0 : 100;
-            }
-            else if (DeviceInfo.Platform == DevicePlatform.WinUI)
-            {
-                nPadding = cOrientation == "Landscape" ? -50 : 0;
-            }
+        //    // Adjust the Padding value for each platform in portrait and landscape mode
+        //    double nPadding = 0;
+        //    if (DeviceInfo.Platform == DevicePlatform.Android)
+        //    {
+        //        nPadding = cOrientation == "Landscape" ? 40 : 0;
+        //    }
+        //    else if (DeviceInfo.Platform == DevicePlatform.iOS)
+        //    {
+        //        nPadding = cOrientation == "Landscape" ? 0 : 0;
+        //    }
+        //    else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+        //    {
+        //        nPadding = cOrientation == "Landscape" ? 100 : 0;
+        //    }
+        //    Debug.WriteLine($"Padding Value: {nPadding}");
 
-            // Visible area height (content area not covered by keyboard/title/padding)
-            double visibleHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight - nPadding;
-            if (visibleHeight <= 0)
-            {
-                return;
-            }
+        //    // Calculate the height of the ScrollView, excluding the keyboard, entry, title and any additional padding
+        //    double nVisibleHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+        //    //double nVisibleHeight = scrollView.Height - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
+        //    Debug.WriteLine($"Visible Height: {nVisibleHeight}");
 
-            // Compute entry Y relative to scrollView content: entryScreenY - scrollViewScreenY + currentScrollY
-            Point scrollViewScreen = GetEntryScreenPosition(scrollView);
-            Point entryScreen = GetEntryScreenPosition(entry);
-            double relativeY = entryScreen.Y - scrollViewScreen.Y + scrollView.ScrollY;
+        //    if (entryPosition.Y >= nVisibleHeight)
+        //    {
+        //        // If the entry is below the visible area, scroll it into view
+        //        await scrollView.ScrollToAsync(0, entryPosition.Y, false);
+        //        //await scrollView.ScrollToAsync(0, nVisibleHeight, false);
+        //        Debug.WriteLine($"Scrolling to position: {entryPosition.Y}");
+        //    }
+        //    else if (entryPosition.Y < nVisibleHeight)
+        //    {
+        //        // If the entry is above the visible area, scroll it to the top
+        //        await scrollView.ScrollToAsync(0, 0, false);
+        //        Debug.WriteLine("Scrolling to position: 0");
+        //    }
+        //    else
+        //    {
+        //        // If the entry is within the visible area, no scrolling is needed
+        //        Debug.WriteLine("No scrolling needed, entry is already in view.");
+        //    }
+        //}
 
-            // Current visible top/bottom in content coordinates
-            double topVisible = scrollView.ScrollY;
-            double bottomVisible = topVisible + visibleHeight;
+        ///// <summary>
+        ///// Calculates the position of the specified 'Entry' within the 'ScrollView' based on the current device orientation and keyboard height
+        ///// </summary>
+        ///// <param name="scrollView"></param>
+        ///// <param name="entry"></param>
+        ///// <param name="cTitleViewName"></param>
+        ///// <param name="nKeyboardHeightPortrait"></param>
+        ///// <param name="nKeyboardHeightLandscape"></param>
+        ///// <returns></returns>
+        //private static async Task CalculateScrollEntryToPosition2(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        //{
+        //    if (scrollView == null || entry == null)
+        //    {
+        //        return;
+        //    }
 
-            // Heights of content and entry for clamping
-            double contentHeight = scrollView.Content?.Height ?? (visibleHeight + entry.Height);
-            double entryBottom = relativeY + entry.Height;
+        //    // Small margin so the entry isn't flush against the keyboard/title
+        //    const double margin = 12.0;
 
-            // Decide if scroll needed:
-            double targetY = topVisible;  // default no change
-            if (entryBottom > bottomVisible - margin)
-            {
-                // Entry is partially/fully below visible area -> scroll down so entry bottom is visible
-                targetY = relativeY + entry.Height - visibleHeight + margin;
-            }
-            else if (relativeY < topVisible + margin)
-            {
-                // Entry is above visible area -> scroll up so entry top is visible with margin
-                targetY = relativeY - margin;
-            }
-            else
-            {
-                // Already visible
-                return;
-            }
+        //    // Ensure layout has been measured (avoid zero heights)
+        //    await Task.Yield();
 
-            // Clamp targetY to valid range
-            double maxScroll = Math.Max(0, contentHeight - visibleHeight);
-            targetY = Math.Max(0, Math.Min(targetY, maxScroll));
+        //    // Orientation & keyboard height
+        //    string cOrientation = GetDeviceOrientation();
+        //    double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
 
-            await scrollView.ScrollToAsync(0, targetY, false);
-        }
+        //    // Display / window height
+        //    double nDisplayHeight = DeviceInfo.Platform == DevicePlatform.WinUI ? GetWindowHeight() : GetDisplayHeight();
+
+        //    // Title view height and per-platform padding
+        //    double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
+        //    double nPadding = 0;
+        //    if (DeviceInfo.Platform == DevicePlatform.Android)
+        //    {
+        //        nPadding = cOrientation == "Landscape" ? -180 : 90;
+        //    }
+        //    else if (DeviceInfo.Platform == DevicePlatform.iOS)
+        //    {
+        //        nPadding = cOrientation == "Landscape" ? 0 : 100;
+        //    }
+        //    else if (DeviceInfo.Platform == DevicePlatform.WinUI)
+        //    {
+        //        nPadding = cOrientation == "Landscape" ? -50 : 0;
+        //    }
+
+        //    // Visible area height (content area not covered by keyboard/title/padding)
+        //    double visibleHeight = nDisplayHeight - nKeyboardHeight - nTitleViewHeight - nPadding;
+        //    if (visibleHeight <= 0)
+        //    {
+        //        return;
+        //    }
+
+        //    // Compute entry Y relative to scrollView content: entryScreenY - scrollViewScreenY + currentScrollY
+        //    Point scrollViewScreen = GetEntryScreenPosition(scrollView);
+        //    Point entryScreen = GetEntryScreenPosition(entry);
+        //    double relativeY = entryScreen.Y - scrollViewScreen.Y + scrollView.ScrollY;
+
+        //    // Current visible top/bottom in content coordinates
+        //    double topVisible = scrollView.ScrollY;
+        //    double bottomVisible = topVisible + visibleHeight;
+
+        //    // Heights of content and entry for clamping
+        //    double contentHeight = scrollView.Content?.Height ?? (visibleHeight + entry.Height);
+        //    double entryBottom = relativeY + entry.Height;
+
+        //    // Decide if scroll needed:
+        //    double targetY = topVisible;  // default no change
+        //    if (entryBottom > bottomVisible - margin)
+        //    {
+        //        // Entry is partially/fully below visible area -> scroll down so entry bottom is visible
+        //        targetY = relativeY + entry.Height - visibleHeight + margin;
+        //    }
+        //    else if (relativeY < topVisible + margin)
+        //    {
+        //        // Entry is above visible area -> scroll up so entry top is visible with margin
+        //        targetY = relativeY - margin;
+        //    }
+        //    else
+        //    {
+        //        // Already visible
+        //        return;
+        //    }
+
+        //    // Clamp targetY to valid range
+        //    double maxScroll = Math.Max(0, contentHeight - visibleHeight);
+        //    targetY = Math.Max(0, Math.Min(targetY, maxScroll));
+
+        //    await scrollView.ScrollToAsync(0, targetY, false);
+        //}
         
         /// <summary>
         /// Get the height of the current window in Windows WinUI applications
