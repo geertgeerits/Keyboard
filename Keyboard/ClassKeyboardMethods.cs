@@ -413,16 +413,16 @@
             {
                 return;
             }
-
-#if ANDROID || WINDOWS
+#if ANDROID
             await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
-#else
-            // !!!BUG!!! in iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, false)' does not work like in Android
+#elif IOS
+            // iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, false)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
-            // Put a comment before one of the methods that you not want to use
             // For iOS, we need to calculate the position of the Entry within the ScrollView
-            //await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
             await CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+#elif WINDOWS
+            await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
+            //await CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
 #endif
         }
 
@@ -437,8 +437,8 @@
         /// <returns></returns>
         private static async Task CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
         {
-            // Get the display height
-            double nDisplayCenter = GetDisplayHeight() / 2;
+            // Get the display center (DisplayHeight / 2)
+            double nDisplayCenter = DeviceInfo.Platform == DevicePlatform.WinUI ? GetWindowHeight() / 2 : GetDisplayHeight() / 2;
             Debug.WriteLine($"Display Center: {nDisplayCenter}");
 
             // Get the position of the Entry within the ScrollView
@@ -448,97 +448,13 @@
             // Scroll only vertically, keep X at 0
             if (entryPosition.Y > nDisplayCenter)
             {
-                await scrollView.ScrollToAsync(0, entryPosition.Y - nDisplayCenter + 20, false);
+                await scrollView.ScrollToAsync(0, entryPosition.Y - nDisplayCenter + entry.Height, false);
             }
             else
             {
                 await scrollView.ScrollToAsync(0, 0, false);
             }
         }
-
-        ///// <summary>
-        ///// Calculates the position of the specified 'Entry' within the 'ScrollView' based on the current device orientation and keyboard height
-        ///// </summary>
-        ///// <param name="scrollView"></param>
-        ///// <param name="entry"></param>
-        ///// <param name="cTitleViewName"></param>
-        ///// <param name="nKeyboardHeightPortrait"></param>
-        ///// <param name="nKeyboardHeightLandscape"></param>
-        ///// <returns></returns>
-        //private static async Task CalculateScrollEntryToPosition1(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
-        //{
-        //    Debug.WriteLine($"scrollView.Height: {scrollView.Height}");
-        //    Debug.WriteLine($"scrollView.ContentSize: {scrollView.ContentSize}");
-        //    Debug.WriteLine($"scrollView.ScrollX/ScrollY: {scrollView.ScrollX} / {scrollView.ScrollY}");
-        //    Debug.WriteLine($"nKeyboardHeightPortrait: {nKeyboardHeightPortrait}, nKeyboardHeightLandscape: {nKeyboardHeightLandscape}");
-
-        //    // Get the current device orientation
-        //    string cOrientation = GetDeviceOrientation();
-        //    double nKeyboardHeight = cOrientation == "Landscape" ? nKeyboardHeightLandscape : nKeyboardHeightPortrait;
-        //    Debug.WriteLine($"App Orientation: {cOrientation}, nKeyboardHeight {nKeyboardHeight}");
-
-        //    // Get the window height for Windows WinUI
-        //    double nDisplayHeight;
-        //    if (DeviceInfo.Platform == DevicePlatform.WinUI)
-        //    {
-        //        nDisplayHeight = GetWindowHeight();
-        //        Debug.WriteLine($"Window Height: {nDisplayHeight}");
-        //    }
-        //    // Get the display height for Android and iOS
-        //    else
-        //    {
-        //        nDisplayHeight = GetDisplayHeight();
-        //        Debug.WriteLine($"Display Height: {nDisplayHeight}");
-        //    }
-
-        //    // Get the position of the Entry within the ScrollView
-        //    Point entryPosition = GetEntryScreenPosition(entry);
-        //    Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
-
-        //    // Get the height of the TitleView
-        //    double nTitleViewHeight = GetTitleViewHeight(cTitleViewName);
-        //    Debug.WriteLine($"TitleView Height: {nTitleViewHeight}");
-
-        //    // Adjust the Padding value for each platform in portrait and landscape mode
-        //    double nPadding = 0;
-        //    if (DeviceInfo.Platform == DevicePlatform.Android)
-        //    {
-        //        nPadding = cOrientation == "Landscape" ? 40 : 0;
-        //    }
-        //    else if (DeviceInfo.Platform == DevicePlatform.iOS)
-        //    {
-        //        nPadding = cOrientation == "Landscape" ? 0 : 0;
-        //    }
-        //    else if (DeviceInfo.Platform == DevicePlatform.WinUI)
-        //    {
-        //        nPadding = cOrientation == "Landscape" ? 100 : 0;
-        //    }
-        //    Debug.WriteLine($"Padding Value: {nPadding}");
-
-        //    // Calculate the height of the ScrollView, excluding the keyboard, entry, title and any additional padding
-        //    double nVisibleHeight = nDisplayHeight - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
-        //    //double nVisibleHeight = scrollView.Height - nKeyboardHeight - entry.Height - nTitleViewHeight - nPadding;
-        //    Debug.WriteLine($"Visible Height: {nVisibleHeight}");
-
-        //    if (entryPosition.Y >= nVisibleHeight)
-        //    {
-        //        // If the entry is below the visible area, scroll it into view
-        //        await scrollView.ScrollToAsync(0, entryPosition.Y, false);
-        //        //await scrollView.ScrollToAsync(0, nVisibleHeight, false);
-        //        Debug.WriteLine($"Scrolling to position: {entryPosition.Y}");
-        //    }
-        //    else if (entryPosition.Y < nVisibleHeight)
-        //    {
-        //        // If the entry is above the visible area, scroll it to the top
-        //        await scrollView.ScrollToAsync(0, 0, false);
-        //        Debug.WriteLine("Scrolling to position: 0");
-        //    }
-        //    else
-        //    {
-        //        // If the entry is within the visible area, no scrolling is needed
-        //        Debug.WriteLine("No scrolling needed, entry is already in view.");
-        //    }
-        //}
 
         ///// <summary>
         ///// Calculates the position of the specified 'Entry' within the 'ScrollView' based on the current device orientation and keyboard height
@@ -629,7 +545,21 @@
 
         //    await scrollView.ScrollToAsync(0, targetY, false);
         //}
-        
+
+        /// <summary>
+        /// Get the height of the display in Android and iOS applications
+        /// </summary>
+        /// <returns></returns>
+        private static double GetDisplayHeight()
+        {
+            double width = DeviceDisplay.Current.MainDisplayInfo.Width;
+            double height = DeviceDisplay.Current.MainDisplayInfo.Height;
+            double density = DeviceDisplay.Current.MainDisplayInfo.Density;
+            Debug.WriteLine($"Display Width: {width}, Display Height: {height}, Density: {density}");
+
+            return height / density;
+        }
+
         /// <summary>
         /// Get the height of the current window in Windows WinUI applications
         /// Can not be used in Android and iOS applications because the height does not change when in landscape mode
@@ -650,22 +580,8 @@
                     return height;
                 }
             }
-            
+
             return 0;       // Return 0 if the window is not found
-        }
-
-        /// <summary>
-        /// Get the height of the display in Android and iOS applications
-        /// </summary>
-        /// <returns></returns>
-        private static double GetDisplayHeight()
-        {
-            double width = DeviceDisplay.Current.MainDisplayInfo.Width;
-            double height = DeviceDisplay.Current.MainDisplayInfo.Height;
-            double density = DeviceDisplay.Current.MainDisplayInfo.Density;
-            Debug.WriteLine($"Display Width: {width}, Display Height: {height}, Density: {density}");
-
-            return height / density;
         }
 
         /// <summary>
