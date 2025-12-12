@@ -211,7 +211,7 @@
 
             // Move the cursor to the position after the inserted character
             // The character length can be more than one for special characters
-            // cCharacter is a composed sequence like C̨  - not a single precomposed character
+            // It can be a composed sequence like C̨  - not a single precomposed character
             entry.CursorPosition = cursorPosition + cCharacter.Length;
             return newText;
         }

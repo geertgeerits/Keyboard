@@ -1469,11 +1469,10 @@ namespace Keyboard
         /// <param name="e"></param>
         private void PckSelectKeyboard_Unfocused(object sender, FocusEventArgs e)
         {
-#if WINDOWS
-            return;
-#endif
+#if ANDROID || IOS
             // Hide the keyboard layout selection grid when no new selection is made or the cancel button is pressed
             grdSelectKeyboard.IsVisible = false;
+#endif
         }
     }
 }
