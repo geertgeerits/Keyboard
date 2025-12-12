@@ -12,10 +12,8 @@
         /// </summary>
         /// <param name="activationState"></param>
         /// <returns></returns>
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            return new Window(new AppShell())
-            //return new Window(new NavigationPage(new MainPage()))
+        protected override Window CreateWindow(IActivationState? activationState) =>
+            new(new AppShell())
             {
                 X = 300,
                 Y = 40,
@@ -26,6 +24,5 @@
                 MaximumHeight = 1100,
                 MaximumWidth = 1000
             };
-        }
     }
 }

@@ -419,10 +419,10 @@
             // iOS: 'await scrollView.ScrollToAsync(label, ScrollToPosition.Center, false)' does not work like in Android
             // It centers horizontally and vertically for all the Entry controls in iOS even though the Orientation is only set to Vertical
             // For iOS, we need to calculate the position of the Entry within the ScrollView
-            await CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+            await CalculateScrollEntryToPosition(scrollView, entry);
 #elif WINDOWS
             await scrollView.ScrollToAsync(entry, ScrollToPosition.Center, false);
-            //await CalculateScrollEntryToPosition(scrollView, entry, cTitleViewName, nKeyboardHeightPortrait, nKeyboardHeightLandscape);
+            //await CalculateScrollEntryToPosition(scrollView, entry);
 #endif
         }
 
@@ -431,11 +431,8 @@
         /// </summary>
         /// <param name="scrollView"></param>
         /// <param name="entry"></param>
-        /// <param name="cTitleViewName"></param>
-        /// <param name="nKeyboardHeightPortrait"></param>
-        /// <param name="nKeyboardHeightLandscape"></param>
         /// <returns></returns>
-        private static async Task CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry, string cTitleViewName, double nKeyboardHeightPortrait, double nKeyboardHeightLandscape)
+        private static async Task CalculateScrollEntryToPosition(ScrollView scrollView, Entry entry)
         {
             // Get the display center (DisplayHeight / 2)
             double nDisplayCenter = DeviceInfo.Platform == DevicePlatform.WinUI ? GetWindowHeight() / 2 : GetDisplayHeight() / 2;
@@ -446,9 +443,9 @@
             Debug.WriteLine($"Entry Position: {entryPosition.X}, {entryPosition.Y}");
 
             // Scroll only vertically, keep X at 0
-            if (entryPosition.Y > nDisplayCenter)
+            if (entryPosition.Y + entry.Height > nDisplayCenter)
             {
-                await scrollView.ScrollToAsync(0, entryPosition.Y - nDisplayCenter + entry.Height, false);
+                await scrollView.ScrollToAsync(0, entryPosition.Y + entry.Height - nDisplayCenter, false);
             }
             else
             {
@@ -555,7 +552,7 @@
             double width = DeviceDisplay.Current.MainDisplayInfo.Width;
             double height = DeviceDisplay.Current.MainDisplayInfo.Height;
             double density = DeviceDisplay.Current.MainDisplayInfo.Density;
-            Debug.WriteLine($"Display Width: {width}, Display Height: {height}, Density: {density}");
+            Debug.WriteLine($"Display width: {width}, Display height: {height}, Display density: {density}");
 
             return height / density;
         }
@@ -576,8 +573,11 @@
                 {
                     double width = window.Width;
                     double height = window.Height;
-                    Debug.WriteLine($"Window Width: {width}, Window Height: {height}");
+                    double density = DeviceDisplay.Current.MainDisplayInfo.Density;
+                    Debug.WriteLine($"Window width: {width}, Window height: {height}, Display density: {density}");
+                    
                     return height;
+                    //return height / density;
                 }
             }
 
