@@ -162,7 +162,7 @@
             x:Name="grdLandscapeLayout"
             Style="{StaticResource KeyboardGrid}"
             IsVisible="False"
-            ColumnDefinitions="40, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 43, 10"
+            ColumnDefinitions="30, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 42, 5"
             RowDefinitions="5, 55, 5">
 
             <BoxView

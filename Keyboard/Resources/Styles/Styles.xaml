@@ -602,7 +602,7 @@
 
     <Style TargetType="Button" x:Key="KeyAlphanumericLandscapeButton">
         <Setter Property="MaximumHeightRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="30" />
+        <Setter Property="MaximumWidthRequest" Value="29" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -616,7 +616,7 @@
 
     <Style TargetType="ImageButton" x:Key="KeyAlphanumericLandscapeImageButton">
         <Setter Property="MaximumHeightRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="30" />
+        <Setter Property="MaximumWidthRequest" Value="29" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
