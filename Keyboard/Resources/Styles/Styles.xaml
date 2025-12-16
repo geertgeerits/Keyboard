@@ -574,10 +574,7 @@
         </Setter>
     </Style>
 
-    <!--!!!BUG!!! HeightRequest and WidthRequest do not work-->
     <Style TargetType="Button" x:Key="KeyAlphanumericPortraitButton">
-        <Setter Property="MaximumHeightRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="30" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -590,8 +587,6 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyAlphanumericPortraitImageButton">
-        <Setter Property="MaximumHeightRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="30" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -601,8 +596,6 @@
     </Style>
 
     <Style TargetType="Button" x:Key="KeyAlphanumericLandscapeButton">
-        <Setter Property="MaximumHeightRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="29" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -615,8 +608,6 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyAlphanumericLandscapeImageButton">
-        <Setter Property="MaximumHeightRequest" Value="30" />
-        <Setter Property="MaximumWidthRequest" Value="29" />
         <Setter Property="CornerRadius" Value="4" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -626,8 +617,6 @@
     </Style>
 
     <Style TargetType="Button" x:Key="KeyDecimalPortraitButton">
-        <Setter Property="HeightRequest" Value="52" />
-        <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -656,8 +645,6 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyDecimalPortraitImageButton">
-        <Setter Property="HeightRequest" Value="52" />
-        <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -683,8 +670,6 @@
     </Style>
 
     <Style TargetType="Button" x:Key="KeyHexadecimalPortraitButton">
-        <Setter Property="HeightRequest" Value="52" />
-        <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -713,8 +698,6 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyHexadecimalPortraitImageButton">
-        <Setter Property="HeightRequest" Value="52" />
-        <Setter Property="WidthRequest" Value="52" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -740,8 +723,6 @@
     </Style>
 
     <Style TargetType="Button" x:Key="KeyNumericLandscape1RowButton">
-        <Setter Property="HeightRequest" Value="45" />
-        <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -771,8 +752,6 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape1RowImageButton">
-        <Setter Property="HeightRequest" Value="45" />
-        <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -798,8 +777,6 @@
     </Style>
 
     <Style TargetType="Button" x:Key="KeyNumericLandscape2RowsButton">
-        <Setter Property="HeightRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
@@ -829,8 +806,6 @@
     </Style>
 
     <Style TargetType="ImageButton" x:Key="KeyNumericLandscape2RowsImageButton">
-        <Setter Property="HeightRequest" Value="40" />
-        <Setter Property="WidthRequest" Value="40" />
         <Setter Property="CornerRadius" Value="8" />
         <Setter Property="BorderWidth" Value="1" />
         <Setter Property="BorderColor" Value="{AppThemeBinding Light={StaticResource KeyboardKeyBorderLight}, Dark={StaticResource KeyboardKeyBorderDark}}" />
