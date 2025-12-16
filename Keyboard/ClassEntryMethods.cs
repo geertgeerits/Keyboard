@@ -107,16 +107,61 @@
         /// and the ValidationTriggerActionDecimal MinValue and MaxValue are set
         /// </summary>
         /// <param name="entry"></param>
-        public static void SetNumberEntryProperties(Entry entry)
+        public static void SetNumberEntryProperties(Entry entry, string cNumberOfDecimals = "-1")
         {
-            if (entry.Placeholder is null or "")
+            if (!int.TryParse(cNumberOfDecimals, out int nNumberOfDecimals))
             {
-                // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
-                (decimal nMinValue, decimal nMaxValue, _) = EntryFindValidationTriggerActionDecimal(entry);
-
-                // Set the Placeholder for the entry field
-                entry.Placeholder = $"{nMinValue} - {nMaxValue}";
+                return;
             }
+
+            // Find the ValidationTriggerActionDecimal attached to the Entry and return its MinValue, MaxValue and MaxDecimalPlaces
+            (decimal nMinValue, decimal nMaxValue, _) = EntryFindValidationTriggerActionDecimal(entry);
+
+            // Construct the placeholder text based on MinValue, MaxValue and number of decimals
+            string cValueFrom = MakeEntryPlaceholder(nMinValue.ToString(), nNumberOfDecimals);
+            string cValueTo = MakeEntryPlaceholder(nMaxValue.ToString(), nNumberOfDecimals);
+
+            // Set the Placeholder for the entry field
+            entry.Placeholder = $"{cValueFrom} - {cValueTo}";
+        }
+
+        /// <summary>
+        /// Construct the placeholder text based on MinValue, MaxValue and number of decimals
+        /// </summary>
+        /// <param name="cValue"></param>
+        /// <param name="nNumberOfDecimals"></param>
+        /// <returns></returns>
+        private static string MakeEntryPlaceholder(string cValue, int nNumberOfDecimals)
+        {
+            string[] cParts;
+
+            if (nNumberOfDecimals == 0)
+            {
+                if (cValue.Contains(cNumDecimalSeparator))
+                {
+                    cParts = cValue.Split(cNumDecimalSeparator);
+                    return cParts[0];
+                }
+            }
+            else if (nNumberOfDecimals > 0)
+            {
+                if (cValue.Contains(cNumDecimalSeparator))
+                {
+                    cParts = cValue.Split(cNumDecimalSeparator);
+                    string cBeforeDecimalPoint = cParts[0];
+                    string cAfterDecimalPoint = cParts.Length > 1 ? cParts[1] : "9";
+                    string cLastDigit = cValue[^1].ToString();
+
+                    if (cParts[1].Length != nNumberOfDecimals)
+                    {
+                        cAfterDecimalPoint = string.Concat(Enumerable.Repeat(cLastDigit, nNumberOfDecimals));
+                    }
+
+                    return $"{cBeforeDecimalPoint}{cNumDecimalSeparator}{cAfterDecimalPoint}";
+                }
+            }
+
+            return cValue;
         }
 
         /// <summary>
