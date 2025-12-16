@@ -58,10 +58,11 @@ namespace Keyboard
                 await BtnKeyboardClicked(key);
             });
 
-            // Set the placeholder text for the entry fields if the Placeholder property is empty or null and
-            // the ValidationTriggerActionDecimal MinValue and MaxValue are set
+            // Set the Placeholder text for the numeric entry fields
+            // The ValidationTriggerActionDecimal MinValue and MaxValue has to be set but not the MaxDecimalPlaces
             ClassEntryMethods.SetNumberEntryProperties(entTest1);
-            ClassEntryMethods.SetNumberEntryProperties(entTest3, cNumberOfDecimals: "1");
+            //ClassEntryMethods.SetNumberEntryProperties(entTest2, cNumberOfDecimals: "1");
+            //ClassEntryMethods.SetNumberEntryProperties(entTest3, cNumberOfDecimals: "2");
             ClassEntryMethods.SetNumberEntryProperties(entTest4, cNumberOfDecimals: "3");
             ClassEntryMethods.SetNumberEntryProperties(entTest5, cNumberOfDecimals: ClassEntryMethods.cNumDecimalDigits);
 
