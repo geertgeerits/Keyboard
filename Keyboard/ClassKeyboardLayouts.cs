@@ -28,8 +28,9 @@ Escape Sequence	 Meaning
 \\	             Backslash
 \"	             Double quote
 \'	             Single quote
-\uXXXX	         Unicode character
 \xXX	         Hexadecimal character
+\uXXXX	         Unicode character
+\uXXXX\uXXXX     Unicode composed character
 
 The number of characters must be exactly 52 per keyboard layout (0-51)
 Special characters like \" counts as one character

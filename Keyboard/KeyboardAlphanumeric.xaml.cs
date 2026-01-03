@@ -895,7 +895,7 @@ namespace Keyboard
         /// Handle button pressed event (called first)
         /// Starts a task that triggers Key_LongPressCompleted if the button remains pressed > 600ms.
         /// </summary>
-        private void BtnKey_Pressed(object sender, EventArgs e)
+        private void BtnKey_Pressed(object? sender, EventArgs e)
         {
             // Cancel any previous pending long-press detection
             try
@@ -956,7 +956,7 @@ namespace Keyboard
         /// Handle button released event (called third)
         /// Cancels pending long-press detection and resets state if needed.
         /// </summary>
-        private void BtnKey_Released(object sender, EventArgs e)
+        private void BtnKey_Released(object? sender, EventArgs e)
         {
             // Only care about long-press cancellation here
             try
@@ -987,7 +987,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender">The source object that raised the long press completed event.</param>
         /// <param name="e">The event data associated with the long press completion, containing information about the gesture</param>
-        private async void Key_LongPressCompleted(object sender, EventArgs e)
+        private async void Key_LongPressCompleted(object? sender, EventArgs e)
         {
             if (sender is Button button)
             {
@@ -1022,7 +1022,7 @@ namespace Keyboard
         /// <param name="sender">The source of the event, expected to be a <see cref="Button"/> representing the character button that was
         /// clicked.</param>
         /// <param name="e">An <see cref="EventArgs"/> instance containing the event data.</param>
-        private void BtnCharacter_Clicked(object sender, EventArgs e)
+        private void BtnCharacter_Clicked(object? sender, EventArgs e)
         {
             if (sender is Button button)
             {
@@ -1045,7 +1045,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnShiftKey_Clicked(object sender, EventArgs e)
+        private void BtnShiftKey_Clicked(object? sender, EventArgs e)
         {
             bShiftKeyEnabled = !bShiftKeyEnabled;
 
@@ -1066,7 +1066,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnChangeLayout_Clicked(object sender, EventArgs e)
+        private void BtnChangeLayout_Clicked(object? sender, EventArgs e)
         {
             bChangeLayoutEnabled = !bChangeLayoutEnabled;
 
@@ -1124,7 +1124,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender">The source of the event, typically the button that was clicked</param>
         /// <param name="e">An EventArgs instance containing event data</param>
-        private void OnSelectKeyboardHide_Clicked(object sender, EventArgs e)
+        private void OnSelectKeyboardHide_Clicked(object? sender, EventArgs e)
         {
             grdSelectKeyboard.IsVisible = false;
         }
@@ -1134,7 +1134,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender">The source of the event, typically the control that was clicked</param>
         /// <param name="e">An <see cref="EventArgs"/> object that contains the event data</param>
-        private void OnKeyboardCharHide_Clicked(object sender, EventArgs e)
+        private void OnKeyboardCharHide_Clicked(object? sender, EventArgs e)
         {
             grdCharactersPopup.IsVisible = false;
         }
@@ -1346,7 +1346,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnSelectKeyboard_Clicked(object sender, EventArgs e)
+        private void BtnSelectKeyboard_Clicked(object? sender, EventArgs e)
         {
             // Disable the keyboard grid while the popup is visible
             //grdPortraitLayout.IsEnabled = false;
@@ -1363,51 +1363,53 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PckSelectKeyboard_SelectedIndexChanged(object sender, EventArgs e)
+        private void PckSelectKeyboard_SelectedIndexChanged(object? sender, EventArgs e)
         {
-            Picker picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-            bool bChangeKeyboardLayout = true;
-
-            if (selectedIndex != -1)
+            if (sender is Picker picker)
             {
-                // Get the selected keyboard layout
-                cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string ?? string.Empty;
+                int selectedIndex = picker.SelectedIndex;
+                bool bChangeKeyboardLayout = true;
 
-                // Change the keyboard layout
-                try
+                if (selectedIndex != -1)
                 {
-                    if (bChangeKeyboardLayout)
+                    // Get the selected keyboard layout
+                    cCurrentKeyboardLayout = picker.ItemsSource[selectedIndex] as string ?? string.Empty;
+
+                    // Change the keyboard layout
+                    try
                     {
-                        // Save the selected keyboard layout in the application preferences
-                        Preferences.Default.Set("SettingKeyboardLayout", cCurrentKeyboardLayout);
-
-                        // Give it some time to save the settings
-                        Task.Delay(300).Wait();
-
-                        // Reload the keyboard layout and refresh the layout
-                        // safe UI-thread refresh of this instance
-                        MainThread.BeginInvokeOnMainThread(() =>
+                        if (bChangeKeyboardLayout)
                         {
-                            RefreshLayout(cCurrentKeyboardLayout!);
-                        });
+                            // Save the selected keyboard layout in the application preferences
+                            Preferences.Default.Set("SettingKeyboardLayout", cCurrentKeyboardLayout);
 
-                        SelectAlphanumericKeyboardLayout(cCurrentKeyboardLayout!);
+                            // Give it some time to save the settings
+                            Task.Delay(300).Wait();
+
+                            // Reload the keyboard layout and refresh the layout
+                            // safe UI-thread refresh of this instance
+                            MainThread.BeginInvokeOnMainThread(() =>
+                            {
+                                RefreshLayout(cCurrentKeyboardLayout!);
+                            });
+
+                            SelectAlphanumericKeyboardLayout(cCurrentKeyboardLayout!);
+                        }
                     }
-                }
-                catch (Exception ex)
-                {
+                    catch (Exception ex)
+                    {
 #if DEBUG
-                    Debug.WriteLine($"Error changing keyboard layout: {ex.Message}");
+                        Debug.WriteLine($"Error changing keyboard layout: {ex.Message}");
 #endif
+                    }
+
+                    bChangeKeyboardLayout = true;
+
+                    Debug.WriteLine($"selectedIndex: {selectedIndex}");
                 }
 
-                bChangeKeyboardLayout = true;
-
-                Debug.WriteLine($"selectedIndex: {selectedIndex}");
+                grdSelectKeyboard.IsVisible = false;
             }
-
-            grdSelectKeyboard.IsVisible = false;
         }
 
         /// <summary>
@@ -1467,7 +1469,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PckSelectKeyboard_Unfocused(object sender, FocusEventArgs e)
+        private void PckSelectKeyboard_Unfocused(object? sender, FocusEventArgs e)
         {
 #if ANDROID || IOS
             // Hide the keyboard layout selection grid when no new selection is made or the cancel button is pressed

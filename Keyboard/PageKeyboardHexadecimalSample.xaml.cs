@@ -61,7 +61,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnPageLoaded(object sender, EventArgs e)
+        private void OnPageLoaded(object? sender, EventArgs e)
         {
             _ = entTest1.Focus();
         }
@@ -87,7 +87,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private async void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
+        private async void OnTapShowKeyboardTapped(object? sender, TappedEventArgs args)
         {
             if (sender is Entry entry)
             {
@@ -103,7 +103,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void HexadecimalNumberEntryFocused(object sender, FocusEventArgs e)
+        private async void HexadecimalNumberEntryFocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -125,7 +125,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HexadecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
+        private void HexadecimalNumberEntryUnfocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -146,11 +146,14 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HexadecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        private void HexadecimalNumberEntryTextChanged(object? sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsHexadecimalNumber(e.NewTextValue))
+            if (sender is Entry entry)
             {
-                ((Entry)sender).Text = e.OldTextValue;
+                if (!ClassEntryMethods.IsHexadecimalNumber(e.NewTextValue))
+                {
+                    entry.Text = e.OldTextValue ?? string.Empty;
+                }
             }
         }
 
@@ -159,7 +162,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GoToNextField(object sender, EventArgs? e)
+        private void GoToNextField(object? sender, EventArgs? e)
         {
             // Go to the next field
             if (sender == entTest1)

@@ -85,7 +85,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnPageLoaded(object sender, EventArgs e)
+        private void OnPageLoaded(object? sender, EventArgs e)
         {
             //_ = entTest1.Focus();
         }
@@ -112,7 +112,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private async void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
+        private async void OnTapShowKeyboardTapped(object? sender, TappedEventArgs args)
         {
             if (sender is Entry entry)
             {
@@ -172,7 +172,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void TextEntryFocused(object sender, FocusEventArgs e)
+        private async void TextEntryFocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -194,7 +194,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void TextEntryUnfocused(object sender, FocusEventArgs e)
+        private async void TextEntryUnfocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -213,7 +213,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void DecimalNumberEntryFocused(object sender, FocusEventArgs e)
+        private async void DecimalNumberEntryFocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -241,7 +241,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
+        private void DecimalNumberEntryUnfocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -265,7 +265,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void HexadecimalNumberEntryFocused(object sender, FocusEventArgs e)
+        private async void HexadecimalNumberEntryFocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -290,7 +290,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HexadecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
+        private void HexadecimalNumberEntryUnfocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -311,11 +311,14 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        private void DecimalNumberEntryTextChanged(object? sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
+            if (sender is Entry entry)
             {
-                ((Entry)sender).Text = e.OldTextValue;
+                if (!ClassEntryMethods.IsDecimalNumber(entry, e.NewTextValue))
+                {
+                    entry.Text = e.OldTextValue;
+                }
             }
         }
 
@@ -324,11 +327,14 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HexadecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        private void HexadecimalNumberEntryTextChanged(object? sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsHexadecimalNumber(e.NewTextValue))
+            if (sender is Entry entry)
             {
-                ((Entry)sender).Text = e.OldTextValue;
+                if (!ClassEntryMethods.IsHexadecimalNumber(e.NewTextValue))
+                {
+                    entry.Text = e.OldTextValue;
+                }
             }
         }
 
@@ -337,7 +343,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GoToNextField(object sender, EventArgs? e)
+        private void GoToNextField(object? sender, EventArgs? e)
         {
 #if WINDOWS
             // Format the number for decimal number entries for the Windows platform

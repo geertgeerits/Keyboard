@@ -1,8 +1,8 @@
 ﻿/* Program .....: Keyboard.sln
    Author ......: Geert Geerits - E-mail: geertgeerits@gmail.com
    Copyright ...: (C) 2025-2026
-   Version .....: 1.0.33
-   Date ........: 2025-12-16 (YYYY-MM-DD)
+   Version .....: 1.0.34
+   Date ........: 2026-01-03 (YYYY-MM-DD)
    Language ....: Microsoft Visual Studio 2026: .NET 10.0 MAUI C# 14.0
    Description .: Custom keyboard for decimal and hexadecimal entry fields
    Note:........: This app is a sample, experimental and still in development.
@@ -130,7 +130,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void OnPageLoaded(object sender, EventArgs e)
+        private void OnPageLoaded(object? sender, EventArgs e)
         {
             _ = entTest1.Focus();
         }
@@ -156,7 +156,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="args"></param>
-        private async void OnTapShowKeyboardTapped(object sender, TappedEventArgs args)
+        private async void OnTapShowKeyboardTapped(object? sender, TappedEventArgs args)
         {
             if (sender is Entry entry)
             {
@@ -172,7 +172,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender">The entry field that triggered the focus event.</param>
         /// <param name="e">The event data associated with the focus event.</param>
-        private async void DecimalNumberEntryFocused(object sender, FocusEventArgs e)
+        private async void DecimalNumberEntryFocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -197,7 +197,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DecimalNumberEntryUnfocused(object sender, FocusEventArgs e)
+        private void DecimalNumberEntryUnfocused(object? sender, FocusEventArgs e)
         {
             if (sender is Entry entry)
             {
@@ -221,11 +221,14 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DecimalNumberEntryTextChanged(object sender, TextChangedEventArgs e)
+        private void DecimalNumberEntryTextChanged(object? sender, TextChangedEventArgs e)
         {
-            if (!ClassEntryMethods.IsDecimalNumber((Entry)sender, e.NewTextValue))
+            if (sender is Entry entry)
             {
-                ((Entry)sender).Text = e.OldTextValue;
+                if (!ClassEntryMethods.IsDecimalNumber(entry, e.NewTextValue))
+                {
+                    entry.Text = e.OldTextValue;
+                }
             }
         }
 
@@ -234,7 +237,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void GoToNextField(object sender, EventArgs? e)
+        private void GoToNextField(object? sender, EventArgs? e)
         {
 #if WINDOWS
             // Format the number for decimal number entries for the Windows platform
@@ -294,7 +297,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BtnDecimal_Clicked(object sender, EventArgs e)
+        private async void BtnDecimal_Clicked(object? sender, EventArgs e)
         {
             await Navigation.PushAsync(new PageKeyboardMixedSample());
         }
@@ -304,7 +307,7 @@ namespace Keyboard
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private async void BtnHexadecimal_Clicked(object sender, EventArgs e)
+        private async void BtnHexadecimal_Clicked(object? sender, EventArgs e)
         {
             await Navigation.PushAsync(new PageKeyboardHexadecimalSample());
         }
