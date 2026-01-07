@@ -72,10 +72,7 @@ namespace Keyboard
         /// Put the keyboard types/layouts in a List string to be used in the picker 'pckSelectKeyboard.ItemsSource'
         /// </summary>
         /// <returns></returns>
-        public static List<string> GetKeyboardAlphanumericTypes()
-        {
-            return
-            [
+        public static List<string> GetKeyboardAlphanumericTypes() => [
                 "ABCDEF_XX",
                 "AZERTY_BE",
                 "AZERTY_FR",
@@ -87,7 +84,6 @@ namespace Keyboard
                 "QWERTY_US",
                 "QWERTZ_DE"
             ];
-        }
 
         /// <summary>
         /// Provides a mapping of specific characters to their corresponding popup character options
