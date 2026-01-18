@@ -8,6 +8,8 @@
     x:DataType="local:KeyboardAlphanumeric">
     
     <StackLayout>
+
+        <!-- Select the keyboard layout with a picker -->
         <Grid
             x:Name="grdSelectKeyboard"
             Style="{StaticResource KeyboardGrid}"
@@ -55,7 +57,7 @@
         <Grid
             x:Name="grdCharactersPopup"
             Style="{StaticResource KeyboardGrid}"
-            ColumnDefinitions="5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5"
+            ColumnDefinitions="{OnIdiom Default='5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5', Tablet='5, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 5'}"
             RowDefinitions="5, 30, 30, 5"
             IsVisible="False">
 
@@ -226,8 +228,8 @@
             x:Name="grdPortraitLayout"
             Style="{StaticResource KeyboardGrid}"
             IsVisible="False"
-            ColumnDefinitions="{OnIdiom Phone='5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5', Tablet='8, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 8'}"
-            RowDefinitions="{OnIdiom Phone='5, 30, 30, 30, 30, 30, 30, 5', Tablet='5, 40, 40, 40, 40, 40, 40, 5'}">
+            ColumnDefinitions="{OnIdiom Default='5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5', Tablet='8, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 8'}"
+            RowDefinitions="{OnIdiom Default='5, 30, 30, 30, 30, 30, 30, 5', Tablet='5, 40, 40, 40, 40, 40, 40, 5'}">
 
             <BoxView
                 Style="{StaticResource KeyboardGridBoxView}"
@@ -716,7 +718,7 @@
                 Grid.Column="5"
                 Grid.Row="5"
                 Grid.ColumnSpan="2"
-                MaximumWidthRequest="{OnIdiom Phone='64', Tablet='86'}"
+                MaximumWidthRequest="{OnIdiom Default='64', Tablet='86'}"
                 Text="{Binding Button_43_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">
@@ -850,7 +852,7 @@
             x:Name="grdLandscapeLayout"
             Style="{StaticResource KeyboardGrid}"
             IsVisible="False"
-            ColumnDefinitions="{OnIdiom Phone='3, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 3, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 3', Tablet='3, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 6, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 3'}"
+            ColumnDefinitions="{OnIdiom Default='3, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 3, 29, 29, 29, 29, 29, 29, 29, 29, 29, 29, 3', Tablet='3, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 6, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 3'}"
             RowDefinitions="5, 30, 30, 30, 5">
 
             <BoxView
@@ -1230,7 +1232,7 @@
                 Grid.Column="16"
                 Grid.Row="2"
                 Grid.ColumnSpan="2"
-                MaximumWidthRequest="{OnIdiom Phone='64', Tablet='86'}"
+                MaximumWidthRequest="{OnIdiom Default='64', Tablet='76'}"
                 Text="{Binding Button_43_Text}"
                 Command="{Binding KeyPressedCommand, Source={x:Reference root}}"
                 CommandParameter="{Binding Text, Source={RelativeSource Self}}">

@@ -195,12 +195,12 @@
         <ContentView
             x:Name="CustomKeyboardAlphanumericPortrait"
             Style="{StaticResource BottomSheetKeyboard}"
-            AbsoluteLayout.LayoutBounds="{OnIdiom Phone='0,1,1,215', Tablet='0,1,1,280'}"
+            AbsoluteLayout.LayoutBounds="{OnIdiom Default='0,1,1,215', Tablet='0,1,1,280'}"
             IsVisible="False">
 
             <local:KeyboardAlphanumeric
                 x:Name="RootKeyboardAlphanumericPortrait"
-                HeightRequest="{OnIdiom Phone='215', Tablet='280'}">
+                HeightRequest="{OnIdiom Default='215', Tablet='280'}">
             </local:KeyboardAlphanumeric>
         </ContentView>
 
