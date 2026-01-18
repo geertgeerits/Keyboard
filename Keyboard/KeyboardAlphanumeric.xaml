@@ -56,9 +56,7 @@
         <!-- Popup characters: Portrait and Landscape layout -->
         <Grid
             x:Name="grdCharactersPopup"
-            Style="{StaticResource KeyboardGrid}"
-            ColumnDefinitions="{OnIdiom Default='5, 30, 30, 30, 30, 30, 30, 30, 30, 30, 30, 5', Tablet='5, 35, 35, 35, 35, 35, 35, 35, 35, 35, 35, 5'}"
-            RowDefinitions="5, 30, 30, 5"
+            Style="{StaticResource KeyboardPopupGrid}"
             IsVisible="False">
 
             <BoxView

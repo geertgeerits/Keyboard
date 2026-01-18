@@ -449,16 +449,6 @@
     <!--*************************************************************************************************************************************
         ********************************************************** Keyboard Styles ********************************************************** 
         *************************************************************************************************************************************-->
-    
-    <Style TargetType="Border" x:Key="TitleViewButtonBorder">
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
-        <Setter Property="StrokeThickness" Value="1"/>
-        <Setter Property="StrokeShape">
-            <Setter.Value>
-                <RoundRectangle CornerRadius="8" />
-            </Setter.Value>
-        </Setter>
-    </Style>
 
     <Style TargetType="ContentView" x:Key="BottomSheetKeyboard">
         <Setter Property="AbsoluteLayout.LayoutFlags" Value="WidthProportional,PositionProportional" />
@@ -470,9 +460,6 @@
         <Setter Property="IsVisible" Value="True" />
     </Style>
 
-    <!--!!!BUG!!! VerticalOptions must be set to "FillAndExpand" - with only "Fill" scrolling does not work
-        https://www.youtube.com/watch?v=Lb8xZ_jHTjY ; https://www.youtube.com/watch?v=Lb8xZ_jHTjY
-        Fixed in NET 10 ???-->
     <Style TargetType="ScrollView" x:Key="PageScrollView">
         <Setter Property="VerticalOptions" Value="Fill" />
         <Setter Property="VerticalScrollBarVisibility" Value="Always" />
@@ -486,6 +473,102 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="Margin" Value="0" />
         <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style TargetType="Grid" x:Key="KeyboardPopupGrid">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VisualStateManager.VisualStateGroups">
+            <VisualStateGroupList>
+                <VisualStateGroup>
+                    <VisualState x:Name="Portrait">
+                        <VisualState.StateTriggers>
+                            <OrientationStateTrigger Orientation="Portrait" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="ColumnDefinitions">
+                                <Setter.Value>
+                                    <ColumnDefinitionCollection>
+                                        <ColumnDefinition Width="{OnIdiom Default='5', Tablet='5'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='30', Tablet='40'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='5', Tablet='5'}" />
+                                    </ColumnDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="RowDefinitions">
+                                <Setter.Value>
+                                    <RowDefinitionCollection>
+                                        <RowDefinition Height="{OnIdiom Default='5', Tablet='5'}" />
+                                        <RowDefinition Height="{OnIdiom Default='30', Tablet='40'}" />
+                                        <RowDefinition Height="{OnIdiom Default='30', Tablet='40'}" />
+                                        <RowDefinition Height="{OnIdiom Default='5', Tablet='5'}" />
+                                    </RowDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                    <VisualState x:Name="Landscape">
+                        <VisualState.StateTriggers>
+                            <OrientationStateTrigger Orientation="Landscape" />
+                        </VisualState.StateTriggers>
+                        <VisualState.Setters>
+                            <Setter Property="ColumnDefinitions">
+                                <Setter.Value>
+                                    <ColumnDefinitionCollection>
+                                        <ColumnDefinition Width="{OnIdiom Default='5', Tablet='5'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='29', Tablet='35'}" />
+                                        <ColumnDefinition Width="{OnIdiom Default='5', Tablet='5'}" />
+                                    </ColumnDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="RowDefinitions">
+                                <Setter.Value>
+                                    <RowDefinitionCollection>
+                                        <RowDefinition Height="{OnIdiom Default='5', Tablet='5'}" />
+                                        <RowDefinition Height="{OnIdiom Default='30', Tablet='35'}" />
+                                        <RowDefinition Height="{OnIdiom Default='30', Tablet='35'}" />
+                                        <RowDefinition Height="{OnIdiom Default='5', Tablet='5'}" />
+                                    </RowDefinitionCollection>
+                                </Setter.Value>
+                            </Setter>
+                        </VisualState.Setters>
+                    </VisualState>
+                </VisualStateGroup>
+            </VisualStateGroupList>
+        </Setter>
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="ColumnSpacing" Value="4" />
+        <Setter Property="RowSpacing" Value="4" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Padding" Value="0" />
+    </Style>
+
+    <Style TargetType="Border" x:Key="TitleViewButtonBorder">
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray600}, Dark={StaticResource Gray050}}" />
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="StrokeShape">
+            <Setter.Value>
+                <RoundRectangle CornerRadius="8" />
+            </Setter.Value>
+        </Setter>
     </Style>
 
     <Style TargetType="BoxView" x:Key="KeyboardGridBoxView">
